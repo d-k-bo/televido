@@ -1,0 +1,59 @@
+project(
+  'mediathek',
+  'rust',
+  version: '0.1.0',
+  meson_version: '>= 0.62.0',
+)
+
+i18n = import('i18n')
+gnome = import('gnome')
+
+dependency('gtk4', version: '>= 4.12')
+dependency('libadwaita-1', version: '>= 1.4')
+
+BASE_APP_ID = 'de.k_bo.Mediathek'
+
+if get_option('profile') == 'development'
+  PROFILE = 'Devel'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
+  if vcs_tag == ''
+    version_suffix = '-devel'
+  else
+    version_suffix = '-@0@'.format(vcs_tag)
+  endif
+  APP_ID = '@0@.@1@'.format(BASE_APP_ID, PROFILE)
+else
+  PROFILE = ''
+  version_suffix = ''
+  APP_ID = BASE_APP_ID
+endif
+
+meson.add_dist_script(
+  'build-aux/dist-vendor.sh',
+  meson.project_build_root() / 'meson-dist' / meson.project_name() + '-' + meson.project_version(),
+  meson.project_source_root()
+)
+
+CONFIG = {
+  'PROJECT_NAME': meson.project_name(),
+  'VERSION': meson.project_version() + version_suffix,
+  'PROFILE': PROFILE,
+  'APP_ID': APP_ID,
+  'APP_NAME': 'Mediathek',
+  'AUTHOR': 'David Cabot',
+  'PROJECT_URL': 'https://github.com/d-k-bo/mediathek',
+  'ISSUE_URL': 'https://github.com/d-k-bo/mediathek/issues',
+  'SUPPORT_URL': 'https://github.com/d-k-bo/mediathek/discussions',
+  'LOCALEDIR': get_option('prefix')/ get_option('localedir'),
+  'PKGDATADIR': get_option('prefix') / get_option('datadir') / meson.project_name(),
+}
+
+subdir('data')
+subdir('po')
+subdir('src')
+
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+  update_desktop_database: true
+)

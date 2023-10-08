@@ -1,0 +1,61 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MdkLiveCard : Gtk.ListBoxRow {
+	activatable: true;
+	selectable: false;
+
+	Gtk.Box {
+		orientation: horizontal;
+		spacing: 8;
+		margin-top: 8;
+		margin-bottom: 8;
+		margin-start: 8;
+		margin-end: 8;
+		styles ["item-card"]
+
+		Gtk.Box {
+			orientation: vertical;
+			vexpand: true;
+			valign: center;
+
+			Gtk.Image icon {
+				width-request: 64;
+				height-request: 64;
+			}
+		}
+
+		Gtk.Box {
+			orientation: vertical;
+			spacing: 8;
+			hexpand: true;
+			vexpand: true;
+			valign: center;
+
+			Gtk.Label title {
+				label: bind template.channel as <$ChannelObject>.title;
+				ellipsize: end;
+				styles ["heading"]
+				halign: start;
+			}
+
+			Gtk.Box {
+				spacing: 4;
+				valign: center;
+
+				Gtk.Label channel {
+					label: bind template.channel as <$ChannelObject>.name;
+					styles ["chip"]
+				}
+
+				Gtk.Label {
+					halign: end;
+					hexpand: true;
+					label: bind template.channel as <$ChannelObject>.timespan;
+				}
+			}
+
+			Gtk.ProgressBar progress {}
+		}
+	}
+}

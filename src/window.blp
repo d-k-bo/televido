@@ -1,0 +1,74 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MdkWindow : Adw.ApplicationWindow {
+  width-request: 400;
+  height-request: 500;
+  title: "Mediathek";
+
+  Adw.Breakpoint {
+    condition ( "max-width: 550sp" )
+    setters {
+      switcher_bar.reveal: true;
+      header_bar.title-widget: null;
+    }
+  }
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar header_bar {
+      [title]
+      Adw.ViewSwitcher {
+        stack: stack;
+        policy: wide;
+      }
+
+      [end]
+      Gtk.MenuButton {
+        primary: true;
+        icon-name: "open-menu-symbolic";
+        tooltip-text: _("Menu");
+        menu-model: primary_menu;
+      }
+    }
+
+    Adw.ViewStack stack {
+      Adw.ViewStackPage {
+        name: "live";
+        title: _("Live");
+        icon-name: "tv-symbolic";
+        child: $MdkLiveView live_view {};
+      }
+      Adw.ViewStackPage {
+        name: "mediathek";
+        title: _("Mediathek");
+        icon-name: "library-symbolic";
+        child: $MdkMediathekView mediathek_view {};
+      }
+    }
+
+    [bottom]
+    Adw.ViewSwitcherBar switcher_bar{
+      stack: stack;
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("_Preferences");
+      action: "app.preferences";
+    }
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_About Mediathek");
+      action: "app.about";
+    }
+  }
+}

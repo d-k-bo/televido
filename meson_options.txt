@@ -1,0 +1,10 @@
+option(
+  'profile',
+  type: 'combo',
+  description: 'The build profiles for the application. Use development for the .Devel app ID. ',
+  choices: [
+    'release',
+    'development',
+  ],
+  value: 'release'
+)

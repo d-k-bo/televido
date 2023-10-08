@@ -1,0 +1,13 @@
+#![allow(dead_code)]
+
+pub static PROJECT_NAME: &str = "@PROJECT_NAME@";
+pub static VERSION: &str = "@VERSION@";
+pub static PROFILE: &str = "@PROFILE@";
+pub static APP_ID: &str = "@APP_ID@";
+pub static APP_NAME: &str = "@APP_NAME@";
+pub static AUTHOR: &str = "@AUTHOR@";
+pub static PROJECT_URL: &str = "@PROJECT_URL@";
+pub static ISSUE_URL: &str = "@ISSUE_URL@";
+pub static SUPPORT_URL: &str = "@SUPPORT_URL@";
+pub static LOCALEDIR: &str = "@LOCALEDIR@";
+pub static PKGDATADIR: &str = "@PKGDATADIR@";

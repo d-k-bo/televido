@@ -1,0 +1,7 @@
+/_build
+/builddir
+/.flatpak
+/.flatpak-builder
+/src/config.rs
+/target
+/subprojects/blueprint-compiler

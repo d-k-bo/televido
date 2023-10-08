@@ -1,0 +1,33 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MdkLiveView : Adw.Bin {  
+  Adw.StatusPage status_page {
+    icon-name: "tv-symbolic";
+  }
+
+  Gtk.Stack stack {
+    visible-child: spinner;
+
+    Gtk.StackPage {
+      name: "spinner";
+      child: Gtk.Spinner spinner {
+        halign: center;
+        spinning: true;
+      };
+    }
+
+    Gtk.StackPage {
+      name: "channels";
+      child: Gtk.ScrolledWindow {
+        Adw.Clamp {
+          Gtk.ListBox channels_list {
+            margin-top: 8;
+            margin-bottom: 8;
+            styles ["boxed-list"]
+          }
+        }
+      };
+    }    
+  }
+}

@@ -1,0 +1,4 @@
+data/de.k_bo.Mediathek.desktop.in
+data/de.k_bo.Mediathek.metainfo.xml.in
+data/de.k_bo.Mediathek.gschema.xml
+src/window.blp

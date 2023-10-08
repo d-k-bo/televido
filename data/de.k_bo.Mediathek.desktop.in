@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=mediathek
+Exec=mediathek
+Icon=de.k_bo.Mediathek
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true

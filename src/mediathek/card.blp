@@ -1,0 +1,73 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MdkMediathekCard : Gtk.ListBoxRow {
+	activatable: true;
+	selectable: false;
+
+	Gtk.Box {
+		orientation: horizontal;
+		spacing: 8;
+		styles ["item-card"]
+
+		Gtk.Box {
+			orientation: vertical;
+
+			Gtk.Image icon {
+				width-request: 64;
+				height-request: 64;
+				margin-top: 8;
+				margin-bottom: 8;
+				margin-start: 8;
+				margin-end: 8;
+			}		
+
+			Gtk.Label channel {
+				label: bind template.show as <$ShowObject>.channel;
+				ellipsize: end;
+				styles ["dim"]
+			}
+		}
+
+		Gtk.Box {
+			orientation: vertical;
+			spacing: 8;
+			halign: fill;
+			valign: center;
+
+			Gtk.Label title {
+				label: bind template.show as <$ShowObject>.title;
+				ellipsize: end;
+				styles ["heading"]
+				halign: start;
+			}
+
+			Gtk.Box {
+				halign: start;
+				orientation: horizontal;
+				spacing: 4;
+
+				Gtk.Label topic {
+					label: bind template.show as <$ShowObject>.topic;
+					styles ["chip"]
+				}
+				
+				Gtk.Label duration {
+					label: bind template.show as <$ShowObject>.duration;
+					styles ["chip"]
+				}
+				
+				Gtk.Label date {
+					label: bind template.show as <$ShowObject>.date;
+					styles ["chip"]
+				}
+			}
+
+			// Gtk.Label description {
+			// 	label: bind template.show as <$ShowObject>.description;
+			// 	ellipsize: end;
+			// 	halign: start;
+			// }
+		}
+	}
+}
