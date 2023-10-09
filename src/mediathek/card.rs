@@ -1,39 +1,38 @@
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
-use crate::application::MdkApplication;
+use crate::utils::load_channel_icon;
 
 use super::{channels::Channel, shows::ShowObject};
 
 mod imp {
-
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/mediathek/card.blp")]
     #[properties(wrapper_type=super::MdkMediathekCard)]
     pub struct MdkMediathekCard {
-        #[property(get, construct_only)]
-        pub(super) show: RefCell<Option<ShowObject>>,
         #[template_child]
         icon: TemplateChild<gtk::Image>,
+        #[template_child]
+        revealer: TemplateChild<gtk::Revealer>,
+
+        #[property(get, construct_only)]
+        show: RefCell<Option<ShowObject>>,
+
+        #[property(get, set)]
+        expanded: Cell<bool>,
     }
     impl MdkMediathekCard {
         fn set_icon(&self) {
-            match self
+            let icon_name = self
                 .obj()
                 .show()
                 .and_then(|c| c.channel().parse::<Channel>().ok())
-            {
-                Some(channel) => {
-                    let application = MdkApplication::get();
-                    let icon = application.channel_icon(channel.icon_name());
+                .map(|c| c.icon_name());
 
-                    self.icon.set_resource(Some(&icon));
-                }
-                None => self.icon.set_icon_name(Some("image-missing-symbolic")),
-            }
+            load_channel_icon(&self.icon, icon_name);
         }
     }
 
@@ -58,9 +57,10 @@ mod imp {
             self.parent_constructed();
 
             self.obj().connect_show_notify(|slf| slf.imp().set_icon());
-            MdkApplication::get()
-                .style_manager()
-                .connect_dark_notify(glib::clone!(@weak self as slf => move |_| slf.set_icon()));
+
+            self.revealer.connect_child_revealed_notify(|revealer| {
+                revealer.set_visible(revealer.is_child_revealed())
+            });
         }
     }
     impl WidgetImpl for MdkMediathekCard {}

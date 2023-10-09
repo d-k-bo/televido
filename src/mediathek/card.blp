@@ -6,68 +6,83 @@ template $MdkMediathekCard : Gtk.ListBoxRow {
 	selectable: false;
 
 	Gtk.Box {
-		orientation: horizontal;
-		spacing: 8;
-		styles ["item-card"]
+		orientation: vertical;
+		hexpand: true;
+		vexpand: true;
+		spacing: 12;
+		margin-top: 12;
+		margin-bottom: 12;
+		margin-start: 12;
+		margin-end: 12;
 
 		Gtk.Box {
-			orientation: vertical;
-
-			Gtk.Image icon {
-				width-request: 64;
-				height-request: 64;
-				margin-top: 8;
-				margin-bottom: 8;
-				margin-start: 8;
-				margin-end: 8;
-			}		
-
-			Gtk.Label channel {
-				label: bind template.show as <$ShowObject>.channel;
-				ellipsize: end;
-				styles ["dim"]
-			}
-		}
-
-		Gtk.Box {
-			orientation: vertical;
+			orientation: horizontal;
 			spacing: 8;
-			halign: fill;
-			valign: center;
 
-			Gtk.Label title {
-				label: bind template.show as <$ShowObject>.title;
-				ellipsize: end;
-				styles ["heading"]
-				halign: start;
+			Gtk.Box {
+				orientation: vertical;
+
+				Gtk.Image icon {
+					width-request: 64;
+					height-request: 64;
+					pixel-size: 64;
+					tooltip-text: bind template.show as <$ShowObject>.channel;
+				}		
+
+				Gtk.Label channel {
+					label: bind template.show as <$ShowObject>.channel;
+					ellipsize: end;
+					styles ["dim"]
+				}
 			}
 
 			Gtk.Box {
-				halign: start;
-				orientation: horizontal;
-				spacing: 4;
+				orientation: vertical;
+				spacing: 8;
+				halign: fill;
+				valign: center;
 
-				Gtk.Label topic {
-					label: bind template.show as <$ShowObject>.topic;
-					styles ["chip"]
+				Gtk.Label title {
+					label: bind template.show as <$ShowObject>.title;
+					ellipsize: end;
+					styles ["heading"]
+					halign: start;
 				}
-				
-				Gtk.Label duration {
-					label: bind template.show as <$ShowObject>.duration;
-					styles ["chip"]
-				}
-				
-				Gtk.Label date {
-					label: bind template.show as <$ShowObject>.date;
-					styles ["chip"]
+
+				Gtk.Box {
+					halign: start;
+					orientation: horizontal;
+					spacing: 4;
+
+					Gtk.Label topic {
+						label: bind template.show as <$ShowObject>.topic;
+						tooltip-text: bind template.show as <$ShowObject>.topic;
+						styles ["chip"]
+					}
+					
+					Gtk.Label duration {
+						label: bind template.show as <$ShowObject>.duration;
+						styles ["chip"]
+					}
+					
+					Gtk.Label date {
+						label: bind template.show as <$ShowObject>.date;
+						styles ["chip"]
+					}
 				}
 			}
+		}
 
-			// Gtk.Label description {
-			// 	label: bind template.show as <$ShowObject>.description;
-			// 	ellipsize: end;
-			// 	halign: start;
-			// }
+		Gtk.Revealer revealer {
+			visible: false;
+			reveal-child: bind template.expanded;
+			transition-type: none;
+
+			Gtk.Label description {
+				label: bind template.show as <$ShowObject>.description;
+				use-markup: true;
+				wrap: true;
+			}
 		}
 	}
 }

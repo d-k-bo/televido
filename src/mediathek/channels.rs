@@ -21,7 +21,7 @@ channel_mapping! {
         ArtePl,
         #[channel(name = "BR", icon = "br.svg")]
         Br,
-        #[channel(name = "DW", icon = "dw.svg")]
+        #[channel(name = "DW", icon = "deutsche-welle.svg")]
         Dw,
         #[channel(name = "Funk.net", icon = "funk.svg")]
         FunkNet,

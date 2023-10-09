@@ -6,56 +6,86 @@ template $MdkLiveCard : Gtk.ListBoxRow {
 	selectable: false;
 
 	Gtk.Box {
-		orientation: horizontal;
-		spacing: 8;
-		margin-top: 8;
-		margin-bottom: 8;
-		margin-start: 8;
-		margin-end: 8;
-		styles ["item-card"]
+		orientation: vertical;
+		hexpand: true;
+		vexpand: true;
+		spacing: 12;
+		margin-top: 12;
+		margin-bottom: 12;
+		margin-start: 12;
+		margin-end: 12;
 
 		Gtk.Box {
-			orientation: vertical;
-			vexpand: true;
-			valign: center;
-
-			Gtk.Image icon {
-				width-request: 64;
-				height-request: 64;
-			}
-		}
-
-		Gtk.Box {
-			orientation: vertical;
+			orientation: horizontal;
 			spacing: 8;
-			hexpand: true;
-			vexpand: true;
-			valign: center;
+			styles ["item-card"]
 
-			Gtk.Label title {
-				label: bind template.channel as <$ChannelObject>.title;
-				ellipsize: end;
-				styles ["heading"]
-				halign: start;
+			Gtk.Box {
+				orientation: vertical;
+				vexpand: true;
+				valign: center;
+
+				Gtk.Image icon {
+					width-request: 64;
+					height-request: 64;
+					pixel-size: 64;
+					tooltip-text: bind template.channel as <$ChannelObject>.name;
+				}
 			}
 
 			Gtk.Box {
-				spacing: 4;
+				orientation: vertical;
+				spacing: 8;
+				hexpand: true;
+				vexpand: true;
 				valign: center;
 
-				Gtk.Label channel {
-					label: bind template.channel as <$ChannelObject>.name;
-					styles ["chip"]
+				Gtk.Label title {
+					label: bind template.channel as <$ChannelObject>.title;
+					tooltip-text: bind template.channel as <$ChannelObject>.title;
+					ellipsize: end;
+					styles ["heading"]
+					halign: start;
 				}
 
-				Gtk.Label {
-					halign: end;
-					hexpand: true;
-					label: bind template.channel as <$ChannelObject>.timespan;
+				Gtk.Label subtitle {
+					label: bind template.channel as <$ChannelObject>.subtitle;
+					tooltip-text: bind template.channel as <$ChannelObject>.subtitle;
+					ellipsize: end;
+					styles ["dim-label"]
+					halign: start;
 				}
+
+				Gtk.Box {
+					spacing: 4;
+					valign: center;
+
+					Gtk.Label channel {
+						label: bind template.channel as <$ChannelObject>.name;
+						styles ["chip"]
+					}
+
+					Gtk.Label {
+						halign: end;
+						hexpand: true;
+						label: bind template.channel as <$ChannelObject>.timespan;
+					}
+				}
+
+				Gtk.ProgressBar progress {}
 			}
+		}
 
-			Gtk.ProgressBar progress {}
+		Gtk.Revealer revealer {
+			visible: false;
+			reveal-child: bind template.expanded;
+			transition-type: none;
+
+			Gtk.Label description {
+				label: bind template.channel as <$ChannelObject>.description;
+				use-markup: true;
+				wrap: true;
+			}
 		}
 	}
 }

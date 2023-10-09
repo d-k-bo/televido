@@ -35,7 +35,7 @@ mod imp {
         #[template_child]
         search_entry: TemplateChild<gtk::SearchEntry>,
         #[template_child]
-        results: TemplateChild<gtk::ListBox>,
+        results_list: TemplateChild<gtk::ListBox>,
         #[template_child]
         stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -140,11 +140,19 @@ mod imp {
                 .flags(gio::SettingsBindFlags::DEFAULT)
                 .build();
 
-            self.results.bind_model(Some(&self.shows_model()), |show| {
-                glib::Object::builder::<MdkMediathekCard>()
-                    .property("show", show)
-                    .build()
-                    .into()
+            self.results_list
+                .bind_model(Some(&self.shows_model()), |show| {
+                    glib::Object::builder::<MdkMediathekCard>()
+                        .property("show", show)
+                        .build()
+                        .into()
+                });
+
+            self.results_list.connect_row_activated(|_, row| {
+                let row = row
+                    .downcast_ref::<MdkMediathekCard>()
+                    .expect("invalid ListBoxRow type");
+                row.set_expanded(!row.expanded())
             });
 
             fn load(slf: &super::MdkMediathekView) {

@@ -1,7 +1,15 @@
 use std::{future::Future, sync::OnceLock, time::Duration};
 
-use adw::glib;
+use adw::{
+    glib,
+    gtk::{self, gdk, gdk_pixbuf},
+    prelude::*,
+};
+use eyre::WrapErr;
 use gettextrs::gettext;
+use tracing::error;
+
+use crate::application::MdkApplication;
 
 pub async fn tokio<Fut, T>(fut: Fut) -> T
 where
@@ -169,3 +177,41 @@ macro_rules! channel_mapping {
     };
 }
 pub(crate) use channel_mapping;
+
+pub fn load_channel_icon(image: &gtk::Image, icon_name: Option<&'static str>) {
+    let Some(icon_name) = icon_name else {
+        image.set_icon_name(Some("image-missing-symbolic"));
+        return;
+    };
+
+    let style_manager = MdkApplication::get().style_manager();
+
+    set_icon(&style_manager, image, icon_name);
+
+    style_manager.connect_dark_notify(glib::clone!(@weak image => move |style_manager| {
+        set_icon(style_manager, &image, icon_name)
+    }));
+
+    fn set_icon(style_manager: &adw::StyleManager, image: &gtk::Image, icon_name: &str) {
+        match load_icon(style_manager, icon_name) {
+            Ok(texture) => image.set_from_paintable(Some(&texture)),
+            Err(e) => {
+                error!("{e:?}");
+                image.set_icon_name(Some("image-missing-symbolic"));
+            }
+        }
+    }
+
+    fn load_icon(style_manager: &adw::StyleManager, icon_name: &str) -> eyre::Result<gdk::Texture> {
+        let resource = if style_manager.is_dark() {
+            format!("/de/k_bo/mediathek/icons/scalable/channels/dark/{icon_name}",)
+        } else {
+            format!("/de/k_bo/mediathek/icons/scalable/channels/light/{icon_name}",)
+        };
+
+        // load image manually with given size to avoid blurriness caused by scaling after rasterization
+        gdk_pixbuf::Pixbuf::from_resource_at_scale(&resource, 64, 64, true)
+            .map(|pixbuf| gdk::Texture::for_pixbuf(&pixbuf))
+            .wrap_err_with(|| format!("failed to load channel logo from {resource}"))
+    }
+}

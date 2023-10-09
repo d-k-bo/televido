@@ -112,12 +112,4 @@ impl MdkApplication {
 
         about.present();
     }
-
-    pub fn channel_icon(&self, name: &str) -> String {
-        if self.style_manager().is_dark() {
-            format!("/de/k_bo/mediathek/icons/scalable/channels/dark/{name}",)
-        } else {
-            format!("/de/k_bo/mediathek/icons/scalable/channels/light/{name}",)
-        }
-    }
 }

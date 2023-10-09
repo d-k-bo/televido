@@ -2,10 +2,7 @@ use std::cell::{Cell, RefCell};
 
 use adw::{glib, prelude::*, subclass::prelude::*};
 
-use crate::{
-    application::MdkApplication,
-    utils::{channel_mapping, format_timestamp_time},
-};
+use crate::utils::{channel_mapping, format_timestamp_time};
 
 mod imp {
     use super::*;
@@ -106,16 +103,6 @@ impl ChannelObject {
             .property("name", name)
             .property("stream-url", stream_url)
             .build()
-    }
-    pub fn channel_icon(&self) -> Option<String> {
-        match self.id().parse::<Channel>() {
-            Ok(channel) => {
-                let application = MdkApplication::get();
-
-                Some(application.channel_icon(channel.icon_name()))
-            }
-            Err(_) => None,
-        }
     }
 }
 

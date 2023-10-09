@@ -4,12 +4,7 @@ use adw::{glib, prelude::*, subclass::prelude::*};
 use mediathekviewweb::models::Item;
 use once_cell::sync::Lazy;
 
-use crate::{
-    application::MdkApplication,
-    utils::{format_duration, format_timestamp_full},
-};
-
-use super::channels::Channel;
+use crate::utils::{format_duration, format_timestamp_full};
 
 mod imp {
     use super::*;
@@ -83,22 +78,5 @@ impl ShowObject {
     }
     pub fn channel(&self) -> String {
         self.property("channel")
-    }
-    pub fn channel_icon(&self) -> Option<String> {
-        match &self
-            .imp()
-            .0
-            .get()
-            .expect("ShowObject has not been initialized.")
-            .channel
-            .parse::<Channel>()
-        {
-            Ok(channel) => {
-                let application = MdkApplication::get();
-
-                Some(application.channel_icon(channel.icon_name()))
-            }
-            Err(_) => None,
-        }
     }
 }

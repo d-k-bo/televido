@@ -1,11 +1,11 @@
-use std::{cell::RefCell, time::Duration};
+use std::{
+    cell::{Cell, RefCell},
+    time::Duration,
+};
 
 use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
-use crate::{
-    application::MdkApplication,
-    utils::{spawn, tokio},
-};
+use crate::utils::{load_channel_icon, spawn, tokio};
 
 use super::channels::{Channel, ChannelObject};
 
@@ -21,7 +21,14 @@ mod imp {
         #[template_child]
         title: TemplateChild<gtk::Label>,
         #[template_child]
+        subtitle: TemplateChild<gtk::Label>,
+        #[template_child]
         progress: TemplateChild<gtk::ProgressBar>,
+        #[template_child]
+        revealer: TemplateChild<gtk::Revealer>,
+
+        #[property(get, set)]
+        expanded: Cell<bool>,
 
         #[property(get, construct_only)]
         pub(super) channel: RefCell<Option<ChannelObject>>,
@@ -29,19 +36,13 @@ mod imp {
 
     impl MdkLiveCard {
         fn set_icon(&self) {
-            match self
+            let icon_name = self
                 .obj()
                 .channel()
                 .and_then(|c| c.id().parse::<Channel>().ok())
-            {
-                Some(channel) => {
-                    let application = MdkApplication::get();
-                    let icon = application.channel_icon(channel.icon_name());
+                .map(|c| c.icon_name());
 
-                    self.icon.set_resource(Some(&icon));
-                }
-                None => self.icon.set_icon_name(Some("image-missing-symbolic")),
-            }
+            load_channel_icon(&self.icon, icon_name);
         }
     }
 
@@ -67,12 +68,17 @@ mod imp {
 
             self.obj()
                 .connect_channel_notify(|slf| slf.imp().set_icon());
-            MdkApplication::get()
-                .style_manager()
-                .connect_dark_notify(glib::clone!(@weak self as slf => move |_| slf.set_icon()));
 
             self.title
-                .connect_label_notify(|label| label.set_visible(!label.label().is_empty()));
+                .connect_label_notify(|title| title.set_visible(!title.label().is_empty()));
+
+            self.subtitle.connect_label_notify(|subtitle| {
+                subtitle.set_visible(!subtitle.label().is_empty())
+            });
+
+            self.revealer.connect_child_revealed_notify(|revealer| {
+                revealer.set_visible(revealer.is_child_revealed())
+            });
 
             // update progress bar every 10 seconds
             let slf = self.downgrade();

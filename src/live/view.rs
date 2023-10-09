@@ -92,7 +92,9 @@ mod imp {
                         {
                             channel.set_title(Some(title.as_str()));
                             channel.set_subtitle(subtitle.as_deref());
-                            channel.set_description(description.as_deref());
+                            channel.set_description(
+                                description.as_deref().map(html2pango::markup).as_deref(),
+                            );
                             channel.set_start_time(start_time.unix_timestamp());
                             channel.set_end_time(end_time.unix_timestamp());
                         }
@@ -134,6 +136,13 @@ mod imp {
                         .build()
                         .upcast()
                 });
+
+            self.channels_list.connect_row_activated(|_, row| {
+                let row = row
+                    .downcast_ref::<MdkLiveCard>()
+                    .expect("invalid ListBoxRow type");
+                row.set_expanded(!row.expanded())
+            });
 
             let slf = self.to_owned();
             spawn(async move { slf.load().await });
