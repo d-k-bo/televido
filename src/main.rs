@@ -19,8 +19,10 @@
 
 mod application;
 mod config;
+mod launcher;
 mod live;
 mod mediathek;
+mod preferences;
 mod settings;
 mod utils;
 mod window;

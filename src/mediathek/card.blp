@@ -19,21 +19,11 @@ template $MdkMediathekCard : Gtk.ListBoxRow {
 			orientation: horizontal;
 			spacing: 8;
 
-			Gtk.Box {
-				orientation: vertical;
-
-				Gtk.Image icon {
-					width-request: 64;
-					height-request: 64;
-					pixel-size: 64;
-					tooltip-text: bind template.show as <$ShowObject>.channel;
-				}		
-
-				Gtk.Label channel {
-					label: bind template.show as <$ShowObject>.channel;
-					ellipsize: end;
-					styles ["dim"]
-				}
+			Gtk.Image icon {
+				width-request: 64;
+				height-request: 64;
+				pixel-size: 64;
+				tooltip-text: bind template.show as <$ShowObject>.channel;
 			}
 
 			Gtk.Box {
@@ -44,30 +34,31 @@ template $MdkMediathekCard : Gtk.ListBoxRow {
 
 				Gtk.Label title {
 					label: bind template.show as <$ShowObject>.title;
+					tooltip-text: bind template.show as <$ShowObject>.title;
 					ellipsize: end;
 					styles ["heading"]
 					halign: start;
 				}
 
-				Gtk.Box {
+				Gtk.Label topic {
+					label: bind template.show as <$ShowObject>.topic;
+					tooltip-text: bind template.show as <$ShowObject>.topic;
 					halign: start;
-					orientation: horizontal;
-					spacing: 4;
+					ellipsize: end;
+					styles ["dim-label"]
+				}
 
-					Gtk.Label topic {
-						label: bind template.show as <$ShowObject>.topic;
-						tooltip-text: bind template.show as <$ShowObject>.topic;
-						styles ["chip"]
-					}
-					
+				Gtk.Box {					
 					Gtk.Label duration {
 						label: bind template.show as <$ShowObject>.duration;
-						styles ["chip"]
+						styles ["numeric"]
 					}
 					
 					Gtk.Label date {
 						label: bind template.show as <$ShowObject>.date;
-						styles ["chip"]
+						halign: end;
+						hexpand: true;
+						styles ["numeric"]
 					}
 				}
 			}
@@ -78,11 +69,74 @@ template $MdkMediathekCard : Gtk.ListBoxRow {
 			reveal-child: bind template.expanded;
 			transition-type: none;
 
-			Gtk.Label description {
-				label: bind template.show as <$ShowObject>.description;
-				use-markup: true;
-				wrap: true;
+			Gtk.Box {
+				orientation: vertical;
+				spacing: 8;
+
+				Gtk.Box {
+					orientation: horizontal;
+					halign: center;
+					spacing: 4;
+
+					Adw.SplitButton {
+						icon-name: "play-symbolic";
+						tooltip-text: _("Play");
+						action-name: "card.play-default";
+						menu-model: play_menu;
+					}
+
+					Adw.SplitButton {
+						icon-name: "document-save-symbolic";
+						tooltip-text: _("Download");
+						action-name: "card.download-default";
+						menu-model: download_menu;
+					}
+
+					Gtk.Button {
+						icon-name: "globe-alt2-symbolic";
+						tooltip-text: _("Open Website");
+						action-name: "card.open-website";
+					}
+				}
+
+				Gtk.Label description {
+					label: bind template.show as <$ShowObject>.description;
+					halign: start;
+					use-markup: false;
+					wrap: true;
+					styles ["body"]
+				}
 			}
 		}
+	}
+}
+
+menu play_menu {
+	item {
+		label: _("High Quality");
+		action: "card.play-high";
+	}
+	item {
+		label: _("Medium Quality");
+		action: "card.play-medium";
+	}
+	item {
+		label: _("Low Quality");    
+		action: "card.play-low";
+	}
+}
+
+menu download_menu {
+	item {
+		label: _("High Quality");
+		action: "card.download-high";
+	}
+	item {
+		label: _("Medium Quality");
+		action: "card.download-medium";
+	}
+	item {
+		label: _("Low Quality");    
+		action: "card.download-low";
 	}
 }

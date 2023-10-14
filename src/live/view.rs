@@ -4,9 +4,10 @@
 use std::{cell::OnceCell, sync::Arc};
 
 use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
+use eyre::Context;
 use tracing::error;
 
-use crate::utils::{delegate_actions, spawn, tokio};
+use crate::utils::{spawn, tokio};
 
 use super::{
     card::MdkLiveCard,
@@ -15,16 +16,11 @@ use super::{
 };
 
 mod imp {
-    use eyre::Context;
-
     use super::*;
 
-    #[derive(Debug, Default, gtk::CompositeTemplate /* , glib::Properties */)]
+    #[derive(Debug, Default, gtk::CompositeTemplate)]
     #[template(file = "src/live/view.blp")]
-    // #[properties(wrapper_type = super::MdkLiveView)]
     pub struct MdkLiveView {
-        actions: gio::SimpleActionGroup,
-
         #[template_child]
         stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -113,7 +109,6 @@ mod imp {
         const NAME: &'static str = "MdkLiveView";
         type Type = super::MdkLiveView;
         type ParentType = adw::Bin;
-        type Interfaces = (gio::ActionGroup, gio::ActionMap);
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -150,11 +145,9 @@ mod imp {
     }
     impl WidgetImpl for MdkLiveView {}
     impl BinImpl for MdkLiveView {}
-    delegate_actions! {MdkLiveView, actions }
 }
 
 glib::wrapper! {
     pub struct MdkLiveView(ObjectSubclass<imp::MdkLiveView>)
-        @extends gtk::Widget, adw::Bin,
-        @implements gio::ActionGroup, gio::ActionMap;
+        @extends gtk::Widget, adw::Bin;
 }

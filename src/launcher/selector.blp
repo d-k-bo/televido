@@ -1,0 +1,35 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ProgramSelector : Gtk.Window {
+    focusable: false;
+    destroy-with-parent: true;
+    modal: true;
+
+    [titlebar]
+    Adw.HeaderBar {
+        decoration-layout: "";
+
+        [start]
+        Gtk.Button {
+            label: _("Cancel");
+            action-name: "program-selector.cancel";
+        }
+
+        [end]
+        Gtk.Button confirm_button {
+            label: _("Confirm");
+            action-name: "program-selector.confirm";
+            receives-default: true;
+            sensitive: false;
+
+            styles ["suggested-action"]
+        }
+    }
+
+    Adw.PreferencesPage {
+        Adw.PreferencesGroup program_list {
+            description: bind template.description;
+        }
+    }
+}

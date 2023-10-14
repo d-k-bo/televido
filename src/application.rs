@@ -18,13 +18,17 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-use std::cell::OnceCell;
+use std::{cell::OnceCell, sync::OnceLock};
 
 use adw::{gio, glib, prelude::*, subclass::prelude::*};
+use tracing::error;
 
-use crate::config::{APP_NAME, AUTHOR};
 use crate::{
-    config::{APP_ID, VERSION},
+    config::{APP_ID, APP_NAME, AUTHOR, VERSION},
+    launcher::{ExternalProgramType, ProgramSelector},
+    preferences::MdkPreferencesWindow,
+    settings::MdkSettings,
+    utils::{spawn_clone, tokio},
     window::MdkWindow,
 };
 
@@ -90,6 +94,47 @@ impl MdkApplication {
         Self::get()
     }
 
+    pub async fn dbus() -> zbus::Connection {
+        static DBUS: OnceLock<zbus::Connection> = OnceLock::new();
+        match DBUS.get() {
+            Some(dbus) => dbus.clone(),
+            None => {
+                let conn = tokio(async { zbus::Connection::session().await })
+                    .await
+                    .expect("Failed to acquire a connection to the session D-Bus.");
+                DBUS.set(conn.clone())
+                    .expect("D-Bus connection has already been acquired.");
+                conn
+            }
+        }
+    }
+
+    pub async fn play(&self, uri: String) {
+        let settings = MdkSettings::get();
+        let player_id = settings.video_player_id();
+        let player = if player_id.is_empty() {
+            let Some(program) = ProgramSelector::select_program(ExternalProgramType::Player).await
+            else {
+                return;
+            };
+
+            settings.set_video_player_name(program.name);
+            settings.set_video_player_id(program.id);
+
+            program
+        } else {
+            let Some(program) = ExternalProgramType::Player.find(&player_id) else {
+                return;
+            };
+            program
+        };
+
+        match player.play(uri).await {
+            Ok(()) => (),
+            Err(e) => error!("{}", e.wrap_err("failed to play video stream")),
+        }
+    }
+
     fn setup_gactions(&self) {
         let quit_action = gio::ActionEntry::builder("quit")
             .activate(move |app: &Self, _, _| app.quit())
@@ -97,7 +142,20 @@ impl MdkApplication {
         let about_action = gio::ActionEntry::builder("about")
             .activate(move |app: &Self, _, _| app.show_about())
             .build();
-        self.add_action_entries([quit_action, about_action]);
+        let preferences_action = gio::ActionEntry::builder("preferences")
+            .activate(move |app: &Self, _, _| {
+                MdkPreferencesWindow::new(app.active_window().as_ref()).present()
+            })
+            .build();
+        let play_action = gio::ActionEntry::builder("play")
+            .parameter_type(Some(glib::VariantTy::STRING))
+            .activate(move |app: &Self, _, variant| {
+                if let Some(stream_url) = variant.and_then(|v| v.get()) {
+                    spawn_clone!(app => app.play(stream_url))
+                }
+            })
+            .build();
+        self.add_action_entries([quit_action, about_action, preferences_action, play_action]);
     }
 
     fn show_about(&self) {

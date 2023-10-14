@@ -26,6 +26,8 @@ mod imp {
         progress: TemplateChild<gtk::ProgressBar>,
         #[template_child]
         revealer: TemplateChild<gtk::Revealer>,
+        #[template_child]
+        play_button: TemplateChild<gtk::Button>,
 
         #[property(get, set)]
         expanded: Cell<bool>,
@@ -54,6 +56,14 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+
+            klass.install_action("card.play", None, |slf, _, _| {
+                slf.activate_action(
+                    "app.play",
+                    Some(&slf.channel().unwrap().stream_url().to_variant()),
+                )
+                .unwrap()
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -78,6 +88,14 @@ mod imp {
 
             self.revealer.connect_child_revealed_notify(|revealer| {
                 revealer.set_visible(revealer.is_child_revealed())
+            });
+
+            self.obj().connect_channel_notify(|slf| {
+                if let Some(channel) = slf.channel() {
+                    slf.imp()
+                        .play_button
+                        .set_action_target_value(Some(&channel.stream_url().to_variant()));
+                }
             });
 
             // update progress bar every 10 seconds

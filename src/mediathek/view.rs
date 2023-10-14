@@ -18,7 +18,7 @@ use tracing::error;
 use crate::{
     config::{APP_ID, PROJECT_URL, VERSION},
     settings::MdkSettings,
-    utils::{delegate_actions, spawn_clone, tokio},
+    utils::{spawn_clone, tokio},
 };
 
 use super::{card::MdkMediathekCard, shows::ShowObject};
@@ -30,8 +30,6 @@ mod imp {
     #[template(file = "src/mediathek/view.blp")]
     #[properties(wrapper_type = super::MdkMediathekView)]
     pub struct MdkMediathekView {
-        actions: gio::SimpleActionGroup,
-
         #[template_child]
         search_entry: TemplateChild<gtk::SearchEntry>,
         #[template_child]
@@ -84,7 +82,6 @@ mod imp {
         const NAME: &'static str = "MdkMediathekView";
         type Type = super::MdkMediathekView;
         type ParentType = adw::Bin;
-        type Interfaces = (gio::ActionGroup, gio::ActionMap);
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -184,13 +181,12 @@ mod imp {
     }
     impl WidgetImpl for MdkMediathekView {}
     impl BinImpl for MdkMediathekView {}
-    delegate_actions! {MdkMediathekView, actions }
+    // delegate_actions! {MdkMediathekView, actions }
 }
 
 glib::wrapper! {
     pub struct MdkMediathekView(ObjectSubclass<imp::MdkMediathekView>)
-        @extends gtk::Widget, adw::Bin,
-        @implements gio::ActionGroup, gio::ActionMap;
+        @extends gtk::Widget, adw::Bin;
 }
 
 impl MdkMediathekView {

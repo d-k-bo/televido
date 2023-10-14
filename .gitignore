@@ -5,3 +5,4 @@
 /src/config.rs
 /target
 /subprojects/blueprint-compiler
+/data/gschemas.compiled

@@ -13,8 +13,8 @@ use crate::application::MdkApplication;
 
 pub async fn tokio<Fut, T>(fut: Fut) -> T
 where
-    Fut: Future<Output = T> + Send + Sync + 'static,
-    T: Send + Sync + 'static,
+    Fut: Future<Output = T> + Send + 'static,
+    T: Send + 'static,
 {
     static RUNTIME: OnceLock<tokio::runtime::Runtime> = OnceLock::new();
 
@@ -82,52 +82,6 @@ pub fn format_duration(duration: &Duration) -> String {
         format!("{m:02}m{s:02}s")
     }
 }
-
-macro_rules! delegate_actions {
-    ( $ImpStruct:ident, $imp_field:ident ) => {
-        impl ActionGroupImpl for $ImpStruct {
-            fn list_actions(&self) -> Vec<String> {
-                self.$imp_field
-                    .list_actions()
-                    .into_iter()
-                    .map(Into::into)
-                    .collect()
-            }
-            fn query_action(
-                &self,
-                action_name: &str,
-            ) -> Option<(
-                bool,
-                Option<glib::VariantType>,
-                Option<glib::VariantType>,
-                Option<glib::Variant>,
-                Option<glib::Variant>,
-            )> {
-                self.$imp_field.lookup_action(action_name).map(|action| {
-                    (
-                        action.is_enabled(),
-                        action.parameter_type(),
-                        action.state_type(),
-                        action.state_hint(),
-                        action.state(),
-                    )
-                })
-            }
-        }
-        impl ActionMapImpl for $ImpStruct {
-            fn lookup_action(&self, action_name: &str) -> Option<gio::Action> {
-                self.$imp_field.lookup_action(action_name)
-            }
-            fn add_action(&self, action: &gio::Action) {
-                self.$imp_field.add_action(action)
-            }
-            fn remove_action(&self, action_name: &str) {
-                self.$imp_field.remove_action(action_name)
-            }
-        }
-    };
-}
-pub(crate) use delegate_actions;
 
 macro_rules! channel_mapping {
     (

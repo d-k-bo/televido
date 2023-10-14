@@ -35,5 +35,23 @@
 		<key name="sort-order" type="s">
 			<default>"descending"</default>
 		</key>
+		<key name="video-player-name" type="s">
+			<default>""</default>
+		</key>
+		<key name="video-player-id" type="s">
+			<default>""</default>
+		</key>
+		<key name="video-downloader-name" type="s">
+			<default>""</default>
+		</key>
+		<key name="video-downloader-id" type="s">
+			<default>""</default>
+		</key>
+		<key name="default-playback-quality" type="s">
+			<default>"high"</default>
+		</key>
+		<key name="default-download-quality" type="s">
+			<default>"high"</default>
+		</key>
 	</schema>
 </schemalist>

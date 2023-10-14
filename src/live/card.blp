@@ -24,12 +24,26 @@ template $MdkLiveCard : Gtk.ListBoxRow {
 				orientation: vertical;
 				vexpand: true;
 				valign: center;
+				spacing: 8;
 
 				Gtk.Image icon {
 					width-request: 64;
 					height-request: 64;
 					pixel-size: 64;
 					tooltip-text: bind template.channel as <$ChannelObject>.name;
+				}
+
+				Gtk.Box {
+					orientation: horizontal;
+					halign: center;
+					spacing: 4;
+
+					Gtk.Button play_button {
+						icon-name: "play-symbolic";
+						tooltip-text: _("Play");
+						action-name: "app.play";
+						styles ["circular"]
+					}
 				}
 			}
 
@@ -57,18 +71,17 @@ template $MdkLiveCard : Gtk.ListBoxRow {
 				}
 
 				Gtk.Box {
-					spacing: 4;
 					valign: center;
 
 					Gtk.Label channel {
 						label: bind template.channel as <$ChannelObject>.name;
-						styles ["chip"]
 					}
 
-					Gtk.Label {
+					Gtk.Label timespan {
 						halign: end;
 						hexpand: true;
 						label: bind template.channel as <$ChannelObject>.timespan;
+						styles ["numeric"]
 					}
 				}
 
@@ -83,9 +96,11 @@ template $MdkLiveCard : Gtk.ListBoxRow {
 
 			Gtk.Label description {
 				label: bind template.channel as <$ChannelObject>.description;
+				halign: start;
 				use-markup: true;
 				wrap: true;
-			}
+				styles ["body"]
+			}		
 		}
 	}
 }
