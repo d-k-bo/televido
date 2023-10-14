@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $MdkWindow : Adw.ApplicationWindow {
+template $TvWindow : Adw.ApplicationWindow {
   width-request: 400;
   height-request: 500;
   title: "Mediathek";
@@ -37,13 +37,13 @@ template $MdkWindow : Adw.ApplicationWindow {
         name: "live";
         title: _("Live");
         icon-name: "tv-symbolic";
-        child: $MdkLiveView live_view {};
+        child: $TvLiveView live_view {};
       }
       Adw.ViewStackPage {
         name: "mediathek";
         title: _("Mediathek");
         icon-name: "library-symbolic";
-        child: $MdkMediathekView mediathek_view {};
+        child: $TvMediathekView mediathek_view {};
       }
     }
 
@@ -67,7 +67,7 @@ menu primary_menu {
     }
 
     item {
-      label: _("_About Mediathek");
+      label: _("_About Televido");
       action: "app.about";
     }
   }

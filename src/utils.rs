@@ -9,7 +9,7 @@ use eyre::WrapErr;
 use gettextrs::gettext;
 use tracing::error;
 
-use crate::application::MdkApplication;
+use crate::application::TvApplication;
 
 pub async fn tokio<Fut, T>(fut: Fut) -> T
 where
@@ -138,7 +138,7 @@ pub fn load_channel_icon(image: &gtk::Image, icon_name: Option<&'static str>) {
         return;
     };
 
-    let style_manager = MdkApplication::get().style_manager();
+    let style_manager = TvApplication::get().style_manager();
 
     set_icon(&style_manager, image, icon_name);
 
@@ -158,9 +158,9 @@ pub fn load_channel_icon(image: &gtk::Image, icon_name: Option<&'static str>) {
 
     fn load_icon(style_manager: &adw::StyleManager, icon_name: &str) -> eyre::Result<gdk::Texture> {
         let resource = if style_manager.is_dark() {
-            format!("/de/k_bo/mediathek/icons/scalable/channels/dark/{icon_name}",)
+            format!("/de/k_bo/televido/icons/scalable/channels/dark/{icon_name}",)
         } else {
-            format!("/de/k_bo/mediathek/icons/scalable/channels/light/{icon_name}",)
+            format!("/de/k_bo/televido/icons/scalable/channels/light/{icon_name}",)
         };
 
         // load image manually with given size to avoid blurriness caused by scaling after rasterization

@@ -1,8 +1,8 @@
 [English Version](README.md)
 
-# Mediathek
+# Televido
 
-**Mediathek** ermöglicht das Empfangen von Livestreams sowie das Suchen, Abspielen und Herunterladen von Inhalten aus Mediatheken öffentlich-rechtlicher Sender aus dem DACH-Raum. Es basiert auf den APIs von [MediathekViewWeb](https://mediathekviewweb.de/) und des [Zapp backend](https://github.com/mediathekview/zapp-backend)s, die beide Teil des [MediathekView](https://mediathekview.de/)-Projekts sind.
+**Televido** („Fernsehen“ auf Esperanto) ermöglicht das Empfangen von Livestreams sowie das Suchen, Abspielen und Herunterladen von Inhalten aus Mediatheken öffentlich-rechtlicher Sender aus dem DACH-Raum. Es basiert auf den APIs von [MediathekViewWeb](https://mediathekviewweb.de/) und des [Zapp-Backends](https://github.com/mediathekview/zapp-backend), die beide Teil des [MediathekView](https://mediathekview.de/)-Projekts sind.
 
 ## Senderlogos
 

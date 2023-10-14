@@ -1,5 +1,5 @@
 project(
-  'mediathek',
+  'televido',
   'rust',
   version: '0.1.0',
   meson_version: '>= 0.62.0',
@@ -11,7 +11,7 @@ gnome = import('gnome')
 dependency('gtk4', version: '>= 4.12')
 dependency('libadwaita-1', version: '>= 1.4')
 
-BASE_APP_ID = 'de.k_bo.Mediathek'
+BASE_APP_ID = 'de.k_bo.Televido'
 
 if get_option('profile') == 'development'
   PROFILE = 'Devel'
@@ -39,11 +39,11 @@ CONFIG = {
   'VERSION': meson.project_version() + version_suffix,
   'PROFILE': PROFILE,
   'APP_ID': APP_ID,
-  'APP_NAME': 'Mediathek',
+  'APP_NAME': 'Televido',
   'AUTHOR': 'David Cabot',
-  'PROJECT_URL': 'https://github.com/d-k-bo/mediathek',
-  'ISSUE_URL': 'https://github.com/d-k-bo/mediathek/issues',
-  'SUPPORT_URL': 'https://github.com/d-k-bo/mediathek/discussions',
+  'PROJECT_URL': 'https://github.com/d-k-bo/televido',
+  'ISSUE_URL': 'https://github.com/d-k-bo/televido/issues',
+  'SUPPORT_URL': 'https://github.com/d-k-bo/televido/discussions',
   'LOCALEDIR': get_option('prefix')/ get_option('localedir'),
   'PKGDATADIR': get_option('prefix') / get_option('datadir') / meson.project_name(),
 }

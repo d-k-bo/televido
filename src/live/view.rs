@@ -10,7 +10,7 @@ use tracing::error;
 use crate::utils::{spawn, tokio};
 
 use super::{
-    card::MdkLiveCard,
+    card::TvLiveCard,
     channels::ChannelObject,
     zapp::{ChannelId, ChannelInfo, Show, ShowsResult, Zapp},
 };
@@ -20,7 +20,7 @@ mod imp {
 
     #[derive(Debug, Default, gtk::CompositeTemplate)]
     #[template(file = "src/live/view.blp")]
-    pub struct MdkLiveView {
+    pub struct TvLiveView {
         #[template_child]
         stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -32,7 +32,7 @@ mod imp {
         channels_model: OnceCell<gio::ListStore>,
     }
 
-    impl MdkLiveView {
+    impl TvLiveView {
         pub(super) fn client(&self) -> Arc<Zapp> {
             self.client
                 .get_or_init(|| Arc::new(Zapp::new().expect("failed to initialize HTTP client")))
@@ -105,9 +105,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MdkLiveView {
-        const NAME: &'static str = "MdkLiveView";
-        type Type = super::MdkLiveView;
+    impl ObjectSubclass for TvLiveView {
+        const NAME: &'static str = "TvLiveView";
+        type Type = super::TvLiveView;
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
@@ -120,13 +120,13 @@ mod imp {
     }
 
     // #[glib::derived_properties]
-    impl ObjectImpl for MdkLiveView {
+    impl ObjectImpl for TvLiveView {
         fn constructed(&self) {
             self.parent_constructed();
 
             self.channels_list
                 .bind_model(Some(&self.channels_model()), |channel| {
-                    glib::Object::builder::<MdkLiveCard>()
+                    glib::Object::builder::<TvLiveCard>()
                         .property("channel", channel)
                         .build()
                         .upcast()
@@ -134,7 +134,7 @@ mod imp {
 
             self.channels_list.connect_row_activated(|_, row| {
                 let row = row
-                    .downcast_ref::<MdkLiveCard>()
+                    .downcast_ref::<TvLiveCard>()
                     .expect("invalid ListBoxRow type");
                 row.set_expanded(!row.expanded())
             });
@@ -143,11 +143,11 @@ mod imp {
             spawn(async move { slf.load().await });
         }
     }
-    impl WidgetImpl for MdkLiveView {}
-    impl BinImpl for MdkLiveView {}
+    impl WidgetImpl for TvLiveView {}
+    impl BinImpl for TvLiveView {}
 }
 
 glib::wrapper! {
-    pub struct MdkLiveView(ObjectSubclass<imp::MdkLiveView>)
+    pub struct TvLiveView(ObjectSubclass<imp::TvLiveView>)
         @extends gtk::Widget, adw::Bin;
 }

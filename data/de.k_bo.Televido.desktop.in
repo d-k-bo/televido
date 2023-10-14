@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=mediathek
-Exec=mediathek
-Icon=de.k_bo.Mediathek
+Name=televido
+Exec=televido
+Icon=de.k_bo.Televido
 Terminal=false
 Type=Application
 Categories=GTK;

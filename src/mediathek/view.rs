@@ -17,19 +17,19 @@ use tracing::error;
 
 use crate::{
     config::{APP_ID, PROJECT_URL, VERSION},
-    settings::MdkSettings,
+    settings::TvSettings,
     utils::{spawn_clone, tokio},
 };
 
-use super::{card::MdkMediathekCard, shows::ShowObject};
+use super::{card::TvMediathekCard, shows::ShowObject};
 
 mod imp {
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/mediathek/view.blp")]
-    #[properties(wrapper_type = super::MdkMediathekView)]
-    pub struct MdkMediathekView {
+    #[properties(wrapper_type = super::TvMediathekView)]
+    pub struct TvMediathekView {
         #[template_child]
         search_entry: TemplateChild<gtk::SearchEntry>,
         #[template_child]
@@ -69,7 +69,7 @@ mod imp {
         pub(super) shows_model: OnceCell<gio::ListStore>,
         pub(super) request_id: Cell<u32>,
     }
-    impl MdkMediathekView {
+    impl TvMediathekView {
         pub(super) fn shows_model(&self) -> gio::ListStore {
             self.shows_model
                 .get_or_init(gio::ListStore::new::<ShowObject>)
@@ -78,9 +78,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MdkMediathekView {
-        const NAME: &'static str = "MdkMediathekView";
-        type Type = super::MdkMediathekView;
+    impl ObjectSubclass for TvMediathekView {
+        const NAME: &'static str = "TvMediathekView";
+        type Type = super::TvMediathekView;
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
@@ -106,12 +106,12 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for MdkMediathekView {
+    impl ObjectImpl for TvMediathekView {
         fn constructed(&self) {
             self.parent_constructed();
 
             let slf = self.obj();
-            let settings = MdkSettings::get();
+            let settings = TvSettings::get();
             settings
                 .bind_search_in_topic(&*slf, "search-in-topic")
                 .flags(gio::SettingsBindFlags::DEFAULT)
@@ -139,7 +139,7 @@ mod imp {
 
             self.results_list
                 .bind_model(Some(&self.shows_model()), |show| {
-                    glib::Object::builder::<MdkMediathekCard>()
+                    glib::Object::builder::<TvMediathekCard>()
                         .property("show", show)
                         .build()
                         .into()
@@ -147,12 +147,12 @@ mod imp {
 
             self.results_list.connect_row_activated(|_, row| {
                 let row = row
-                    .downcast_ref::<MdkMediathekCard>()
+                    .downcast_ref::<TvMediathekCard>()
                     .expect("invalid ListBoxRow type");
                 row.set_expanded(!row.expanded())
             });
 
-            fn load(slf: &super::MdkMediathekView) {
+            fn load(slf: &super::TvMediathekView) {
                 spawn_clone!(slf => slf.load())
             }
 
@@ -179,17 +179,17 @@ mod imp {
             });
         }
     }
-    impl WidgetImpl for MdkMediathekView {}
-    impl BinImpl for MdkMediathekView {}
-    // delegate_actions! {MdkMediathekView, actions }
+    impl WidgetImpl for TvMediathekView {}
+    impl BinImpl for TvMediathekView {}
+    // delegate_actions! {TvMediathekView, actions }
 }
 
 glib::wrapper! {
-    pub struct MdkMediathekView(ObjectSubclass<imp::MdkMediathekView>)
+    pub struct TvMediathekView(ObjectSubclass<imp::TvMediathekView>)
         @extends gtk::Widget, adw::Bin;
 }
 
-impl MdkMediathekView {
+impl TvMediathekView {
     pub fn client(&self) -> Arc<Mediathek> {
         self.imp()
             .client

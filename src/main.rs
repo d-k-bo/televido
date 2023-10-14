@@ -28,7 +28,7 @@ mod utils;
 mod window;
 
 use self::{
-    application::MdkApplication,
+    application::TvApplication,
     config::{LOCALEDIR, PROJECT_NAME},
 };
 
@@ -36,7 +36,7 @@ use adw::{gio, glib, prelude::*};
 use gettextrs::{bind_textdomain_codeset, bindtextdomain, textdomain};
 
 static GRESOURCE_BYTES: &[u8] =
-    gvdb_macros::include_gresource_from_dir!("/de/k_bo/mediathek", "data/resources");
+    gvdb_macros::include_gresource_from_dir!("/de/k_bo/televido", "data/resources");
 
 fn main() -> glib::ExitCode {
     tracing_subscriber::fmt()
@@ -53,5 +53,5 @@ fn main() -> glib::ExitCode {
         &gio::Resource::from_data(&glib::Bytes::from_static(GRESOURCE_BYTES)).unwrap(),
     );
 
-    MdkApplication::new().run()
+    TvApplication::new().run()
 }

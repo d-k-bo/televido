@@ -10,7 +10,7 @@ use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 use tracing::error;
 
-use crate::application::MdkApplication;
+use crate::application::TvApplication;
 
 use super::{ExternalProgram, ExternalProgramType};
 
@@ -181,7 +181,7 @@ glib::wrapper! {
 
 impl ProgramSelector {
     pub async fn select_program(program_type: ExternalProgramType) -> Option<ExternalProgram> {
-        let application = MdkApplication::get();
+        let application = TvApplication::get();
         let parent = application.active_window()?;
 
         let slf = glib::Object::builder::<Self>()

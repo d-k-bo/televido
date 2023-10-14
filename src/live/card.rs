@@ -14,8 +14,8 @@ mod imp {
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/live/card.blp")]
-    #[properties(wrapper_type=super::MdkLiveCard)]
-    pub struct MdkLiveCard {
+    #[properties(wrapper_type=super::TvLiveCard)]
+    pub struct TvLiveCard {
         #[template_child]
         icon: TemplateChild<gtk::Image>,
         #[template_child]
@@ -36,7 +36,7 @@ mod imp {
         pub(super) channel: RefCell<Option<ChannelObject>>,
     }
 
-    impl MdkLiveCard {
+    impl TvLiveCard {
         fn set_icon(&self) {
             let icon_name = self
                 .obj()
@@ -49,9 +49,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MdkLiveCard {
-        const NAME: &'static str = "MdkLiveCard";
-        type Type = super::MdkLiveCard;
+    impl ObjectSubclass for TvLiveCard {
+        const NAME: &'static str = "TvLiveCard";
+        type Type = super::TvLiveCard;
         type ParentType = gtk::ListBoxRow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -72,7 +72,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for MdkLiveCard {
+    impl ObjectImpl for TvLiveCard {
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -126,11 +126,11 @@ mod imp {
             });
         }
     }
-    impl WidgetImpl for MdkLiveCard {}
-    impl ListBoxRowImpl for MdkLiveCard {}
+    impl WidgetImpl for TvLiveCard {}
+    impl ListBoxRowImpl for TvLiveCard {}
 }
 
 glib::wrapper! {
-    pub struct MdkLiveCard(ObjectSubclass<imp::MdkLiveCard>)
+    pub struct TvLiveCard(ObjectSubclass<imp::TvLiveCard>)
         @extends gtk::Widget, gtk::ListBoxRow;
 }

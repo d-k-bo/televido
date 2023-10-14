@@ -26,26 +26,26 @@ use tracing::error;
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, VERSION},
     launcher::{ExternalProgramType, ProgramSelector},
-    preferences::MdkPreferencesWindow,
-    settings::MdkSettings,
+    preferences::TvPreferencesWindow,
+    settings::TvSettings,
     utils::{spawn_clone, tokio},
-    window::MdkWindow,
+    window::TvWindow,
 };
 
 mod imp {
     use super::*;
 
     #[derive(Debug, Default)]
-    pub struct MdkApplication {}
+    pub struct TvApplication {}
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MdkApplication {
-        const NAME: &'static str = "MdkApplication";
-        type Type = super::MdkApplication;
+    impl ObjectSubclass for TvApplication {
+        const NAME: &'static str = "TvApplication";
+        type Type = super::TvApplication;
         type ParentType = adw::Application;
     }
 
-    impl ObjectImpl for MdkApplication {
+    impl ObjectImpl for TvApplication {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
@@ -54,37 +54,37 @@ mod imp {
         }
     }
 
-    impl ApplicationImpl for MdkApplication {
+    impl ApplicationImpl for TvApplication {
         fn activate(&self) {
             let application = self.obj();
             application
                 .active_window()
-                .unwrap_or_else(|| MdkWindow::new(&application).upcast())
+                .unwrap_or_else(|| TvWindow::new(&application).upcast())
                 .present();
         }
     }
 
-    impl GtkApplicationImpl for MdkApplication {}
-    impl AdwApplicationImpl for MdkApplication {}
+    impl GtkApplicationImpl for TvApplication {}
+    impl AdwApplicationImpl for TvApplication {}
 }
 
 glib::wrapper! {
-    pub struct MdkApplication(ObjectSubclass<imp::MdkApplication>)
+    pub struct TvApplication(ObjectSubclass<imp::TvApplication>)
         @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionGroup, gio::ActionMap;
 }
 
-impl MdkApplication {
+impl TvApplication {
     pub fn get() -> Self {
         thread_local! {
-            static APPLICATION: OnceCell<MdkApplication> = OnceCell::new();
+            static APPLICATION: OnceCell<TvApplication> = OnceCell::new();
         }
         APPLICATION.with(|app| {
             app.get_or_init(|| {
                 glib::Object::builder()
                     .property("application-id", APP_ID)
                     .property("flags", gio::ApplicationFlags::FLAGS_NONE)
-                    .property("resource-base-path", "/de/k_bo/mediathek")
+                    .property("resource-base-path", "/de/k_bo/televido")
                     .build()
             })
             .clone()
@@ -110,7 +110,7 @@ impl MdkApplication {
     }
 
     pub async fn play(&self, uri: String) {
-        let settings = MdkSettings::get();
+        let settings = TvSettings::get();
         let player_id = settings.video_player_id();
         let player = if player_id.is_empty() {
             let Some(program) = ProgramSelector::select_program(ExternalProgramType::Player).await
@@ -144,7 +144,7 @@ impl MdkApplication {
             .build();
         let preferences_action = gio::ActionEntry::builder("preferences")
             .activate(move |app: &Self, _, _| {
-                MdkPreferencesWindow::new(app.active_window().as_ref()).present()
+                TvPreferencesWindow::new(app.active_window().as_ref()).present()
             })
             .build();
         let play_action = gio::ActionEntry::builder("play")

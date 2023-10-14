@@ -4,8 +4,8 @@
 use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
 
 use crate::{
-    application::MdkApplication, config::PROFILE, live::MdkLiveView, mediathek::MdkMediathekView,
-    settings::MdkSettings,
+    application::TvApplication, config::PROFILE, live::TvLiveView, mediathek::TvMediathekView,
+    settings::TvSettings,
 };
 
 mod imp {
@@ -13,20 +13,20 @@ mod imp {
 
     #[derive(Debug, Default, gtk::CompositeTemplate /* , glib::Properties */)]
     #[template(file = "src/window.blp")]
-    // #[properties(wrapper_type = super::MdkWindow)]
-    pub struct MdkWindow {
+    // #[properties(wrapper_type = super::TvWindow)]
+    pub struct TvWindow {
         #[template_child]
         stack: TemplateChild<adw::ViewStack>,
         #[template_child]
-        live_view: TemplateChild<MdkLiveView>,
+        live_view: TemplateChild<TvLiveView>,
         #[template_child]
-        mediathek_view: TemplateChild<MdkMediathekView>,
+        mediathek_view: TemplateChild<TvMediathekView>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MdkWindow {
-        const NAME: &'static str = "MdkWindow";
-        type Type = super::MdkWindow;
+    impl ObjectSubclass for TvWindow {
+        const NAME: &'static str = "TvWindow";
+        type Type = super::TvWindow;
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -39,12 +39,12 @@ mod imp {
     }
 
     // #[glib::derived_properties]
-    impl ObjectImpl for MdkWindow {
+    impl ObjectImpl for TvWindow {
         fn constructed(&self) {
             self.parent_constructed();
 
             let slf = self.obj();
-            let settings = MdkSettings::get();
+            let settings = TvSettings::get();
 
             settings
                 .bind_width(&*slf, "default-width")
@@ -68,20 +68,20 @@ mod imp {
                 .build();
         }
     }
-    impl WidgetImpl for MdkWindow {}
-    impl WindowImpl for MdkWindow {}
-    impl ApplicationWindowImpl for MdkWindow {}
-    impl AdwApplicationWindowImpl for MdkWindow {}
+    impl WidgetImpl for TvWindow {}
+    impl WindowImpl for TvWindow {}
+    impl ApplicationWindowImpl for TvWindow {}
+    impl AdwApplicationWindowImpl for TvWindow {}
 }
 
 glib::wrapper! {
-    pub struct MdkWindow(ObjectSubclass<imp::MdkWindow>)
+    pub struct TvWindow(ObjectSubclass<imp::TvWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionGroup, gio::ActionMap;
 }
 
-impl MdkWindow {
-    pub fn new(application: &MdkApplication) -> Self {
+impl TvWindow {
+    pub fn new(application: &TvApplication) -> Self {
         let win: Self = glib::Object::builder()
             .property("application", application)
             .build();

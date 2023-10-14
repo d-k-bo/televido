@@ -4,7 +4,7 @@ use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
 use tracing::error;
 
 use crate::{
-    settings::{MdkSettings, VideoQuality},
+    settings::{TvSettings, VideoQuality},
     utils::{load_channel_icon, spawn},
 };
 
@@ -15,8 +15,8 @@ mod imp {
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/mediathek/card.blp")]
-    #[properties(wrapper_type=super::MdkMediathekCard)]
-    pub struct MdkMediathekCard {
+    #[properties(wrapper_type=super::TvMediathekCard)]
+    pub struct TvMediathekCard {
         #[template_child]
         icon: TemplateChild<gtk::Image>,
         #[template_child]
@@ -28,7 +28,7 @@ mod imp {
         #[property(get, set)]
         expanded: Cell<bool>,
     }
-    impl MdkMediathekCard {
+    impl TvMediathekCard {
         fn set_icon(&self) {
             let icon_name = self
                 .obj()
@@ -41,9 +41,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for MdkMediathekCard {
-        const NAME: &'static str = "MdkMediathekCard";
-        type Type = super::MdkMediathekCard;
+    impl ObjectSubclass for TvMediathekCard {
+        const NAME: &'static str = "TvMediathekCard";
+        type Type = super::TvMediathekCard;
         type ParentType = gtk::ListBoxRow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -56,7 +56,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for MdkMediathekCard {
+    impl ObjectImpl for TvMediathekCard {
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -68,16 +68,16 @@ mod imp {
             });
         }
     }
-    impl WidgetImpl for MdkMediathekCard {}
-    impl ListBoxRowImpl for MdkMediathekCard {}
+    impl WidgetImpl for TvMediathekCard {}
+    impl ListBoxRowImpl for TvMediathekCard {}
 }
 
 glib::wrapper! {
-    pub struct MdkMediathekCard(ObjectSubclass<imp::MdkMediathekCard>)
+    pub struct TvMediathekCard(ObjectSubclass<imp::TvMediathekCard>)
         @extends gtk::Widget, gtk::ListBoxRow;
 }
 
-impl MdkMediathekCard {
+impl TvMediathekCard {
     fn play(&self, quality: VideoQuality) {
         self.activate_action(
             "app.play",
@@ -105,7 +105,7 @@ impl MdkMediathekCard {
                     .is_some()
                 );
         }));
-        MdkSettings::get().connect_default_playback_quality_changed(
+        TvSettings::get().connect_default_playback_quality_changed(
             glib::clone!(@weak self as slf, @weak play_default => move |_| {
                 play_default.set_enabled(
                     slf.show()

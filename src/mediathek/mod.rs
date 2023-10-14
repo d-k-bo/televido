@@ -3,4 +3,4 @@ mod channels;
 mod shows;
 mod view;
 
-pub use self::view::MdkMediathekView;
+pub use self::view::TvMediathekView;

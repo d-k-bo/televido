@@ -1,4 +1,4 @@
-use crate::{application::MdkApplication, utils::tokio};
+use crate::{application::TvApplication, utils::tokio};
 
 use self::application_proxy::ApplicationProxy;
 pub use self::selector::ProgramSelector;
@@ -41,7 +41,7 @@ pub struct ExternalProgram {
 }
 impl ExternalProgram {
     pub async fn play(self, uri: impl Into<String>) -> eyre::Result<()> {
-        let conn = MdkApplication::dbus().await;
+        let conn = TvApplication::dbus().await;
         let uri = uri.into();
 
         tokio(async move {
@@ -74,7 +74,7 @@ impl ExternalProgramType {
         self.all().iter().find(|program| program.id == id).copied()
     }
     pub async fn list(self) -> eyre::Result<Vec<ExternalProgram>> {
-        let conn = MdkApplication::dbus().await;
+        let conn = TvApplication::dbus().await;
 
         tokio(async move {
             let all = self.all();

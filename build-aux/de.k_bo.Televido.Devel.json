@@ -1,5 +1,5 @@
 {
-  "id": "de.k_bo.Mediathek.Devel",
+  "id": "de.k_bo.Televido.Devel",
   "runtime": "org.gnome.Platform",
   "runtime-version": "45",
   "sdk": "org.gnome.Sdk",
@@ -7,7 +7,7 @@
     "org.freedesktop.Sdk.Extension.rust-stable",
     "org.freedesktop.Sdk.Extension.llvm16"
   ],
-  "command": "mediathek",
+  "command": "televido",
   "finish-args": [
     "--share=network",
     "--share=ipc",
@@ -24,7 +24,7 @@
       "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
       "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
       "RUST_BACKTRACE": "1",
-      "RUST_LOG": "mediathek=debug"
+      "RUST_LOG": "televido=debug"
     }
   },
   "cleanup": [
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "name": "mediathek",
+      "name": "televido",
       "buildsystem": "meson",
       "config-opts": ["-Dprofile=development"],
       "sources": [

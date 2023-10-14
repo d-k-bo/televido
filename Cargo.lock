@@ -1426,30 +1426,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "mediathek"
-version = "0.1.0"
-dependencies = [
- "eyre",
- "gettext-rs",
- "gsettings-macro",
- "gtk4",
- "gvdb-macros",
- "html2pango",
- "indexmap 2.0.2",
- "libadwaita",
- "mediathekviewweb",
- "once_cell",
- "reqwest",
- "serde",
- "serde_json",
- "time",
- "tokio",
- "tracing",
- "tracing-subscriber",
- "zbus",
-]
-
-[[package]]
 name = "mediathekviewweb"
 version = "0.1.2"
 dependencies = [
@@ -2344,6 +2320,30 @@ name = "target-lexicon"
 version = "0.12.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9d0e916b1148c8e263850e1ebcbd046f333e0683c724876bb0da63ea4373dc8a"
+
+[[package]]
+name = "televido"
+version = "0.1.0"
+dependencies = [
+ "eyre",
+ "gettext-rs",
+ "gsettings-macro",
+ "gtk4",
+ "gvdb-macros",
+ "html2pango",
+ "indexmap 2.0.2",
+ "libadwaita",
+ "mediathekviewweb",
+ "once_cell",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "time",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+ "zbus",
+]
 
 [[package]]
 name = "temp-dir"
