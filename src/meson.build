@@ -43,8 +43,3 @@ cargo_build = custom_target(
     'cp', meson.project_source_root() / 'target' / rust_target / meson.project_name(), '@OUTPUT@',
   ],
 )
-
-meson.add_devenv(
-  {'PATH': meson.project_build_root() / 'src' },
-  method: 'prepend',
-)

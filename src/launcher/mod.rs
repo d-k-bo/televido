@@ -20,13 +20,13 @@ pub static PLAYERS: &[ExternalProgram] = &[
         id: "com.github.rafostar.Clapper",
     },
     // not dbus-activatable
-    // ExternalProgram { name: "µExternalProgram", id: "org.sigxcpu.Livi"},
+    // ExternalProgram { name: "µPlayer", id: "org.sigxcpu.Livi"},
     // ExternalProgram { name: "Glide", id: "net.baseart.Glide"},
     // ExternalProgram { name: "Daikhan", id: "io.gitlab.daikhan.stable"},
     // doesn't implement org.freedesktop.Application
     // ExternalProgram { name: "VLC", id: "org.videolan.VLC"},
     // ExternalProgram { name: "mpv", id: "io.mpv.Mpv"},
-    // ExternalProgram { name: "Haruna Media ExternalProgram", id: "org.kde.haruna"},
+    // ExternalProgram { name: "Haruna Media µPlayer", id: "org.kde.haruna"},
 ];
 
 pub static DOWNLOADERS: &[ExternalProgram] = &[ExternalProgram {

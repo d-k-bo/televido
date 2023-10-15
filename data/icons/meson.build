@@ -9,8 +9,3 @@ install_data(
   symbolic_dir / ('@0@-symbolic.svg').format(BASE_APP_ID),
   install_dir: get_option('datadir') / 'icons' / symbolic_dir
 )
-
-meson.add_devenv(
-  {'XDG_DATA_DIRS': meson.current_source_dir()},
-  method: 'prepend',
-)

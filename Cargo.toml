@@ -13,7 +13,7 @@ gtk = { version = "0.7.3", package = "gtk4", features = ["gnome_45", "blueprint"
 gvdb-macros = "0.1.10"
 html2pango = "0.6.0"
 indexmap = { version = "2.0.2", features = ["serde"] }
-mediathekviewweb = { version = "0.1.2", path = "../mediathekviewweb-rs" }
+mediathekviewweb = "0.2.0"
 once_cell = "1.18.0"
 reqwest = { version = "0.11.22", features = ["json"] }
 serde = { version = "1.0.188", features = ["derive"] }

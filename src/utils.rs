@@ -44,27 +44,25 @@ macro_rules! spawn_clone {
 pub(crate) use spawn_clone;
 
 pub fn format_timestamp_full(t: i64) -> Option<glib::GString> {
-    // docs: https://gitlab.gnome.org/GNOME/glib/-/blob/main/glib/gdatetime.c?ref_type=heads#L3358-3479
     // translators:  %b is Month name (short)
     //				 %-e is the Day number
     //				 %Y is the year (with century)
     //				 %H is the hours (24h format)
     //				 %M is the minutes
-    static TIME_FORMAT: &str = "%b %-e, %Y %H:%M";
+    let time_format = gettext("%b %-e, %Y %H:%M");
 
     glib::DateTime::from_unix_local(t)
-        .and_then(|datetime| datetime.format(&gettext(TIME_FORMAT)))
+        .and_then(|datetime| datetime.format(&time_format))
         .ok()
 }
 
 pub fn format_timestamp_time(t: i64) -> Option<glib::GString> {
-    // docs: https://gitlab.gnome.org/GNOME/glib/-/blob/main/glib/gdatetime.c?ref_type=heads#L3358-3479
     // translators:  %H is the hours (24h format)
     //				 %M is the minutes
-    static TIME_FORMAT: &str = "%H:%M";
+    let time_format = gettext("%H:%M");
 
     glib::DateTime::from_unix_local(t)
-        .and_then(|datetime| datetime.format(&gettext(TIME_FORMAT)))
+        .and_then(|datetime| datetime.format(&time_format))
         .ok()
 }
 

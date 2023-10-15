@@ -11,9 +11,8 @@ use crate::{
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default, gtk::CompositeTemplate /* , glib::Properties */)]
+    #[derive(Debug, Default, gtk::CompositeTemplate)]
     #[template(file = "src/window.blp")]
-    // #[properties(wrapper_type = super::TvWindow)]
     pub struct TvWindow {
         #[template_child]
         stack: TemplateChild<adw::ViewStack>,
@@ -38,7 +37,6 @@ mod imp {
         }
     }
 
-    // #[glib::derived_properties]
     impl ObjectImpl for TvWindow {
         fn constructed(&self) {
             self.parent_constructed();

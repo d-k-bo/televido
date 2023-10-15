@@ -181,7 +181,6 @@ mod imp {
     }
     impl WidgetImpl for TvMediathekView {}
     impl BinImpl for TvMediathekView {}
-    // delegate_actions! {TvMediathekView, actions }
 }
 
 glib::wrapper! {

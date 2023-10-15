@@ -80,58 +80,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for ShowObject {
-        // fn properties() -> &'static [glib::ParamSpec] {
-        //     static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-        //         vec![
-        //             glib::ParamSpecString::builder("channel")
-        //                 .read_only()
-        //                 .build(),
-        //             glib::ParamSpecString::builder("topic").read_only().build(),
-        //             glib::ParamSpecString::builder("title").read_only().build(),
-        //             glib::ParamSpecString::builder("description")
-        //                 .read_only()
-        //                 .build(),
-        //             glib::ParamSpecString::builder("date").read_only().build(),
-        //             glib::ParamSpecString::builder("duration")
-        //                 .read_only()
-        //                 .build(),
-        //             glib::ParamSpecString::builder("video-url-high")
-        //                 .read_only()
-        //                 .build(),
-        //             glib::ParamSpecString::builder("video-url-medium")
-        //                 .read_only()
-        //                 .build(),
-        //             glib::ParamSpecString::builder("video-url-low")
-        //                 .read_only()
-        //                 .build(),
-        //             glib::ParamSpecString::builder("website-url")
-        //                 .read_only()
-        //                 .build(),
-        //         ]
-        //     });
-        //     &PROPERTIES
-        // }
-        // fn set_property(&self, _id: usize, _value: &glib::Value, _pspec: &glib::ParamSpec) {}
-        // fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-        //     let Some(item) = self.0.get() else {
-        //         return None::<String>.to_value();
-        //     };
-        //     match pspec.name() {
-        //         "channel" => item.channel.to_value(),
-        //         "topic" => item.topic.to_value(),
-        //         "title" => item.title.to_value(),
-        //         "description" => item.description.to_value(),
-        //         "date" => format_timestamp_full(item.timestamp).to_value(),
-        //         "duration" => format_duration(&item.duration).to_value(),
-        //         "video-url-high" => item.url_video_hd.to_value(),
-        //         "video-url-medium" => item.url_video.to_value(),
-        //         "video-url-low" => item.url_video_low.to_value(),
-        //         "website-url" => item.url_website.to_value(),
-        //         _ => None::<String>.to_value(),
-        //     }
-        // }
-    }
+    impl ObjectImpl for ShowObject {}
 }
 
 glib::wrapper! {

@@ -194,13 +194,13 @@ impl ProgramSelector {
             ExternalProgramType::Player => {
                 slf.set_title(Some(&gettext("Select video player")));
                 slf.set_description(gettext(
-                    "Select one of the following external programs to stream content.",
+                    "Select one of the following external programs to stream content",
                 ));
             }
             ExternalProgramType::Downloader => {
-                slf.set_title(Some(&gettext("Select video download")));
+                slf.set_title(Some(&gettext("Select video downloader")));
                 slf.set_description(gettext(
-                    "Select one of the following external programs to download content.",
+                    "Select one of the following external programs to download content",
                 ));
             }
         }

@@ -1,4 +1,10 @@
 data/de.k_bo.Televido.desktop.in
 data/de.k_bo.Televido.metainfo.xml.in
 data/de.k_bo.Televido.gschema.xml
+src/launcher/selector.rs
+src/live/card.blp
+src/live/view.blp
+src/mediathek/card.blp
+src/mediathek/view.blp
+src/utils.rs
 src/window.blp

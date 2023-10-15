@@ -46,8 +46,3 @@ if compile_schemas.found()
 endif
 
 subdir('icons')
-
-meson.add_devenv(
-  {'XDG_DATA_DIRS': meson.current_source_dir()},
-  method: 'prepend',
-)

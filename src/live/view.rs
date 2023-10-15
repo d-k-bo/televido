@@ -119,7 +119,6 @@ mod imp {
         }
     }
 
-    // #[glib::derived_properties]
     impl ObjectImpl for TvLiveView {
         fn constructed(&self) {
             self.parent_constructed();

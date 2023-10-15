@@ -1,5 +1,5 @@
 /_build
-/builddir
+/.env/
 /.flatpak
 /.flatpak-builder
 /src/config.rs

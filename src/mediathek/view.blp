@@ -23,7 +23,7 @@ template $TvMediathekView : Adw.Bin {
         }
 
         Gtk.MenuButton search_in_button {
-          label: _("Search in …");
+          label: _("Search in…");
           menu-model: search_in_menu;
           styles ["raised"]
         }
@@ -41,13 +41,13 @@ template $TvMediathekView : Adw.Bin {
 
       Adw.StatusPage status_page {
         icon-name: "loupe-symbolic";
-        title: _("Search for something");
+        title: _("Search for content");
         description: _("Start typing in the search bar to see a list of matching shows");
       }
 
       Adw.StatusPage nothing_found_view {
         icon-name: "item-missing-symbolic";
-        title: _("Nothing found");
+        title: _("No results");
         description: _("Try different search terms or adjust the search filters");
       }
 
