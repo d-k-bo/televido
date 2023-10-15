@@ -1,0 +1,185 @@
+# German translation for Televido.
+# Copyright (C) 2023 Televido's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Televido package.
+#
+# David Cabot <d-k-bo@mailbox.org>, 2023.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Televido main\n"
+"Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
+"POT-Creation-Date: 2023-10-15 13:15+0200\n"
+"PO-Revision-Date: 2023-10-15 13:15+0200\n"
+"Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4\n"
+
+#: ../src/launcher/selector.rs:77
+msgid "Could not load external application."
+msgstr "Externe Anwendungen konnten nicht geladen werden."
+
+#: ../src/launcher/selector.rs:78
+msgid "See the logs for details."
+msgstr "In den Programm-Logs finden Sie weitere Details."
+
+#: ../src/launcher/selector.rs:195
+msgid "Select video player"
+msgstr "Videoplayer auswählen"
+
+#: ../src/launcher/selector.rs:197
+msgid "Select one of the following external programs to stream content"
+msgstr ""
+"Wählen Sie eines der folgenden externen Programme zum Streamen von Inhalten"
+
+#: ../src/launcher/selector.rs:201
+msgid "Select video downloader"
+msgstr "Video-Downloader auswählen"
+
+#: ../src/launcher/selector.rs:203
+msgid "Select one of the following external programs to download content"
+msgstr ""
+"Wählen Sie eines der folgenden externen Programme zum Herunterladen von "
+"Inhalten"
+
+#: ../src/live/card.blp:43 ../src/mediathek/card.blp:83
+msgid "Play"
+msgstr "Abspielen"
+
+#: ../src/mediathek/card.blp:90
+msgid "Download"
+msgstr "Herunterladen"
+
+#: ../src/mediathek/card.blp:97
+msgid "Open Website"
+msgstr "Website öffnen"
+
+#: ../src/mediathek/card.blp:116 ../src/mediathek/card.blp:131
+msgid "High Quality"
+msgstr "Hohe Qualität"
+
+#: ../src/mediathek/card.blp:120 ../src/mediathek/card.blp:135
+msgid "Medium Quality"
+msgstr "Mittlere Qualität"
+
+#: ../src/mediathek/card.blp:124 ../src/mediathek/card.blp:139
+msgid "Low Quality"
+msgstr "Niedrige Qualität"
+
+#: ../src/mediathek/view.blp:20
+msgid "e.g. »tagesschau«"
+msgstr "z.B. »tagesschau«"
+
+#: ../src/mediathek/view.blp:26
+msgid "Search in…"
+msgstr "Suchen in…"
+
+#: ../src/mediathek/view.blp:32
+msgid "Sort"
+msgstr "Sortierung"
+
+#: ../src/mediathek/view.blp:44
+msgid "Search for content"
+msgstr "Nach Inhalten suchen"
+
+#: ../src/mediathek/view.blp:45
+msgid "Start typing in the search bar to see a list of matching shows"
+msgstr ""
+"Schreiben Sie etwas in die Suchleiste, um eine Liste passender Sendungen zu "
+"sehen"
+
+#: ../src/mediathek/view.blp:50
+msgid "No results"
+msgstr "Keine Ergebnisse"
+
+#: ../src/mediathek/view.blp:51
+msgid "Try different search terms or adjust the search filters"
+msgstr "Wählen Sie einen anderen Suchbegriff oder verändern Sie die Suchfilter"
+
+#: ../src/mediathek/view.blp:69
+msgid "Load more"
+msgstr "Mehr laden"
+
+#: ../src/mediathek/view.blp:81
+msgid "Topic"
+msgstr "Thema"
+
+#: ../src/mediathek/view.blp:85
+msgid "Title"
+msgstr "Titel"
+
+#: ../src/mediathek/view.blp:89
+msgid "Description"
+msgstr "Beschreibung"
+
+#: ../src/mediathek/view.blp:93 ../src/mediathek/view.blp:102
+msgid "Channel"
+msgstr "Sender"
+
+#: ../src/mediathek/view.blp:100
+msgid "Sort By"
+msgstr "Sortieren nach"
+
+#: ../src/mediathek/view.blp:107
+msgid "Date"
+msgstr "Datum"
+
+#: ../src/mediathek/view.blp:112
+msgid "Duration"
+msgstr "Dauer"
+
+#: ../src/mediathek/view.blp:118
+msgid "Sort Order"
+msgstr "Sortierreihenfolge"
+
+#: ../src/mediathek/view.blp:120
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: ../src/mediathek/view.blp:125
+msgid "Descending"
+msgstr "Absteigend"
+
+#. translators:  %b is Month name (short)
+#. %-e is the Day number
+#. %Y is the year (with century)
+#. %H is the hours (24h format)
+#. %M is the minutes
+#: ../src/utils.rs:52
+msgid "%b %-e, %Y %H:%M"
+msgstr "%-e. %b %Y %H.%M Uhr"
+
+#. translators:  %H is the hours (24h format)
+#. %M is the minutes
+#: ../src/utils.rs:62
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: ../src/window.blp:30
+msgid "Menu"
+msgstr "Menü"
+
+#: ../src/window.blp:38
+msgid "Live"
+msgstr "Live"
+
+#: ../src/window.blp:44
+msgid "Mediathek"
+msgstr "Mediathek"
+
+#: ../src/window.blp:60
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: ../src/window.blp:65
+msgid "Keyboard Shortcuts"
+msgstr "Tastenkürzel"
+
+#: ../src/window.blp:70
+msgid "About Televido"
+msgstr "Über Televido"
