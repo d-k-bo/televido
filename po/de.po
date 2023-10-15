@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
 "POT-Creation-Date: 2023-10-15 13:15+0200\n"
-"PO-Revision-Date: 2023-10-15 13:15+0200\n"
+"PO-Revision-Date: 2023-10-15 14:15+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -20,166 +20,186 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4\n"
 
-#: ../src/launcher/selector.rs:77
+#: ../src/launcher/selector.blp:18
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../src/launcher/selector.blp:24
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: ../src/launcher/selector.rs:80
 msgid "Could not load external application."
 msgstr "Externe Anwendungen konnten nicht geladen werden."
 
-#: ../src/launcher/selector.rs:78
+#: ../src/launcher/selector.rs:81
 msgid "See the logs for details."
 msgstr "In den Programm-Logs finden Sie weitere Details."
 
-#: ../src/launcher/selector.rs:195
+#: ../src/launcher/selector.rs:198
 msgid "Select video player"
 msgstr "Videoplayer auswählen"
 
-#: ../src/launcher/selector.rs:197
+#: ../src/launcher/selector.rs:200
 msgid "Select one of the following external programs to stream content"
 msgstr ""
 "Wählen Sie eines der folgenden externen Programme zum Streamen von Inhalten"
 
-#: ../src/launcher/selector.rs:201
+#: ../src/launcher/selector.rs:204
 msgid "Select video downloader"
 msgstr "Video-Downloader auswählen"
 
-#: ../src/launcher/selector.rs:203
+#: ../src/launcher/selector.rs:206
 msgid "Select one of the following external programs to download content"
 msgstr ""
 "Wählen Sie eines der folgenden externen Programme zum Herunterladen von "
 "Inhalten"
 
-#: ../src/live/card.blp:43 ../src/mediathek/card.blp:83
+#: ../src/live/card.blp:46 ../src/mediathek/card.blp:86
 msgid "Play"
 msgstr "Abspielen"
 
-#: ../src/mediathek/card.blp:90
+#: ../src/mediathek/card.blp:93
 msgid "Download"
 msgstr "Herunterladen"
 
-#: ../src/mediathek/card.blp:97
+#: ../src/mediathek/card.blp:100
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: ../src/mediathek/card.blp:116 ../src/mediathek/card.blp:131
+#: ../src/mediathek/card.blp:119 ../src/mediathek/card.blp:134
 msgid "High Quality"
 msgstr "Hohe Qualität"
 
-#: ../src/mediathek/card.blp:120 ../src/mediathek/card.blp:135
+#: ../src/mediathek/card.blp:123 ../src/mediathek/card.blp:138
 msgid "Medium Quality"
 msgstr "Mittlere Qualität"
 
-#: ../src/mediathek/card.blp:124 ../src/mediathek/card.blp:139
+#: ../src/mediathek/card.blp:127 ../src/mediathek/card.blp:142
 msgid "Low Quality"
 msgstr "Niedrige Qualität"
 
-#: ../src/mediathek/view.blp:20
+#: ../src/mediathek/view.blp:23
 msgid "e.g. »tagesschau«"
 msgstr "z.B. »tagesschau«"
 
-#: ../src/mediathek/view.blp:26
+#: ../src/mediathek/view.blp:29
 msgid "Search in…"
 msgstr "Suchen in…"
 
-#: ../src/mediathek/view.blp:32
+#: ../src/mediathek/view.blp:35
 msgid "Sort"
 msgstr "Sortierung"
 
-#: ../src/mediathek/view.blp:44
+#: ../src/mediathek/view.blp:47
 msgid "Search for content"
 msgstr "Nach Inhalten suchen"
 
-#: ../src/mediathek/view.blp:45
+#: ../src/mediathek/view.blp:48
 msgid "Start typing in the search bar to see a list of matching shows"
 msgstr ""
 "Schreiben Sie etwas in die Suchleiste, um eine Liste passender Sendungen zu "
 "sehen"
 
-#: ../src/mediathek/view.blp:50
+#: ../src/mediathek/view.blp:53
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: ../src/mediathek/view.blp:51
+#: ../src/mediathek/view.blp:54
 msgid "Try different search terms or adjust the search filters"
 msgstr "Wählen Sie einen anderen Suchbegriff oder verändern Sie die Suchfilter"
 
-#: ../src/mediathek/view.blp:69
+#: ../src/mediathek/view.blp:72
 msgid "Load more"
 msgstr "Mehr laden"
 
-#: ../src/mediathek/view.blp:81
+#: ../src/mediathek/view.blp:84
 msgid "Topic"
 msgstr "Thema"
 
-#: ../src/mediathek/view.blp:85
+#: ../src/mediathek/view.blp:88
 msgid "Title"
 msgstr "Titel"
 
-#: ../src/mediathek/view.blp:89
+#: ../src/mediathek/view.blp:92
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ../src/mediathek/view.blp:93 ../src/mediathek/view.blp:102
+#: ../src/mediathek/view.blp:96 ../src/mediathek/view.blp:105
 msgid "Channel"
 msgstr "Sender"
 
-#: ../src/mediathek/view.blp:100
+#: ../src/mediathek/view.blp:103
 msgid "Sort By"
 msgstr "Sortieren nach"
 
-#: ../src/mediathek/view.blp:107
+#: ../src/mediathek/view.blp:110
 msgid "Date"
 msgstr "Datum"
 
-#: ../src/mediathek/view.blp:112
+#: ../src/mediathek/view.blp:115
 msgid "Duration"
 msgstr "Dauer"
 
-#: ../src/mediathek/view.blp:118
+#: ../src/mediathek/view.blp:121
 msgid "Sort Order"
 msgstr "Sortierreihenfolge"
 
-#: ../src/mediathek/view.blp:120
+#: ../src/mediathek/view.blp:123
 msgid "Ascending"
 msgstr "Aufsteigend"
 
-#: ../src/mediathek/view.blp:125
+#: ../src/mediathek/view.blp:128
 msgid "Descending"
 msgstr "Absteigend"
+
+#: ../src/preferences.blp:11
+msgid "External Programs"
+msgstr ""
+
+#: ../src/preferences.blp:16
+msgid "Video Player"
+msgstr "Videoplayer auswählen"
+
+#: ../src/preferences.blp:23
+msgid "Change"
+msgstr "Ändern"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number
 #. %Y is the year (with century)
 #. %H is the hours (24h format)
 #. %M is the minutes
-#: ../src/utils.rs:52
+#: ../src/utils.rs:55
 msgid "%b %-e, %Y %H:%M"
 msgstr "%-e. %b %Y %H.%M Uhr"
 
 #. translators:  %H is the hours (24h format)
 #. %M is the minutes
-#: ../src/utils.rs:62
+#: ../src/utils.rs:65
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../src/window.blp:30
+#: ../src/window.blp:33
 msgid "Menu"
 msgstr "Menü"
 
-#: ../src/window.blp:38
+#: ../src/window.blp:41
 msgid "Live"
 msgstr "Live"
 
-#: ../src/window.blp:44
+#: ../src/window.blp:47
 msgid "Mediathek"
 msgstr "Mediathek"
 
-#: ../src/window.blp:60
+#: ../src/window.blp:63
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: ../src/window.blp:65
+#: ../src/window.blp:68
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: ../src/window.blp:70
+#: ../src/window.blp:73
 msgid "About Televido"
 msgstr "Über Televido"
