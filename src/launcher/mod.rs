@@ -1,3 +1,6 @@
+// Copyright 2023 David Cabot
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 use crate::{application::TvApplication, utils::tokio};
 
 use self::application_proxy::ApplicationProxy;

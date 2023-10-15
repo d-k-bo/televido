@@ -1,3 +1,6 @@
+// Copyright 2023 David Cabot
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 use std::{cell::OnceCell, fmt::Display, str::FromStr};
 
 use adw::{gio, glib};

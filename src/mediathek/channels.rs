@@ -1,3 +1,6 @@
+// Copyright 2023 David Cabot
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 use crate::utils::channel_mapping;
 
 channel_mapping! {

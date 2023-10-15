@@ -1,3 +1,6 @@
+// Copyright 2023 David Cabot
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #![allow(dead_code)]
 
 pub static PROJECT_NAME: &str = "@PROJECT_NAME@";
