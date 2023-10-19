@@ -88,6 +88,12 @@ template $TvMediathekCard : Gtk.ListBoxRow {
 						menu-model: play_menu;
 					}
 
+					Gtk.MenuButton {
+						icon-name: "copy-symbolic";
+						tooltip-text: _("Copy video URL");
+						menu-model: copy_url_menu;
+					}
+
 					Adw.SplitButton {
 						icon-name: "document-save-symbolic";
 						tooltip-text: _("Download");
@@ -127,6 +133,21 @@ menu play_menu {
 	item {
 		label: _("Low Quality");    
 		action: "card.play-low";
+	}
+}
+
+menu copy_url_menu {
+	item {
+		label: _("High Quality");
+		action: "card.copy-url-high";
+	}
+	item {
+		label: _("Medium Quality");
+		action: "card.copy-url-medium";
+	}
+	item {
+		label: _("Low Quality");    
+		action: "card.copy-url-low";
 	}
 }
 

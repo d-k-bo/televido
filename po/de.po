@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
 "POT-Creation-Date: 2023-10-15 13:15+0200\n"
-"PO-Revision-Date: 2023-10-15 14:15+0200\n"
+"PO-Revision-Date: 2023-10-19 20:45+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -60,22 +60,29 @@ msgid "Play"
 msgstr "Abspielen"
 
 #: ../src/mediathek/card.blp:93
+msgid "Copy video URL"
+msgstr "Video-URL kopieren"
+
+#: ../src/mediathek/card.blp:99
 msgid "Download"
 msgstr "Herunterladen"
 
-#: ../src/mediathek/card.blp:100
+#: ../src/mediathek/card.blp:107
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: ../src/mediathek/card.blp:119 ../src/mediathek/card.blp:134
+#: ../src/mediathek/card.blp:126 ../src/mediathek/card.blp:141
+#: ../src/mediathek/card.blp:156
 msgid "High Quality"
 msgstr "Hohe Qualität"
 
-#: ../src/mediathek/card.blp:123 ../src/mediathek/card.blp:138
+#: ../src/mediathek/card.blp:130 ../src/mediathek/card.blp:145
+#: ../src/mediathek/card.blp:160
 msgid "Medium Quality"
 msgstr "Mittlere Qualität"
 
-#: ../src/mediathek/card.blp:127 ../src/mediathek/card.blp:142
+#: ../src/mediathek/card.blp:134 ../src/mediathek/card.blp:149
+#: ../src/mediathek/card.blp:164
 msgid "Low Quality"
 msgstr "Niedrige Qualität"
 

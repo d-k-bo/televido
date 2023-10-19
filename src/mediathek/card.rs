@@ -94,20 +94,37 @@ impl TvMediathekCard {
         )
         .unwrap()
     }
+    fn copy_url(&self, quality: VideoQuality) {
+        self.clipboard().set(
+            &self
+                .show()
+                .and_then(|show| show.video_url(quality))
+                .expect("action must only be enabled if url is not None"),
+        );
+    }
     fn setup_actions(&self) {
         let actions = gio::SimpleActionGroup::new();
 
-        let play_default = gio::SimpleAction::new("play-default", None);
-        play_default.connect_activate(
-            glib::clone!(@weak self as slf => move |_,_| slf.play(VideoQuality::default_playback())),
-        );
-        self.connect_show_notify(glib::clone!(@weak play_default => move |slf| {
-            play_default.set_enabled(
-                slf.show()
-                    .and_then(|show| show.video_url(VideoQuality::default_playback()))
-                    .is_some()
+        macro_rules! video_url_action {
+            ( $name:literal, $method:ident, $quality:expr) => {{
+                let action = gio::SimpleAction::new($name, None);
+                action.connect_activate(
+                    glib::clone!(@weak self as slf => move |_,_| slf.$method($quality)),
                 );
-        }));
+                self.connect_show_notify(glib::clone!(@weak action => move |slf| {
+                    action.set_enabled(
+                        slf.show()
+                            .and_then(|show| show.video_url($quality))
+                            .is_some()
+                        );
+                }));
+                actions.add_action(&action);
+                action
+            }};
+        }
+
+        let play_default =
+            video_url_action!("play-default", play, VideoQuality::default_playback());
         TvSettings::get().connect_default_playback_quality_changed(
             glib::clone!(@weak self as slf, @weak play_default => move |_| {
                 play_default.set_enabled(
@@ -117,46 +134,13 @@ impl TvMediathekCard {
                     );
             }),
         );
-        actions.add_action(&play_default);
+        video_url_action!("play-high", play, VideoQuality::High);
+        video_url_action!("play-medium", play, VideoQuality::Medium);
+        video_url_action!("play-low", play, VideoQuality::Low);
 
-        let play_high = gio::SimpleAction::new("play-high", None);
-        play_high.connect_activate(
-            glib::clone!(@weak self as slf => move |_,_| slf.play(VideoQuality::High)),
-        );
-        self.connect_show_notify(glib::clone!(@weak play_high => move |slf| {
-            play_high.set_enabled(
-                slf.show()
-                    .and_then(|show| show.video_url(VideoQuality::High))
-                    .is_some()
-                );
-        }));
-        actions.add_action(&play_high);
-
-        let play_medium = gio::SimpleAction::new("play-medium", None);
-        play_medium.connect_activate(
-            glib::clone!(@weak self as slf => move |_,_| slf.play(VideoQuality::Medium)),
-        );
-        self.connect_show_notify(glib::clone!(@weak play_medium => move |slf| {
-            play_medium.set_enabled(
-                slf.show()
-                    .and_then(|show| show.video_url(VideoQuality::Medium))
-                    .is_some()
-                );
-        }));
-        actions.add_action(&play_medium);
-
-        let play_low = gio::SimpleAction::new("play-low", None);
-        play_low.connect_activate(
-            glib::clone!(@weak self as slf => move |_,_| slf.play(VideoQuality::Low)),
-        );
-        self.connect_show_notify(glib::clone!(@weak play_low => move |slf| {
-            play_low.set_enabled(
-                slf.show()
-                    .and_then(|show| show.video_url(VideoQuality::Low))
-                    .is_some()
-                );
-        }));
-        actions.add_action(&play_low);
+        video_url_action!("copy-url-high", copy_url, VideoQuality::High);
+        video_url_action!("copy-url-medium", copy_url, VideoQuality::Medium);
+        video_url_action!("copy-url-low", copy_url, VideoQuality::Low);
 
         let open_website = gio::SimpleAction::new("open-website", None);
         open_website.connect_activate(glib::clone!(@weak self as slf => move |_,_| spawn(async move {
