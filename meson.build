@@ -2,7 +2,7 @@ project(
   'televido',
   'rust',
   version: '0.1.0',
-  meson_version: '>= 0.62.0',
+  meson_version: '>= 0.61.0',
 )
 
 i18n = import('i18n')
