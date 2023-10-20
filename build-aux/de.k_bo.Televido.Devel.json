@@ -13,7 +13,10 @@
     "--share=ipc",
     "--socket=fallback-x11",
     "--device=dri",
-    "--socket=wayland"
+    "--socket=wayland",
+    "--talk-name=org.gnome.Totem",
+    "--talk-name=io.github.celluloid_player.Celluloid",
+    "--talk-name=com.github.rafostar.Clapper"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm16/bin",

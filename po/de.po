@@ -20,6 +20,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4\n"
 
+#: ../data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+msgid "Televido"
+msgstr "Televido"
+
+#: ../data/de.k_bo.Televido.desktop.in:6
+msgid "Access German-language public broadcasting live streams and archives"
+msgstr "Greif zu auf Livestreams und Mediatheken öffentlich-rechtlicher Fernsehsender"
+
+#: ../data/de.k_bo.Televido.metainfo.xml.in:7
+msgid "Access German-language public TV"
+msgstr "Zugang zu Livestreams und Mediatheken des ÖRR"
+
+#: ../data/de.k_bo.Televido.metainfo.xml.in:9
+msgid ""
+"<em>Televido</em> (“Television” in Esperanto) lets you livestream, search, "
+"play and download media from German-language public television services. It "
+"is powered by APIs provided by the MediathekView project."
+msgstr ""
+"<em>Televido</em> („Fernsehen“ auf Esperanto) ermöglicht das Empfangen von "
+"Livestreams sowie das Suchen, Abspielen und Herunterladen von Inhalten aus "
+"Mediatheken öffentlich-rechtlicher Sender aus dem DACH-Raum. Es basiert auf "
+"APIs, die vom MediathekView-Projekt zur Verfügung gestellt werden."
+
+#: ../data/de.k_bo.Televido.metainfo.xml.in:13
+msgid ""
+"The presented content is provided directly by the respective television "
+"services, this program only facilitates finding and accessing the shows."
+msgstr ""
+"Die präsentierten Inhalte werden direkt von den jeweiligen Sendern angeboten, "
+"dieses Programm erleichtert dabei nur das Auffinden und Abrufen der Sendungen."
+
 #: ../src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr "Abbrechen"

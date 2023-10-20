@@ -44,7 +44,6 @@ CONFIG = {
   'AUTHOR': 'David Cabot',
   'PROJECT_URL': 'https://github.com/d-k-bo/televido',
   'ISSUE_URL': 'https://github.com/d-k-bo/televido/issues',
-  'SUPPORT_URL': 'https://github.com/d-k-bo/televido/discussions',
   'LOCALEDIR': get_option('prefix')/ get_option('localedir'),
   'PKGDATADIR': get_option('prefix') / get_option('datadir') / meson.project_name(),
 }

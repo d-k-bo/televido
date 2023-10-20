@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=televido
-Exec=televido
-Icon=de.k_bo.Televido
-Terminal=false
+Version=1.0
 Type=Application
-Categories=GTK;
-StartupNotify=true
+Name=Televido
+Comment=Access German-language public broadcasting live streams and archives
+Categories=AudioVideo;Video;TV;GNOME;GTK;
+Icon=de.k_bo.Televido
+Exec=televido
+Terminal=false

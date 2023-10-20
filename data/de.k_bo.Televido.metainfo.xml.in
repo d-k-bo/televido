@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-	<id>de.k_bo.Televido.desktop</id>
+<component type="desktop-application">
+	<id>io.github.d_k_bo.Televido</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+	<name>Televido</name>
+	<summary>Access German-language public TV</summary>
 	<description>
-		<p>No description</p>
+		<p>
+			<em>Televido</em> (“Television” in Esperanto) lets you livestream, search, play and
+			download media from German-language public television services. It is powered by APIs
+			provided by the MediathekView project. </p>
+		<p>
+			The presented content is provided directly by the respective television services, this
+			program only facilitates finding and accessing the shows.
+		</p>
 	</description>
+	<launchable type="desktop-id">io.github.d_k_bo.Televido.desktop</launchable>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://raw.githubusercontent.com/d-k-bo/televido/main/data/screenshots/1.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/d-k-bo/televido/main/data/screenshots/2.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/d-k-bo/televido/main/data/screenshots/3.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://raw.githubusercontent.com/d-k-bo/televido/main/data/screenshots/4.png</image>
+		</screenshot>
+	</screenshots>
+	<url type="homepage">https://github.com/d-k-bo/televido</url>
+	<url type="bugtracker">https://github.com/d-k-bo/televido/issues</url>
+	<url type="vcs-browser">https://github.com/d-k-bo/televido</url>
+	<translation type="gettext">televido</translation>
+	<content_rating type="oars-1.1" />
+	<requires>
+		<internet>always</internet>
+	</requires>
+	<supports>
+		<control>pointing</control>
+		<control>keyboard</control>
+		<control>touch</control>
+	</supports>
+	<releases>
+		<release version="0.1.0" date="2023-10-20">
+			<description>
+				<p>Initital release</p>
+			</description>
+		</release>
+	</releases>
 </component>

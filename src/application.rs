@@ -7,7 +7,7 @@ use adw::{gio, glib, prelude::*, subclass::prelude::*};
 use tracing::error;
 
 use crate::{
-    config::{APP_ID, APP_NAME, AUTHOR, VERSION},
+    config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
     launcher::{ExternalProgramType, ProgramSelector},
     preferences::TvPreferencesWindow,
     settings::TvSettings,
@@ -154,6 +154,9 @@ impl TvApplication {
             .application_icon(APP_ID)
             .developer_name(AUTHOR)
             .version(VERSION)
+            .website(PROJECT_URL)
+            .issue_url(ISSUE_URL)
+            .license_type(gtk::License::Gpl30)
             .build();
 
         about.present();
