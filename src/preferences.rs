@@ -3,7 +3,7 @@
 
 use std::cell::RefCell;
 
-use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
+use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
 use crate::{
     launcher::{ExternalProgramType, ProgramSelector},
@@ -21,24 +21,33 @@ mod imp {
         #[template_child]
         video_player_row: TemplateChild<adw::ActionRow>,
 
-        #[property(get, set)]
-        video_player_name: RefCell<String>,
-        #[property(get, set)]
-        video_player_id: RefCell<String>,
+        #[property(get)]
+        video_player_display_name: RefCell<String>,
+
+        settings: TvSettings,
     }
 
     #[gtk::template_callbacks]
     impl TvPreferencesWindow {
         #[template_callback]
         async fn select_video_player(&self, #[rest] _: &[glib::Value]) {
-            let slf = self.obj();
-
             if let Some(program) =
                 ProgramSelector::select_program(ExternalProgramType::Player).await
             {
-                slf.set_video_player_name(program.name);
-                slf.set_video_player_id(program.id);
+                self.settings.set_video_player_name(program.name);
+                self.settings.set_video_player_id(program.id);
             }
+        }
+    }
+
+    impl TvPreferencesWindow {
+        fn update_video_player_display_name(&self) {
+            *self.video_player_display_name.borrow_mut() = format!(
+                "{} ({})",
+                self.settings.video_player_name(),
+                self.settings.video_player_id()
+            );
+            self.obj().notify_video_player_display_name();
         }
     }
 
@@ -63,17 +72,13 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
-            let slf = self.obj();
-            let settings = TvSettings::get();
-
-            settings
-                .bind_video_player_name(&*slf, "video-player-name")
-                .flags(gio::SettingsBindFlags::DEFAULT)
-                .build();
-            settings
-                .bind_video_player_id(&*slf, "video-player-id")
-                .flags(gio::SettingsBindFlags::DEFAULT)
-                .build();
+            self.update_video_player_display_name();
+            self.settings.connect_video_player_name_changed(
+                glib::clone!(@weak self as slf => move |_| slf.update_video_player_display_name()),
+            );
+            self.settings.connect_video_player_id_changed(
+                glib::clone!(@weak self as slf => move |_| slf.update_video_player_display_name()),
+            );
         }
     }
     impl WidgetImpl for TvPreferencesWindow {}

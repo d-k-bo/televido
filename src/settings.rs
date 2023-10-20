@@ -6,7 +6,9 @@ use std::{cell::OnceCell, fmt::Display, str::FromStr};
 use adw::{gio, glib};
 use gsettings_macro::gen_settings;
 
-#[gen_settings(file = "data/de.k_bo.Televido.gschema.xml", id = "de.k_bo.Televido")]
+use crate::config::BASE_APP_ID;
+
+#[gen_settings(file = "data/de.k_bo.Televido.gschema.xml")]
 pub struct TvSettings;
 
 impl TvSettings {
@@ -14,7 +16,17 @@ impl TvSettings {
         thread_local! {
             static SETTINGS: OnceCell<TvSettings> = OnceCell::new();
         }
-        SETTINGS.with(|settings| settings.get_or_init(TvSettings::new).clone())
+        SETTINGS.with(|settings| {
+            settings
+                .get_or_init(|| TvSettings::new(BASE_APP_ID))
+                .clone()
+        })
+    }
+}
+
+impl Default for TvSettings {
+    fn default() -> Self {
+        Self::get()
     }
 }
 

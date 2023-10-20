@@ -5,19 +5,18 @@ using Gtk 4.0;
 using Adw 1;
 
 template $TvPreferencesWindow : Adw.PreferencesWindow {
-	fullscreened: false;
+	default-width: 600;
+	default-height: 200;
 
 	Adw.PreferencesPage {
-		title: _("External Programs");
-		name: "external-programs";
-		icon-name: "multitasking-windows-symbolic";
 
 		Adw.PreferencesGroup {
-			title: _("Video Player");
+			title: _("External Programs");
+			name: "external-programs";
 
 			Adw.ActionRow video_player_row {		
-				title: bind template.video-player-name;
-				subtitle: bind template.video-player-id;
+				title: _("Video Player");
+				subtitle: bind template.video-player-display-name;
 
 				Gtk.Button {
 					label: _("Change");

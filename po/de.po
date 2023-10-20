@@ -162,11 +162,11 @@ msgstr "Absteigend"
 
 #: ../src/preferences.blp:11
 msgid "External Programs"
-msgstr ""
+msgstr "Externe Programme"
 
 #: ../src/preferences.blp:16
 msgid "Video Player"
-msgstr "Videoplayer auswählen"
+msgstr "Videoplayer"
 
 #: ../src/preferences.blp:23
 msgid "Change"

@@ -39,6 +39,7 @@ CONFIG = {
   'VERSION': meson.project_version() + version_suffix,
   'PROFILE': PROFILE,
   'APP_ID': APP_ID,
+  'BASE_APP_ID': BASE_APP_ID,
   'APP_NAME': 'Televido',
   'AUTHOR': 'David Cabot',
   'PROJECT_URL': 'https://github.com/d-k-bo/televido',

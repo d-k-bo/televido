@@ -7,6 +7,7 @@ pub static PROJECT_NAME: &str = "@PROJECT_NAME@";
 pub static VERSION: &str = "@VERSION@";
 pub static PROFILE: &str = "@PROFILE@";
 pub static APP_ID: &str = "@APP_ID@";
+pub static BASE_APP_ID: &str = "@BASE_APP_ID@";
 pub static APP_NAME: &str = "@APP_NAME@";
 pub static AUTHOR: &str = "@AUTHOR@";
 pub static PROJECT_URL: &str = "@PROJECT_URL@";
