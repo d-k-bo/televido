@@ -8,9 +8,6 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>= 4.12')
-dependency('libadwaita-1', version: '>= 1.4')
-
 BASE_APP_ID = 'de.k_bo.Televido'
 
 if get_option('profile') == 'development'
