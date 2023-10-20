@@ -33,7 +33,6 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
             obj.setup_gactions();
-            obj.set_accels_for_action("app.quit", &["<primary>q"]);
         }
     }
 
@@ -139,6 +138,12 @@ impl TvApplication {
             })
             .build();
         self.add_action_entries([quit_action, about_action, preferences_action, play_action]);
+
+        self.set_accels_for_action("app.quit", &["<primary>q"]);
+        self.set_accels_for_action("window.close", &["<primary>w"]);
+        self.set_accels_for_action("window.reload", &["F5", "Reload"]);
+        self.set_accels_for_action("window.show-live", &["<primary>l"]);
+        self.set_accels_for_action("window.show-mediathek", &["<primary>m"]);
     }
 
     fn show_about(&self) {

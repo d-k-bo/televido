@@ -38,7 +38,13 @@ mod imp {
                     Some("mediathek") => slf.mediathek_view.reload(),
                     _ => (),
                 }
-            })
+            });
+            klass.install_action("window.show-live", None, |slf, _, _| {
+                slf.imp().stack.set_visible_child_name("live")
+            });
+            klass.install_action("window.show-mediathek", None, |slf, _, _| {
+                slf.imp().stack.set_visible_child_name("mediathek")
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {

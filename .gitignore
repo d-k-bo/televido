@@ -6,3 +6,4 @@
 /target
 /subprojects/blueprint-compiler
 /data/gschemas.compiled
+/data/resources/gtk/help-overlay.ui

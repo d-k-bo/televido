@@ -1,0 +1,33 @@
+using Gtk 4.0;
+
+Gtk.ShortcutsWindow help_overlay {
+  modal: true;
+
+  Gtk.ShortcutsSection {
+    section-name: "shortcuts";
+
+    Gtk.ShortcutsGroup {
+      title: _("General");
+
+      ShortcutsShortcut {
+        title: _("Show livestreams");
+        action-name: "window.show-live";
+      }
+
+      ShortcutsShortcut {
+        title: _("Show mediathek");
+        action-name: "window.show-mediathek";
+      }
+
+      ShortcutsShortcut {
+        title: _("Reload");
+        action-name: "window.reload";
+      }
+
+      ShortcutsShortcut {
+        title: _("Quit application");
+        action-name: "app.quit";
+      }
+    }
+  }
+}

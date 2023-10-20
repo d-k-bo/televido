@@ -160,6 +160,26 @@ msgstr "Aufsteigend"
 msgid "Descending"
 msgstr "Absteigend"
 
+#: ../src/help-overlay.blp:10
+msgid "General"
+msgstr "Allgemein"
+
+#: ../src/help-overlay.blp:13
+msgid "Show livestreams"
+msgstr "Zeige Livestreams"
+
+#: ../src/help-overlay.blp:18
+msgid "Show mediathek"
+msgstr "Zeige Mediathek"
+
+#: ../src/help-overlay.blp:23 ../src/window.blp:40
+msgid "Reload"
+msgstr "Neu laden"
+
+#: ../src/help-overlay.blp:28
+msgid "Quit application"
+msgstr "Anwendung beenden"
+
 #: ../src/preferences.blp:14
 msgid "External Programs"
 msgstr "Externe Programme"
@@ -190,10 +210,6 @@ msgstr "%H:%M"
 #: ../src/window.blp:33
 msgid "Menu"
 msgstr "Menü"
-
-#: ../src/window.blp:40
-msgid "Reload"
-msgstr "Neu laden"
 
 #: ../src/window.blp:48
 msgid "Live"

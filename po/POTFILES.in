@@ -7,6 +7,7 @@ src/live/card.blp
 src/live/view.blp
 src/mediathek/card.blp
 src/mediathek/view.blp
+src/help-overlay.blp
 src/preferences.blp
 src/utils.rs
 src/window.blp

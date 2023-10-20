@@ -12,6 +12,17 @@ run_command(
   check: true
 )
 
+help_overlay = custom_target(
+  'help-overlay',
+  input: files('help-overlay.blp'),
+  output: '.',
+  command: [
+    find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@', '&&',
+    'mkdir', '-p', meson.project_source_root() / 'data/resources/gtk/', '&&',
+    'mv', meson.project_build_root() / 'src' /'help-overlay.ui', meson.project_source_root() / 'data/resources/gtk/'
+  ],
+)
+
 fs = import('fs')
 
 cargo = find_program('cargo')
@@ -42,4 +53,5 @@ cargo_build = custom_target(
     cargo, 'build', cargo_opt, '&&',
     'cp', meson.project_source_root() / 'target' / rust_target / meson.project_name(), '@OUTPUT@',
   ],
+  depends: help_overlay,
 )
