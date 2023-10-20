@@ -33,17 +33,17 @@ mod imp {
     }
 
     impl TvLiveView {
-        pub(super) fn client(&self) -> Arc<Zapp> {
+        fn client(&self) -> Arc<Zapp> {
             self.client
                 .get_or_init(|| Arc::new(Zapp::new().expect("failed to initialize HTTP client")))
                 .clone()
         }
-        pub(super) fn channels_model(&self) -> gio::ListStore {
+        fn channels_model(&self) -> gio::ListStore {
             self.channels_model
                 .get_or_init(gio::ListStore::new::<ChannelObject>)
                 .clone()
         }
-        pub async fn load(&self) {
+        async fn load(&self) {
             let client = self.client();
 
             match tokio(async move {
@@ -102,6 +102,12 @@ mod imp {
                 Err(e) => error!("{:?}", e.wrap_err("failed to load livestream channels")),
             }
         }
+        pub(super) async fn reload(&self) {
+            self.spinner.set_spinning(true);
+            self.stack.set_visible_child_name("spinner");
+            self.channels_model().remove_all();
+            self.load().await;
+        }
     }
 
     #[glib::object_subclass]
@@ -149,4 +155,11 @@ mod imp {
 glib::wrapper! {
     pub struct TvLiveView(ObjectSubclass<imp::TvLiveView>)
         @extends gtk::Widget, adw::Bin;
+}
+
+impl TvLiveView {
+    pub fn reload(&self) {
+        let slf = self.imp().to_owned();
+        spawn(async move { slf.reload().await });
+    }
 }

@@ -33,6 +33,13 @@ template $TvWindow : Adw.ApplicationWindow {
         tooltip-text: _("Menu");
         menu-model: primary_menu;
       }
+
+      [end]
+      Gtk.Button {
+        icon-name: "refresh-symbolic";
+        tooltip-text: _("Reload");
+        action-name: "window.reload";
+      }
     }
 
     Adw.ViewStack stack {

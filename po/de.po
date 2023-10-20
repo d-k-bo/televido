@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
 "POT-Creation-Date: 2023-10-15 13:15+0200\n"
-"PO-Revision-Date: 2023-10-19 20:45+0200\n"
+"PO-Revision-Date: 2023-10-20 13:10+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -160,15 +160,15 @@ msgstr "Aufsteigend"
 msgid "Descending"
 msgstr "Absteigend"
 
-#: ../src/preferences.blp:11
+#: ../src/preferences.blp:14
 msgid "External Programs"
 msgstr "Externe Programme"
 
-#: ../src/preferences.blp:16
+#: ../src/preferences.blp:18
 msgid "Video Player"
 msgstr "Videoplayer"
 
-#: ../src/preferences.blp:23
+#: ../src/preferences.blp:22
 msgid "Change"
 msgstr "Ändern"
 
@@ -191,22 +191,26 @@ msgstr "%H:%M"
 msgid "Menu"
 msgstr "Menü"
 
-#: ../src/window.blp:41
+#: ../src/window.blp:40
+msgid "Reload"
+msgstr "Neu laden"
+
+#: ../src/window.blp:48
 msgid "Live"
 msgstr "Live"
 
-#: ../src/window.blp:47
+#: ../src/window.blp:54
 msgid "Mediathek"
 msgstr "Mediathek"
 
-#: ../src/window.blp:63
+#: ../src/window.blp:70
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: ../src/window.blp:68
+#: ../src/window.blp:75
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: ../src/window.blp:73
+#: ../src/window.blp:80
 msgid "About Televido"
 msgstr "Über Televido"

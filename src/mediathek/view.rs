@@ -18,7 +18,7 @@ use tracing::error;
 use crate::{
     config::{APP_ID, PROJECT_URL, VERSION},
     settings::TvSettings,
-    utils::{spawn_clone, tokio},
+    utils::{spawn, spawn_clone, tokio},
 };
 
 use super::{card::TvMediathekCard, shows::ShowObject};
@@ -189,7 +189,7 @@ glib::wrapper! {
 }
 
 impl TvMediathekView {
-    pub fn client(&self) -> Arc<Mediathek> {
+    fn client(&self) -> Arc<Mediathek> {
         self.imp()
             .client
             .get_or_init(|| {
@@ -243,7 +243,7 @@ impl TvMediathekView {
 
         self.imp().request_id.get() == request_id
     }
-    pub async fn load(&self) {
+    async fn load(&self) {
         if !self.delay_request_should_continue().await {
             return;
         }
@@ -292,7 +292,7 @@ impl TvMediathekView {
             }
         }
     }
-    pub async fn load_more(&self) {
+    async fn load_more(&self) {
         if !self.delay_request_should_continue().await {
             return;
         }
@@ -341,6 +341,10 @@ impl TvMediathekView {
                 error!("{e:?}");
             }
         }
+    }
+    pub fn reload(&self) {
+        let slf = self.clone();
+        spawn(async move { slf.load().await });
     }
 }
 

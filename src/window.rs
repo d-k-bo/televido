@@ -30,6 +30,15 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+
+            klass.install_action("window.reload", None, |slf, _, _| {
+                let slf = slf.imp();
+                match slf.stack.visible_child_name().as_deref() {
+                    Some("live") => slf.live_view.reload(),
+                    Some("mediathek") => slf.mediathek_view.reload(),
+                    _ => (),
+                }
+            })
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
