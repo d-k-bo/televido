@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install meson
-        run: pipx install meson
+      - name: Install meson & dependencies
+        run: sudo apt-get install -y meson gettext libglib2.0-bin libgtk-4-bin desktop-file-utils
       - name: Create meson dist bundle
         run: meson setup _build && meson dist -C _build --no-tests
       - uses: softprops/action-gh-release@v1
