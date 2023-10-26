@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-26 19:18+0200\n"
+"POT-Creation-Date: 2023-10-26 19:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,6 +51,10 @@ msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:53
 msgid "Initital release"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:58
+msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
 #: src/application.rs:116
