@@ -34,11 +34,11 @@ msgstr "Zugang zu Livestreams und Mediatheken des ÖRR"
 
 #: ../data/de.k_bo.Televido.metainfo.xml.in:9
 msgid ""
-"<em>Televido</em> (“Television” in Esperanto) lets you livestream, search, "
+"Televido (“Television” in Esperanto) lets you livestream, search, "
 "play and download media from German-language public television services. It "
 "is powered by APIs provided by the MediathekView project."
 msgstr ""
-"<em>Televido</em> („Fernsehen“ auf Esperanto) ermöglicht das Empfangen von "
+"Televido („Fernsehen“ auf Esperanto) ermöglicht das Empfangen von "
 "Livestreams sowie das Suchen, Abspielen und Herunterladen von Inhalten aus "
 "Mediatheken öffentlich-rechtlicher Sender aus dem DACH-Raum. Es basiert auf "
 "APIs, die vom MediathekView-Projekt zur Verfügung gestellt werden."

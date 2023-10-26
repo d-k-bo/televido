@@ -7,9 +7,9 @@
 	<summary>Access German-language public TV</summary>
 	<description>
 		<p>
-			<em>Televido</em> (“Television” in Esperanto) lets you livestream, search, play and
+			Televido (“Television” in Esperanto) lets you livestream, search, play and
 			download media from German-language public television services. It is powered by APIs
-			provided by the MediathekView project. </p>
+			provided by the MediathekView project.</p>
 		<p>
 			The presented content is provided directly by the respective television services, this
 			program only facilitates finding and accessing the shows.
