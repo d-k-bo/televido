@@ -48,14 +48,14 @@
 		<control>touch</control>
 	</supports>
 	<releases>
-		<release version="0.1.0" date="2023-10-20">
-			<description>
-				<p>Initital release</p>
-			</description>
-		</release>
 		<release version="0.1.1" date="2023-10-26">
 			<description>
 				<p>If an error occurs, a graphical error message is shown.</p>
+			</description>
+		</release>
+		<release version="0.1.0" date="2023-10-20">
+			<description>
+				<p>Initital release</p>
 			</description>
 		</release>
 	</releases>
