@@ -19,3 +19,4 @@ jobs:
           bundle: televido.flatpak
           manifest-path: build-aux/de.k_bo.Televido.Devel.json
           cache-key: flatpak-builder-${{ github.sha }}
+          run-tests: true
