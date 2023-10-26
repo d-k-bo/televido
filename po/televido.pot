@@ -1,37 +1,33 @@
-# German translation for Televido.
-# Copyright (C) 2023 Televido's COPYRIGHT HOLDER
-# This file is distributed under the same license as the Televido package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the televido package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# David Cabot <d-k-bo@mailbox.org>, 2023.
-#
-#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Televido main\n"
+"Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
 "POT-Creation-Date: 2023-10-26 19:10+0200\n"
-"PO-Revision-Date: 2023-10-20 20:55+0200\n"
-"Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
-"Language-Team: \n"
-"Language: de\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
 
 #: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
-msgstr "Televido"
+msgstr ""
 
 #: data/de.k_bo.Televido.desktop.in:6
 msgid "Access German-language public broadcasting live streams and archives"
 msgstr ""
-"Greif zu auf Livestreams und Mediatheken öffentlich-rechtlicher Fernsehsender"
 
 #: data/de.k_bo.Televido.metainfo.xml.in:7
 msgid "Access German-language public TV"
-msgstr "Zugang zu Livestreams und Mediatheken des ÖRR"
+msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:9
 msgid ""
@@ -39,19 +35,12 @@ msgid ""
 "download media from German-language public television services. It is "
 "powered by APIs provided by the MediathekView project."
 msgstr ""
-"Televido („Fernsehen“ auf Esperanto) ermöglicht das Empfangen von "
-"Livestreams sowie das Suchen, Abspielen und Herunterladen von Inhalten aus "
-"Mediatheken öffentlich-rechtlicher Sender aus dem DACH-Raum. Es basiert auf "
-"APIs, die vom MediathekView-Projekt zur Verfügung gestellt werden."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:13
 msgid ""
 "The presented content is provided directly by the respective television "
 "services, this program only facilitates finding and accessing the shows."
 msgstr ""
-"Die präsentierten Inhalte werden direkt von den jeweiligen Sendern "
-"angeboten, dieses Programm erleichtert dabei nur das Auffinden und Abrufen "
-"der Sendungen."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:17
 msgid ""
@@ -59,185 +48,177 @@ msgid ""
 "on the user's system. Currently supported players: GNOME Videos (Totem), "
 "Celluloid, Clapper."
 msgstr ""
-"Für die Videowiedergabe greift Televido auf externe Videoplayer zurück, die "
-"auf dem System installiert sind. Derzeit unterstütze Player: GNOME Videos "
-"(Totem), Celluloid, Clapper."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:53
 msgid "Initital release"
-msgstr "Erstveröffentlichung"
+msgstr ""
 
 #: src/help-overlay.blp:10
 msgid "General"
-msgstr "Allgemein"
+msgstr ""
 
 #: src/help-overlay.blp:13
 msgid "Show livestreams"
-msgstr "Zeige Livestreams"
+msgstr ""
 
 #: src/help-overlay.blp:18
 msgid "Show mediathek"
-msgstr "Zeige Mediathek"
+msgstr ""
 
 #: src/help-overlay.blp:23 src/window.blp:40
 msgid "Reload"
-msgstr "Neu laden"
+msgstr ""
 
 #: src/help-overlay.blp:28
 msgid "Quit application"
-msgstr "Anwendung beenden"
+msgstr ""
 
 #: src/launcher/selector.blp:18
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr ""
 
 #: src/launcher/selector.blp:24
 msgid "Confirm"
-msgstr "Bestätigen"
+msgstr ""
 
 #: src/launcher/selector.rs:80
 msgid "Could not load external application."
-msgstr "Externe Anwendungen konnten nicht geladen werden."
+msgstr ""
 
 #: src/launcher/selector.rs:81
 msgid "See the logs for details."
-msgstr "In den Programm-Logs finden Sie weitere Details."
+msgstr ""
 
 #: src/launcher/selector.rs:198
 msgid "Select video player"
-msgstr "Videoplayer auswählen"
+msgstr ""
 
 #: src/launcher/selector.rs:200
 msgid "Select one of the following external programs to stream content"
 msgstr ""
-"Wählen Sie eines der folgenden externen Programme zum Streamen von Inhalten"
 
 #: src/launcher/selector.rs:204
 msgid "Select video downloader"
-msgstr "Video-Downloader auswählen"
+msgstr ""
 
 #: src/launcher/selector.rs:206
 msgid "Select one of the following external programs to download content"
 msgstr ""
-"Wählen Sie eines der folgenden externen Programme zum Herunterladen von "
-"Inhalten"
 
 #: src/live/card.blp:46 src/mediathek/card.blp:86
 msgid "Play"
-msgstr "Abspielen"
+msgstr ""
 
 #: src/mediathek/card.blp:93
 msgid "Copy video URL"
-msgstr "Video-URL kopieren"
+msgstr ""
 
 #: src/mediathek/card.blp:99
 msgid "Download"
-msgstr "Herunterladen"
+msgstr ""
 
 #: src/mediathek/card.blp:107
 msgid "Open Website"
-msgstr "Website öffnen"
+msgstr ""
 
 #: src/mediathek/card.blp:126 src/mediathek/card.blp:141
 #: src/mediathek/card.blp:156
 msgid "High Quality"
-msgstr "Hohe Qualität"
+msgstr ""
 
 #: src/mediathek/card.blp:130 src/mediathek/card.blp:145
 #: src/mediathek/card.blp:160
 msgid "Medium Quality"
-msgstr "Mittlere Qualität"
+msgstr ""
 
 #: src/mediathek/card.blp:134 src/mediathek/card.blp:149
 #: src/mediathek/card.blp:164
 msgid "Low Quality"
-msgstr "Niedrige Qualität"
+msgstr ""
 
 #: src/mediathek/view.blp:23
 msgid "e.g. »tagesschau«"
-msgstr "z.B. »tagesschau«"
+msgstr ""
 
 #: src/mediathek/view.blp:29
 msgid "Search in…"
-msgstr "Suchen in…"
+msgstr ""
 
 #: src/mediathek/view.blp:35
 msgid "Sort"
-msgstr "Sortierung"
+msgstr ""
 
 #: src/mediathek/view.blp:47
 msgid "Search for content"
-msgstr "Nach Inhalten suchen"
+msgstr ""
 
 #: src/mediathek/view.blp:48
 msgid "Start typing in the search bar to see a list of matching shows"
 msgstr ""
-"Schreiben Sie etwas in die Suchleiste, um eine Liste passender Sendungen zu "
-"sehen"
 
 #: src/mediathek/view.blp:53
 msgid "No results"
-msgstr "Keine Ergebnisse"
+msgstr ""
 
 #: src/mediathek/view.blp:54
 msgid "Try different search terms or adjust the search filters"
-msgstr "Wählen Sie einen anderen Suchbegriff oder verändern Sie die Suchfilter"
+msgstr ""
 
 #: src/mediathek/view.blp:72
 msgid "Load more"
-msgstr "Mehr laden"
+msgstr ""
 
 #: src/mediathek/view.blp:84
 msgid "Topic"
-msgstr "Thema"
+msgstr ""
 
 #: src/mediathek/view.blp:88
 msgid "Title"
-msgstr "Titel"
+msgstr ""
 
 #: src/mediathek/view.blp:92
 msgid "Description"
-msgstr "Beschreibung"
+msgstr ""
 
 #: src/mediathek/view.blp:96 src/mediathek/view.blp:105
 msgid "Channel"
-msgstr "Sender"
+msgstr ""
 
 #: src/mediathek/view.blp:103
 msgid "Sort By"
-msgstr "Sortieren nach"
+msgstr ""
 
 #: src/mediathek/view.blp:110
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
 #: src/mediathek/view.blp:115
 msgid "Duration"
-msgstr "Dauer"
+msgstr ""
 
 #: src/mediathek/view.blp:121
 msgid "Sort Order"
-msgstr "Sortierreihenfolge"
+msgstr ""
 
 #: src/mediathek/view.blp:123
 msgid "Ascending"
-msgstr "Aufsteigend"
+msgstr ""
 
 #: src/mediathek/view.blp:128
 msgid "Descending"
-msgstr "Absteigend"
+msgstr ""
 
 #: src/preferences.blp:14
 msgid "External Programs"
-msgstr "Externe Programme"
+msgstr ""
 
 #: src/preferences.blp:18
 msgid "Video Player"
-msgstr "Videoplayer"
+msgstr ""
 
 #: src/preferences.blp:22
 msgid "Change"
-msgstr "Ändern"
+msgstr ""
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number
@@ -246,34 +227,34 @@ msgstr "Ändern"
 #. %M is the minutes
 #: src/utils.rs:55
 msgid "%b %-e, %Y %H:%M"
-msgstr "%-e. %b %Y %H.%M Uhr"
+msgstr ""
 
 #. translators:  %H is the hours (24h format)
 #. %M is the minutes
 #: src/utils.rs:65
 msgid "%H:%M"
-msgstr "%H:%M"
+msgstr ""
 
 #: src/window.blp:33
 msgid "Menu"
-msgstr "Menü"
+msgstr ""
 
 #: src/window.blp:48
 msgid "Live"
-msgstr "Live"
+msgstr ""
 
 #: src/window.blp:54
 msgid "Mediathek"
-msgstr "Mediathek"
+msgstr ""
 
 #: src/window.blp:70
 msgid "Preferences"
-msgstr "Einstellungen"
+msgstr ""
 
 #: src/window.blp:75
 msgid "Keyboard Shortcuts"
-msgstr "Tastenkürzel"
+msgstr ""
 
 #: src/window.blp:80
 msgid "About Televido"
-msgstr "Über Televido"
+msgstr ""
