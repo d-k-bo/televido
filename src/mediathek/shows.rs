@@ -6,7 +6,10 @@ use std::cell::OnceCell;
 use adw::{glib, prelude::*, subclass::prelude::*};
 use mediathekviewweb::models::Item;
 
-use crate::{utils::{format_duration, format_timestamp_full}, settings::VideoQuality};
+use crate::{
+    settings::VideoQuality,
+    utils::{format_duration, format_timestamp_full},
+};
 
 mod imp {
     use super::*;
@@ -46,7 +49,7 @@ mod imp {
         #[property(
             name = "duration",
             type = String,
-            get = |show: &ShowObject| format_duration(&show.inner.get().unwrap().duration), 
+            get = |show: &ShowObject| format_duration(&show.inner.get().unwrap().duration),
         )]
         #[property(
             name = "video-url-high",
