@@ -4,11 +4,11 @@
 use std::cell::{Cell, RefCell};
 
 use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
-use tracing::error;
+use gettextrs::gettext;
 
 use crate::{
     settings::{TvSettings, VideoQuality},
-    utils::{load_channel_icon, spawn},
+    utils::{load_channel_icon, show_error, spawn},
 };
 
 use super::{channels::Channel, shows::ShowObject};
@@ -149,7 +149,10 @@ impl TvMediathekCard {
                .and_then(|show| show.website_url())
                .expect("action must only be enabled if url is not None");
             if let Err(e) = gtk::UriLauncher::new(&url).launch_future(slf.root().and_downcast_ref::<adw::Window>()).await {
-                error!("{e}");
+                show_error(
+                    eyre::Report::msg(e.to_string())
+                        .wrap_err(gettext("Failed to open website in browser"))
+                );
             }
         })));
         self.connect_show_notify(glib::clone!(@weak open_website => move |slf| {

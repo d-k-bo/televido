@@ -15,6 +15,8 @@ mod imp {
     #[template(file = "src/window.blp")]
     pub struct TvWindow {
         #[template_child]
+        pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
         stack: TemplateChild<adw::ViewStack>,
         #[template_child]
         live_view: TemplateChild<TvLiveView>,
@@ -104,5 +106,8 @@ impl TvWindow {
         }
 
         win
+    }
+    pub fn add_toast(&self, toast: adw::Toast) {
+        self.imp().toast_overlay.add_toast(toast)
     }
 }

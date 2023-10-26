@@ -11,9 +11,8 @@ use std::{
 use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
 use gettextrs::gettext;
-use tracing::error;
 
-use crate::application::TvApplication;
+use crate::{application::TvApplication, utils::show_error};
 
 use super::{ExternalProgram, ExternalProgramType};
 
@@ -74,13 +73,14 @@ mod imp {
                     *self.all_programs.borrow_mut() = programs;
                 }
                 Err(e) => {
-                    error!("{e:?}");
+                    let msg = gettext("Failed to load external applications");
                     self.program_list.add(
                         &adw::ActionRow::builder()
-                            .title(gettext("Could not load external application."))
-                            .subtitle(gettext("See the logs for details."))
+                            .title(&msg)
+                            .subtitle(gettext("See the terminal output for details."))
                             .build(),
-                    )
+                    );
+                    show_error(e.wrap_err(msg));
                 }
             }
         }
@@ -141,12 +141,10 @@ mod imp {
                         *slf.program.borrow_mut() = Some(*program);
                         slf.confirm_button.set_sensitive(true);
                     }
-                    None => {
-                        error!(
-                            "{:?}",
-                            eyre::eyre!("invalid program id: {selected_program}")
-                        )
-                    }
+                    None => show_error(eyre::Report::msg(
+                        // translators: `{}` is replaced by given ID, a valid one would be e.g. `org.gnome.Totem`
+                        gettext("Invalid program ID: “{}”").replace("{}", &selected_program),
+                    )),
                 }
             });
 

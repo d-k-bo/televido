@@ -12,7 +12,7 @@ use eyre::WrapErr;
 use gettextrs::gettext;
 use tracing::error;
 
-use crate::application::TvApplication;
+use crate::{application::TvApplication, window::TvWindow};
 
 pub async fn tokio<Fut, T>(fut: Fut) -> T
 where
@@ -169,4 +169,21 @@ pub fn load_channel_icon(image: &gtk::Image, icon_name: Option<&'static str>) {
             .map(|pixbuf| gdk::Texture::for_pixbuf(&pixbuf))
             .wrap_err_with(|| format!("failed to load channel logo from {resource}"))
     }
+}
+
+pub fn show_error(e: eyre::Report) {
+    if let Some(window) = TvApplication::get()
+        .active_window()
+        .and_downcast::<TvWindow>()
+    {
+        window.add_toast(
+            adw::Toast::builder()
+                .title(format!(
+                    "{e}. {}",
+                    gettext("See the terminal output for details.")
+                ))
+                .build(),
+        );
+    }
+    tracing::error!("{e:?}");
 }

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-26 19:10+0200\n"
+"POT-Creation-Date: 2023-10-26 19:18+0200\n"
 "PO-Revision-Date: 2023-10-20 20:55+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
@@ -67,6 +67,10 @@ msgstr ""
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 
+#: src/application.rs:116
+msgid "Failed to play video stream"
+msgstr "Videostream konnte nicht abgespielt werden"
+
 #: src/help-overlay.blp:10
 msgid "General"
 msgstr "Allgemein"
@@ -95,28 +99,33 @@ msgstr "Abbrechen"
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: src/launcher/selector.rs:80
-msgid "Could not load external application."
+#: src/launcher/selector.rs:76
+msgid "Failed to load external applications"
 msgstr "Externe Anwendungen konnten nicht geladen werden."
 
-#: src/launcher/selector.rs:81
-msgid "See the logs for details."
+#: src/launcher/selector.rs:80 src/utils.rs:183
+msgid "See the terminal output for details."
 msgstr "In den Programm-Logs finden Sie weitere Details."
 
-#: src/launcher/selector.rs:198
+#. translators: `{}` is replaced by given ID, a valid one would be e.g. `org.gnome.Totem`
+#: src/launcher/selector.rs:146
+msgid "Invalid program ID: “{}”"
+msgstr "Ungültige Programm-ID: „{}“"
+
+#: src/launcher/selector.rs:196
 msgid "Select video player"
 msgstr "Videoplayer auswählen"
 
-#: src/launcher/selector.rs:200
+#: src/launcher/selector.rs:198
 msgid "Select one of the following external programs to stream content"
 msgstr ""
 "Wählen Sie eines der folgenden externen Programme zum Streamen von Inhalten"
 
-#: src/launcher/selector.rs:204
+#: src/launcher/selector.rs:202
 msgid "Select video downloader"
 msgstr "Video-Downloader auswählen"
 
-#: src/launcher/selector.rs:206
+#: src/launcher/selector.rs:204
 msgid "Select one of the following external programs to download content"
 msgstr ""
 "Wählen Sie eines der folgenden externen Programme zum Herunterladen von "
@@ -125,6 +134,15 @@ msgstr ""
 #: src/live/card.blp:46 src/mediathek/card.blp:86
 msgid "Play"
 msgstr "Abspielen"
+
+#. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
+#: src/live/view.rs:62
+msgid "Failed load shows for channel “{}”"
+msgstr "Sendungen für Sender „{}“ konnten nicht geladen werden"
+
+#: src/live/view.rs:106
+msgid "Failed to load livestream channels"
+msgstr "Livestream-Sender konnten nicht geladen werden"
 
 #: src/mediathek/card.blp:93
 msgid "Copy video URL"
@@ -152,6 +170,10 @@ msgstr "Mittlere Qualität"
 #: src/mediathek/card.blp:164
 msgid "Low Quality"
 msgstr "Niedrige Qualität"
+
+#: src/mediathek/card.rs:154
+msgid "Failed to open website in browser"
+msgstr "Website konnte nicht im Browser geöffnet werden"
 
 #: src/mediathek/view.blp:23
 msgid "e.g. »tagesschau«"
@@ -227,6 +249,10 @@ msgstr "Aufsteigend"
 msgid "Descending"
 msgstr "Absteigend"
 
+#: src/mediathek/view.rs:278 src/mediathek/view.rs:327
+msgid "Failed to query the MediathekViewWeb API"
+msgstr "Daten von der MediathekViewWeb-API konnten nicht abgerufen werden"
+
 #: src/preferences.blp:14
 msgid "External Programs"
 msgstr "Externe Programme"
@@ -258,22 +284,22 @@ msgstr "%H:%M"
 msgid "Menu"
 msgstr "Menü"
 
-#: src/window.blp:48
+#: src/window.blp:49
 msgid "Live"
 msgstr "Live"
 
-#: src/window.blp:54
+#: src/window.blp:55
 msgid "Mediathek"
 msgstr "Mediathek"
 
-#: src/window.blp:70
+#: src/window.blp:72
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/window.blp:75
+#: src/window.blp:77
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/window.blp:80
+#: src/window.blp:82
 msgid "About Televido"
 msgstr "Über Televido"

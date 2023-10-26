@@ -42,18 +42,20 @@ template $TvWindow : Adw.ApplicationWindow {
       }
     }
 
-    Adw.ViewStack stack {
-      Adw.ViewStackPage {
-        name: "live";
-        title: _("Live");
-        icon-name: "tv-symbolic";
-        child: $TvLiveView live_view {};
-      }
-      Adw.ViewStackPage {
-        name: "mediathek";
-        title: _("Mediathek");
-        icon-name: "library-symbolic";
-        child: $TvMediathekView mediathek_view {};
+    Adw.ToastOverlay toast_overlay {
+      Adw.ViewStack stack {
+        Adw.ViewStackPage {
+          name: "live";
+          title: _("Live");
+          icon-name: "tv-symbolic";
+          child: $TvLiveView live_view {};
+        }
+        Adw.ViewStackPage {
+          name: "mediathek";
+          title: _("Mediathek");
+          icon-name: "library-symbolic";
+          child: $TvMediathekView mediathek_view {};
+        }
       }
     }
 

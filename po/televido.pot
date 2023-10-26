@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-26 19:10+0200\n"
+"POT-Creation-Date: 2023-10-26 19:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,10 @@ msgstr ""
 msgid "Initital release"
 msgstr ""
 
+#: src/application.rs:116
+msgid "Failed to play video stream"
+msgstr ""
+
 #: src/help-overlay.blp:10
 msgid "General"
 msgstr ""
@@ -81,32 +85,46 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: src/launcher/selector.rs:80
-msgid "Could not load external application."
+#: src/launcher/selector.rs:76
+msgid "Failed to load external applications"
 msgstr ""
 
-#: src/launcher/selector.rs:81
-msgid "See the logs for details."
+#: src/launcher/selector.rs:80 src/utils.rs:183
+msgid "See the terminal output for details."
 msgstr ""
 
-#: src/launcher/selector.rs:198
+#. translators: `{}` is replaced by given ID, a valid one would be e.g. `org.gnome.Totem`
+#: src/launcher/selector.rs:146
+msgid "Invalid program ID: “{}”"
+msgstr ""
+
+#: src/launcher/selector.rs:196
 msgid "Select video player"
 msgstr ""
 
-#: src/launcher/selector.rs:200
+#: src/launcher/selector.rs:198
 msgid "Select one of the following external programs to stream content"
 msgstr ""
 
-#: src/launcher/selector.rs:204
+#: src/launcher/selector.rs:202
 msgid "Select video downloader"
 msgstr ""
 
-#: src/launcher/selector.rs:206
+#: src/launcher/selector.rs:204
 msgid "Select one of the following external programs to download content"
 msgstr ""
 
 #: src/live/card.blp:46 src/mediathek/card.blp:86
 msgid "Play"
+msgstr ""
+
+#. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
+#: src/live/view.rs:62
+msgid "Failed load shows for channel “{}”"
+msgstr ""
+
+#: src/live/view.rs:106
+msgid "Failed to load livestream channels"
 msgstr ""
 
 #: src/mediathek/card.blp:93
@@ -134,6 +152,10 @@ msgstr ""
 #: src/mediathek/card.blp:134 src/mediathek/card.blp:149
 #: src/mediathek/card.blp:164
 msgid "Low Quality"
+msgstr ""
+
+#: src/mediathek/card.rs:154
+msgid "Failed to open website in browser"
 msgstr ""
 
 #: src/mediathek/view.blp:23
@@ -208,6 +230,10 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
+#: src/mediathek/view.rs:278 src/mediathek/view.rs:327
+msgid "Failed to query the MediathekViewWeb API"
+msgstr ""
+
 #: src/preferences.blp:14
 msgid "External Programs"
 msgstr ""
@@ -239,22 +265,22 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: src/window.blp:48
+#: src/window.blp:49
 msgid "Live"
 msgstr ""
 
-#: src/window.blp:54
+#: src/window.blp:55
 msgid "Mediathek"
 msgstr ""
 
-#: src/window.blp:70
+#: src/window.blp:72
 msgid "Preferences"
 msgstr ""
 
-#: src/window.blp:75
+#: src/window.blp:77
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: src/window.blp:80
+#: src/window.blp:82
 msgid "About Televido"
 msgstr ""

@@ -4,14 +4,14 @@
 use std::{cell::OnceCell, sync::OnceLock};
 
 use adw::{gio, glib, prelude::*, subclass::prelude::*};
-use tracing::error;
+use gettextrs::gettext;
 
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
     launcher::{ExternalProgramType, ProgramSelector},
     preferences::TvPreferencesWindow,
     settings::TvSettings,
-    utils::{spawn_clone, tokio},
+    utils::{show_error, spawn_clone, tokio},
     window::TvWindow,
 };
 
@@ -113,7 +113,7 @@ impl TvApplication {
 
         match player.play(uri).await {
             Ok(()) => (),
-            Err(e) => error!("{}", e.wrap_err("failed to play video stream")),
+            Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
         }
     }
 

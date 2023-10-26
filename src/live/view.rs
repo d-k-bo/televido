@@ -4,10 +4,10 @@
 use std::{cell::OnceCell, sync::Arc};
 
 use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
-use eyre::Context;
-use tracing::error;
+use eyre::WrapErr;
+use gettextrs::gettext;
 
-use crate::utils::{spawn, tokio};
+use crate::utils::{show_error, spawn, tokio};
 
 use super::{
     card::TvLiveCard,
@@ -50,14 +50,18 @@ mod imp {
                 let list = client
                     .channel_info_list()
                     .await
-                    .wrap_err("failed to load channel info list")?;
+                    .wrap_err("Failed to load channel info list")?;
 
                 let mut channels: Vec<(ChannelId, ChannelInfo, Option<Vec<Show>>)> =
                     Vec::with_capacity(list.len());
 
                 for (channel_id, channel_info) in list {
                     match client.shows(&channel_id).await.wrap_err_with(|| {
-                        eyre::eyre!("failed to load shows for channel '{channel_id}'")
+                        eyre::Report::msg(
+                            // translators: `{}` is replaced by the channel_id, e.g. `das_erste`
+                            gettext("Failed load shows for channel “{}”")
+                                .replace("{}", channel_id.as_ref()),
+                        )
                     })? {
                         ShowsResult::Shows(shows) => {
                             channels.push((channel_id, channel_info, Some(shows)))
@@ -99,7 +103,7 @@ mod imp {
                     self.stack.set_visible_child_name("channels");
                     self.spinner.set_spinning(false);
                 }
-                Err(e) => error!("{:?}", e.wrap_err("failed to load livestream channels")),
+                Err(e) => show_error(e.wrap_err(gettext("Failed to load livestream channels"))),
             }
         }
         pub(super) async fn reload(&self) {

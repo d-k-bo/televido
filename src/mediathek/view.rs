@@ -8,17 +8,17 @@ use std::{
 };
 
 use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
-use eyre::Context;
+use eyre::WrapErr;
+use gettextrs::gettext;
 use mediathekviewweb::{
     models::{QueryField, SortField, SortOrder},
     Mediathek,
 };
-use tracing::error;
 
 use crate::{
     config::{APP_ID, PROJECT_URL, VERSION},
     settings::TvSettings,
-    utils::{spawn, spawn_clone, tokio},
+    utils::{show_error, spawn, spawn_clone, tokio},
 };
 
 use super::{card::TvMediathekCard, shows::ShowObject};
@@ -275,7 +275,7 @@ impl TvMediathekView {
                 .sort_order(sort_order)
                 .send()
                 .await
-                .wrap_err("failed to query mediathekviewweb.de")
+                .wrap_err_with(|| gettext("Failed to query the MediathekViewWeb API"))
         })
         .await
         {
@@ -287,9 +287,7 @@ impl TvMediathekView {
                     shows_model.append(&ShowObject::new(item))
                 }
             }
-            Err(e) => {
-                error!("{e:?}");
-            }
+            Err(e) => show_error(e),
         }
     }
     async fn load_more(&self) {
@@ -326,7 +324,7 @@ impl TvMediathekView {
                 .sort_order(sort_order)
                 .send()
                 .await
-                .wrap_err("failed to query mediathekviewweb")
+                .wrap_err_with(|| gettext("Failed to query the MediathekViewWeb API"))
         })
         .await
         {
@@ -337,9 +335,7 @@ impl TvMediathekView {
                     shows_model.append(&ShowObject::new(item))
                 }
             }
-            Err(e) => {
-                error!("{e:?}");
-            }
+            Err(e) => show_error(e),
         }
     }
     pub fn reload(&self) {
