@@ -14,6 +14,10 @@ Die ARD-, ORF- and SRF-Logos wurden [Wikimedia Commons](https://commons.wikimedi
 
 Die anderen Logos wurden aus dem Quellcode von [zapp](https://github.com/mediathekview/zapp) extrahiert und mit [`vd2svg`](https://github.com/seanghay/vector-drawable-svg) ins SVG-Format konvertiert.
 
+## FAQ
+
+Siehe [README.md#faq](README.md#faq) (Englisch)
+
 ## Lizenz
 
 Copyright (C) 2023 David Cabot

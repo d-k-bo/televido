@@ -14,6 +14,27 @@ The ARD, ORF and SRF logos were taken from [Wikimedia Commons](https://commons.w
 
 The other channel logos were extracted from the source code of [zapp](https://github.com/mediathekview/zapp) and converted to SVG using [`vd2svg`](https://github.com/seanghay/vector-drawable-svg).
 
+## FAQ
+
+### How can I use a different video player / use a player with custom options?
+
+Televido supports any video player that is [DBus activatable](https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s08.html) and supports opening https:// URIs via the `org.freedesktop.Application.Open` DBus method.
+
+To use a custom player, create a flatpak permission override to allow it to access the player. E.g.
+
+```
+flatpak override --user de.k_bo.Televido --talk-name=org.example.VideoPlayer
+```
+
+and set the video player in the preferences.
+
+If you want to use program that doesn't support DBus activation, you can create a wrapper script. See [d-k-bo/dbus-activatable-wrapper](https://github.com/d-k-bo/dbus-activatable-wrapper).
+
+### Could you add support for TV channels from other countries?
+
+Since this project is basically a client for [MediathekView](https://mediathekviewweb.de/), it's limited to the channels supported by them. The upstream project is focused on German content and is developed in German, so I doubt that there are any plans for non-German content.
+ORF (Austrian TV) & SRF (Swiss TV) are supported though.
+
 ## License
 
 Copyright (C) 2023 David Cabot
