@@ -16,7 +16,8 @@
 		</p>
 		<p>
 			For video playback, Televido uses external video players that are installed on the
-			user's system. Currently supported players: GNOME Videos (Totem), Celluloid, Clapper.
+			user's system. Currently supported players: GNOME Videos (Totem), Celluloid, Clapper,
+			Daikhan.
 		</p>
 	</description>
 	<launchable type="desktop-id">de.k_bo.Televido.desktop</launchable>
