@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-26 21:32+0200\n"
+"POT-Creation-Date: 2023-10-29 18:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Initital release"
 msgstr ""
 
-#: src/application.rs:116
+#: src/application.rs:129
 msgid "Failed to play video stream"
 msgstr ""
 
@@ -89,33 +89,44 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: src/launcher/selector.rs:76
+#: src/launcher/selector.blp:38
+msgid "Custom program"
+msgstr ""
+
+#. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
+#: src/launcher/selector.rs:115
+msgid "Could not find application “{}”"
+msgstr ""
+
+#: src/launcher/selector.rs:169
 msgid "Failed to load external applications"
 msgstr ""
 
-#: src/launcher/selector.rs:80 src/utils.rs:183
+#: src/launcher/selector.rs:173 src/utils.rs:183
 msgid "See the terminal output for details."
 msgstr ""
 
-#. translators: `{}` is replaced by given ID, a valid one would be e.g. `org.gnome.Totem`
-#: src/launcher/selector.rs:146
-msgid "Invalid program ID: “{}”"
-msgstr ""
-
-#: src/launcher/selector.rs:196
+#: src/launcher/selector.rs:280
 msgid "Select video player"
 msgstr ""
 
-#: src/launcher/selector.rs:198
-msgid "Select one of the following external programs to stream content"
+#: src/launcher/selector.rs:281
+msgid "Select one of the following external programs to stream content."
 msgstr ""
 
-#: src/launcher/selector.rs:202
+#: src/launcher/selector.rs:284
 msgid "Select video downloader"
 msgstr ""
 
-#: src/launcher/selector.rs:204
-msgid "Select one of the following external programs to download content"
+#: src/launcher/selector.rs:285
+msgid "Select one of the following external programs to download content."
+msgstr ""
+
+#: src/launcher/selector.rs:292
+msgid ""
+"You can also specify a custom application ID (e.g. org.example.Application) "
+"of a different program that supports DBus activation, is able to open a "
+"https:// URI and is accessible from the context of this application."
 msgstr ""
 
 #: src/live/card.blp:46 src/mediathek/card.blp:86

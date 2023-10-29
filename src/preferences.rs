@@ -31,22 +31,29 @@ mod imp {
     impl TvPreferencesWindow {
         #[template_callback]
         async fn select_video_player(&self, #[rest] _: &[glib::Value]) {
-            if let Some(program) =
-                ProgramSelector::select_program(ExternalProgramType::Player).await
+            if let Some(player) = ProgramSelector::select_program(
+                ExternalProgramType::Player,
+                self.settings.video_player_id(),
+            )
+            .await
             {
-                self.settings.set_video_player_name(program.name);
-                self.settings.set_video_player_id(program.id);
+                self.settings.set_video_player_name(&player.name);
+                self.settings.set_video_player_id(&player.id);
             }
         }
     }
 
     impl TvPreferencesWindow {
         fn update_video_player_display_name(&self) {
-            *self.video_player_display_name.borrow_mut() = format!(
-                "{} ({})",
-                self.settings.video_player_name(),
-                self.settings.video_player_id()
-            );
+            let name = self.settings.video_player_name();
+            let id = self.settings.video_player_id();
+
+            *self.video_player_display_name.borrow_mut() = if name.is_empty() {
+                id
+            } else {
+                format!("{name} ({id})",)
+            };
+
             self.obj().notify_video_player_display_name();
         }
     }

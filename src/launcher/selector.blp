@@ -33,6 +33,21 @@ template $ProgramSelector : Gtk.Window {
     Adw.PreferencesPage {
         Adw.PreferencesGroup program_list {
             description: bind template.description;
+
+            Adw.EntryRow custom_program_entry {
+                title: _("Custom program");
+                show-apply-button: true;
+                apply => $apply_custom_program() swapped;
+                
+                Gtk.EventControllerFocus {
+                    enter => $start_custom_program_input() swapped;
+                }
+                
+                [suffix]
+                Gtk.Image custom_program_validation_icon {
+                    visible: false;
+                }
+            }
         }
     }
 }

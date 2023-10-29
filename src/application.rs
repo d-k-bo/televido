@@ -8,7 +8,7 @@ use gettextrs::gettext;
 
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
-    launcher::{ExternalProgramType, ProgramSelector},
+    launcher::{ExternalProgram, ExternalProgramType, ProgramSelector},
     preferences::TvPreferencesWindow,
     settings::TvSettings,
     utils::{show_error, spawn_clone, tokio},
@@ -93,22 +93,35 @@ impl TvApplication {
 
     pub async fn play(&self, uri: String) {
         let settings = TvSettings::get();
+        let player_name = settings.video_player_name();
         let player_id = settings.video_player_id();
+
         let player = if player_id.is_empty() {
-            let Some(program) = ProgramSelector::select_program(ExternalProgramType::Player).await
-            else {
-                return;
-            };
-
-            settings.set_video_player_name(program.name);
-            settings.set_video_player_id(program.id);
-
-            program
+            None
         } else {
-            let Some(program) = ExternalProgramType::Player.find(&player_id) else {
-                return;
-            };
-            program
+            match ExternalProgram::find(player_name, player_id.clone()).await {
+                Ok(player) => player,
+                Err(e) => {
+                    show_error(e);
+                    None
+                }
+            }
+        };
+
+        let player = match player {
+            Some(player) => player,
+            None => {
+                match ProgramSelector::select_program(ExternalProgramType::Player, player_id).await
+                {
+                    Some(player) => {
+                        settings.set_video_player_name(&player.name);
+                        settings.set_video_player_id(&player.id);
+
+                        player
+                    }
+                    None => return,
+                }
+            }
         };
 
         match player.play(uri).await {

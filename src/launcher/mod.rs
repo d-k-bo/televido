@@ -1,6 +1,8 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use std::borrow::Cow;
+
 use crate::{application::TvApplication, utils::tokio};
 
 use self::application_proxy::ApplicationProxy;
@@ -10,47 +12,48 @@ mod application_proxy;
 mod selector;
 
 pub static PLAYERS: &[ExternalProgram] = &[
-    ExternalProgram {
-        name: "Videos",
-        id: "org.gnome.Totem",
-    },
-    ExternalProgram {
-        name: "Celluloid",
-        id: "io.github.celluloid_player.Celluloid",
-    },
-    ExternalProgram {
-        name: "Clapper",
-        id: "com.github.rafostar.Clapper",
-    },
+    ExternalProgram::new("Videos", "org.gnome.Totem"),
+    ExternalProgram::new("Celluloid", "io.github.celluloid_player.Celluloid"),
+    ExternalProgram::new("Clapper", "com.github.rafostar.Clapper"),
+    ExternalProgram::new("Daikhan", "io.gitlab.daikhan.stable"),
     // not dbus-activatable
-    // ExternalProgram { name: "µPlayer", id: "org.sigxcpu.Livi"},
-    // ExternalProgram { name: "Glide", id: "net.baseart.Glide"},
-    // ExternalProgram { name: "Daikhan", id: "io.gitlab.daikhan.stable"},
+    // ExternalProgram::new("µPlayer", "org.sigxcpu.Livi"),
+    // ExternalProgram::new("Glide", "net.baseart.Glide"),
     // doesn't implement org.freedesktop.Application
-    // ExternalProgram { name: "VLC", id: "org.videolan.VLC"},
-    // ExternalProgram { name: "mpv", id: "io.mpv.Mpv"},
-    // ExternalProgram { name: "Haruna Media µPlayer", id: "org.kde.haruna"},
+    // ExternalProgram::new("VLC", "org.videolan.VLC"),
+    // ExternalProgram::new("mpv", "io.mpv.Mpv"),
+    // ExternalProgram::new("Haruna Media µPlayer", "org.kde.haruna"),
 ];
 
-pub static DOWNLOADERS: &[ExternalProgram] = &[ExternalProgram {
-    name: "Parabolic",
-    id: "org.nickvision.tubeconverter",
-}];
+pub static DOWNLOADERS: &[ExternalProgram] = &[ExternalProgram::new(
+    "Parabolic",
+    "org.nickvision.tubeconverter",
+)];
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct ExternalProgram {
+    pub name: Cow<'static, str>,
+    pub id: Cow<'static, str>,
+}
 
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub struct ExternalProgram {
-    pub name: &'static str,
-    pub id: &'static str,
+pub enum ExternalProgramType {
+    Player,
+    Downloader,
 }
+
 impl ExternalProgram {
     pub async fn play(self, uri: impl Into<String>) -> eyre::Result<()> {
         let conn = TvApplication::dbus().await;
         let uri = uri.into();
 
         tokio(async move {
-            let proxy =
-                ApplicationProxy::new(&conn, self.id, format!("/{}", self.id.replace('.', "/")))
-                    .await?;
+            let proxy = ApplicationProxy::new(
+                &conn,
+                self.id.clone(),
+                format!("/{}", self.id.replace('.', "/")),
+            )
+            .await?;
 
             proxy.open(&[&uri], Default::default()).await?;
 
@@ -60,27 +63,46 @@ impl ExternalProgram {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ExternalProgramType {
-    Player,
-    Downloader,
-}
-
-impl ExternalProgramType {
-    pub fn all(self) -> &'static [ExternalProgram] {
-        match self {
-            ExternalProgramType::Player => PLAYERS,
-            ExternalProgramType::Downloader => DOWNLOADERS,
+impl ExternalProgram {
+    const fn new(name: &'static str, id: &'static str) -> Self {
+        ExternalProgram {
+            name: Cow::Borrowed(name),
+            id: Cow::Borrowed(id),
         }
     }
-    pub fn find(self, id: &str) -> Option<ExternalProgram> {
-        self.all().iter().find(|program| program.id == id).copied()
+    pub async fn find(
+        name: impl Into<Cow<'static, str>>,
+        id: impl Into<Cow<'static, str>>,
+    ) -> eyre::Result<Option<Self>> {
+        let conn = TvApplication::dbus().await;
+        let name = name.into();
+        let id = id.into();
+
+        tokio(async move {
+            let dbus_proxy = zbus::fdo::DBusProxy::new(&conn).await?;
+
+            if dbus_proxy
+                .list_activatable_names()
+                .await?
+                .into_iter()
+                .any(|bus_name| bus_name == &*id)
+            {
+                Ok(Some(ExternalProgram { name, id }))
+            } else {
+                Ok(None)
+            }
+        })
+        .await
     }
-    pub async fn list(self) -> eyre::Result<Vec<ExternalProgram>> {
+
+    pub async fn find_known(program_type: ExternalProgramType) -> eyre::Result<Vec<Self>> {
         let conn = TvApplication::dbus().await;
 
         tokio(async move {
-            let all = self.all();
+            let known_programs = match program_type {
+                ExternalProgramType::Player => PLAYERS,
+                ExternalProgramType::Downloader => DOWNLOADERS,
+            };
             let dbus_proxy = zbus::fdo::DBusProxy::new(&conn).await?;
 
             let programs = dbus_proxy
@@ -88,9 +110,10 @@ impl ExternalProgramType {
                 .await?
                 .into_iter()
                 .filter_map(|bus_name| {
-                    all.iter()
+                    known_programs
+                        .iter()
                         .find(|program| program.id == bus_name.as_str())
-                        .copied()
+                        .cloned()
                 })
                 .collect();
 
