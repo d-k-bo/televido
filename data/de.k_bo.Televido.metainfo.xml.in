@@ -49,6 +49,14 @@
 		<control>touch</control>
 	</supports>
 	<releases>
+		<release version="0.1.2" date="2023-10-29">
+			<description>
+				<ul>
+					<li>Added support for custom video players</li>
+					<li>Added support Daikhan as a video player</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.1.1" date="2023-10-26">
 			<description>
 				<p>If an error occurs, a graphical error message is shown.</p>
