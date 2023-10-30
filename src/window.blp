@@ -5,15 +5,16 @@ using Gtk 4.0;
 using Adw 1;
 
 template $TvWindow : Adw.ApplicationWindow {
-  width-request: 400;
-  height-request: 500;
-  title: "Mediathek";
+  width-request: 360;
+  height-request: 294;
+  title: "Televido";
 
   Adw.Breakpoint {
     condition ( "max-width: 550sp" )
     setters {
       switcher_bar.reveal: true;
       header_bar.title-widget: null;
+      mediathek_view.compact: true;
     }
   }
 

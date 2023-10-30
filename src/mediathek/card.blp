@@ -20,18 +20,19 @@ template $TvMediathekCard : Gtk.ListBoxRow {
 
 		Gtk.Box {
 			orientation: horizontal;
-			spacing: 8;
+			spacing: 12;
 
 			Gtk.Image icon {
 				width-request: 64;
 				height-request: 64;
 				pixel-size: 64;
+				valign: center;
 				tooltip-text: bind template.show as <$ShowObject>.channel;
 			}
 
 			Gtk.Box {
 				orientation: vertical;
-				spacing: 8;
+				spacing: 6;
 				halign: fill;
 				valign: center;
 
@@ -74,7 +75,7 @@ template $TvMediathekCard : Gtk.ListBoxRow {
 
 			Gtk.Box {
 				orientation: vertical;
-				spacing: 8;
+				spacing: 6;
 
 				Gtk.Box {
 					orientation: horizontal;

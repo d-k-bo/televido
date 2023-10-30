@@ -8,16 +8,14 @@ template $TvMediathekView : Adw.Bin {
   [child]
   Adw.ToolbarView {
     [top]
-    Adw.Clamp {
-      styles ["toolbar"]
-      
-      Gtk.Box {
+    Adw.Clamp {      
+      Gtk.Box search_toolbar {
         orientation: horizontal;
-        spacing: 4;
-        margin-top: 4;
-        margin-bottom: 4;
-        margin-start: 4;
-        margin-end: 4;
+        spacing: 6;
+        margin-top: 6;
+        margin-bottom: 6;
+        margin-start: 6;
+        margin-end: 6;
 
         Gtk.SearchEntry search_entry {
           placeholder-text: _("e.g. »tagesschau«");
@@ -25,16 +23,21 @@ template $TvMediathekView : Adw.Bin {
           text: bind template.query_string bidirectional;
         }
 
-        Gtk.MenuButton search_in_button {
-          label: _("Search in…");
-          menu-model: search_in_menu;
-          styles ["raised"]
-        }
+        Gtk.Box {
+          orientation: horizontal;
+          spacing: 6;
 
-        Gtk.MenuButton sort_button {
-          label: _("Sort");
-          menu-model: sort_menu;
-          styles ["raised"]
+          Gtk.MenuButton search_in_button {
+            label: _("Search in…");
+            menu-model: search_in_menu;
+            hexpand: true;
+          }
+
+          Gtk.MenuButton sort_button {
+            label: _("Sort");
+            menu-model: sort_menu;
+            hexpand: true;
+          }
         }
       }
     }
@@ -58,16 +61,17 @@ template $TvMediathekView : Adw.Bin {
         Adw.Clamp {
           Gtk.Box {
             orientation: vertical;
+            spacing: 6;
+            margin-top: 6;
+            margin-bottom: 6;
+            margin-start: 6;
+            margin-end: 6;
           
             Gtk.ListBox results_list {
-              margin-top: 8;
-              margin-bottom: 8;
               styles ["boxed-list"]
             }
 
             Gtk.Button {
-              margin-top: 8;
-              margin-bottom: 8;
               halign: center;
               label: _("Load more");
               action-name: "mediathek.load-more";

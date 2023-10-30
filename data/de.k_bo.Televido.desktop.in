@@ -7,3 +7,4 @@ Categories=AudioVideo;Video;TV;GNOME;GTK;
 Icon=de.k_bo.Televido
 Exec=televido
 Terminal=false
+X-Purism-FormFactor=Workstation;Mobile;

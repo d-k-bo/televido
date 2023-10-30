@@ -31,7 +31,11 @@ mod imp {
     #[properties(wrapper_type = super::TvMediathekView)]
     pub struct TvMediathekView {
         #[template_child]
+        search_toolbar: TemplateChild<gtk::Box>,
+        #[template_child]
         search_entry: TemplateChild<gtk::SearchEntry>,
+        #[template_child]
+        status_page: TemplateChild<adw::StatusPage>,
         #[template_child]
         results_list: TemplateChild<gtk::ListBox>,
         #[template_child]
@@ -40,6 +44,9 @@ mod imp {
         nothing_found_view: TemplateChild<adw::StatusPage>,
         #[template_child]
         results_view: TemplateChild<gtk::ScrolledWindow>,
+
+        #[property(get, set)]
+        compact: Cell<bool>,
 
         #[property(get, set)]
         query_string: RefCell<String>,
@@ -136,6 +143,19 @@ mod imp {
                 .bind_sort_order(&*slf, "sort-order")
                 .flags(gio::SettingsBindFlags::DEFAULT)
                 .build();
+
+            slf.connect_compact_notify(|slf| {
+                let imp = slf.imp();
+                if slf.compact() {
+                    imp.search_toolbar
+                        .set_orientation(gtk::Orientation::Vertical);
+                    imp.status_page.add_css_class("compact");
+                } else {
+                    imp.search_toolbar
+                        .set_orientation(gtk::Orientation::Horizontal);
+                    imp.status_page.remove_css_class("compact");
+                }
+            });
 
             self.results_list
                 .bind_model(Some(&self.shows_model()), |show| {

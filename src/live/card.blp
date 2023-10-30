@@ -20,7 +20,7 @@ template $TvLiveCard : Gtk.ListBoxRow {
 
 		Gtk.Box {
 			orientation: horizontal;
-			spacing: 8;
+			spacing: 12;
 			styles ["item-card"]
 
 			Gtk.Box {
@@ -75,9 +75,12 @@ template $TvLiveCard : Gtk.ListBoxRow {
 
 				Gtk.Box {
 					valign: center;
+					spacing: 6;
 
 					Gtk.Label channel {
 						label: bind template.channel as <$ChannelObject>.name;
+						tooltip-text: bind template.channel as <$ChannelObject>.name;
+						ellipsize: end;
 					}
 
 					Gtk.Label timespan {
