@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-30 20:08+0100\n"
+"POT-Creation-Date: 2023-10-30 20:59+0100\n"
 "PO-Revision-Date: 2023-10-20 20:55+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
@@ -63,20 +63,24 @@ msgstr ""
 "auf dem System installiert sind. Derzeit unterstütze Player: GNOME Videos "
 "(Totem), Celluloid, Clapper, Daikhan."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:60
+#: data/de.k_bo.Televido.metainfo.xml.in:56
+msgid "Added support for mobile devices"
+msgstr "Mobile Geräte werden nun unterstützt"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:63
 msgid "Added support for custom video players"
 msgstr "Benutzerdefinierte Videoplayer werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:61
+#: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Added support Daikhan as a video player"
 msgstr "Daikhan wird nun als Videoplayer unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:67
+#: data/de.k_bo.Televido.metainfo.xml.in:70
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 "Wenn ein Fehler auftritt, wird eine graphische Fehlermeldung angezeigt."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:72
+#: data/de.k_bo.Televido.metainfo.xml.in:75
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 

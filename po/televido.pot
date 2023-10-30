@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-30 20:08+0100\n"
+"POT-Creation-Date: 2023-10-30 20:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,19 +49,23 @@ msgid ""
 "Celluloid, Clapper, Daikhan."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:60
+#: data/de.k_bo.Televido.metainfo.xml.in:56
+msgid "Added support for mobile devices"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:63
 msgid "Added support for custom video players"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:61
+#: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Added support Daikhan as a video player"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:67
+#: data/de.k_bo.Televido.metainfo.xml.in:70
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:72
+#: data/de.k_bo.Televido.metainfo.xml.in:75
 msgid "Initital release"
 msgstr ""
 
