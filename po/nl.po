@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the televido package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: televido\n"
+"Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
+"POT-Creation-Date: 2023-10-30 20:59+0100\n"
+"PO-Revision-Date: 2023-11-09 17:15+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+msgid "Televido"
+msgstr "Televido"
+
+#: data/de.k_bo.Televido.desktop.in:6
+msgid "Access German-language public broadcasting live streams and archives"
+msgstr ""
+"Verken/Bekijk livestreams en archieven van de Duitstalige publieke omroepen"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:7
+msgid "Access German-language public TV"
+msgstr "Kijk naar de Duitstalige publieke omroepen"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:9
+msgid ""
+"Televido (“Television” in Esperanto) lets you livestream, search, play and "
+"download media from German-language public television services. It is "
+"powered by APIs provided by the MediathekView project."
+msgstr ""
+"Met Televido (Esperanto voor ‘Televisie’) heeft u toegang tot de "
+"Duitstalige publieke omroepen. Zoek naar en bekijk opnames, livestreams en "
+"download media. De toepassing maakt gebruik van api's van het MediathekView-"
+"project."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:13
+msgid ""
+"The presented content is provided directly by the respective television "
+"services, this program only facilitates finding and accessing the shows."
+msgstr ""
+"De getoonde inhoud is volledig afkomstig van de omroepen. Deze toepassing "
+"helpt slechts bij het zoeken naar en bekijken van programma's."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:17
+msgid ""
+"For video playback, Televido uses external video players that are installed "
+"on the user's system. Currently supported players: GNOME Videos (Totem), "
+"Celluloid, Clapper, Daikhan."
+msgstr ""
+"Voor het afspelen van video's maakt Televido gebruik van reeds "
+"geïnstalleerde videospelers. Momenteel worden de volgende spelers "
+"ondersteund: GNOME Video's (Totem), Celluloid, Clapper en Daikhan."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:56
+msgid "Added support for mobile devices"
+msgstr "Nieuw: ondersteuning voor mobiele apparaten"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:63
+msgid "Added support for custom video players"
+msgstr "Nieuw: ondersteuning voor andere videospelers"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:64
+msgid "Added support Daikhan as a video player"
+msgstr "Nieuw: ondersteuning voor Daikhan-videospeler"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:70
+msgid "If an error occurs, a graphical error message is shown."
+msgstr "Nieuw: bij een foutmelding wordt voortaan een dialoogvenster getoond."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:75
+msgid "Initital release"
+msgstr "Eerste uitgave"
+
+#: src/application.rs:129
+msgid "Failed to play video stream"
+msgstr "De stream kan niet worden afgespeeld"
+
+#: src/help-overlay.blp:10
+msgid "General"
+msgstr "Algemeen"
+
+#: src/help-overlay.blp:13
+msgid "Show livestreams"
+msgstr "Livestreams tonen"
+
+#: src/help-overlay.blp:18
+msgid "Show mediathek"
+msgstr "Mediatheek tonen"
+
+#: src/help-overlay.blp:23 src/window.blp:41
+msgid "Reload"
+msgstr "Herladen"
+
+#: src/help-overlay.blp:28
+msgid "Quit application"
+msgstr "Toepassing afsluiten"
+
+#: src/launcher/selector.blp:18
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/launcher/selector.blp:24
+msgid "Confirm"
+msgstr "Bevestigen"
+
+#: src/launcher/selector.blp:38
+msgid "Custom program"
+msgstr "Andere toepassing"
+
+#. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
+#: src/launcher/selector.rs:115
+msgid "Could not find application “{}”"
+msgstr "‘{}’ is niet aangetroffen"
+
+#: src/launcher/selector.rs:169
+msgid "Failed to load external applications"
+msgstr "De externe toepassingen kunnen niet worden geladen"
+
+#: src/launcher/selector.rs:173 src/utils.rs:183
+msgid "See the terminal output for details."
+msgstr "Bekijk voor meer informatie de terminaluitvoer."
+
+#: src/launcher/selector.rs:280
+msgid "Select video player"
+msgstr "Kies een videospeler"
+
+#: src/launcher/selector.rs:281
+msgid "Select one of the following external programs to stream content."
+msgstr "Kies een geïnstalleerde toepassing om de inhoud mee af te spelen."
+
+#: src/launcher/selector.rs:284
+msgid "Select video downloader"
+msgstr "Kies een videodownloader"
+
+#: src/launcher/selector.rs:285
+msgid "Select one of the following external programs to download content."
+msgstr "Kies een toepassing om de inhoud mee te downloaden."
+
+#: src/launcher/selector.rs:292
+msgid ""
+"You can also specify a custom application ID (e.g. org.example.Application) "
+"of a different program that supports DBus activation, is able to open a "
+"https:// URI and is accessible from the context of this application."
+msgstr ""
+"U kunt ook een eigen toepassingsid opgeven (bijv. org.voorbeeld."
+"Toepassing). Dit kan iedere toepassing zijn die ondersteuning heeft voor "
+"DBus, het openen van een https://-link en vanuit de huidige toepassing "
+"geopend kan worden."
+
+#: src/live/card.blp:46 src/mediathek/card.blp:87
+msgid "Play"
+msgstr "Afspelen"
+
+#. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
+#: src/live/view.rs:62
+msgid "Failed load shows for channel “{}”"
+msgstr "De programma's van ‘{}’ kunnen niet worden geladen"
+
+#: src/live/view.rs:106
+msgid "Failed to load livestream channels"
+msgstr "De livestreamkanalen kunnen niet worden geladen"
+
+#: src/mediathek/card.blp:94
+msgid "Copy video URL"
+msgstr "Videolink kopiëren"
+
+#: src/mediathek/card.blp:100
+msgid "Download"
+msgstr "Downloaden"
+
+#: src/mediathek/card.blp:108
+msgid "Open Website"
+msgstr "Website openen"
+
+#: src/mediathek/card.blp:127 src/mediathek/card.blp:142
+#: src/mediathek/card.blp:157
+msgid "High Quality"
+msgstr "Hoge kwaliteit"
+
+#: src/mediathek/card.blp:131 src/mediathek/card.blp:146
+#: src/mediathek/card.blp:161
+msgid "Medium Quality"
+msgstr "Gemiddelde kwaliteit"
+
+#: src/mediathek/card.blp:135 src/mediathek/card.blp:150
+#: src/mediathek/card.blp:165
+msgid "Low Quality"
+msgstr "Lage kwaliteit"
+
+#: src/mediathek/card.rs:154
+msgid "Failed to open website in browser"
+msgstr "De website kan niet worden geopend"
+
+#: src/mediathek/view.blp:21
+msgid "e.g. »tagesschau«"
+msgstr "bijv. »tagesschau«"
+
+#: src/mediathek/view.blp:31
+msgid "Search in…"
+msgstr "Zoeken in…"
+
+#: src/mediathek/view.blp:37
+msgid "Sort"
+msgstr "Sorteren"
+
+#: src/mediathek/view.blp:50
+msgid "Search for content"
+msgstr "Zoeken naar inhoud"
+
+#: src/mediathek/view.blp:51
+msgid "Start typing in the search bar to see a list of matching shows"
+msgstr ""
+"Voer een zoekopdracht in in het zoekvak om een lijst met programma's te "
+"tonen"
+
+#: src/mediathek/view.blp:56
+msgid "No results"
+msgstr "Geen zoekresultaten"
+
+#: src/mediathek/view.blp:57
+msgid "Try different search terms or adjust the search filters"
+msgstr "Probeer een andere zoekopdracht of pas de filters aan"
+
+#: src/mediathek/view.blp:76
+msgid "Load more"
+msgstr "Meer resultaten tonen"
+
+#: src/mediathek/view.blp:88
+msgid "Topic"
+msgstr "Onderwerp"
+
+#: src/mediathek/view.blp:92
+msgid "Title"
+msgstr "Titel"
+
+#: src/mediathek/view.blp:96
+msgid "Description"
+msgstr "Beschrijving"
+
+#: src/mediathek/view.blp:100 src/mediathek/view.blp:109
+msgid "Channel"
+msgstr "Kanaal"
+
+#: src/mediathek/view.blp:107
+msgid "Sort By"
+msgstr "Sorteren op"
+
+#: src/mediathek/view.blp:114
+msgid "Date"
+msgstr "Datum"
+
+#: src/mediathek/view.blp:119
+msgid "Duration"
+msgstr "Duur"
+
+#: src/mediathek/view.blp:125
+msgid "Sort Order"
+msgstr "Sorteervolgorde"
+
+#: src/mediathek/view.blp:127
+msgid "Ascending"
+msgstr "Oplopend"
+
+#: src/mediathek/view.blp:132
+msgid "Descending"
+msgstr "Aflopend"
+
+#: src/mediathek/view.rs:298 src/mediathek/view.rs:347
+msgid "Failed to query the MediathekViewWeb API"
+msgstr "Er kan geen verbinding met de MediathekViewWeb-api worden gemaakt"
+
+#: src/preferences.blp:14
+msgid "External Programs"
+msgstr "Geïnstalleerde toepassingen"
+
+#: src/preferences.blp:18
+msgid "Video Player"
+msgstr "Videospeler"
+
+#: src/preferences.blp:22
+msgid "Change"
+msgstr "Wijzigen"
+
+#. translators:  %b is Month name (short)
+#. %-e is the Day number
+#. %Y is the year (with century)
+#. %H is the hours (24h format)
+#. %M is the minutes
+#: src/utils.rs:55
+msgid "%b %-e, %Y %H:%M"
+msgstr "%e %b %Y, %H:%m"
+
+#. translators:  %H is the hours (24h format)
+#. %M is the minutes
+#: src/utils.rs:65
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: src/window.blp:34
+msgid "Menu"
+msgstr "Menu"
+
+#: src/window.blp:50
+msgid "Live"
+msgstr "Live"
+
+#: src/window.blp:56
+msgid "Mediathek"
+msgstr "Mediatheek"
+
+#: src/window.blp:73
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: src/window.blp:78
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: src/window.blp:83
+msgid "About Televido"
+msgstr "Over Televido"
