@@ -25,6 +25,18 @@ template $TvPreferencesWindow : Adw.PreferencesWindow {
 					clicked => $select_video_player() swapped;
 				}
 			}
+
+			Adw.ActionRow video_downloader_row {		
+				title: _("Video Downloader");
+				subtitle: bind template.video-downloader-display-name;
+
+				Gtk.Button {
+					label: _("Change");
+					valign: center;
+					
+					clicked => $select_video_downloader() swapped;
+				}
+			}
 		}
 	}
 }
