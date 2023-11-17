@@ -124,7 +124,50 @@ impl TvApplication {
             }
         };
 
-        match player.play(uri).await {
+        match player.open(uri).await {
+            Ok(()) => (),
+            Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
+        }
+    }
+
+    pub async fn download(&self, uri: String) {
+        let settings = TvSettings::get();
+        let downloader_name = settings.video_downloader_name();
+        let downloader_id = settings.video_downloader_id();
+
+        let downloader = if downloader_id.is_empty() {
+            None
+        } else {
+            match ExternalProgram::find(downloader_name, downloader_id.clone()).await {
+                Ok(downloader) => downloader,
+                Err(e) => {
+                    show_error(e);
+                    None
+                }
+            }
+        };
+
+        let downloader = match downloader {
+            Some(downloader) => downloader,
+            None => {
+                match ProgramSelector::select_program(
+                    ExternalProgramType::Downloader,
+                    downloader_id,
+                )
+                .await
+                {
+                    Some(downloader) => {
+                        settings.set_video_downloader_name(&downloader.name);
+                        settings.set_video_downloader_id(&downloader.id);
+
+                        downloader
+                    }
+                    None => return,
+                }
+            }
+        };
+
+        match downloader.open(uri).await {
             Ok(()) => (),
             Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
         }
@@ -150,7 +193,22 @@ impl TvApplication {
                 }
             })
             .build();
-        self.add_action_entries([quit_action, about_action, preferences_action, play_action]);
+        let download_action = gio::ActionEntry::builder("download")
+            .parameter_type(Some(glib::VariantTy::STRING))
+            .activate(move |app: &Self, _, variant| {
+                if let Some(stream_url) = variant.and_then(|v| v.get()) {
+                    spawn_clone!(app => app.download(stream_url))
+                }
+            })
+            .build();
+
+        self.add_action_entries([
+            quit_action,
+            about_action,
+            preferences_action,
+            play_action,
+            download_action,
+        ]);
 
         self.set_accels_for_action("app.quit", &["<primary>q"]);
         self.set_accels_for_action("window.close", &["<primary>w"]);

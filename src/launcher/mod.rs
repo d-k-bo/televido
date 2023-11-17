@@ -43,7 +43,7 @@ pub enum ExternalProgramType {
 }
 
 impl ExternalProgram {
-    pub async fn play(self, uri: impl Into<String>) -> eyre::Result<()> {
+    pub async fn open(self, uri: impl Into<String>) -> eyre::Result<()> {
         let conn = TvApplication::dbus().await;
         let uri = uri.into();
 

@@ -102,6 +102,19 @@ impl TvMediathekCard {
                 .expect("action must only be enabled if url is not None"),
         );
     }
+    fn download(&self, quality: VideoQuality) {
+        self.activate_action(
+            "app.download",
+            Some(
+                &self
+                    .show()
+                    .and_then(|show| show.video_url(quality))
+                    .expect("action must only be enabled if url is not None")
+                    .to_variant(),
+            ),
+        )
+        .unwrap()
+    }
     fn setup_actions(&self) {
         let actions = gio::SimpleActionGroup::new();
 
@@ -141,6 +154,24 @@ impl TvMediathekCard {
         video_url_action!("copy-url-high", copy_url, VideoQuality::High);
         video_url_action!("copy-url-medium", copy_url, VideoQuality::Medium);
         video_url_action!("copy-url-low", copy_url, VideoQuality::Low);
+
+        let download_default = video_url_action!(
+            "download-default",
+            download,
+            VideoQuality::default_download()
+        );
+        TvSettings::get().connect_default_download_quality_changed(
+            glib::clone!(@weak self as slf, @weak download_default => move |_| {
+                download_default.set_enabled(
+                    slf.show()
+                        .and_then(|show| show.video_url(VideoQuality::default_download()))
+                        .is_some()
+                    );
+            }),
+        );
+        video_url_action!("download-high", download, VideoQuality::High);
+        video_url_action!("download-medium", download, VideoQuality::Medium);
+        video_url_action!("download-low", download, VideoQuality::Low);
 
         let open_website = gio::SimpleAction::new("open-website", None);
         open_website.connect_activate(glib::clone!(@weak self as slf => move |_,_| spawn(async move {

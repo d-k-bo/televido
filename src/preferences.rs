@@ -20,9 +20,13 @@ mod imp {
     pub struct TvPreferencesWindow {
         #[template_child]
         video_player_row: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        video_downloader_row: TemplateChild<adw::ActionRow>,
 
         #[property(get)]
         video_player_display_name: RefCell<String>,
+        #[property(get)]
+        video_downloader_display_name: RefCell<String>,
 
         settings: TvSettings,
     }
@@ -41,6 +45,18 @@ mod imp {
                 self.settings.set_video_player_id(&player.id);
             }
         }
+        #[template_callback]
+        async fn select_video_downloader(&self, #[rest] _: &[glib::Value]) {
+            if let Some(downloader) = ProgramSelector::select_program(
+                ExternalProgramType::Downloader,
+                self.settings.video_downloader_id(),
+            )
+            .await
+            {
+                self.settings.set_video_downloader_name(&downloader.name);
+                self.settings.set_video_downloader_id(&downloader.id);
+            }
+        }
     }
 
     impl TvPreferencesWindow {
@@ -55,6 +71,18 @@ mod imp {
             };
 
             self.obj().notify_video_player_display_name();
+        }
+        fn update_video_downloader_display_name(&self) {
+            let name = self.settings.video_downloader_name();
+            let id = self.settings.video_downloader_id();
+
+            *self.video_downloader_display_name.borrow_mut() = if name.is_empty() {
+                id
+            } else {
+                format!("{name} ({id})",)
+            };
+
+            self.obj().notify_video_downloader_display_name();
         }
     }
 
@@ -85,6 +113,14 @@ mod imp {
             );
             self.settings.connect_video_player_id_changed(
                 glib::clone!(@weak self as slf => move |_| slf.update_video_player_display_name()),
+            );
+
+            self.update_video_downloader_display_name();
+            self.settings.connect_video_downloader_name_changed(
+                glib::clone!(@weak self as slf => move |_| slf.update_video_downloader_display_name()),
+            );
+            self.settings.connect_video_downloader_id_changed(
+                glib::clone!(@weak self as slf => move |_| slf.update_video_downloader_display_name()),
             );
         }
     }
