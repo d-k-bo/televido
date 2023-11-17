@@ -43,12 +43,6 @@ impl VideoQuality {
             .parse()
             .unwrap()
     }
-    pub fn default_download() -> Self {
-        TvSettings::get()
-            .default_download_quality()
-            .parse()
-            .unwrap()
-    }
 }
 impl FromStr for VideoQuality {
     type Err = eyre::Report;

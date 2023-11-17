@@ -50,8 +50,5 @@
 		<key name="default-playback-quality" type="s">
 			<default>"high"</default>
 		</key>
-		<key name="default-download-quality" type="s">
-			<default>"high"</default>
-		</key>
 	</schema>
 </schemalist>

@@ -95,11 +95,10 @@ template $TvMediathekCard : Gtk.ListBoxRow {
 						menu-model: copy_url_menu;
 					}
 
-					Adw.SplitButton {
+					Gtk.Button {
 						icon-name: "document-save-symbolic";
 						tooltip-text: _("Download");
-						action-name: "card.download-default";
-						menu-model: download_menu;
+						action-name: "card.download";
 					}
 
 					Gtk.Button {
@@ -148,20 +147,5 @@ menu copy_url_menu {
 	item {
 		label: _("Low Quality");    
 		action: "card.copy-url-low";
-	}
-}
-
-menu download_menu {
-	item {
-		label: _("High Quality");
-		action: "card.download-high";
-	}
-	item {
-		label: _("Medium Quality");
-		action: "card.download-medium";
-	}
-	item {
-		label: _("Low Quality");    
-		action: "card.download-low";
 	}
 }

@@ -169,7 +169,7 @@ impl TvApplication {
 
         match downloader.open(uri).await {
             Ok(()) => (),
-            Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
+            Err(e) => show_error(e.wrap_err(gettext("Failed to launch video downloader"))),
         }
     }
 
