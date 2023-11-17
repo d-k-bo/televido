@@ -102,13 +102,13 @@ impl TvMediathekCard {
                 .expect("action must only be enabled if url is not None"),
         );
     }
-    fn download(&self, quality: VideoQuality) {
+    fn download(&self) {
         self.activate_action(
             "app.download",
             Some(
                 &self
                     .show()
-                    .and_then(|show| show.video_url(quality))
+                    .and_then(|show| show.website_url())
                     .expect("action must only be enabled if url is not None")
                     .to_variant(),
             ),
@@ -155,23 +155,16 @@ impl TvMediathekCard {
         video_url_action!("copy-url-medium", copy_url, VideoQuality::Medium);
         video_url_action!("copy-url-low", copy_url, VideoQuality::Low);
 
-        let download_default = video_url_action!(
-            "download-default",
-            download,
-            VideoQuality::default_download()
-        );
-        TvSettings::get().connect_default_download_quality_changed(
-            glib::clone!(@weak self as slf, @weak download_default => move |_| {
-                download_default.set_enabled(
-                    slf.show()
-                        .and_then(|show| show.video_url(VideoQuality::default_download()))
-                        .is_some()
-                    );
-            }),
-        );
-        video_url_action!("download-high", download, VideoQuality::High);
-        video_url_action!("download-medium", download, VideoQuality::Medium);
-        video_url_action!("download-low", download, VideoQuality::Low);
+        let download = gio::SimpleAction::new("download", None);
+        download.connect_activate(glib::clone!(@weak self as slf => move |_,_| slf.download()));
+        self.connect_show_notify(glib::clone!(@weak download => move |slf| {
+            download.set_enabled(
+                slf.show()
+                    .and_then(|show| show.website_url())
+                    .is_some()
+                );
+        }));
+        actions.add_action(&download);
 
         let open_website = gio::SimpleAction::new("open-website", None);
         open_website.connect_activate(glib::clone!(@weak self as slf => move |_,_| spawn(async move {
