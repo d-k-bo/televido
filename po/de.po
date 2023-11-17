@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-30 20:59+0100\n"
-"PO-Revision-Date: 2023-10-20 20:55+0200\n"
+"POT-Creation-Date: 2023-11-17 14:48+0100\n"
+"PO-Revision-Date: 2023-11-17 14:56+0100\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -55,38 +55,52 @@ msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:17
 msgid ""
-"For video playback, Televido uses external video players that are installed "
-"on the user's system. Currently supported players: GNOME Videos (Totem), "
-"Celluloid, Clapper, Daikhan."
+"For video playback and download, Televido uses external programs that are "
+"installed on the user's system. Currently supported players: GNOME Videos "
+"(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
+"Parabolic."
 msgstr ""
-"Für die Videowiedergabe greift Televido auf externe Videoplayer zurück, die "
-"auf dem System installiert sind. Derzeit unterstütze Player: GNOME Videos "
-"(Totem), Celluloid, Clapper, Daikhan."
+"Für Videowiedergabe und -download greift Televido auf externe Programme "
+"zurück, die auf dem System installiert sind. Derzeit unterstütze Player: "
+"GNOME Videos (Totem), Celluloid, Clapper, Daikhan. Derzeit unterstütze "
+"Videodownloader: Parabolic."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:56
+msgid "Added support for downloading content using Parabolic"
+msgstr "Videodownload mittels Parabolic wird nun unterstützt"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:57
+msgid "Added Dutch translation"
+msgstr "Übersetzung ins Niederländische hinzugefügt"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Added support for mobile devices"
 msgstr "Mobile Geräte werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:63
+#: data/de.k_bo.Televido.metainfo.xml.in:71
 msgid "Added support for custom video players"
 msgstr "Benutzerdefinierte Videoplayer werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:64
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Added support Daikhan as a video player"
 msgstr "Daikhan wird nun als Videoplayer unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:70
+#: data/de.k_bo.Televido.metainfo.xml.in:78
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 "Wenn ein Fehler auftritt, wird eine graphische Fehlermeldung angezeigt."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:75
+#: data/de.k_bo.Televido.metainfo.xml.in:83
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 
 #: src/application.rs:129
 msgid "Failed to play video stream"
 msgstr "Videostream konnte nicht abgespielt werden"
+
+#: src/application.rs:172
+msgid "Failed to launch video downloader"
+msgstr "Videodownloader konnte nicht gestartet werden"
 
 #: src/help-overlay.blp:10
 msgid "General"
@@ -144,7 +158,7 @@ msgstr ""
 
 #: src/launcher/selector.rs:284
 msgid "Select video downloader"
-msgstr "Video-Downloader auswählen"
+msgstr "Videodownloader auswählen"
 
 #: src/launcher/selector.rs:285
 msgid "Select one of the following external programs to download content."
@@ -184,26 +198,23 @@ msgstr "Video-URL kopieren"
 msgid "Download"
 msgstr "Herunterladen"
 
-#: src/mediathek/card.blp:108
+#: src/mediathek/card.blp:106
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: src/mediathek/card.blp:127 src/mediathek/card.blp:142
-#: src/mediathek/card.blp:157
+#: src/mediathek/card.blp:125 src/mediathek/card.blp:140
 msgid "High Quality"
 msgstr "Hohe Qualität"
 
-#: src/mediathek/card.blp:131 src/mediathek/card.blp:146
-#: src/mediathek/card.blp:161
+#: src/mediathek/card.blp:129 src/mediathek/card.blp:144
 msgid "Medium Quality"
 msgstr "Mittlere Qualität"
 
-#: src/mediathek/card.blp:135 src/mediathek/card.blp:150
-#: src/mediathek/card.blp:165
+#: src/mediathek/card.blp:133 src/mediathek/card.blp:148
 msgid "Low Quality"
 msgstr "Niedrige Qualität"
 
-#: src/mediathek/card.rs:154
+#: src/mediathek/card.rs:178
 msgid "Failed to open website in browser"
 msgstr "Website konnte nicht im Browser geöffnet werden"
 
@@ -293,9 +304,13 @@ msgstr "Externe Programme"
 msgid "Video Player"
 msgstr "Videoplayer"
 
-#: src/preferences.blp:22
+#: src/preferences.blp:22 src/preferences.blp:34
 msgid "Change"
 msgstr "Ändern"
+
+#: src/preferences.blp:30
+msgid "Video Downloader"
+msgstr "Videodownloader"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number

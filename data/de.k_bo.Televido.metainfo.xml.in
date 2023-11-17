@@ -15,9 +15,9 @@
 			program only facilitates finding and accessing the shows.
 		</p>
 		<p>
-			For video playback, Televido uses external video players that are installed on the
-			user's system. Currently supported players: GNOME Videos (Totem), Celluloid, Clapper,
-			Daikhan.
+			For video playback and download, Televido uses external programs that are installed on
+			the user's system. Currently supported players: GNOME Videos (Totem), Celluloid,
+			Clapper, Daikhan. Currently supported downloaders: Parabolic.
 		</p>
 	</description>
 	<launchable type="desktop-id">de.k_bo.Televido.desktop</launchable>
@@ -50,6 +50,14 @@
 		<control>touch</control>
 	</supports>
 	<releases>
+		<release version="0.2.0" date="2023-11-17">
+			<description>
+				<ul>
+					<li>Added support for downloading content using Parabolic</li>
+					<li>Added Dutch translation</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.1.3" date="2023-10-30">
 			<description>
 				<ul>

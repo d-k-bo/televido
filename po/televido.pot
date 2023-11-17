@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-30 20:59+0100\n"
+"POT-Creation-Date: 2023-11-17 14:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,33 +44,46 @@ msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:17
 msgid ""
-"For video playback, Televido uses external video players that are installed "
-"on the user's system. Currently supported players: GNOME Videos (Totem), "
-"Celluloid, Clapper, Daikhan."
+"For video playback and download, Televido uses external programs that are "
+"installed on the user's system. Currently supported players: GNOME Videos "
+"(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
+"Parabolic."
 msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:56
-msgid "Added support for mobile devices"
+msgid "Added support for downloading content using Parabolic"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:63
-msgid "Added support for custom video players"
+#: data/de.k_bo.Televido.metainfo.xml.in:57
+msgid "Added Dutch translation"
 msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:64
+msgid "Added support for mobile devices"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:71
+msgid "Added support for custom video players"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Added support Daikhan as a video player"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:70
+#: data/de.k_bo.Televido.metainfo.xml.in:78
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:75
+#: data/de.k_bo.Televido.metainfo.xml.in:83
 msgid "Initital release"
 msgstr ""
 
 #: src/application.rs:129
 msgid "Failed to play video stream"
+msgstr ""
+
+#: src/application.rs:172
+msgid "Failed to launch video downloader"
 msgstr ""
 
 #: src/help-overlay.blp:10
@@ -162,26 +175,23 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: src/mediathek/card.blp:108
+#: src/mediathek/card.blp:106
 msgid "Open Website"
 msgstr ""
 
-#: src/mediathek/card.blp:127 src/mediathek/card.blp:142
-#: src/mediathek/card.blp:157
+#: src/mediathek/card.blp:125 src/mediathek/card.blp:140
 msgid "High Quality"
 msgstr ""
 
-#: src/mediathek/card.blp:131 src/mediathek/card.blp:146
-#: src/mediathek/card.blp:161
+#: src/mediathek/card.blp:129 src/mediathek/card.blp:144
 msgid "Medium Quality"
 msgstr ""
 
-#: src/mediathek/card.blp:135 src/mediathek/card.blp:150
-#: src/mediathek/card.blp:165
+#: src/mediathek/card.blp:133 src/mediathek/card.blp:148
 msgid "Low Quality"
 msgstr ""
 
-#: src/mediathek/card.rs:154
+#: src/mediathek/card.rs:178
 msgid "Failed to open website in browser"
 msgstr ""
 
@@ -269,8 +279,12 @@ msgstr ""
 msgid "Video Player"
 msgstr ""
 
-#: src/preferences.blp:22
+#: src/preferences.blp:22 src/preferences.blp:34
 msgid "Change"
+msgstr ""
+
+#: src/preferences.blp:30
+msgid "Video Downloader"
 msgstr ""
 
 #. translators:  %b is Month name (short)
