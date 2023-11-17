@@ -17,7 +17,8 @@
     "--talk-name=org.gnome.Totem",
     "--talk-name=io.github.celluloid_player.Celluloid",
     "--talk-name=com.github.rafostar.Clapper",
-    "--talk-name=io.gitlab.daikhan.stable"
+    "--talk-name=io.gitlab.daikhan.stable",
+    "--talk-name=org.nickvision.tubeconverter"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm16/bin",
