@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-10-30 20:59+0100\n"
-"PO-Revision-Date: 2023-11-09 17:15+0100\n"
+"POT-Creation-Date: 2023-11-17 14:48+0100\n"
+"PO-Revision-Date: 2023-11-19 21:50+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -36,10 +36,9 @@ msgid ""
 "download media from German-language public television services. It is "
 "powered by APIs provided by the MediathekView project."
 msgstr ""
-"Met Televido (Esperanto voor ‘Televisie’) heeft u toegang tot de "
-"Duitstalige publieke omroepen. Zoek naar en bekijk opnames, livestreams en "
-"download media. De toepassing maakt gebruik van api's van het MediathekView-"
-"project."
+"Met Televido (Esperanto voor ‘Televisie’) heeft u toegang tot de Duitstalige "
+"publieke omroepen. Zoek naar en bekijk opnames, livestreams en download "
+"media. De toepassing maakt gebruik van api's van het MediathekView-project."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:13
 msgid ""
@@ -51,37 +50,51 @@ msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:17
 msgid ""
-"For video playback, Televido uses external video players that are installed "
-"on the user's system. Currently supported players: GNOME Videos (Totem), "
-"Celluloid, Clapper, Daikhan."
+"For video playback and download, Televido uses external programs that are "
+"installed on the user's system. Currently supported players: GNOME Videos "
+"(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
+"Parabolic."
 msgstr ""
-"Voor het afspelen van video's maakt Televido gebruik van reeds "
+"Voor het afspelen en downloaden van video's maakt Televido gebruik van reeds "
 "geïnstalleerde videospelers. Momenteel worden de volgende spelers "
-"ondersteund: GNOME Video's (Totem), Celluloid, Clapper en Daikhan."
+"ondersteund: GNOME Video's (Totem), Celluloid, Clapper en Daikhan. Momenteel "
+"worden de volgende downloaders ondersteund: Parabolic."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:56
+msgid "Added support for downloading content using Parabolic"
+msgstr "Nieuw: ondersteuning voor downloaden met behulp van Parabolic"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:57
+msgid "Added Dutch translation"
+msgstr "Nieuw: Nederlandse vertaling"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Added support for mobile devices"
 msgstr "Nieuw: ondersteuning voor mobiele apparaten"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:63
+#: data/de.k_bo.Televido.metainfo.xml.in:71
 msgid "Added support for custom video players"
 msgstr "Nieuw: ondersteuning voor andere videospelers"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:64
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Added support Daikhan as a video player"
 msgstr "Nieuw: ondersteuning voor Daikhan-videospeler"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:70
+#: data/de.k_bo.Televido.metainfo.xml.in:78
 msgid "If an error occurs, a graphical error message is shown."
 msgstr "Nieuw: bij een foutmelding wordt voortaan een dialoogvenster getoond."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:75
+#: data/de.k_bo.Televido.metainfo.xml.in:83
 msgid "Initital release"
 msgstr "Eerste uitgave"
 
 #: src/application.rs:129
 msgid "Failed to play video stream"
 msgstr "De stream kan niet worden afgespeeld"
+
+#: src/application.rs:172
+msgid "Failed to launch video downloader"
+msgstr "De videodownloader kan niet worden gestart"
 
 #: src/help-overlay.blp:10
 msgid "General"
@@ -150,10 +163,9 @@ msgid ""
 "of a different program that supports DBus activation, is able to open a "
 "https:// URI and is accessible from the context of this application."
 msgstr ""
-"U kunt ook een eigen toepassingsid opgeven (bijv. org.voorbeeld."
-"Toepassing). Dit kan iedere toepassing zijn die ondersteuning heeft voor "
-"DBus, het openen van een https://-link en vanuit de huidige toepassing "
-"geopend kan worden."
+"U kunt ook een eigen toepassingsid opgeven (bijv. org.voorbeeld.Toepassing). "
+"Dit kan iedere toepassing zijn die ondersteuning heeft voor DBus, het openen "
+"van een https://-link en vanuit de huidige toepassing geopend kan worden."
 
 #: src/live/card.blp:46 src/mediathek/card.blp:87
 msgid "Play"
@@ -176,26 +188,23 @@ msgstr "Videolink kopiëren"
 msgid "Download"
 msgstr "Downloaden"
 
-#: src/mediathek/card.blp:108
+#: src/mediathek/card.blp:106
 msgid "Open Website"
 msgstr "Website openen"
 
-#: src/mediathek/card.blp:127 src/mediathek/card.blp:142
-#: src/mediathek/card.blp:157
+#: src/mediathek/card.blp:125 src/mediathek/card.blp:140
 msgid "High Quality"
 msgstr "Hoge kwaliteit"
 
-#: src/mediathek/card.blp:131 src/mediathek/card.blp:146
-#: src/mediathek/card.blp:161
+#: src/mediathek/card.blp:129 src/mediathek/card.blp:144
 msgid "Medium Quality"
 msgstr "Gemiddelde kwaliteit"
 
-#: src/mediathek/card.blp:135 src/mediathek/card.blp:150
-#: src/mediathek/card.blp:165
+#: src/mediathek/card.blp:133 src/mediathek/card.blp:148
 msgid "Low Quality"
 msgstr "Lage kwaliteit"
 
-#: src/mediathek/card.rs:154
+#: src/mediathek/card.rs:178
 msgid "Failed to open website in browser"
 msgstr "De website kan niet worden geopend"
 
@@ -218,8 +227,7 @@ msgstr "Zoeken naar inhoud"
 #: src/mediathek/view.blp:51
 msgid "Start typing in the search bar to see a list of matching shows"
 msgstr ""
-"Voer een zoekopdracht in in het zoekvak om een lijst met programma's te "
-"tonen"
+"Voer een zoekopdracht in in het zoekvak om een lijst met programma's te tonen"
 
 #: src/mediathek/view.blp:56
 msgid "No results"
@@ -285,9 +293,13 @@ msgstr "Geïnstalleerde toepassingen"
 msgid "Video Player"
 msgstr "Videospeler"
 
-#: src/preferences.blp:22
+#: src/preferences.blp:22 src/preferences.blp:34
 msgid "Change"
 msgstr "Wijzigen"
+
+#: src/preferences.blp:30
+msgid "Video Downloader"
+msgstr "Videodownloader"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number
