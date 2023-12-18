@@ -1,0 +1,354 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the televido package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Irénée THIRION <irenee.thirion@e.email>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: televido\n"
+"Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
+"POT-Creation-Date: 2023-11-17 14:48+0100\n"
+"PO-Revision-Date: 2023-12-18 08:19+0100\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 45.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+msgid "Televido"
+msgstr "Televido"
+
+#: data/de.k_bo.Televido.desktop.in:6
+msgid "Access German-language public broadcasting live streams and archives"
+msgstr ""
+"Accédez à la diffusion en direct et aux archives de la télévision publique "
+"allemande"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:7
+msgid "Access German-language public TV"
+msgstr "Accédez à la télévision publique allemande"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:9
+msgid ""
+"Televido (“Television” in Esperanto) lets you livestream, search, play and "
+"download media from German-language public television services. It is "
+"powered by APIs provided by the MediathekView project."
+msgstr ""
+"Televido (« Télévision » en Esperanto) vous permet de regarder en direct, "
+"rechercher, lire et télécharger des contenus depuis les services de "
+"télévision publics allemands. L’application fonctionne grâce aux APIs "
+"fournies par le projet MediathekView."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:13
+msgid ""
+"The presented content is provided directly by the respective television "
+"services, this program only facilitates finding and accessing the shows."
+msgstr ""
+"Le contenu présenté est fourni directement par les services de télévision "
+"respectifs, ce programme ne fait que faciliter leur recherche et leur accès."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:17
+msgid ""
+"For video playback and download, Televido uses external programs that are "
+"installed on the user's system. Currently supported players: GNOME Videos "
+"(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
+"Parabolic."
+msgstr ""
+"Pour la lecture et le téléchargement de vidéos, Televido utilise des "
+"programmes externes installés sur le système de l’utilisateur. Les lecteurs "
+"vidéos actuellement pris en charge sont : GNOME Vidéos (Totem), Celluloid, "
+"Clapper, Daikhan. Le téléchargeur de vidéos actuellement pris en charge est "
+"Parabole."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:56
+msgid "Added support for downloading content using Parabolic"
+msgstr ""
+"Ajout de la prise en charge du téléchargement de contenus avec Parabole"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:57
+msgid "Added Dutch translation"
+msgstr "Ajout d’une traduction néerlandaise"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:64
+msgid "Added support for mobile devices"
+msgstr "Ajout de la prise en charge des appareils mobiles"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:71
+msgid "Added support for custom video players"
+msgstr "Ajout de la prise en charge des lecteurs vidéo personnalisés"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:72
+msgid "Added support Daikhan as a video player"
+msgstr "Ajout de la prise en charge de Daikhan comme lecteur vidéo"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:78
+msgid "If an error occurs, a graphical error message is shown."
+msgstr "Si une erreur se produit, un message sera affiché."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:83
+msgid "Initital release"
+msgstr "Première version"
+
+#: src/application.rs:129
+msgid "Failed to play video stream"
+msgstr "Échec de la lecture du flux vidéo"
+
+#: src/application.rs:172
+msgid "Failed to launch video downloader"
+msgstr "Échec du lancement du lecteur vidéo"
+
+#: src/help-overlay.blp:10
+msgid "General"
+msgstr "Général"
+
+#: src/help-overlay.blp:13
+msgid "Show livestreams"
+msgstr "Afficher les directs"
+
+#: src/help-overlay.blp:18
+msgid "Show mediathek"
+msgstr "Afficher la médiathèque"
+
+#: src/help-overlay.blp:23 src/window.blp:41
+msgid "Reload"
+msgstr "Recharger"
+
+#: src/help-overlay.blp:28
+msgid "Quit application"
+msgstr "Quitter l’application"
+
+#: src/launcher/selector.blp:18
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/launcher/selector.blp:24
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: src/launcher/selector.blp:38
+msgid "Custom program"
+msgstr "Programme personnalisé"
+
+#. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
+#: src/launcher/selector.rs:115
+msgid "Could not find application “{}”"
+msgstr "Impossible de trouver l’application « {} »"
+
+#: src/launcher/selector.rs:169
+msgid "Failed to load external applications"
+msgstr "Échec du chargement des applications externes"
+
+#: src/launcher/selector.rs:173 src/utils.rs:183
+msgid "See the terminal output for details."
+msgstr "Regardez la sortie du terminal pour plus de détails."
+
+#: src/launcher/selector.rs:280
+msgid "Select video player"
+msgstr "Sélectionnez un lecteur vidéo"
+
+#: src/launcher/selector.rs:281
+msgid "Select one of the following external programs to stream content."
+msgstr ""
+"Sélectionnez l’un de ces programmes externes pour suivre la diffusion d’un "
+"contenu."
+
+#: src/launcher/selector.rs:284
+msgid "Select video downloader"
+msgstr "Sélectionnez un programme de téléchargement"
+
+#: src/launcher/selector.rs:285
+msgid "Select one of the following external programs to download content."
+msgstr ""
+"Sélectionnez l’un de ces programmes externes pour télécharger un contenu."
+
+#: src/launcher/selector.rs:292
+msgid ""
+"You can also specify a custom application ID (e.g. org.example.Application) "
+"of a different program that supports DBus activation, is able to open a "
+"https:// URI and is accessible from the context of this application."
+msgstr ""
+"Vous pouvez également spécifier un identifiant d’application personnalisé "
+"(ex.: org.exemple.Application) pour un programme différent qui prend en "
+"charge l’activation par DBus, capable d’ouvrir une URL https:// et "
+"accessible depuis cette application."
+
+#: src/live/card.blp:46 src/mediathek/card.blp:87
+msgid "Play"
+msgstr "Lire"
+
+#. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
+#: src/live/view.rs:62
+msgid "Failed load shows for channel “{}”"
+msgstr "Échec du chargement du programme de la chaîne « {} »"
+
+#: src/live/view.rs:106
+msgid "Failed to load livestream channels"
+msgstr "Échec du chargement des chaînes en direct"
+
+#: src/mediathek/card.blp:94
+msgid "Copy video URL"
+msgstr "Copier l’URL de la vidéo"
+
+#: src/mediathek/card.blp:100
+msgid "Download"
+msgstr "Télécharger"
+
+#: src/mediathek/card.blp:106
+msgid "Open Website"
+msgstr "Ouvrir le site web"
+
+#: src/mediathek/card.blp:125 src/mediathek/card.blp:140
+msgid "High Quality"
+msgstr "Haute qualité"
+
+#: src/mediathek/card.blp:129 src/mediathek/card.blp:144
+msgid "Medium Quality"
+msgstr "Qualité moyenne"
+
+#: src/mediathek/card.blp:133 src/mediathek/card.blp:148
+msgid "Low Quality"
+msgstr "Basse qualité"
+
+#: src/mediathek/card.rs:178
+msgid "Failed to open website in browser"
+msgstr "Échec de l’ouverture du site web dans le navigateur"
+
+#: src/mediathek/view.blp:21
+msgid "e.g. »tagesschau«"
+msgstr "par ex.: « tagesschau »"
+
+#: src/mediathek/view.blp:31
+msgid "Search in…"
+msgstr "Rechercher dans…"
+
+#: src/mediathek/view.blp:37
+msgid "Sort"
+msgstr "Trier"
+
+#: src/mediathek/view.blp:50
+msgid "Search for content"
+msgstr "Rechercher du contenu"
+
+#: src/mediathek/view.blp:51
+msgid "Start typing in the search bar to see a list of matching shows"
+msgstr ""
+"Commencez à taper dans la barre de rechercher pour voir les programmes "
+"correspondants"
+
+#: src/mediathek/view.blp:56
+msgid "No results"
+msgstr "Aucun résultat"
+
+#: src/mediathek/view.blp:57
+msgid "Try different search terms or adjust the search filters"
+msgstr ""
+"Essayez des termes de recherche différents ou ajustez les filtres de "
+"recherche"
+
+#: src/mediathek/view.blp:76
+msgid "Load more"
+msgstr "Plus d’éléments"
+
+#: src/mediathek/view.blp:88
+msgid "Topic"
+msgstr "Sujet"
+
+#: src/mediathek/view.blp:92
+msgid "Title"
+msgstr "Titre"
+
+#: src/mediathek/view.blp:96
+msgid "Description"
+msgstr "Description"
+
+#: src/mediathek/view.blp:100 src/mediathek/view.blp:109
+msgid "Channel"
+msgstr "Chaîne"
+
+#: src/mediathek/view.blp:107
+msgid "Sort By"
+msgstr "Trier par"
+
+#: src/mediathek/view.blp:114
+msgid "Date"
+msgstr "Date"
+
+#: src/mediathek/view.blp:119
+msgid "Duration"
+msgstr "Durée"
+
+#: src/mediathek/view.blp:125
+msgid "Sort Order"
+msgstr "Ordre de tri"
+
+#: src/mediathek/view.blp:127
+msgid "Ascending"
+msgstr "Croissant"
+
+#: src/mediathek/view.blp:132
+msgid "Descending"
+msgstr "Décroissant"
+
+#: src/mediathek/view.rs:298 src/mediathek/view.rs:347
+msgid "Failed to query the MediathekViewWeb API"
+msgstr "Échec de la requête à l’API MediathekViewWeb"
+
+#: src/preferences.blp:14
+msgid "External Programs"
+msgstr "Programmes externes"
+
+#: src/preferences.blp:18
+msgid "Video Player"
+msgstr "Lecteur vidéo"
+
+#: src/preferences.blp:22 src/preferences.blp:34
+msgid "Change"
+msgstr "Modifier"
+
+#: src/preferences.blp:30
+msgid "Video Downloader"
+msgstr "Téléchargeur vidéo"
+
+#. translators:  %b is Month name (short)
+#. %-e is the Day number
+#. %Y is the year (with century)
+#. %H is the hours (24h format)
+#. %M is the minutes
+#: src/utils.rs:55
+msgid "%b %-e, %Y %H:%M"
+msgstr "%-e %b %Y, %H:%M"
+
+#. translators:  %H is the hours (24h format)
+#. %M is the minutes
+#: src/utils.rs:65
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: src/window.blp:34
+msgid "Menu"
+msgstr "Menu"
+
+#: src/window.blp:50
+msgid "Live"
+msgstr "Direct"
+
+#: src/window.blp:56
+msgid "Mediathek"
+msgstr "Médiatèque"
+
+#: src/window.blp:73
+msgid "Preferences"
+msgstr "Préférences"
+
+#: src/window.blp:78
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+#: src/window.blp:83
+msgid "About Televido"
+msgstr "À propos de Televido"
