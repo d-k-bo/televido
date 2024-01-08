@@ -173,7 +173,7 @@ msgid ""
 "https:// URI and is accessible from the context of this application."
 msgstr ""
 "Vous pouvez également spécifier un identifiant d’application personnalisé "
-"(ex.: org.exemple.Application) pour un programme différent qui prend en "
+"(ex.: org.example.Application) pour un programme différent qui prend en "
 "charge l’activation par DBus, capable d’ouvrir une URL https:// et "
 "accessible depuis cette application."
 
