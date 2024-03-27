@@ -1,7 +1,7 @@
 {
   "id": "de.k_bo.Televido.Devel",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "45",
+  "runtime-version": "46",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.rust-stable",
@@ -52,7 +52,7 @@
         {
           "type": "git",
           "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-          "tag": "v0.10.0"
+          "tag": "v0.12.0"
         }
       ]
     },
