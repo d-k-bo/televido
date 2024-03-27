@@ -45,8 +45,7 @@ mod imp {
         }
         async fn load(&self) {
             let client = self.client();
-
-            match tokio(async move {
+            let load_channels = tokio(async move {
                 let list = client
                     .channel_info_list()
                     .await
@@ -71,9 +70,9 @@ mod imp {
                 }
 
                 Ok::<_, eyre::Report>(channels)
-            })
-            .await
-            {
+            });
+
+            match load_channels.await {
                 Ok(channels) => {
                     for (channel_id, channel_info, shows) in channels {
                         let channel = ChannelObject::new(

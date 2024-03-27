@@ -14,7 +14,7 @@ pub struct TvSettings;
 impl TvSettings {
     pub fn get() -> Self {
         thread_local! {
-            static SETTINGS: OnceCell<TvSettings> = OnceCell::new();
+            static SETTINGS: OnceCell<TvSettings> = const { OnceCell::new() };
         }
         SETTINGS.with(|settings| {
             settings

@@ -59,7 +59,7 @@ glib::wrapper! {
 impl TvApplication {
     pub fn get() -> Self {
         thread_local! {
-            static APPLICATION: OnceCell<TvApplication> = OnceCell::new();
+            static APPLICATION: OnceCell<TvApplication> = const { OnceCell::new() };
         }
         APPLICATION.with(|app| {
             app.get_or_init(|| {
