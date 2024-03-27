@@ -183,7 +183,7 @@ mod imp {
     impl ObjectSubclass for ProgramSelector {
         const NAME: &'static str = "ProgramSelector";
         type Type = super::ProgramSelector;
-        type ParentType = gtk::Window;
+        type ParentType = adw::Dialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -228,18 +228,7 @@ mod imp {
                 }
             });
 
-            self.obj().connect_close_request(|slf| {
-                let (selection, waker) = &mut *slf.imp().future_data.borrow_mut();
-                if *selection == ProgramSelection::Pending {
-                    *selection = ProgramSelection::Canceled;
-
-                    if let Some(waker) = waker.take() {
-                        waker.wake();
-                    }
-                }
-
-                glib::Propagation::Proceed
-            });
+            self.obj().connect_close_attempt(|slf| slf.close());
         }
         fn properties() -> &'static [glib::ParamSpec] {
             Self::derived_properties()
@@ -252,12 +241,12 @@ mod imp {
         }
     }
     impl WidgetImpl for ProgramSelector {}
-    impl WindowImpl for ProgramSelector {}
+    impl AdwDialogImpl for ProgramSelector {}
 }
 
 glib::wrapper! {
     pub struct ProgramSelector(ObjectSubclass<imp::ProgramSelector>)
-        @extends gtk::Widget, gtk::Window;
+        @extends gtk::Widget, adw::Dialog;
 }
 
 impl ProgramSelector {
@@ -266,12 +255,8 @@ impl ProgramSelector {
         initial_id: String,
     ) -> Option<ExternalProgram> {
         let application = TvApplication::get();
-        let parent = application.active_window()?;
-
+        let parent = application.window();
         let slf = glib::Object::builder::<Self>()
-            .property("modal", true)
-            .property("application", application)
-            .property("transient-for", parent)
             .property("selected-program", initial_id)
             .build();
 
@@ -285,7 +270,7 @@ impl ProgramSelector {
                 gettext("Select one of the following external programs to download content."),
             ),
         };
-        slf.set_title(Some(&title));
+        slf.set_title(&title);
         slf.set_description(format!(
             "{description}\n<small>{}</small>",
             gettext(
@@ -298,8 +283,22 @@ impl ProgramSelector {
             .set(program_type)
             .expect("already initialized");
         slf.imp().load().await;
+        slf.present(&parent);
 
         ProgramSelectFuture(slf.imp().future_data.clone()).await
+    }
+    fn close(&self) {
+        {
+            let (selection, waker) = &mut *self.imp().future_data.borrow_mut();
+            if *selection == ProgramSelection::Pending {
+                *selection = ProgramSelection::Canceled;
+
+                if let Some(waker) = waker.take() {
+                    waker.wake();
+                }
+            }
+        }
+        self.force_close()
     }
 }
 

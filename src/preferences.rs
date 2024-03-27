@@ -16,8 +16,8 @@ mod imp {
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[template(file = "src/preferences.blp")]
-    #[properties(wrapper_type = super::TvPreferencesWindow)]
-    pub struct TvPreferencesWindow {
+    #[properties(wrapper_type = super::TvPreferencesDialog)]
+    pub struct TvPreferencesDialog {
         #[template_child]
         video_player_row: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -32,7 +32,7 @@ mod imp {
     }
 
     #[gtk::template_callbacks]
-    impl TvPreferencesWindow {
+    impl TvPreferencesDialog {
         #[template_callback]
         async fn select_video_player(&self, #[rest] _: &[glib::Value]) {
             if let Some(player) = ProgramSelector::select_program(
@@ -59,7 +59,7 @@ mod imp {
         }
     }
 
-    impl TvPreferencesWindow {
+    impl TvPreferencesDialog {
         fn update_video_player_display_name(&self) {
             let name = self.settings.video_player_name();
             let id = self.settings.video_player_id();
@@ -87,10 +87,10 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for TvPreferencesWindow {
-        const NAME: &'static str = "TvPreferencesWindow";
-        type Type = super::TvPreferencesWindow;
-        type ParentType = adw::PreferencesWindow;
+    impl ObjectSubclass for TvPreferencesDialog {
+        const NAME: &'static str = "TvPreferencesDialog";
+        type Type = super::TvPreferencesDialog;
+        type ParentType = adw::PreferencesDialog;
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -103,7 +103,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for TvPreferencesWindow {
+    impl ObjectImpl for TvPreferencesDialog {
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -124,25 +124,18 @@ mod imp {
             );
         }
     }
-    impl WidgetImpl for TvPreferencesWindow {}
-    impl WindowImpl for TvPreferencesWindow {}
-    impl AdwWindowImpl for TvPreferencesWindow {}
-    impl PreferencesWindowImpl for TvPreferencesWindow {}
+    impl WidgetImpl for TvPreferencesDialog {}
+    impl AdwDialogImpl for TvPreferencesDialog {}
+    impl PreferencesDialogImpl for TvPreferencesDialog {}
 }
 
 glib::wrapper! {
-    pub struct TvPreferencesWindow(ObjectSubclass<imp::TvPreferencesWindow>)
-        @extends gtk::Widget, gtk::Window, adw::Window, adw::PreferencesWindow;
+    pub struct TvPreferencesDialog(ObjectSubclass<imp::TvPreferencesDialog>)
+        @extends gtk::Widget, adw::Dialog, adw::PreferencesDialog;
 }
 
-impl TvPreferencesWindow {
-    pub fn new(parent: Option<&impl IsA<gtk::Window>>) -> Self {
-        match parent {
-            Some(parent) => glib::Object::builder()
-                .property("modal", true)
-                .property("transient-for", parent)
-                .build(),
-            None => glib::Object::new(),
-        }
+impl TvPreferencesDialog {
+    pub fn new() -> Self {
+        glib::Object::new()
     }
 }

@@ -9,7 +9,7 @@ use gettextrs::gettext;
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
     launcher::{ExternalProgram, ExternalProgramType, ProgramSelector},
-    preferences::TvPreferencesWindow,
+    preferences::TvPreferencesDialog,
     settings::TvSettings,
     utils::{show_error, spawn_clone, tokio},
     window::TvWindow,
@@ -38,11 +38,7 @@ mod imp {
 
     impl ApplicationImpl for TvApplication {
         fn activate(&self) {
-            let application = self.obj();
-            application
-                .active_window()
-                .unwrap_or_else(|| TvWindow::new(&application).upcast())
-                .present();
+            self.obj().window().present();
         }
     }
 
@@ -72,6 +68,7 @@ impl TvApplication {
             .clone()
         })
     }
+
     pub fn new() -> Self {
         Self::get()
     }
@@ -89,6 +86,14 @@ impl TvApplication {
                 conn
             }
         }
+    }
+
+    pub fn window(&self) -> TvWindow {
+        self.active_window().and_downcast().unwrap_or_else(|| {
+            let win = TvWindow::new(self);
+            win.present();
+            win
+        })
     }
 
     pub async fn play(&self, uri: String) {
@@ -181,9 +186,7 @@ impl TvApplication {
             .activate(move |app: &Self, _, _| app.show_about())
             .build();
         let preferences_action = gio::ActionEntry::builder("preferences")
-            .activate(move |app: &Self, _, _| {
-                TvPreferencesWindow::new(app.active_window().as_ref()).present()
-            })
+            .activate(move |app: &Self, _, _| TvPreferencesDialog::new().present(&app.window()))
             .build();
         let play_action = gio::ActionEntry::builder("play")
             .parameter_type(Some(glib::VariantTy::STRING))
@@ -218,9 +221,7 @@ impl TvApplication {
     }
 
     fn show_about(&self) {
-        let window = self.active_window().unwrap();
-        let about = adw::AboutWindow::builder()
-            .transient_for(&window)
+        let about = adw::AboutDialog::builder()
             .application_name(APP_NAME)
             .application_icon(APP_ID)
             .developer_name(AUTHOR)
@@ -230,6 +231,6 @@ impl TvApplication {
             .license_type(gtk::License::Gpl30)
             .build();
 
-        about.present();
+        about.present(&self.window());
     }
 }

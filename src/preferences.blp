@@ -1,39 +1,34 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $TvPreferencesWindow : Adw.PreferencesWindow {
-	default-width: 600;
-	default-height: 250;
+template $TvPreferencesDialog: Adw.PreferencesDialog {
+	follows-content-size: true;
 
 	Adw.PreferencesPage {
-
 		Adw.PreferencesGroup {
 			title: _("External Programs");
 			name: "external-programs";
 
-			Adw.ActionRow video_player_row {		
+			Adw.ActionRow video_player_row {
 				title: _("Video Player");
 				subtitle: bind template.video-player-display-name;
 
 				Gtk.Button {
 					label: _("Change");
 					valign: center;
-					
 					clicked => $select_video_player() swapped;
 				}
 			}
 
-			Adw.ActionRow video_downloader_row {		
+			Adw.ActionRow video_downloader_row {
 				title: _("Video Downloader");
 				subtitle: bind template.video-downloader-display-name;
 
 				Gtk.Button {
 					label: _("Change");
 					valign: center;
-					
 					clicked => $select_video_downloader() swapped;
 				}
 			}
