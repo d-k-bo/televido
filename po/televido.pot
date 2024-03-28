@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-11-17 14:48+0100\n"
+"POT-Creation-Date: 2024-03-28 18:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,39 +50,47 @@ msgid ""
 "Parabolic."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:56
+#: data/de.k_bo.Televido.metainfo.xml.in:59
+msgid "Use adaptive dialogs for preferences, player selector and about dialog"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:60
+msgid "Added French translation"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:67
 msgid "Added support for downloading content using Parabolic"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:57
+#: data/de.k_bo.Televido.metainfo.xml.in:68
 msgid "Added Dutch translation"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:64
+#: data/de.k_bo.Televido.metainfo.xml.in:75
 msgid "Added support for mobile devices"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:71
+#: data/de.k_bo.Televido.metainfo.xml.in:82
 msgid "Added support for custom video players"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:72
+#: data/de.k_bo.Televido.metainfo.xml.in:83
 msgid "Added support Daikhan as a video player"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:78
+#: data/de.k_bo.Televido.metainfo.xml.in:89
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:83
+#: data/de.k_bo.Televido.metainfo.xml.in:94
 msgid "Initital release"
 msgstr ""
 
-#: src/application.rs:129
+#: src/application.rs:134
 msgid "Failed to play video stream"
 msgstr ""
 
-#: src/application.rs:172
+#: src/application.rs:177
 msgid "Failed to launch video downloader"
 msgstr ""
 
@@ -106,15 +114,15 @@ msgstr ""
 msgid "Quit application"
 msgstr ""
 
-#: src/launcher/selector.blp:18
+#: src/launcher/selector.blp:19
 msgid "Cancel"
 msgstr ""
 
-#: src/launcher/selector.blp:24
+#: src/launcher/selector.blp:25
 msgid "Confirm"
 msgstr ""
 
-#: src/launcher/selector.blp:38
+#: src/launcher/selector.blp:41
 msgid "Custom program"
 msgstr ""
 
@@ -131,23 +139,23 @@ msgstr ""
 msgid "See the terminal output for details."
 msgstr ""
 
-#: src/launcher/selector.rs:280
+#: src/launcher/selector.rs:265
 msgid "Select video player"
 msgstr ""
 
-#: src/launcher/selector.rs:281
+#: src/launcher/selector.rs:266
 msgid "Select one of the following external programs to stream content."
 msgstr ""
 
-#: src/launcher/selector.rs:284
+#: src/launcher/selector.rs:269
 msgid "Select video downloader"
 msgstr ""
 
-#: src/launcher/selector.rs:285
+#: src/launcher/selector.rs:270
 msgid "Select one of the following external programs to download content."
 msgstr ""
 
-#: src/launcher/selector.rs:292
+#: src/launcher/selector.rs:277
 msgid ""
 "You can also specify a custom application ID (e.g. org.example.Application) "
 "of a different program that supports DBus activation, is able to open a "
@@ -159,11 +167,11 @@ msgid "Play"
 msgstr ""
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
-#: src/live/view.rs:62
+#: src/live/view.rs:61
 msgid "Failed load shows for channel “{}”"
 msgstr ""
 
-#: src/live/view.rs:106
+#: src/live/view.rs:105
 msgid "Failed to load livestream channels"
 msgstr ""
 
@@ -271,19 +279,19 @@ msgstr ""
 msgid "Failed to query the MediathekViewWeb API"
 msgstr ""
 
-#: src/preferences.blp:14
+#: src/preferences.blp:11
 msgid "External Programs"
 msgstr ""
 
-#: src/preferences.blp:18
+#: src/preferences.blp:15
 msgid "Video Player"
 msgstr ""
 
-#: src/preferences.blp:22 src/preferences.blp:34
+#: src/preferences.blp:19 src/preferences.blp:30
 msgid "Change"
 msgstr ""
 
-#: src/preferences.blp:30
+#: src/preferences.blp:26
 msgid "Video Downloader"
 msgstr ""
 

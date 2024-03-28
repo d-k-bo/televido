@@ -20,6 +20,9 @@
 			Clapper, Daikhan. Currently supported downloaders: Parabolic.
 		</p>
 	</description>
+	<developer id="de.k-bo">
+		<name translate="no">d-k-bo</name>
+	</developer>
 	<launchable type="desktop-id">de.k_bo.Televido.desktop</launchable>
 	<screenshots>
 		<screenshot type="default">
@@ -50,6 +53,14 @@
 		<control>touch</control>
 	</supports>
 	<releases>
+		<release version="0.3.0" date="2023-03-28">
+			<description>
+				<ul>
+					<li>Use adaptive dialogs for preferences, player selector and about dialog</li>
+					<li>Added French translation</li>
+				</ul>
+			</description>
+		</release>
 		<release version="0.2.0" date="2023-11-17">
 			<description>
 				<ul>

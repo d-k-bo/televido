@@ -1,7 +1,7 @@
 project(
   'televido',
   'rust',
-  version: '0.2.0',
+  version: '0.3.0',
   meson_version: '>= 0.61.0',
 )
 
@@ -28,7 +28,7 @@ endif
 meson.add_dist_script(
   'build-aux/dist-vendor.sh',
   meson.project_build_root() / 'meson-dist' / meson.project_name() + '-' + meson.project_version(),
-  meson.project_source_root()
+  meson.project_source_root(),
 )
 
 CONFIG = {
@@ -41,7 +41,7 @@ CONFIG = {
   'AUTHOR': 'David Cabot',
   'PROJECT_URL': 'https://github.com/d-k-bo/televido',
   'ISSUE_URL': 'https://github.com/d-k-bo/televido/issues',
-  'LOCALEDIR': get_option('prefix')/ get_option('localedir'),
+  'LOCALEDIR': get_option('prefix') / get_option('localedir'),
   'PKGDATADIR': get_option('prefix') / get_option('datadir') / meson.project_name(),
 }
 
@@ -52,5 +52,5 @@ subdir('src')
 gnome.post_install(
   glib_compile_schemas: true,
   gtk_update_icon_cache: true,
-  update_desktop_database: true
+  update_desktop_database: true,
 )

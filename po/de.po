@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2023-11-17 14:48+0100\n"
-"PO-Revision-Date: 2023-11-17 14:56+0100\n"
+"POT-Creation-Date: 2024-03-28 18:56+0100\n"
+"PO-Revision-Date: 2024-03-28 18:58+0100\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
@@ -65,40 +65,50 @@ msgstr ""
 "GNOME Videos (Totem), Celluloid, Clapper, Daikhan. Derzeit unterstütze "
 "Videodownloader: Parabolic."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:56
+#: data/de.k_bo.Televido.metainfo.xml.in:59
+msgid "Use adaptive dialogs for preferences, player selector and about dialog"
+msgstr ""
+"Für Einstellungen, Playerauswahl und „Über“-Dialog werden nun adaptive "
+"Dialoge verwendet"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:60
+msgid "Added French translation"
+msgstr "Übersetzung ins Französische hinzugefügt"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:67
 msgid "Added support for downloading content using Parabolic"
 msgstr "Videodownload mittels Parabolic wird nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:57
+#: data/de.k_bo.Televido.metainfo.xml.in:68
 msgid "Added Dutch translation"
 msgstr "Übersetzung ins Niederländische hinzugefügt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:64
+#: data/de.k_bo.Televido.metainfo.xml.in:75
 msgid "Added support for mobile devices"
 msgstr "Mobile Geräte werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:71
+#: data/de.k_bo.Televido.metainfo.xml.in:82
 msgid "Added support for custom video players"
 msgstr "Benutzerdefinierte Videoplayer werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:72
+#: data/de.k_bo.Televido.metainfo.xml.in:83
 msgid "Added support Daikhan as a video player"
 msgstr "Daikhan wird nun als Videoplayer unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:78
+#: data/de.k_bo.Televido.metainfo.xml.in:89
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 "Wenn ein Fehler auftritt, wird eine graphische Fehlermeldung angezeigt."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:83
+#: data/de.k_bo.Televido.metainfo.xml.in:94
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 
-#: src/application.rs:129
+#: src/application.rs:134
 msgid "Failed to play video stream"
 msgstr "Videostream konnte nicht abgespielt werden"
 
-#: src/application.rs:172
+#: src/application.rs:177
 msgid "Failed to launch video downloader"
 msgstr "Videodownloader konnte nicht gestartet werden"
 
@@ -122,15 +132,15 @@ msgstr "Neu laden"
 msgid "Quit application"
 msgstr "Anwendung beenden"
 
-#: src/launcher/selector.blp:18
+#: src/launcher/selector.blp:19
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/launcher/selector.blp:24
+#: src/launcher/selector.blp:25
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: src/launcher/selector.blp:38
+#: src/launcher/selector.blp:41
 msgid "Custom program"
 msgstr "Benutzerdefiniertes Programm"
 
@@ -147,26 +157,26 @@ msgstr "Externe Anwendungen konnten nicht geladen werden."
 msgid "See the terminal output for details."
 msgstr "In den Programm-Logs finden Sie weitere Details."
 
-#: src/launcher/selector.rs:280
+#: src/launcher/selector.rs:265
 msgid "Select video player"
 msgstr "Videoplayer auswählen"
 
-#: src/launcher/selector.rs:281
+#: src/launcher/selector.rs:266
 msgid "Select one of the following external programs to stream content."
 msgstr ""
 "Wählen Sie eines der folgenden externen Programme zum Streamen von Inhalten"
 
-#: src/launcher/selector.rs:284
+#: src/launcher/selector.rs:269
 msgid "Select video downloader"
 msgstr "Videodownloader auswählen"
 
-#: src/launcher/selector.rs:285
+#: src/launcher/selector.rs:270
 msgid "Select one of the following external programs to download content."
 msgstr ""
 "Wählen Sie eines der folgenden externen Programme zum Herunterladen von "
 "Inhalten"
 
-#: src/launcher/selector.rs:292
+#: src/launcher/selector.rs:277
 msgid ""
 "You can also specify a custom application ID (e.g. org.example.Application) "
 "of a different program that supports DBus activation, is able to open a "
@@ -182,11 +192,11 @@ msgid "Play"
 msgstr "Abspielen"
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
-#: src/live/view.rs:62
+#: src/live/view.rs:61
 msgid "Failed load shows for channel “{}”"
 msgstr "Sendungen für Sender „{}“ konnten nicht geladen werden"
 
-#: src/live/view.rs:106
+#: src/live/view.rs:105
 msgid "Failed to load livestream channels"
 msgstr "Livestream-Sender konnten nicht geladen werden"
 
@@ -296,19 +306,19 @@ msgstr "Absteigend"
 msgid "Failed to query the MediathekViewWeb API"
 msgstr "Daten von der MediathekViewWeb-API konnten nicht abgerufen werden"
 
-#: src/preferences.blp:14
+#: src/preferences.blp:11
 msgid "External Programs"
 msgstr "Externe Programme"
 
-#: src/preferences.blp:18
+#: src/preferences.blp:15
 msgid "Video Player"
 msgstr "Videoplayer"
 
-#: src/preferences.blp:22 src/preferences.blp:34
+#: src/preferences.blp:19 src/preferences.blp:30
 msgid "Change"
 msgstr "Ändern"
 
-#: src/preferences.blp:30
+#: src/preferences.blp:26
 msgid "Video Downloader"
 msgstr "Videodownloader"
 
