@@ -18,6 +18,7 @@
 #![allow(clippy::new_without_default)]
 
 mod application;
+mod channel_icons;
 mod config;
 mod launcher;
 mod live;
@@ -26,6 +27,7 @@ mod preferences;
 mod settings;
 mod utils;
 mod window;
+mod zapp;
 
 use self::{
     application::TvApplication,

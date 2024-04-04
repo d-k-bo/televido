@@ -7,11 +7,12 @@ use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 
 use crate::{
+    channel_icons::load_channel_icon,
     settings::{TvSettings, VideoQuality},
-    utils::{load_channel_icon, show_error, spawn},
+    utils::{show_error, spawn},
 };
 
-use super::{channels::Channel, shows::ShowObject};
+use super::shows::ShowObject;
 
 mod imp {
     use super::*;
@@ -33,13 +34,11 @@ mod imp {
     }
     impl TvMediathekCard {
         fn set_icon(&self) {
-            let icon_name = self
-                .obj()
-                .show()
-                .and_then(|c| c.channel().parse::<Channel>().ok())
-                .map(|c| c.icon_name());
-
-            load_channel_icon(&self.icon, icon_name);
+            load_channel_icon(
+                self.obj().show().map(|c| c.channel()).as_deref(),
+                &self.icon,
+                64,
+            )
         }
     }
 

@@ -1,0 +1,36 @@
+// Copyright 2023 David Cabot
+// SPDX-License-Identifier: GPL-3.0-or-later
+using Gtk 4.0;
+using Adw 1;
+
+template $TvLiveChannelSelectorRow: Adw.ActionRow {
+  title: bind template.channel-name;
+  selectable: false;
+
+  [prefix]
+  Gtk.Image icon {}
+
+  [prefix]
+  Gtk.Image {
+    icon-name: "list-drag-handle-symbolic";
+  }
+
+  [suffix]
+  Gtk.Switch switch {
+    valign: center;
+    active: bind template.visible;
+    state: bind template.visible bidirectional;
+  }
+
+  Gtk.DragSource drag_source {
+    actions: move;
+    prepare => $drag_prepare() swapped;
+    drag-begin => $drag_begin() swapped;
+  }
+
+  Gtk.DropTarget drop_target {
+    actions: move;
+    formats: "TvLiveChannelSelectorRow";
+    drop => $drop() swapped;
+  }
+}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-04-04 20:08+0200\n"
+"POT-Creation-Date: 2024-04-06 13:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,11 +86,15 @@ msgstr ""
 msgid "Initital release"
 msgstr ""
 
-#: src/application.rs:134
+#: src/application.rs:98 src/live/view.rs:126
+msgid "Failed to load livestream channels"
+msgstr ""
+
+#: src/application.rs:183
 msgid "Failed to play video stream"
 msgstr ""
 
-#: src/application.rs:177
+#: src/application.rs:226
 msgid "Failed to launch video downloader"
 msgstr ""
 
@@ -114,15 +118,15 @@ msgstr ""
 msgid "Quit application"
 msgstr ""
 
-#: src/launcher/selector.blp:19
+#: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr ""
 
-#: src/launcher/selector.blp:25
+#: src/launcher/selector.blp:24
 msgid "Confirm"
 msgstr ""
 
-#: src/launcher/selector.blp:41
+#: src/launcher/selector.blp:40
 msgid "Custom program"
 msgstr ""
 
@@ -135,7 +139,7 @@ msgstr ""
 msgid "Failed to load external applications"
 msgstr ""
 
-#: src/launcher/selector.rs:173 src/utils.rs:183
+#: src/launcher/selector.rs:173 src/utils.rs:101
 msgid "See the terminal output for details."
 msgstr ""
 
@@ -167,12 +171,8 @@ msgid "Play"
 msgstr ""
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
-#: src/live/view.rs:61
+#: src/live/view.rs:63
 msgid "Failed load shows for channel “{}”"
-msgstr ""
-
-#: src/live/view.rs:105
-msgid "Failed to load livestream channels"
 msgstr ""
 
 #: src/mediathek/card.blp:106
@@ -199,7 +199,7 @@ msgstr ""
 msgid "Low Quality"
 msgstr ""
 
-#: src/mediathek/card.rs:178
+#: src/mediathek/card.rs:177
 msgid "Failed to open website in browser"
 msgstr ""
 
@@ -279,20 +279,44 @@ msgstr ""
 msgid "Failed to query the MediathekViewWeb API"
 msgstr ""
 
-#: src/preferences.blp:11
+#: src/preferences/dialog.blp:9
 msgid "External Programs"
 msgstr ""
 
-#: src/preferences.blp:15
+#: src/preferences/dialog.blp:13
 msgid "Video Player"
 msgstr ""
 
-#: src/preferences.blp:19 src/preferences.blp:30
+#: src/preferences/dialog.blp:17 src/preferences/dialog.blp:28
 msgid "Change"
 msgstr ""
 
-#: src/preferences.blp:26
+#: src/preferences/dialog.blp:24
 msgid "Video Downloader"
+msgstr ""
+
+#: src/preferences/dialog.blp:36
+msgid "Live Channels"
+msgstr ""
+
+#: src/preferences/dialog.blp:40 src/preferences/live/selector.blp:7
+msgid "Select and reorder channels"
+msgstr ""
+
+#: src/preferences/live/selector.blp:15
+msgid "Visible channels"
+msgstr ""
+
+#: src/preferences/live/selector.blp:35
+msgid "Hidden channels"
+msgstr ""
+
+#: src/preferences/live/selector.blp:51
+msgid "Sort alphabetically"
+msgstr ""
+
+#: src/preferences/live/selector.blp:56
+msgid "Sort using default order"
 msgstr ""
 
 #. translators:  %b is Month name (short)
@@ -300,13 +324,13 @@ msgstr ""
 #. %Y is the year (with century)
 #. %H is the hours (24h format)
 #. %M is the minutes
-#: src/utils.rs:55
+#: src/utils.rs:60
 msgid "%b %-e, %Y %H:%M"
 msgstr ""
 
 #. translators:  %H is the hours (24h format)
 #. %M is the minutes
-#: src/utils.rs:65
+#: src/utils.rs:70
 msgid "%H:%M"
 msgstr ""
 

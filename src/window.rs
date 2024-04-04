@@ -92,7 +92,7 @@ mod imp {
 glib::wrapper! {
     pub struct TvWindow(ObjectSubclass<imp::TvWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionGroup, gio::ActionMap;
+        @implements gio::ActionGroup, gio::ActionMap, gtk::Native;
 }
 
 impl TvWindow {

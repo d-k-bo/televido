@@ -10,12 +10,13 @@ use crate::{
     settings::TvSettings,
 };
 
-mod imp {
+use super::live::TvLiveChannelSelector;
 
+mod imp {
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
-    #[template(file = "src/preferences.blp")]
+    #[template(file = "src/preferences/dialog.blp")]
     #[properties(wrapper_type = super::TvPreferencesDialog)]
     pub struct TvPreferencesDialog {
         #[template_child]
@@ -56,6 +57,10 @@ mod imp {
                 self.settings.set_video_downloader_name(&downloader.name);
                 self.settings.set_video_downloader_id(&downloader.id);
             }
+        }
+        #[template_callback]
+        async fn select_live_channels(&self, #[rest] _: &[glib::Value]) {
+            self.obj().push_subpage(&TvLiveChannelSelector::new())
         }
     }
 

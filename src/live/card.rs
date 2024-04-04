@@ -8,9 +8,12 @@ use std::{
 
 use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
-use crate::utils::{load_channel_icon, spawn, tokio};
+use crate::{
+    channel_icons::load_channel_icon,
+    utils::{spawn, tokio},
+};
 
-use super::channels::{Channel, ChannelObject};
+use super::channels::ChannelObject;
 
 mod imp {
     use super::*;
@@ -41,13 +44,11 @@ mod imp {
 
     impl TvLiveCard {
         fn set_icon(&self) {
-            let icon_name = self
-                .obj()
-                .channel()
-                .and_then(|c| c.id().parse::<Channel>().ok())
-                .map(|c| c.icon_name());
-
-            load_channel_icon(&self.icon, icon_name);
+            load_channel_icon(
+                self.obj().channel().map(|c| c.id()).as_deref(),
+                &self.icon,
+                64,
+            )
         }
     }
 

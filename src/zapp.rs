@@ -1,4 +1,4 @@
-// Copyright (c) 2023 d-k-bo
+// Copyright (c) 2023-2024 d-k-bo
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+use adw::glib;
 use indexmap::IndexMap;
 use serde::Deserialize;
 use time::OffsetDateTime;
@@ -66,7 +67,7 @@ impl Zapp {
 
 pub type ChannelInfoList = IndexMap<ChannelId, ChannelInfo>;
 
-#[derive(Clone, Debug, Eq, Hash, PartialEq, Deserialize)]
+#[derive(Clone, Debug, Default, Eq, Hash, PartialEq, Deserialize, glib::ValueDelegate)]
 pub struct ChannelId(String);
 impl AsRef<str> for ChannelId {
     fn as_ref(&self) -> &str {
@@ -76,6 +77,11 @@ impl AsRef<str> for ChannelId {
 impl std::fmt::Display for ChannelId {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_str(self.as_ref())
+    }
+}
+impl From<String> for ChannelId {
+    fn from(s: String) -> Self {
+        Self(s)
     }
 }
 

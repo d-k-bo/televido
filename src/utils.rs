@@ -1,18 +1,23 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use std::{future::Future, sync::OnceLock, time::Duration};
-
-use adw::{
-    glib,
-    gtk::{self, gdk, gdk_pixbuf},
-    prelude::*,
+use std::{
+    cell::{OnceCell, RefCell},
+    fmt::Debug,
+    future::Future,
+    pin::Pin,
+    rc::Rc,
+    sync::OnceLock,
+    task::{Poll, Waker},
+    time::Duration,
 };
-use eyre::WrapErr;
+
+use adw::{gio, glib, gtk, prelude::*};
 use gettextrs::gettext;
-use tracing::error;
 
 use crate::{application::TvApplication, window::TvWindow};
+
+pub use self::async_resource::AsyncResource;
 
 pub async fn tokio<Fut, T>(fut: Fut) -> T
 where
@@ -84,93 +89,6 @@ pub fn format_duration(duration: &Duration) -> String {
     }
 }
 
-macro_rules! channel_mapping {
-    (
-        $( #[ $attrs:meta ] )*
-        pub enum $Enum:ident {
-            $(
-                #[channel(name = $name:literal, icon = $icon:literal)]
-                $Variant:ident,
-            )+
-        }
-    ) => {
-        $( #[ $attrs ] )*
-        pub enum $Enum {
-            $( $Variant, )+
-        }
-        impl $Enum {
-            #[allow(dead_code)]
-            pub fn all() -> &'static [Self] {
-                static ALL: &[$Enum] = &[ $( $Enum::$Variant ),+ ];
-                ALL
-            }
-            pub fn icon_name(&self) -> &'static str {
-                match self {
-                    $( $Enum::$Variant => $icon, )+
-                }
-            }
-        }
-        impl std::str::FromStr for $Enum {
-            type Err = ();
-
-            fn from_str(s: &str) -> Result<Self, Self::Err> {
-                match s {
-                    $( $name => Ok($Enum::$Variant), )+
-                    _ => Err(())
-                }
-            }
-        }
-        impl std::fmt::Display for $Enum {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-                f.write_str(
-                    match self {
-                        $( $Enum::$Variant => $name, )+
-                    }
-                )
-            }
-        }
-    };
-}
-pub(crate) use channel_mapping;
-
-pub fn load_channel_icon(image: &gtk::Image, icon_name: Option<&'static str>) {
-    let Some(icon_name) = icon_name else {
-        image.set_icon_name(Some("image-missing-symbolic"));
-        return;
-    };
-
-    let style_manager = TvApplication::get().style_manager();
-
-    set_icon(&style_manager, image, icon_name);
-
-    style_manager.connect_dark_notify(glib::clone!(@weak image => move |style_manager| {
-        set_icon(style_manager, &image, icon_name)
-    }));
-
-    fn set_icon(style_manager: &adw::StyleManager, image: &gtk::Image, icon_name: &str) {
-        match load_icon(style_manager, icon_name) {
-            Ok(texture) => image.set_from_paintable(Some(&texture)),
-            Err(e) => {
-                error!("{e:?}");
-                image.set_icon_name(Some("image-missing-symbolic"));
-            }
-        }
-    }
-
-    fn load_icon(style_manager: &adw::StyleManager, icon_name: &str) -> eyre::Result<gdk::Texture> {
-        let resource = if style_manager.is_dark() {
-            format!("/de/k_bo/televido/icons/scalable/channels/dark/{icon_name}",)
-        } else {
-            format!("/de/k_bo/televido/icons/scalable/channels/light/{icon_name}",)
-        };
-
-        // load image manually with given size to avoid blurriness caused by scaling after rasterization
-        gdk_pixbuf::Pixbuf::from_resource_at_scale(&resource, 64, 64, true)
-            .map(|pixbuf| gdk::Texture::for_pixbuf(&pixbuf))
-            .wrap_err_with(|| format!("failed to load channel logo from {resource}"))
-    }
-}
-
 pub fn show_error(e: eyre::Report) {
     if let Some(window) = TvApplication::get()
         .active_window()
@@ -186,4 +104,106 @@ pub fn show_error(e: eyre::Report) {
         );
     }
     tracing::error!("{e:?}");
+}
+
+pub trait ListStoreExtManual {
+    fn typed_insert_sorted<T: IsA<glib::Object>>(
+        &self,
+        item: &T,
+        compare_func: impl FnMut(&T, &T) -> std::cmp::Ordering,
+    ) -> u32;
+    fn typed_sort<T: IsA<glib::Object>>(
+        &self,
+        compare_func: impl FnMut(&T, &T) -> std::cmp::Ordering,
+    );
+}
+
+impl ListStoreExtManual for gio::ListStore {
+    fn typed_insert_sorted<T: IsA<glib::Object>>(
+        &self,
+        item: &T,
+        mut compare_func: impl FnMut(&T, &T) -> std::cmp::Ordering,
+    ) -> u32 {
+        self.insert_sorted(item, |a, b| {
+            compare_func(a.downcast_ref().unwrap(), b.downcast_ref().unwrap())
+        })
+    }
+    fn typed_sort<T: IsA<glib::Object>>(
+        &self,
+        mut compare_func: impl FnMut(&T, &T) -> std::cmp::Ordering,
+    ) {
+        self.sort(|a, b| compare_func(a.downcast_ref().unwrap(), b.downcast_ref().unwrap()))
+    }
+}
+
+mod async_resource {
+    use super::*;
+
+    #[derive(Clone, Default)]
+    pub struct AsyncResource<T: Clone + Debug> {
+        inner: Rc<AsyncResourceInner<T>>,
+    }
+
+    impl<T: Clone + Debug> std::fmt::Debug for AsyncResource<T> {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str(std::any::type_name::<Self>())
+        }
+    }
+
+    #[derive(Default)]
+    struct AsyncResourceInner<T: Clone + Debug> {
+        data: RefCell<Option<T>>,
+        load_fn: OnceCell<LoadFn<T>>,
+        wakers: RefCell<Vec<Waker>>,
+    }
+
+    type LoadFn<T> = Rc<dyn Fn() -> Pin<Box<dyn Future<Output = T> + 'static>>>;
+
+    impl<T: Clone + Debug> AsyncResource<T> {
+        #[track_caller]
+        pub fn set_load_fn(
+            &self,
+            load_fn: impl Fn() -> Pin<Box<dyn Future<Output = T> + 'static>> + 'static,
+        ) {
+            if self.inner.load_fn.set(Rc::new(load_fn)).is_err() {
+                panic!("Resource load function has already been initialized")
+            }
+        }
+    }
+
+    impl<T: 'static + Clone + Debug> AsyncResource<T> {
+        pub fn load(&self) {
+            match self.inner.load_fn.get().cloned() {
+                Some(load_fn) => {
+                    let inner = self.inner.clone();
+                    spawn(async move {
+                        *inner.data.borrow_mut() = None;
+                        let data = load_fn().await;
+                        *inner.data.borrow_mut() = Some(data);
+                        for waker in inner.wakers.borrow_mut().drain(..) {
+                            waker.wake();
+                        }
+                    });
+                }
+                None => panic!("Resource load function has not been initialized"),
+            }
+        }
+    }
+
+    impl<T: Clone + Debug> Future for AsyncResource<T> {
+        type Output = T;
+
+        fn poll(
+            self: std::pin::Pin<&mut Self>,
+            cx: &mut std::task::Context<'_>,
+        ) -> std::task::Poll<Self::Output> {
+            match &*self.inner.data.borrow() {
+                Some(data) => Poll::Ready(data.clone()),
+                None => {
+                    self.inner.wakers.borrow_mut().push(cx.waker().clone());
+                    Poll::Pending
+                }
+            }
+        }
+    }
 }

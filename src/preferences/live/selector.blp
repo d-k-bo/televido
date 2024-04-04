@@ -1,0 +1,60 @@
+// Copyright 2023 David Cabot
+// SPDX-License-Identifier: GPL-3.0-or-later
+using Gtk 4.0;
+using Adw 1;
+
+template $TvLiveChannelSelector: Adw.NavigationPage {
+  title: _("Select and reorder channels");
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        title: _("Visible channels");
+        name: "visible-channels";
+
+        header-suffix: Gtk.MenuButton {
+          icon-name: "view-more-symbolic";
+          menu-model: sort_menu;
+
+          styles [
+            "flat"
+          ]
+        };
+
+        Gtk.ListBox visible_channel_rows {
+          styles [
+            "boxed-list"
+          ]
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Hidden channels");
+        name: "hidden-channels";
+
+        Gtk.ListBox hidden_channel_rows {
+          styles [
+            "boxed-list"
+          ]
+        }
+      }
+    }
+  }
+}
+
+menu sort_menu {
+  section {
+    item {
+      label: _("Sort alphabetically");
+      action: "live-channel-selector.sort-alphabetically";
+    }
+
+    item {
+      label: _("Sort using default order");
+      action: "live-channel-selector.sort-default-order";
+    }
+  }
+}

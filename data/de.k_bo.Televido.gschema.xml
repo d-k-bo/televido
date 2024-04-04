@@ -50,5 +50,8 @@
 		<key name="default-playback-quality" type="s">
 			<default>"high"</default>
 		</key>
+		<key name="live-channels" type="as">
+			<default>[]</default>
+		</key>
 	</schema>
 </schemalist>

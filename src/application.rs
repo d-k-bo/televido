@@ -1,25 +1,36 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use std::{cell::OnceCell, sync::OnceLock};
+use std::{
+    cell::OnceCell,
+    rc::Rc,
+    sync::{Arc, OnceLock},
+};
 
 use adw::{gio, glib, prelude::*, subclass::prelude::*};
+use eyre::WrapErr;
 use gettextrs::gettext;
+use smart_default::SmartDefault;
 
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
     launcher::{ExternalProgram, ExternalProgramType, ProgramSelector},
     preferences::TvPreferencesDialog,
     settings::TvSettings,
-    utils::{show_error, spawn_clone, tokio},
+    utils::{show_error, spawn, spawn_clone, tokio, AsyncResource},
     window::TvWindow,
+    zapp::Zapp,
 };
 
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default)]
-    pub struct TvApplication {}
+    #[derive(Debug, SmartDefault)]
+    pub struct TvApplication {
+        #[default(Arc::new(Zapp::new().expect("failed to initialize Zapp client")))]
+        pub(super) zapp: Arc<Zapp>,
+        pub(super) live_channels: AsyncResource<Rc<crate::zapp::ChannelInfoList>>,
+    }
 
     #[glib::object_subclass]
     impl ObjectSubclass for TvApplication {
@@ -52,25 +63,55 @@ glib::wrapper! {
         @implements gio::ActionGroup, gio::ActionMap;
 }
 
-impl TvApplication {
-    pub fn get() -> Self {
-        thread_local! {
-            static APPLICATION: OnceCell<TvApplication> = const { OnceCell::new() };
-        }
-        APPLICATION.with(|app| {
-            app.get_or_init(|| {
-                glib::Object::builder()
-                    .property("application-id", APP_ID)
-                    .property("flags", gio::ApplicationFlags::FLAGS_NONE)
-                    .property("resource-base-path", "/de/k_bo/televido")
-                    .build()
-            })
-            .clone()
-        })
-    }
+thread_local! {
+    static APPLICATION: OnceCell<TvApplication> = const { OnceCell::new() };
+}
 
+impl TvApplication {
     pub fn new() -> Self {
-        Self::get()
+        let slf: Self = glib::Object::builder()
+            .property("application-id", APP_ID)
+            .property("flags", gio::ApplicationFlags::FLAGS_NONE)
+            .property("resource-base-path", "/de/k_bo/televido")
+            .build();
+
+        APPLICATION.with(|app| {
+            app.set(slf.clone())
+                .expect("TvApplication may only be created once")
+        });
+
+        let live_channels = slf.live_channels();
+        live_channels.set_load_fn({
+            let zapp = slf.zapp();
+            move || {
+                let zapp = zapp.clone();
+                Box::pin(async move {
+                    match tokio(async move {
+                        zapp.channel_info_list()
+                            .await
+                            .wrap_err("Failed to load channel info list")
+                    })
+                    .await
+                    {
+                        Ok(channels) => Rc::new(channels),
+                        Err(e) => {
+                            show_error(e.wrap_err(gettext("Failed to load livestream channels")));
+                            Default::default()
+                        }
+                    }
+                })
+            }
+        });
+        spawn(async move { live_channels.load() });
+
+        slf
+    }
+    pub fn get() -> Self {
+        APPLICATION.with(|app| {
+            app.get()
+                .expect("TvApplication::get() may only be called from the main thread")
+                .clone()
+        })
     }
 
     pub async fn dbus() -> zbus::Connection {
@@ -94,6 +135,14 @@ impl TvApplication {
             win.present();
             win
         })
+    }
+
+    pub fn zapp(&self) -> Arc<Zapp> {
+        self.imp().zapp.clone()
+    }
+
+    pub fn live_channels(&self) -> AsyncResource<Rc<crate::zapp::ChannelInfoList>> {
+        self.imp().live_channels.clone()
     }
 
     pub async fn play(&self, uri: String) {

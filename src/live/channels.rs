@@ -5,7 +5,7 @@ use std::cell::{Cell, RefCell};
 
 use adw::{glib, prelude::*, subclass::prelude::*};
 
-use crate::utils::{channel_mapping, format_timestamp_time};
+use crate::utils::format_timestamp_time;
 
 mod imp {
     use super::*;
@@ -106,75 +106,5 @@ impl ChannelObject {
             .property("name", name)
             .property("stream-url", stream_url)
             .build()
-    }
-}
-
-channel_mapping! {
-    #[derive(Clone, Copy, Debug, PartialEq)]
-    pub enum Channel {
-        #[channel(name = "ard_alpha", icon = "ard-alpha.svg")]
-        ArdAlpha,
-        #[channel(name = "arte", icon = "arte.svg")]
-        Arte,
-        #[channel(name = "br_nord", icon = "br.svg")]
-        BrNord,
-        #[channel(name = "br_sued", icon = "br.svg")]
-        BrSüd,
-        #[channel(name = "das_erste", icon = "das-erste.svg")]
-        DasErste,
-        #[channel(name = "deutsche_welle", icon = "deutsche-welle.svg")]
-        DeutscheWelle,
-        #[channel(name = "deutsche_welle_plus", icon = "deutsche-welle.svg")]
-        DeutscheWellePlus,
-        #[channel(name = "dreisat", icon = "3sat.svg")]
-        DreiSat,
-        #[channel(name = "hr", icon = "hr.svg")]
-        Hr,
-        #[channel(name = "kika", icon = "kika.svg")]
-        KiKa,
-        #[channel(name = "mdr_sachsen", icon = "mdr.svg")]
-        MdrSachsen,
-        #[channel(name = "mdr_sachsen_anhalt", icon = "mdr.svg")]
-        MdrSachsenAnhalt,
-        #[channel(name = "mdr_thueringen", icon = "mdr.svg")]
-        MdrThüringen,
-        #[channel(name = "ndr_hh", icon = "ndr.svg")]
-        NdrHH,
-        #[channel(name = "ndr_mv", icon = "ndr.svg")]
-        NdrMV,
-        #[channel(name = "ndr_nds", icon = "ndr.svg")]
-        NdrNds,
-        #[channel(name = "ndr_sh", icon = "ndr.svg")]
-        NdrSH,
-        #[channel(name = "one", icon = "one.svg")]
-        One,
-        #[channel(name = "parlamentsfernsehen_1", icon = "parlamentsfernsehen.svg")]
-        Parlamentsfernsehen1,
-        #[channel(name = "parlamentsfernsehen_2", icon = "parlamentsfernsehen.svg")]
-        Parlamentsfernsehen2,
-        #[channel(name = "phoenix", icon = "phoenix.svg")]
-        Phoenix,
-        #[channel(name = "rb", icon = "rb.svg")]
-        Rb,
-        #[channel(name = "rbb_berlin", icon = "rbb.svg")]
-        RbbBerlin,
-        #[channel(name = "rbb_brandenburg", icon = "rbb.svg")]
-        RbbBrandenburg,
-        #[channel(name = "sr", icon = "sr.svg")]
-        Sr,
-        #[channel(name = "swr_bw", icon = "swr.svg")]
-        SwrBW,
-        #[channel(name = "swr_rp", icon = "swr.svg")]
-        SwrRP,
-        #[channel(name = "tagesschau24", icon = "tagesschau24.svg")]
-        Tagesschau24,
-        #[channel(name = "wdr", icon = "wdr.svg")]
-        Wdr,
-        #[channel(name = "zdf", icon = "zdf.svg")]
-        Zdf,
-        #[channel(name = "zdf_info", icon = "zdf-info.svg")]
-        ZdfInfo,
-        #[channel(name = "zdf_neo", icon = "zdf-neo.svg")]
-        ZdfNeo,
     }
 }
