@@ -1,14 +1,13 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $TvMediathekView : Adw.Bin {  
+template $TvMediathekView: Adw.Bin {
   [child]
   Adw.ToolbarView {
     [top]
-    Adw.Clamp {      
+    Adw.Clamp {
       Gtk.Box search_toolbar {
         orientation: horizontal;
         spacing: 6;
@@ -66,9 +65,11 @@ template $TvMediathekView : Adw.Bin {
             margin-bottom: 6;
             margin-start: 6;
             margin-end: 6;
-          
+
             Gtk.ListBox results_list {
-              styles ["boxed-list"]
+              styles [
+                "boxed-list"
+              ]
             }
 
             Gtk.Button {
@@ -88,48 +89,57 @@ menu search_in_menu {
     label: _("Topic");
     action: "mediathek.search-in-topic";
   }
+
   item {
     label: _("Title");
     action: "mediathek.search-in-title";
   }
+
   item {
-    label: _("Description");    
+    label: _("Description");
     action: "mediathek.search-in-description";
   }
+
   item {
-    label: _("Channel");    
+    label: _("Channel");
     action: "mediathek.search-in-channel";
   }
 }
 
 menu sort_menu {
   section {
-    label: _("Sort By");    
+    label: _("Sort By");
+
     item {
       label: _("Channel");
       action: "mediathek.sort-by";
       target: "channel";
     }
+
     item {
       label: _("Date");
       action: "mediathek.sort-by";
       target: "date";
     }
+
     item {
-      label: _("Duration");    
+      label: _("Duration");
       action: "mediathek.sort-by";
       target: "duration";
     }
   }
+
   section {
-    label: _("Sort Order");  
+    label: _("Sort Order");
+
     item {
-      label: _("Ascending");    
+      label: _("Ascending");
       action: "mediathek.sort-order";
       target: "ascending";
     }
+
     item {
-      label: _("Descending");    
+      label: _("Descending");
       action: "mediathek.sort-order";
       target: "descending";
     }

@@ -1,112 +1,131 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $TvLiveCard : Gtk.ListBoxRow {
-	activatable: true;
-	selectable: false;
+template $TvLiveCard: Gtk.ListBoxRow {
+  activatable: true;
+  selectable: false;
 
-	Gtk.Box {
-		orientation: vertical;
-		hexpand: true;
-		vexpand: true;
-		spacing: 12;
-		margin-top: 12;
-		margin-bottom: 12;
-		margin-start: 12;
-		margin-end: 12;
+  Gtk.Box {
+    orientation: vertical;
+    hexpand: true;
+    vexpand: true;
+    spacing: 12;
+    margin-top: 12;
+    margin-bottom: 12;
+    margin-start: 12;
+    margin-end: 12;
 
-		Gtk.Box {
-			orientation: horizontal;
-			spacing: 12;
-			styles ["item-card"]
+    Gtk.Box {
+      orientation: horizontal;
+      spacing: 12;
 
-			Gtk.Box {
-				orientation: vertical;
-				vexpand: true;
-				valign: center;
-				spacing: 8;
+      styles [
+        "item-card"
+      ]
 
-				Gtk.Image icon {
-					width-request: 64;
-					height-request: 64;
-					pixel-size: 64;
-					tooltip-text: bind template.channel as <$ChannelObject>.name;
-				}
+      Gtk.Box {
+        orientation: vertical;
+        vexpand: true;
+        valign: center;
+        spacing: 8;
 
-				Gtk.Box {
-					orientation: horizontal;
-					halign: center;
-					spacing: 4;
+        Gtk.Image icon {
+          width-request: 64;
+          height-request: 64;
+          pixel-size: 64;
+          tooltip-text: bind template.channel as <$ChannelObject>.name;
+        }
 
-					Gtk.Button play_button {
-						icon-name: "play-symbolic";
-						tooltip-text: _("Play");
-						action-name: "app.play";
-						styles ["circular"]
-					}
-				}
-			}
+        Gtk.Box {
+          orientation: horizontal;
+          halign: center;
+          spacing: 4;
 
-			Gtk.Box {
-				orientation: vertical;
-				spacing: 8;
-				hexpand: true;
-				vexpand: true;
-				valign: center;
+          Gtk.Button play_button {
+            icon-name: "play-symbolic";
+            tooltip-text: _("Play");
+            action-name: "app.play";
 
-				Gtk.Label title {
-					label: bind template.channel as <$ChannelObject>.title;
-					tooltip-text: bind template.channel as <$ChannelObject>.title;
-					ellipsize: end;
-					styles ["heading"]
-					halign: start;
-				}
+            styles [
+              "circular"
+            ]
+          }
+        }
+      }
 
-				Gtk.Label subtitle {
-					label: bind template.channel as <$ChannelObject>.subtitle;
-					tooltip-text: bind template.channel as <$ChannelObject>.subtitle;
-					ellipsize: end;
-					styles ["dim-label"]
-					halign: start;
-				}
+      Gtk.Box {
+        orientation: vertical;
+        spacing: 8;
+        hexpand: true;
+        vexpand: true;
+        valign: center;
 
-				Gtk.Box {
-					valign: center;
-					spacing: 6;
+        Gtk.Label title {
+          label: bind template.channel as <$ChannelObject>.title;
+          tooltip-text: bind template.channel as <$ChannelObject>.title;
+          ellipsize: end;
 
-					Gtk.Label channel {
-						label: bind template.channel as <$ChannelObject>.name;
-						tooltip-text: bind template.channel as <$ChannelObject>.name;
-						ellipsize: end;
-					}
+          styles [
+            "heading"
+          ]
 
-					Gtk.Label timespan {
-						halign: end;
-						hexpand: true;
-						label: bind template.channel as <$ChannelObject>.timespan;
-						styles ["numeric"]
-					}
-				}
+          halign: start;
+        }
 
-				Gtk.ProgressBar progress {}
-			}
-		}
+        Gtk.Label subtitle {
+          label: bind template.channel as <$ChannelObject>.subtitle;
+          tooltip-text: bind template.channel as <$ChannelObject>.subtitle;
+          ellipsize: end;
 
-		Gtk.Revealer revealer {
-			visible: false;
-			reveal-child: bind template.expanded;
-			transition-type: none;
+          styles [
+            "dim-label"
+          ]
 
-			Gtk.Label description {
-				label: bind template.channel as <$ChannelObject>.description;
-				halign: start;
-				use-markup: true;
-				wrap: true;
-				styles ["body"]
-			}		
-		}
-	}
+          halign: start;
+        }
+
+        Gtk.Box {
+          valign: center;
+          spacing: 6;
+
+          Gtk.Label channel {
+            label: bind template.channel as <$ChannelObject>.name;
+            tooltip-text: bind template.channel as <$ChannelObject>.name;
+            ellipsize: end;
+          }
+
+          Gtk.Label timespan {
+            halign: end;
+            hexpand: true;
+            label: bind template.channel as <$ChannelObject>.timespan;
+
+            styles [
+              "numeric"
+            ]
+          }
+        }
+
+        Gtk.ProgressBar progress {}
+      }
+    }
+
+    Gtk.Revealer revealer {
+      visible: false;
+      reveal-child: bind template.expanded;
+      transition-type: none;
+
+      Gtk.Label description {
+        label: bind template.channel as <$ChannelObject>.description;
+        halign: start;
+        use-markup: true;
+        wrap: true;
+
+        styles [
+          "body"
+        ]
+      }
+    }
+  }
 }

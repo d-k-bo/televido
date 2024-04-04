@@ -1,16 +1,16 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $TvWindow : Adw.ApplicationWindow {
+template $TvWindow: Adw.ApplicationWindow {
   width-request: 360;
   height-request: 294;
   title: "Televido";
 
   Adw.Breakpoint {
-    condition ( "max-width: 550sp" )
+    condition ("max-width: 550sp")
+
     setters {
       switcher_bar.reveal: true;
       header_bar.title-widget: null;
@@ -49,19 +49,22 @@ template $TvWindow : Adw.ApplicationWindow {
           name: "live";
           title: _("Live");
           icon-name: "tv-symbolic";
+
           child: $TvLiveView live_view {};
         }
+
         Adw.ViewStackPage {
           name: "mediathek";
           title: _("Mediathek");
           icon-name: "library-symbolic";
+
           child: $TvMediathekView mediathek_view {};
         }
       }
     }
 
     [bottom]
-    Adw.ViewSwitcherBar switcher_bar{
+    Adw.ViewSwitcherBar switcher_bar {
       stack: stack;
     }
   }

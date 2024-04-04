@@ -4,54 +4,54 @@ using Gtk 4.0;
 using Adw 1;
 
 template $ProgramSelector: Adw.Dialog {
-    follows-content-size: true;
-    can-close: false;
+  follows-content-size: true;
+  can-close: false;
 
-    Gtk.Box {
-        orientation: vertical;
+  Gtk.Box {
+    orientation: vertical;
 
-        Adw.HeaderBar {
-            show-start-title-buttons: false;
-            show-end-title-buttons: false;
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
 
-            [start]
-            Gtk.Button {
-                label: _("Cancel");
-                action-name: "program-selector.cancel";
-            }
+      [start]
+      Gtk.Button {
+        label: _("Cancel");
+        action-name: "program-selector.cancel";
+      }
 
-            [end]
-            Gtk.Button confirm_button {
-                label: _("Confirm");
-                action-name: "program-selector.confirm";
-                receives-default: true;
-                sensitive: false;
+      [end]
+      Gtk.Button confirm_button {
+        label: _("Confirm");
+        action-name: "program-selector.confirm";
+        receives-default: true;
+        sensitive: false;
 
-                styles [
-                    "suggested-action"
-                ]
-            }
-        }
-
-        Adw.PreferencesPage {
-            Adw.PreferencesGroup program_list {
-                description: bind template.description;
-
-                Adw.EntryRow custom_program_entry {
-                    title: _("Custom program");
-                    show-apply-button: true;
-                    apply => $apply_custom_program() swapped;
-
-                    Gtk.EventControllerFocus {
-                        enter => $start_custom_program_input() swapped;
-                    }
-
-                    [suffix]
-                    Gtk.Image custom_program_validation_icon {
-                        visible: false;
-                    }
-                }
-            }
-        }
+        styles [
+          "suggested-action"
+        ]
+      }
     }
+
+    Adw.PreferencesPage {
+      Adw.PreferencesGroup program_list {
+        description: bind template.description;
+
+        Adw.EntryRow custom_program_entry {
+          title: _("Custom program");
+          show-apply-button: true;
+          apply => $apply_custom_program() swapped;
+
+          Gtk.EventControllerFocus {
+            enter => $start_custom_program_input() swapped;
+          }
+
+          [suffix]
+          Gtk.Image custom_program_validation_icon {
+            visible: false;
+          }
+        }
+      }
+    }
+  }
 }

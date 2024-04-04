@@ -1,10 +1,9 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $TvLiveView : Adw.Bin {  
+template $TvLiveView: Adw.Bin {
   Adw.StatusPage status_page {
     icon-name: "tv-symbolic";
   }
@@ -14,6 +13,7 @@ template $TvLiveView : Adw.Bin {
 
     Gtk.StackPage {
       name: "spinner";
+
       child: Gtk.Spinner spinner {
         halign: center;
         spinning: true;
@@ -22,6 +22,7 @@ template $TvLiveView : Adw.Bin {
 
     Gtk.StackPage {
       name: "channels";
+
       child: Gtk.ScrolledWindow {
         Adw.Clamp {
           Gtk.ListBox channels_list {
@@ -29,10 +30,13 @@ template $TvLiveView : Adw.Bin {
             margin-bottom: 6;
             margin-start: 6;
             margin-end: 6;
-            styles ["boxed-list"]
+
+            styles [
+              "boxed-list"
+            ]
           }
         }
       };
-    }    
+    }
   }
 }

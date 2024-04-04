@@ -1,151 +1,170 @@
 // Copyright 2023 David Cabot
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $TvMediathekCard : Gtk.ListBoxRow {
-	activatable: true;
-	selectable: false;
+template $TvMediathekCard: Gtk.ListBoxRow {
+  activatable: true;
+  selectable: false;
 
-	Gtk.Box {
-		orientation: vertical;
-		hexpand: true;
-		vexpand: true;
-		spacing: 12;
-		margin-top: 12;
-		margin-bottom: 12;
-		margin-start: 12;
-		margin-end: 12;
+  Gtk.Box {
+    orientation: vertical;
+    hexpand: true;
+    vexpand: true;
+    spacing: 12;
+    margin-top: 12;
+    margin-bottom: 12;
+    margin-start: 12;
+    margin-end: 12;
 
-		Gtk.Box {
-			orientation: horizontal;
-			spacing: 12;
+    Gtk.Box {
+      orientation: horizontal;
+      spacing: 12;
 
-			Gtk.Image icon {
-				width-request: 64;
-				height-request: 64;
-				pixel-size: 64;
-				valign: center;
-				tooltip-text: bind template.show as <$ShowObject>.channel;
-			}
+      Gtk.Image icon {
+        width-request: 64;
+        height-request: 64;
+        pixel-size: 64;
+        valign: center;
+        tooltip-text: bind template.show as <$ShowObject>.channel;
+      }
 
-			Gtk.Box {
-				orientation: vertical;
-				spacing: 6;
-				halign: fill;
-				valign: center;
+      Gtk.Box {
+        orientation: vertical;
+        spacing: 6;
+        halign: fill;
+        valign: center;
 
-				Gtk.Label title {
-					label: bind template.show as <$ShowObject>.title;
-					tooltip-text: bind template.show as <$ShowObject>.title;
-					ellipsize: end;
-					styles ["heading"]
-					halign: start;
-				}
+        Gtk.Label title {
+          label: bind template.show as <$ShowObject>.title;
+          tooltip-text: bind template.show as <$ShowObject>.title;
+          ellipsize: end;
 
-				Gtk.Label topic {
-					label: bind template.show as <$ShowObject>.topic;
-					tooltip-text: bind template.show as <$ShowObject>.topic;
-					halign: start;
-					ellipsize: end;
-					styles ["dim-label"]
-				}
+          styles [
+            "heading"
+          ]
 
-				Gtk.Box {					
-					Gtk.Label duration {
-						label: bind template.show as <$ShowObject>.duration;
-						styles ["numeric"]
-					}
-					
-					Gtk.Label date {
-						label: bind template.show as <$ShowObject>.date;
-						halign: end;
-						hexpand: true;
-						styles ["numeric"]
-					}
-				}
-			}
-		}
+          halign: start;
+        }
 
-		Gtk.Revealer revealer {
-			visible: false;
-			reveal-child: bind template.expanded;
-			transition-type: none;
+        Gtk.Label topic {
+          label: bind template.show as <$ShowObject>.topic;
+          tooltip-text: bind template.show as <$ShowObject>.topic;
+          halign: start;
+          ellipsize: end;
 
-			Gtk.Box {
-				orientation: vertical;
-				spacing: 6;
+          styles [
+            "dim-label"
+          ]
+        }
 
-				Gtk.Box {
-					orientation: horizontal;
-					halign: center;
-					spacing: 4;
+        Gtk.Box {
+          Gtk.Label duration {
+            label: bind template.show as <$ShowObject>.duration;
 
-					Adw.SplitButton {
-						icon-name: "play-symbolic";
-						tooltip-text: _("Play");
-						action-name: "card.play-default";
-						menu-model: play_menu;
-					}
+            styles [
+              "numeric"
+            ]
+          }
 
-					Gtk.MenuButton {
-						icon-name: "copy-symbolic";
-						tooltip-text: _("Copy video URL");
-						menu-model: copy_url_menu;
-					}
+          Gtk.Label date {
+            label: bind template.show as <$ShowObject>.date;
+            halign: end;
+            hexpand: true;
 
-					Gtk.Button {
-						icon-name: "document-save-symbolic";
-						tooltip-text: _("Download");
-						action-name: "card.download";
-					}
+            styles [
+              "numeric"
+            ]
+          }
+        }
+      }
+    }
 
-					Gtk.Button {
-						icon-name: "globe-alt2-symbolic";
-						tooltip-text: _("Open Website");
-						action-name: "card.open-website";
-					}
-				}
+    Gtk.Revealer revealer {
+      visible: false;
+      reveal-child: bind template.expanded;
+      transition-type: none;
 
-				Gtk.Label description {
-					label: bind template.show as <$ShowObject>.description;
-					halign: start;
-					use-markup: false;
-					wrap: true;
-					styles ["body"]
-				}
-			}
-		}
-	}
+      Gtk.Box {
+        orientation: vertical;
+        spacing: 6;
+
+        Gtk.Box {
+          orientation: horizontal;
+          halign: center;
+          spacing: 4;
+
+          Adw.SplitButton {
+            icon-name: "play-symbolic";
+            tooltip-text: _("Play");
+            action-name: "card.play-default";
+            menu-model: play_menu;
+          }
+
+          Gtk.MenuButton {
+            icon-name: "copy-symbolic";
+            tooltip-text: _("Copy video URL");
+            menu-model: copy_url_menu;
+          }
+
+          Gtk.Button {
+            icon-name: "document-save-symbolic";
+            tooltip-text: _("Download");
+            action-name: "card.download";
+          }
+
+          Gtk.Button {
+            icon-name: "globe-alt2-symbolic";
+            tooltip-text: _("Open Website");
+            action-name: "card.open-website";
+          }
+        }
+
+        Gtk.Label description {
+          label: bind template.show as <$ShowObject>.description;
+          halign: start;
+          use-markup: false;
+          wrap: true;
+
+          styles [
+            "body"
+          ]
+        }
+      }
+    }
+  }
 }
 
 menu play_menu {
-	item {
-		label: _("High Quality");
-		action: "card.play-high";
-	}
-	item {
-		label: _("Medium Quality");
-		action: "card.play-medium";
-	}
-	item {
-		label: _("Low Quality");    
-		action: "card.play-low";
-	}
+  item {
+    label: _("High Quality");
+    action: "card.play-high";
+  }
+
+  item {
+    label: _("Medium Quality");
+    action: "card.play-medium";
+  }
+
+  item {
+    label: _("Low Quality");
+    action: "card.play-low";
+  }
 }
 
 menu copy_url_menu {
-	item {
-		label: _("High Quality");
-		action: "card.copy-url-high";
-	}
-	item {
-		label: _("Medium Quality");
-		action: "card.copy-url-medium";
-	}
-	item {
-		label: _("Low Quality");    
-		action: "card.copy-url-low";
-	}
+  item {
+    label: _("High Quality");
+    action: "card.copy-url-high";
+  }
+
+  item {
+    label: _("Medium Quality");
+    action: "card.copy-url-medium";
+  }
+
+  item {
+    label: _("Low Quality");
+    action: "card.copy-url-low";
+  }
 }

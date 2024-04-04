@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-03-28 18:56+0100\n"
+"POT-Creation-Date: 2024-04-04 20:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,7 +162,7 @@ msgid ""
 "https:// URI and is accessible from the context of this application."
 msgstr ""
 
-#: src/live/card.blp:46 src/mediathek/card.blp:87
+#: src/live/card.blp:48 src/mediathek/card.blp:99
 msgid "Play"
 msgstr ""
 
@@ -175,27 +175,27 @@ msgstr ""
 msgid "Failed to load livestream channels"
 msgstr ""
 
-#: src/mediathek/card.blp:94
+#: src/mediathek/card.blp:106
 msgid "Copy video URL"
 msgstr ""
 
-#: src/mediathek/card.blp:100
+#: src/mediathek/card.blp:112
 msgid "Download"
 msgstr ""
 
-#: src/mediathek/card.blp:106
+#: src/mediathek/card.blp:118
 msgid "Open Website"
 msgstr ""
 
-#: src/mediathek/card.blp:125 src/mediathek/card.blp:140
+#: src/mediathek/card.blp:140 src/mediathek/card.blp:157
 msgid "High Quality"
 msgstr ""
 
-#: src/mediathek/card.blp:129 src/mediathek/card.blp:144
+#: src/mediathek/card.blp:145 src/mediathek/card.blp:162
 msgid "Medium Quality"
 msgstr ""
 
-#: src/mediathek/card.blp:133 src/mediathek/card.blp:148
+#: src/mediathek/card.blp:150 src/mediathek/card.blp:167
 msgid "Low Quality"
 msgstr ""
 
@@ -203,75 +203,75 @@ msgstr ""
 msgid "Failed to open website in browser"
 msgstr ""
 
-#: src/mediathek/view.blp:21
+#: src/mediathek/view.blp:20
 msgid "e.g. »tagesschau«"
 msgstr ""
 
-#: src/mediathek/view.blp:31
+#: src/mediathek/view.blp:30
 msgid "Search in…"
 msgstr ""
 
-#: src/mediathek/view.blp:37
+#: src/mediathek/view.blp:36
 msgid "Sort"
 msgstr ""
 
-#: src/mediathek/view.blp:50
+#: src/mediathek/view.blp:49
 msgid "Search for content"
 msgstr ""
 
-#: src/mediathek/view.blp:51
+#: src/mediathek/view.blp:50
 msgid "Start typing in the search bar to see a list of matching shows"
 msgstr ""
 
-#: src/mediathek/view.blp:56
+#: src/mediathek/view.blp:55
 msgid "No results"
 msgstr ""
 
-#: src/mediathek/view.blp:57
+#: src/mediathek/view.blp:56
 msgid "Try different search terms or adjust the search filters"
 msgstr ""
 
-#: src/mediathek/view.blp:76
+#: src/mediathek/view.blp:77
 msgid "Load more"
 msgstr ""
 
-#: src/mediathek/view.blp:88
+#: src/mediathek/view.blp:89
 msgid "Topic"
 msgstr ""
 
-#: src/mediathek/view.blp:92
+#: src/mediathek/view.blp:94
 msgid "Title"
 msgstr ""
 
-#: src/mediathek/view.blp:96
+#: src/mediathek/view.blp:99
 msgid "Description"
 msgstr ""
 
-#: src/mediathek/view.blp:100 src/mediathek/view.blp:109
+#: src/mediathek/view.blp:104 src/mediathek/view.blp:114
 msgid "Channel"
 msgstr ""
 
-#: src/mediathek/view.blp:107
+#: src/mediathek/view.blp:111
 msgid "Sort By"
 msgstr ""
 
-#: src/mediathek/view.blp:114
+#: src/mediathek/view.blp:120
 msgid "Date"
 msgstr ""
 
-#: src/mediathek/view.blp:119
+#: src/mediathek/view.blp:126
 msgid "Duration"
 msgstr ""
 
-#: src/mediathek/view.blp:125
+#: src/mediathek/view.blp:133
 msgid "Sort Order"
 msgstr ""
 
-#: src/mediathek/view.blp:127
+#: src/mediathek/view.blp:136
 msgid "Ascending"
 msgstr ""
 
-#: src/mediathek/view.blp:132
+#: src/mediathek/view.blp:142
 msgid "Descending"
 msgstr ""
 
@@ -318,18 +318,18 @@ msgstr ""
 msgid "Live"
 msgstr ""
 
-#: src/window.blp:56
+#: src/window.blp:58
 msgid "Mediathek"
 msgstr ""
 
-#: src/window.blp:73
+#: src/window.blp:76
 msgid "Preferences"
 msgstr ""
 
-#: src/window.blp:78
+#: src/window.blp:81
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: src/window.blp:83
+#: src/window.blp:86
 msgid "About Televido"
 msgstr ""

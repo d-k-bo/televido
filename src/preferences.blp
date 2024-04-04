@@ -4,34 +4,34 @@ using Gtk 4.0;
 using Adw 1;
 
 template $TvPreferencesDialog: Adw.PreferencesDialog {
-	follows-content-size: true;
+  follows-content-size: true;
 
-	Adw.PreferencesPage {
-		Adw.PreferencesGroup {
-			title: _("External Programs");
-			name: "external-programs";
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: _("External Programs");
+      name: "external-programs";
 
-			Adw.ActionRow video_player_row {
-				title: _("Video Player");
-				subtitle: bind template.video-player-display-name;
+      Adw.ActionRow video_player_row {
+        title: _("Video Player");
+        subtitle: bind template.video-player-display-name;
 
-				Gtk.Button {
-					label: _("Change");
-					valign: center;
-					clicked => $select_video_player() swapped;
-				}
-			}
+        Gtk.Button {
+          label: _("Change");
+          valign: center;
+          clicked => $select_video_player() swapped;
+        }
+      }
 
-			Adw.ActionRow video_downloader_row {
-				title: _("Video Downloader");
-				subtitle: bind template.video-downloader-display-name;
+      Adw.ActionRow video_downloader_row {
+        title: _("Video Downloader");
+        subtitle: bind template.video-downloader-display-name;
 
-				Gtk.Button {
-					label: _("Change");
-					valign: center;
-					clicked => $select_video_downloader() swapped;
-				}
-			}
-		}
-	}
+        Gtk.Button {
+          label: _("Change");
+          valign: center;
+          clicked => $select_video_downloader() swapped;
+        }
+      }
+    }
+  }
 }
