@@ -1,4 +1,4 @@
-// Copyright 2024 David Cabot
+// SPDX-FileCopyrightText: David Cabot <d-k-bo@mailbox.org>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use adw::{gdk, gdk::gdk_pixbuf, glib, prelude::*};

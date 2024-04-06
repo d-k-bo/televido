@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-04-06 13:15+0200\n"
+"POT-Creation-Date: 2024-04-06 21:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,23 +98,23 @@ msgstr ""
 msgid "Failed to launch video downloader"
 msgstr ""
 
-#: src/help-overlay.blp:10
+#: src/help-overlay.blp:12
 msgid "General"
 msgstr ""
 
-#: src/help-overlay.blp:13
+#: src/help-overlay.blp:15
 msgid "Show livestreams"
 msgstr ""
 
-#: src/help-overlay.blp:18
+#: src/help-overlay.blp:20
 msgid "Show mediathek"
 msgstr ""
 
-#: src/help-overlay.blp:23 src/window.blp:41
+#: src/help-overlay.blp:25 src/window.blp:41
 msgid "Reload"
 msgstr ""
 
-#: src/help-overlay.blp:28
+#: src/help-overlay.blp:30
 msgid "Quit application"
 msgstr ""
 

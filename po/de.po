@@ -1,9 +1,7 @@
 # German translation for Televido.
-# Copyright (C) 2023 Televido's COPYRIGHT HOLDER
-# This file is distributed under the same license as the Televido package.
 #
-# David Cabot <d-k-bo@mailbox.org>, 2023.
-#
+# SPDX-FileCopyrightText: David Cabot <d-k-bo@mailbox.org>
+# SPDX-License-Identifier: GPL-3.0-or-later
 #
 msgid ""
 msgstr ""

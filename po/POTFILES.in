@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: d-k-bo <d-k-bo@mailbox.org>
+# SPDX-License-Identifier: CC0-1.0
+
 data/de.k_bo.Televido.desktop.in
 data/de.k_bo.Televido.gschema.xml
 data/de.k_bo.Televido.metainfo.xml.in

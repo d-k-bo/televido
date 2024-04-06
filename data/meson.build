@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: d-k-bo <d-k-bo@mailbox.org>
+# SPDX-License-Identifier: CC0-1.0
+
 desktop_file = i18n.merge_file(
   input: BASE_APP_ID + '.desktop.in',
   output: BASE_APP_ID + '.desktop',

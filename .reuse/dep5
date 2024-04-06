@@ -1,0 +1,44 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: televido
+Upstream-Contact: David Cabot <d-k-bo@mailbox.org>
+Source: https://github.com/d-k-bo/televido
+
+Files:
+    data/icons/hicolor/*/apps/*.svg
+    data/de.k_bo.Televido.Source.svg
+Copyright: David Cabot <d-k-bo@mailbox.org>
+License: GPL-3.0-or-later
+
+Files:
+    build-aux/de.k_bo.Televido.Devel.json
+    data/de.k_bo.Televido.desktop.in
+    data/de.k_bo.Televido.gschema.xml
+    data/de.k_bo.Televido.metainfo.xml.in
+    data/screenshots/1.png
+    data/screenshots/2.png
+    data/screenshots/3.png
+    data/screenshots/4.png
+    Cargo.lock
+Copyright: David Cabot <d-k-bo@mailbox.org>
+License: CC0-1.0
+
+Files: data/resources/icons/scalable/actions/*.svg
+Copyright: GNOME Icon Development Kit Contributors
+License: CC0-1.0
+
+Files: data/resources/icons/scalable/channels/*/*.svg
+Copyright: 2016 cemrich
+License: MIT
+
+Files:
+    data/resources/icons/scalable/channels/*/ard.svg
+    data/resources/icons/scalable/channels/*/orf.svg
+    data/resources/icons/scalable/channels/*/srf.svg
+Copyright: Wikimedia Commons Contributors
+License: CC0-1.0
+
+Files:
+    build-aux/dist-vendor.sh
+Copyright: Bilal Elmoussaoui
+License: MIT
+
