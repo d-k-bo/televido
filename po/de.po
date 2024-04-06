@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-03-28 18:56+0100\n"
-"PO-Revision-Date: 2024-03-28 18:58+0100\n"
+"POT-Creation-Date: 2024-04-06 13:15+0200\n"
+"PO-Revision-Date: 2024-04-06 13:21+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -104,11 +104,15 @@ msgstr ""
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 
-#: src/application.rs:134
+#: src/application.rs:98 src/live/view.rs:126
+msgid "Failed to load livestream channels"
+msgstr "Livestream-Sender konnten nicht geladen werden"
+
+#: src/application.rs:183
 msgid "Failed to play video stream"
 msgstr "Videostream konnte nicht abgespielt werden"
 
-#: src/application.rs:177
+#: src/application.rs:226
 msgid "Failed to launch video downloader"
 msgstr "Videodownloader konnte nicht gestartet werden"
 
@@ -132,15 +136,15 @@ msgstr "Neu laden"
 msgid "Quit application"
 msgstr "Anwendung beenden"
 
-#: src/launcher/selector.blp:19
+#: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/launcher/selector.blp:25
+#: src/launcher/selector.blp:24
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: src/launcher/selector.blp:41
+#: src/launcher/selector.blp:40
 msgid "Custom program"
 msgstr "Benutzerdefiniertes Programm"
 
@@ -153,7 +157,7 @@ msgstr "Anwendung „{}“ konnte nicht gefunden werden"
 msgid "Failed to load external applications"
 msgstr "Externe Anwendungen konnten nicht geladen werden."
 
-#: src/launcher/selector.rs:173 src/utils.rs:183
+#: src/launcher/selector.rs:173 src/utils.rs:101
 msgid "See the terminal output for details."
 msgstr "In den Programm-Logs finden Sie weitere Details."
 
@@ -187,118 +191,114 @@ msgstr ""
 "Aktivierung unterstützt, https://-URIs öffnen kann und aus dem Kontext "
 "dieser Anwendung erreicht werden kann."
 
-#: src/live/card.blp:46 src/mediathek/card.blp:87
+#: src/live/card.blp:48 src/mediathek/card.blp:99
 msgid "Play"
 msgstr "Abspielen"
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
-#: src/live/view.rs:61
+#: src/live/view.rs:63
 msgid "Failed load shows for channel “{}”"
 msgstr "Sendungen für Sender „{}“ konnten nicht geladen werden"
 
-#: src/live/view.rs:105
-msgid "Failed to load livestream channels"
-msgstr "Livestream-Sender konnten nicht geladen werden"
-
-#: src/mediathek/card.blp:94
+#: src/mediathek/card.blp:106
 msgid "Copy video URL"
 msgstr "Video-URL kopieren"
 
-#: src/mediathek/card.blp:100
+#: src/mediathek/card.blp:112
 msgid "Download"
 msgstr "Herunterladen"
 
-#: src/mediathek/card.blp:106
+#: src/mediathek/card.blp:118
 msgid "Open Website"
 msgstr "Website öffnen"
 
-#: src/mediathek/card.blp:125 src/mediathek/card.blp:140
+#: src/mediathek/card.blp:140 src/mediathek/card.blp:157
 msgid "High Quality"
 msgstr "Hohe Qualität"
 
-#: src/mediathek/card.blp:129 src/mediathek/card.blp:144
+#: src/mediathek/card.blp:145 src/mediathek/card.blp:162
 msgid "Medium Quality"
 msgstr "Mittlere Qualität"
 
-#: src/mediathek/card.blp:133 src/mediathek/card.blp:148
+#: src/mediathek/card.blp:150 src/mediathek/card.blp:167
 msgid "Low Quality"
 msgstr "Niedrige Qualität"
 
-#: src/mediathek/card.rs:178
+#: src/mediathek/card.rs:177
 msgid "Failed to open website in browser"
 msgstr "Website konnte nicht im Browser geöffnet werden"
 
-#: src/mediathek/view.blp:21
+#: src/mediathek/view.blp:20
 msgid "e.g. »tagesschau«"
 msgstr "z.B. »tagesschau«"
 
-#: src/mediathek/view.blp:31
+#: src/mediathek/view.blp:30
 msgid "Search in…"
 msgstr "Suchen in…"
 
-#: src/mediathek/view.blp:37
+#: src/mediathek/view.blp:36
 msgid "Sort"
 msgstr "Sortierung"
 
-#: src/mediathek/view.blp:50
+#: src/mediathek/view.blp:49
 msgid "Search for content"
 msgstr "Nach Inhalten suchen"
 
-#: src/mediathek/view.blp:51
+#: src/mediathek/view.blp:50
 msgid "Start typing in the search bar to see a list of matching shows"
 msgstr ""
 "Schreiben Sie etwas in die Suchleiste, um eine Liste passender Sendungen zu "
 "sehen"
 
-#: src/mediathek/view.blp:56
+#: src/mediathek/view.blp:55
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: src/mediathek/view.blp:57
+#: src/mediathek/view.blp:56
 msgid "Try different search terms or adjust the search filters"
 msgstr "Wählen Sie einen anderen Suchbegriff oder verändern Sie die Suchfilter"
 
-#: src/mediathek/view.blp:76
+#: src/mediathek/view.blp:77
 msgid "Load more"
 msgstr "Mehr laden"
 
-#: src/mediathek/view.blp:88
+#: src/mediathek/view.blp:89
 msgid "Topic"
 msgstr "Thema"
 
-#: src/mediathek/view.blp:92
+#: src/mediathek/view.blp:94
 msgid "Title"
 msgstr "Titel"
 
-#: src/mediathek/view.blp:96
+#: src/mediathek/view.blp:99
 msgid "Description"
 msgstr "Beschreibung"
 
-#: src/mediathek/view.blp:100 src/mediathek/view.blp:109
+#: src/mediathek/view.blp:104 src/mediathek/view.blp:114
 msgid "Channel"
 msgstr "Sender"
 
-#: src/mediathek/view.blp:107
+#: src/mediathek/view.blp:111
 msgid "Sort By"
 msgstr "Sortieren nach"
 
-#: src/mediathek/view.blp:114
+#: src/mediathek/view.blp:120
 msgid "Date"
 msgstr "Datum"
 
-#: src/mediathek/view.blp:119
+#: src/mediathek/view.blp:126
 msgid "Duration"
 msgstr "Dauer"
 
-#: src/mediathek/view.blp:125
+#: src/mediathek/view.blp:133
 msgid "Sort Order"
 msgstr "Sortierreihenfolge"
 
-#: src/mediathek/view.blp:127
+#: src/mediathek/view.blp:136
 msgid "Ascending"
 msgstr "Aufsteigend"
 
-#: src/mediathek/view.blp:132
+#: src/mediathek/view.blp:142
 msgid "Descending"
 msgstr "Absteigend"
 
@@ -306,34 +306,58 @@ msgstr "Absteigend"
 msgid "Failed to query the MediathekViewWeb API"
 msgstr "Daten von der MediathekViewWeb-API konnten nicht abgerufen werden"
 
-#: src/preferences.blp:11
+#: src/preferences/dialog.blp:9
 msgid "External Programs"
 msgstr "Externe Programme"
 
-#: src/preferences.blp:15
+#: src/preferences/dialog.blp:13
 msgid "Video Player"
 msgstr "Videoplayer"
 
-#: src/preferences.blp:19 src/preferences.blp:30
+#: src/preferences/dialog.blp:17 src/preferences/dialog.blp:28
 msgid "Change"
 msgstr "Ändern"
 
-#: src/preferences.blp:26
+#: src/preferences/dialog.blp:24
 msgid "Video Downloader"
 msgstr "Videodownloader"
+
+#: src/preferences/dialog.blp:36
+msgid "Live Channels"
+msgstr "Livestream-Sender"
+
+#: src/preferences/dialog.blp:40 src/preferences/live/selector.blp:7
+msgid "Select and reorder channels"
+msgstr "Sender auswählen und ordnen"
+
+#: src/preferences/live/selector.blp:15
+msgid "Visible channels"
+msgstr "Angezeigte Sender"
+
+#: src/preferences/live/selector.blp:35
+msgid "Hidden channels"
+msgstr "Versteckte Sender"
+
+#: src/preferences/live/selector.blp:51
+msgid "Sort alphabetically"
+msgstr "Alphabetisch sortieren"
+
+#: src/preferences/live/selector.blp:56
+msgid "Sort using default order"
+msgstr "In Standardreihenfolge sortieren"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number
 #. %Y is the year (with century)
 #. %H is the hours (24h format)
 #. %M is the minutes
-#: src/utils.rs:55
+#: src/utils.rs:60
 msgid "%b %-e, %Y %H:%M"
 msgstr "%-e. %b %Y %H.%M Uhr"
 
 #. translators:  %H is the hours (24h format)
 #. %M is the minutes
-#: src/utils.rs:65
+#: src/utils.rs:70
 msgid "%H:%M"
 msgstr "%H:%M"
 
@@ -345,18 +369,18 @@ msgstr "Menü"
 msgid "Live"
 msgstr "Live"
 
-#: src/window.blp:56
+#: src/window.blp:58
 msgid "Mediathek"
 msgstr "Mediathek"
 
-#: src/window.blp:73
+#: src/window.blp:76
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/window.blp:78
+#: src/window.blp:81
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/window.blp:83
+#: src/window.blp:86
 msgid "About Televido"
 msgstr "Über Televido"
