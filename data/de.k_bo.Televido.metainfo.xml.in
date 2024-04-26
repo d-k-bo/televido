@@ -38,6 +38,10 @@
 			<image>https://raw.githubusercontent.com/d-k-bo/televido/main/data/screenshots/4.png</image>
 		</screenshot>
 	</screenshots>
+	<branding>
+		<color type="primary" scheme_preference="light">#b5835a</color>
+		<color type="primary" scheme_preference="dark">#3f2d1d</color>
+	</branding>
 	<url type="homepage">https://github.com/d-k-bo/televido</url>
 	<url type="bugtracker">https://github.com/d-k-bo/televido/issues</url>
 	<url type="vcs-browser">https://github.com/d-k-bo/televido</url>
