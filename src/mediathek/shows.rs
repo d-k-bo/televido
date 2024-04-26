@@ -75,6 +75,12 @@ mod imp {
             get,
             member = url_website
         )]
+        #[property(
+            name = "subtitle-url",
+            type = Option<String>,
+            get,
+            member = url_subtitle
+        )]
         pub(super) inner: OnceCell<Item>,
     }
 

@@ -93,11 +93,19 @@ impl TvMediathekCard {
         )
         .unwrap()
     }
-    fn copy_url(&self, quality: VideoQuality) {
+    fn copy_video_url(&self, quality: VideoQuality) {
         self.clipboard().set(
             &self
                 .show()
                 .and_then(|show| show.video_url(quality))
+                .expect("action must only be enabled if url is not None"),
+        );
+    }
+    fn copy_subtitles_url(&self) {
+        self.clipboard().set(
+            &self
+                .show()
+                .and_then(|show| show.subtitle_url())
                 .expect("action must only be enabled if url is not None"),
         );
     }
@@ -150,9 +158,22 @@ impl TvMediathekCard {
         video_url_action!("play-medium", play, VideoQuality::Medium);
         video_url_action!("play-low", play, VideoQuality::Low);
 
-        video_url_action!("copy-url-high", copy_url, VideoQuality::High);
-        video_url_action!("copy-url-medium", copy_url, VideoQuality::Medium);
-        video_url_action!("copy-url-low", copy_url, VideoQuality::Low);
+        video_url_action!("copy-url-high", copy_video_url, VideoQuality::High);
+        video_url_action!("copy-url-medium", copy_video_url, VideoQuality::Medium);
+        video_url_action!("copy-url-low", copy_video_url, VideoQuality::Low);
+
+        let copy_subtitles_url = gio::SimpleAction::new("copy-subtitles-url", None);
+        copy_subtitles_url.connect_activate(
+            glib::clone!(@weak self as slf => move |_,_| slf.copy_subtitles_url()),
+        );
+        self.connect_show_notify(glib::clone!(@weak copy_subtitles_url => move |slf| {
+            copy_subtitles_url.set_enabled(
+                slf.show()
+                    .and_then(|show| show.subtitle_url())
+                    .is_some()
+                );
+        }));
+        actions.add_action(&copy_subtitles_url);
 
         let download = gio::SimpleAction::new("download", None);
         download.connect_activate(glib::clone!(@weak self as slf => move |_,_| slf.download()));

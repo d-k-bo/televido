@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-04-06 13:15+0200\n"
-"PO-Revision-Date: 2024-04-06 13:21+0200\n"
+"POT-Creation-Date: 2024-04-26 17:05+0200\n"
+"PO-Revision-Date: 2024-04-26 17:05+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -63,42 +63,42 @@ msgstr ""
 "GNOME Videos (Totem), Celluloid, Clapper, Daikhan. Derzeit unterstütze "
 "Videodownloader: Parabolic."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:59
+#: data/de.k_bo.Televido.metainfo.xml.in:63
 msgid "Use adaptive dialogs for preferences, player selector and about dialog"
 msgstr ""
 "Für Einstellungen, Playerauswahl und „Über“-Dialog werden nun adaptive "
 "Dialoge verwendet"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:60
+#: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Added French translation"
 msgstr "Übersetzung ins Französische hinzugefügt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:67
+#: data/de.k_bo.Televido.metainfo.xml.in:71
 msgid "Added support for downloading content using Parabolic"
 msgstr "Videodownload mittels Parabolic wird nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:68
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Added Dutch translation"
 msgstr "Übersetzung ins Niederländische hinzugefügt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:75
+#: data/de.k_bo.Televido.metainfo.xml.in:79
 msgid "Added support for mobile devices"
 msgstr "Mobile Geräte werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:82
+#: data/de.k_bo.Televido.metainfo.xml.in:86
 msgid "Added support for custom video players"
 msgstr "Benutzerdefinierte Videoplayer werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:83
+#: data/de.k_bo.Televido.metainfo.xml.in:87
 msgid "Added support Daikhan as a video player"
 msgstr "Daikhan wird nun als Videoplayer unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:89
+#: data/de.k_bo.Televido.metainfo.xml.in:93
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 "Wenn ein Fehler auftritt, wird eine graphische Fehlermeldung angezeigt."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:94
+#: data/de.k_bo.Televido.metainfo.xml.in:98
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 
@@ -114,23 +114,23 @@ msgstr "Videostream konnte nicht abgespielt werden"
 msgid "Failed to launch video downloader"
 msgstr "Videodownloader konnte nicht gestartet werden"
 
-#: src/help-overlay.blp:10
+#: src/help-overlay.blp:12
 msgid "General"
 msgstr "Allgemein"
 
-#: src/help-overlay.blp:13
+#: src/help-overlay.blp:15
 msgid "Show livestreams"
 msgstr "Zeige Livestreams"
 
-#: src/help-overlay.blp:18
+#: src/help-overlay.blp:20
 msgid "Show mediathek"
 msgstr "Zeige Mediathek"
 
-#: src/help-overlay.blp:23 src/window.blp:41
+#: src/help-overlay.blp:25 src/window.blp:41
 msgid "Reload"
 msgstr "Neu laden"
 
-#: src/help-overlay.blp:28
+#: src/help-overlay.blp:30
 msgid "Quit application"
 msgstr "Anwendung beenden"
 
@@ -222,7 +222,11 @@ msgstr "Mittlere Qualität"
 msgid "Low Quality"
 msgstr "Niedrige Qualität"
 
-#: src/mediathek/card.rs:177
+#: src/mediathek/card.blp:172
+msgid "Subtitles"
+msgstr "Untertitel"
+
+#: src/mediathek/card.rs:198
 msgid "Failed to open website in browser"
 msgstr "Website konnte nicht im Browser geöffnet werden"
 

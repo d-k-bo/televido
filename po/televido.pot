@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-04-06 21:01+0200\n"
+"POT-Creation-Date: 2024-04-26 17:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,39 +50,39 @@ msgid ""
 "Parabolic."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:59
+#: data/de.k_bo.Televido.metainfo.xml.in:63
 msgid "Use adaptive dialogs for preferences, player selector and about dialog"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:60
+#: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Added French translation"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:67
+#: data/de.k_bo.Televido.metainfo.xml.in:71
 msgid "Added support for downloading content using Parabolic"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:68
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Added Dutch translation"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:75
+#: data/de.k_bo.Televido.metainfo.xml.in:79
 msgid "Added support for mobile devices"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:82
+#: data/de.k_bo.Televido.metainfo.xml.in:86
 msgid "Added support for custom video players"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:83
+#: data/de.k_bo.Televido.metainfo.xml.in:87
 msgid "Added support Daikhan as a video player"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:89
+#: data/de.k_bo.Televido.metainfo.xml.in:93
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:94
+#: data/de.k_bo.Televido.metainfo.xml.in:98
 msgid "Initital release"
 msgstr ""
 
@@ -199,7 +199,11 @@ msgstr ""
 msgid "Low Quality"
 msgstr ""
 
-#: src/mediathek/card.rs:177
+#: src/mediathek/card.blp:172
+msgid "Subtitles"
+msgstr ""
+
+#: src/mediathek/card.rs:198
 msgid "Failed to open website in browser"
 msgstr ""
 
