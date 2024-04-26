@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-04-26 17:05+0200\n"
-"PO-Revision-Date: 2024-04-26 17:05+0200\n"
+"POT-Creation-Date: 2024-04-26 17:13+0200\n"
+"PO-Revision-Date: 2024-04-26 17:14+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -226,7 +226,15 @@ msgstr "Niedrige Qualität"
 msgid "Subtitles"
 msgstr "Untertitel"
 
-#: src/mediathek/card.rs:198
+#: src/mediathek/card.rs:107
+msgid "Copied video URL to clipboard"
+msgstr "Video-URL wurde in Zwischenablage kopiert"
+
+#: src/mediathek/card.rs:120
+msgid "Copied subtitles URL to clipboard"
+msgstr "Untertitel-URL wurde in Zwischenablage kopiert"
+
+#: src/mediathek/card.rs:209
 msgid "Failed to open website in browser"
 msgstr "Website konnte nicht im Browser geöffnet werden"
 

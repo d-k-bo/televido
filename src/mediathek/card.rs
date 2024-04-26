@@ -7,6 +7,7 @@ use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
 use gettextrs::gettext;
 
 use crate::{
+    application::TvApplication,
     channel_icons::load_channel_icon,
     settings::{TvSettings, VideoQuality},
     utils::{show_error, spawn},
@@ -100,6 +101,10 @@ impl TvMediathekCard {
                 .and_then(|show| show.video_url(quality))
                 .expect("action must only be enabled if url is not None"),
         );
+
+        TvApplication::get()
+            .window()
+            .add_toast(adw::Toast::new(&gettext("Copied video URL to clipboard")));
     }
     fn copy_subtitles_url(&self) {
         self.clipboard().set(
@@ -108,6 +113,12 @@ impl TvMediathekCard {
                 .and_then(|show| show.subtitle_url())
                 .expect("action must only be enabled if url is not None"),
         );
+
+        TvApplication::get()
+            .window()
+            .add_toast(adw::Toast::new(&gettext(
+                "Copied subtitles URL to clipboard",
+            )));
     }
     fn download(&self) {
         self.activate_action(
