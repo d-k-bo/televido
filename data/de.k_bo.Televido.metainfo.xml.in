@@ -57,7 +57,7 @@
 		<control>touch</control>
 	</supports>
 	<releases>
-		<release version="0.3.0" date="2023-03-28">
+		<release version="0.3.0" date="2024-03-28">
 			<description>
 				<ul>
 					<li>Use adaptive dialogs for preferences, player selector and about dialog</li>
