@@ -19,6 +19,7 @@ template $TvMediathekView: Adw.Bin {
         Gtk.SearchEntry search_entry {
           placeholder-text: _("e.g. »tagesschau«");
           hexpand: true;
+          search-delay: 250;
           text: bind template.query_string bidirectional;
         }
 
@@ -26,10 +27,16 @@ template $TvMediathekView: Adw.Bin {
           orientation: horizontal;
           spacing: 6;
 
-          Gtk.MenuButton search_in_button {
-            label: _("Search in…");
-            menu-model: search_in_menu;
-            hexpand: true;
+          Gtk.ToggleButton {
+            icon-name: "search-global-symbolic";
+            tooltip-text: _("Search everywhere");
+            active: bind template.search_everywhere bidirectional;
+          }
+
+          Gtk.ToggleButton {
+            icon-name: "month-symbolic";
+            tooltip-text: _("Include future shows");
+            active: bind template.include-future bidirectional;
           }
 
           Gtk.MenuButton sort_button {
@@ -47,7 +54,7 @@ template $TvMediathekView: Adw.Bin {
       Adw.StatusPage status_page {
         icon-name: "loupe-symbolic";
         title: _("Search for content");
-        description: _("Start typing in the search bar to see a list of matching shows");
+        description: _("Start typing in the search bar to see a list of matching shows.\n\nThe search field supports <a href=\"https://github.com/mediathekview/mediathekviewweb/blob/master/README.md#erweiterte-suche\">MediathekViewWeb's advanced search syntax</a> (German).");
       }
 
       Adw.StatusPage nothing_found_view {
@@ -73,6 +80,7 @@ template $TvMediathekView: Adw.Bin {
             }
 
             Gtk.Button {
+              visible: bind template.more-available;
               halign: center;
               label: _("Load more");
               action-name: "mediathek.load-more";
@@ -81,28 +89,6 @@ template $TvMediathekView: Adw.Bin {
         }
       }
     }
-  }
-}
-
-menu search_in_menu {
-  item {
-    label: _("Topic");
-    action: "mediathek.search-in-topic";
-  }
-
-  item {
-    label: _("Title");
-    action: "mediathek.search-in-title";
-  }
-
-  item {
-    label: _("Description");
-    action: "mediathek.search-in-description";
-  }
-
-  item {
-    label: _("Channel");
-    action: "mediathek.search-in-channel";
   }
 }
 

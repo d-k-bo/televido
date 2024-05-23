@@ -4,14 +4,13 @@
 use std::{
     cell::{Cell, OnceCell, RefCell},
     sync::Arc,
-    time::Duration,
 };
 
 use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
 use eyre::WrapErr;
 use gettextrs::gettext;
 use mediathekviewweb::{
-    models::{QueryField, SortField, SortOrder},
+    models::{SortField, SortOrder},
     Mediathek,
 };
 
@@ -51,15 +50,9 @@ mod imp {
         #[property(get, set)]
         query_string: RefCell<String>,
         #[property(get, set)]
-        search_in_topic: Cell<bool>,
-        #[property(get, set)]
-        search_in_title: Cell<bool>,
-        #[property(get, set)]
-        search_in_description: Cell<bool>,
-        #[property(get, set)]
-        search_in_channel: Cell<bool>,
-        #[property(get, set)]
         include_future: Cell<bool>,
+        #[property(get, set)]
+        search_everywhere: Cell<bool>,
 
         #[property(get, set)]
         sort_by: RefCell<String>,
@@ -67,20 +60,21 @@ mod imp {
         sort_order: RefCell<String>,
 
         #[property(get, set)]
-        offset: Cell<u64>,
-
+        total_results: Cell<u64>,
         #[property(get, set)]
-        show_results: Cell<bool>,
+        more_available: Cell<bool>,
 
         pub(super) client: OnceCell<Arc<Mediathek>>,
         pub(super) shows_model: OnceCell<gio::ListStore>,
-        pub(super) request_id: Cell<u32>,
     }
     impl TvMediathekView {
         pub(super) fn shows_model(&self) -> gio::ListStore {
             self.shows_model
                 .get_or_init(gio::ListStore::new::<ShowObject>)
                 .clone()
+        }
+        pub(super) fn show_status_page(&self) {
+            self.stack.set_visible_child(&*self.status_page)
         }
     }
 
@@ -93,13 +87,6 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
 
-            klass.install_property_action("mediathek.search-in-topic", "search-in-topic");
-            klass.install_property_action("mediathek.search-in-title", "search-in-title");
-            klass.install_property_action(
-                "mediathek.search-in-description",
-                "search-in-description",
-            );
-            klass.install_property_action("mediathek.search-in-channel", "search-in-channel");
             klass.install_property_action("mediathek.sort-by", "sort-by");
             klass.install_property_action("mediathek.sort-order", "sort-order");
             klass.install_action_async("mediathek.load-more", None, |slf, _, _| async move {
@@ -120,19 +107,11 @@ mod imp {
             let slf = self.obj();
             let settings = TvSettings::get();
             settings
-                .bind_search_in_topic(&*slf, "search-in-topic")
+                .bind_search_everywhere(&*slf, "search-everywhere")
                 .flags(gio::SettingsBindFlags::DEFAULT)
                 .build();
             settings
-                .bind_search_in_title(&*slf, "search-in-title")
-                .flags(gio::SettingsBindFlags::DEFAULT)
-                .build();
-            settings
-                .bind_search_in_description(&*slf, "search-in-description")
-                .flags(gio::SettingsBindFlags::DEFAULT)
-                .build();
-            settings
-                .bind_search_in_channel(&*slf, "search-in-channel")
+                .bind_include_future(&*slf, "include-future")
                 .flags(gio::SettingsBindFlags::DEFAULT)
                 .build();
             settings
@@ -176,11 +155,11 @@ mod imp {
                 spawn_clone!(slf => slf.load())
             }
 
-            slf.connect_query_string_notify(load);
-            slf.connect_search_in_topic_notify(load);
-            slf.connect_search_in_title_notify(load);
-            slf.connect_search_in_description_notify(load);
-            slf.connect_search_in_channel_notify(load);
+            self.search_entry.connect_search_changed(
+                glib::clone!(@weak slf => move |_| spawn(async move { slf.load().await })),
+            );
+            slf.connect_search_everywhere_notify(load);
+            slf.connect_include_future_notify(load);
             slf.connect_sort_by_notify(load);
             slf.connect_sort_order_notify(load);
 
@@ -191,6 +170,7 @@ mod imp {
                     } else {
                         slf.stack.set_visible_child(&*slf.results_view);
                     }
+                    slf.obj().set_more_available((results.n_items() as u64) < slf.total_results.get());
                 }),
             );
 
@@ -227,13 +207,7 @@ impl TvMediathekView {
     fn query_props(&self) -> QueryProperties {
         let query_string = self.query_string();
 
-        #[rustfmt::skip]
-        let fields: Vec<QueryField> =
-            self.search_in_topic().then_some(QueryField::Topic).into_iter()
-            .chain(self.search_in_title().then_some(QueryField::Title))
-            .chain(self.search_in_description().then_some(QueryField::Description))
-            .chain(self.search_in_channel().then_some(QueryField::Channel))
-            .collect();
+        let search_everywhere = self.search_everywhere();
         let include_future = self.include_future();
         let sort_by = match &*self.sort_by() {
             "channel" => SortField::Channel,
@@ -249,46 +223,33 @@ impl TvMediathekView {
 
         QueryProperties {
             query_string,
-            fields,
+            search_everywhere,
             include_future,
             sort_by,
             sort_order,
         }
     }
-    async fn delay_request_should_continue(&self) -> bool {
-        let request_id = self.imp().request_id.get() + 1;
-        self.imp().request_id.set(request_id);
-
-        tokio(async { tokio::time::sleep(Duration::from_millis(500)).await }).await;
-
-        self.imp().request_id.get() == request_id
-    }
     async fn load(&self) {
-        if !self.delay_request_should_continue().await {
-            return;
-        }
-
         let QueryProperties {
             query_string,
-            fields,
+            search_everywhere,
             include_future,
             sort_by,
             sort_order,
         } = self.query_props();
 
         if query_string.is_empty() {
+            self.imp().show_status_page();
             return;
         }
 
-        self.set_offset(0);
-
         let client = self.client();
 
-        let slf = self.clone();
+        let mut shows_model = self.imp().shows_model();
 
         match tokio(async move {
             client
-                .query(fields, query_string)
+                .query_string(&query_string, search_everywhere)
                 .include_future(include_future)
                 .size(15)
                 .sort_by(sort_by)
@@ -300,43 +261,36 @@ impl TvMediathekView {
         .await
         {
             Ok(result) => {
-                let shows_model = slf.imp().shows_model();
                 shows_model.remove_all();
+                shows_model.extend(result.results.into_iter().map(ShowObject::new));
 
-                for item in result.results {
-                    shows_model.append(&ShowObject::new(item))
-                }
+                self.set_total_results(result.query_info.total_results);
             }
             Err(e) => show_error(e),
         }
     }
     async fn load_more(&self) {
-        if !self.delay_request_should_continue().await {
-            return;
-        }
-
         let QueryProperties {
             query_string,
-            fields,
+            search_everywhere,
             include_future,
             sort_by,
             sort_order,
         } = self.query_props();
 
         if query_string.is_empty() {
+            self.imp().show_status_page();
             return;
         }
 
-        let offset = self.offset() + 15;
-        self.set_offset(offset);
+        let mut shows_model = self.imp().shows_model();
+        let offset = shows_model.n_items();
 
         let client = self.client();
 
-        let slf = self.clone();
-
         match tokio(async move {
             client
-                .query(fields, query_string)
+                .query_string(&query_string, search_everywhere)
                 .include_future(include_future)
                 .size(15)
                 .offset(offset as usize)
@@ -349,11 +303,9 @@ impl TvMediathekView {
         .await
         {
             Ok(result) => {
-                let shows_model = slf.imp().shows_model();
+                shows_model.extend(result.results.into_iter().map(ShowObject::new));
 
-                for item in result.results {
-                    shows_model.append(&ShowObject::new(item))
-                }
+                self.set_total_results(result.query_info.total_results);
             }
             Err(e) => show_error(e),
         }
@@ -367,7 +319,7 @@ impl TvMediathekView {
 #[derive(Debug)]
 struct QueryProperties {
     query_string: String,
-    fields: Vec<QueryField>,
+    search_everywhere: bool,
     include_future: bool,
     sort_by: SortField,
     sort_order: SortOrder,

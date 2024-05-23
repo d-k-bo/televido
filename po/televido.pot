@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-04-26 17:13+0200\n"
+"POT-Creation-Date: 2024-05-23 17:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,75 +219,72 @@ msgstr ""
 msgid "e.g. »tagesschau«"
 msgstr ""
 
-#: src/mediathek/view.blp:30
-msgid "Search in…"
+#: src/mediathek/view.blp:32
+msgid "Search everywhere"
 msgstr ""
 
-#: src/mediathek/view.blp:36
+#: src/mediathek/view.blp:38
+msgid "Include future shows"
+msgstr ""
+
+#: src/mediathek/view.blp:43
 msgid "Sort"
 msgstr ""
 
-#: src/mediathek/view.blp:49
+#: src/mediathek/view.blp:56
 msgid "Search for content"
 msgstr ""
 
-#: src/mediathek/view.blp:50
-msgid "Start typing in the search bar to see a list of matching shows"
+#: src/mediathek/view.blp:57
+msgid ""
+"Start typing in the search bar to see a list of matching shows.\n"
+"\n"
+"The search field supports <a href=\"https://github.com/mediathekview/"
+"mediathekviewweb/blob/master/README.md#erweiterte-suche\">MediathekViewWeb's "
+"advanced search syntax</a> (German)."
 msgstr ""
 
-#: src/mediathek/view.blp:55
+#: src/mediathek/view.blp:62
 msgid "No results"
 msgstr ""
 
-#: src/mediathek/view.blp:56
+#: src/mediathek/view.blp:63
 msgid "Try different search terms or adjust the search filters"
 msgstr ""
 
-#: src/mediathek/view.blp:77
+#: src/mediathek/view.blp:85
 msgid "Load more"
 msgstr ""
 
-#: src/mediathek/view.blp:89
-msgid "Topic"
-msgstr ""
-
-#: src/mediathek/view.blp:94
-msgid "Title"
-msgstr ""
-
-#: src/mediathek/view.blp:99
-msgid "Description"
-msgstr ""
-
-#: src/mediathek/view.blp:104 src/mediathek/view.blp:114
-msgid "Channel"
-msgstr ""
-
-#: src/mediathek/view.blp:111
+#: src/mediathek/view.blp:97
 msgid "Sort By"
 msgstr ""
 
-#: src/mediathek/view.blp:120
+#: src/mediathek/view.blp:100
+msgid "Channel"
+msgstr ""
+
+#: src/mediathek/view.blp:106
 msgid "Date"
 msgstr ""
 
-#: src/mediathek/view.blp:126
+#: src/mediathek/view.blp:112
 msgid "Duration"
 msgstr ""
 
-#: src/mediathek/view.blp:133
+#: src/mediathek/view.blp:119
 msgid "Sort Order"
 msgstr ""
 
-#: src/mediathek/view.blp:136
+#: src/mediathek/view.blp:122
 msgid "Ascending"
 msgstr ""
 
-#: src/mediathek/view.blp:142
+#: src/mediathek/view.blp:128
 msgid "Descending"
 msgstr ""
 
-#: src/mediathek/view.rs:298 src/mediathek/view.rs:347
+#: src/mediathek/view.rs:255 src/mediathek/view.rs:296
 msgid "Failed to query the MediathekViewWeb API"
 msgstr ""
 

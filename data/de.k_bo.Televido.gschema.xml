@@ -17,16 +17,10 @@
 		<key name="visible-view" type="s">
 			<default>"live"</default>
 		</key>
-		<key name="search-in-topic" type="b">
-			<default>true</default>
-		</key>
-		<key name="search-in-title" type="b">
-			<default>true</default>
-		</key>
-		<key name="search-in-description" type="b">
+		<key name="search-everywhere" type="b">
 			<default>false</default>
 		</key>
-		<key name="search-in-channel" type="b">
+		<key name="include-future" type="b">
 			<default>false</default>
 		</key>
 		<key name="sort-by" type="s">
