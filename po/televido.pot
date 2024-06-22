@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-05-23 17:16+0200\n"
+"POT-Creation-Date: 2024-06-22 22:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,38 +51,50 @@ msgid ""
 msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:63
-msgid "Use adaptive dialogs for preferences, player selector and about dialog"
+msgid "Allow removing and reordering live channels"
 msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:64
-msgid "Added French translation"
+msgid "Add option to copy subtitles URL"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:71
-msgid "Added support for downloading content using Parabolic"
+#: data/de.k_bo.Televido.metainfo.xml.in:65
+msgid "Use MediathekViewWeb's advanced search syntax"
 msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:72
+msgid "Use adaptive dialogs for preferences, player selector and about dialog"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:73
+msgid "Added French translation"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:80
+msgid "Added support for downloading content using Parabolic"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:81
 msgid "Added Dutch translation"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:79
+#: data/de.k_bo.Televido.metainfo.xml.in:88
 msgid "Added support for mobile devices"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:86
+#: data/de.k_bo.Televido.metainfo.xml.in:95
 msgid "Added support for custom video players"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:87
+#: data/de.k_bo.Televido.metainfo.xml.in:96
 msgid "Added support Daikhan as a video player"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:93
+#: data/de.k_bo.Televido.metainfo.xml.in:102
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:98
+#: data/de.k_bo.Televido.metainfo.xml.in:107
 msgid "Initital release"
 msgstr ""
 
@@ -284,7 +296,7 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: src/mediathek/view.rs:255 src/mediathek/view.rs:296
+#: src/mediathek/view.rs:259 src/mediathek/view.rs:301
 msgid "Failed to query the MediathekViewWeb API"
 msgstr ""
 

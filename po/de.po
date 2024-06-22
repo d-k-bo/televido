@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-05-23 17:16+0200\n"
-"PO-Revision-Date: 2024-05-23 17:18+0200\n"
+"POT-Creation-Date: 2024-06-22 22:13+0200\n"
+"PO-Revision-Date: 2024-06-22 22:16+0200\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -64,41 +64,53 @@ msgstr ""
 "Videodownloader: Parabolic."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:63
+msgid "Allow removing and reordering live channels"
+msgstr "Live-Sender können nun entfernt und neu geordnet werden"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:64
+msgid "Add option to copy subtitles URL"
+msgstr "Option zum Kopieren der Untertitel-URL hinzugefügt"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:65
+msgid "Use MediathekViewWeb's advanced search syntax"
+msgstr "Verwende die erweiterte Such-Syntax von MediathekViewWeb"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Use adaptive dialogs for preferences, player selector and about dialog"
 msgstr ""
 "Für Einstellungen, Playerauswahl und „Über“-Dialog werden nun adaptive "
 "Dialoge verwendet"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:64
+#: data/de.k_bo.Televido.metainfo.xml.in:73
 msgid "Added French translation"
 msgstr "Übersetzung ins Französische hinzugefügt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:71
+#: data/de.k_bo.Televido.metainfo.xml.in:80
 msgid "Added support for downloading content using Parabolic"
 msgstr "Videodownload mittels Parabolic wird nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:72
+#: data/de.k_bo.Televido.metainfo.xml.in:81
 msgid "Added Dutch translation"
 msgstr "Übersetzung ins Niederländische hinzugefügt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:79
+#: data/de.k_bo.Televido.metainfo.xml.in:88
 msgid "Added support for mobile devices"
 msgstr "Mobile Geräte werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:86
+#: data/de.k_bo.Televido.metainfo.xml.in:95
 msgid "Added support for custom video players"
 msgstr "Benutzerdefinierte Videoplayer werden nun unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:87
+#: data/de.k_bo.Televido.metainfo.xml.in:96
 msgid "Added support Daikhan as a video player"
 msgstr "Daikhan wird nun als Videoplayer unterstützt"
 
-#: data/de.k_bo.Televido.metainfo.xml.in:93
+#: data/de.k_bo.Televido.metainfo.xml.in:102
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 "Wenn ein Fehler auftritt, wird eine graphische Fehlermeldung angezeigt."
 
-#: data/de.k_bo.Televido.metainfo.xml.in:98
+#: data/de.k_bo.Televido.metainfo.xml.in:107
 msgid "Initital release"
 msgstr "Erstveröffentlichung"
 
@@ -313,7 +325,7 @@ msgstr "Aufsteigend"
 msgid "Descending"
 msgstr "Absteigend"
 
-#: src/mediathek/view.rs:255 src/mediathek/view.rs:296
+#: src/mediathek/view.rs:259 src/mediathek/view.rs:301
 msgid "Failed to query the MediathekViewWeb API"
 msgstr "Daten von der MediathekViewWeb-API konnten nicht abgerufen werden"
 
