@@ -159,9 +159,13 @@ mod imp {
             let slf = self.to_owned();
             spawn(async move { slf.reload().await });
 
-            settings.connect_live_channels_changed(glib::clone!(@weak self as slf => move |_| {
-                spawn(async move { slf.reload().await });
-            }));
+            settings.connect_live_channels_changed(glib::clone!(
+                #[weak(rename_to = slf)]
+                self,
+                move |_| {
+                    spawn(async move { slf.reload().await });
+                }
+            ));
         }
     }
     impl WidgetImpl for TvLiveView {}

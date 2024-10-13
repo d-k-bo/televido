@@ -113,20 +113,31 @@ mod imp {
             self.parent_constructed();
 
             self.update_video_player_display_name();
-            self.settings.connect_video_player_name_changed(
-                glib::clone!(@weak self as slf => move |_| slf.update_video_player_display_name()),
-            );
-            self.settings.connect_video_player_id_changed(
-                glib::clone!(@weak self as slf => move |_| slf.update_video_player_display_name()),
-            );
+            self.settings
+                .connect_video_player_name_changed(glib::clone!(
+                    #[weak(rename_to = slf)]
+                    self,
+                    move |_| slf.update_video_player_display_name()
+                ));
+            self.settings.connect_video_player_id_changed(glib::clone!(
+                #[weak(rename_to = slf)]
+                self,
+                move |_| slf.update_video_player_display_name()
+            ));
 
             self.update_video_downloader_display_name();
-            self.settings.connect_video_downloader_name_changed(
-                glib::clone!(@weak self as slf => move |_| slf.update_video_downloader_display_name()),
-            );
-            self.settings.connect_video_downloader_id_changed(
-                glib::clone!(@weak self as slf => move |_| slf.update_video_downloader_display_name()),
-            );
+            self.settings
+                .connect_video_downloader_name_changed(glib::clone!(
+                    #[weak(rename_to = slf)]
+                    self,
+                    move |_| slf.update_video_downloader_display_name()
+                ));
+            self.settings
+                .connect_video_downloader_id_changed(glib::clone!(
+                    #[weak(rename_to = slf)]
+                    self,
+                    move |_| slf.update_video_downloader_display_name()
+                ));
         }
     }
     impl WidgetImpl for TvPreferencesDialog {}

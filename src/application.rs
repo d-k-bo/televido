@@ -235,7 +235,9 @@ impl TvApplication {
             .activate(move |app: &Self, _, _| app.show_about())
             .build();
         let preferences_action = gio::ActionEntry::builder("preferences")
-            .activate(move |app: &Self, _, _| TvPreferencesDialog::new().present(&app.window()))
+            .activate(move |app: &Self, _, _| {
+                TvPreferencesDialog::new().present(Some(&app.window()))
+            })
             .build();
         let play_action = gio::ActionEntry::builder("play")
             .parameter_type(Some(glib::VariantTy::STRING))
@@ -280,6 +282,6 @@ impl TvApplication {
             .license_type(gtk::License::Gpl30)
             .build();
 
-        about.present(&self.window());
+        about.present(Some(&self.window()));
     }
 }
