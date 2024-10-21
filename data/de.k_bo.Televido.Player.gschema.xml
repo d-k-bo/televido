@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://gitlab.gnome.org/GNOME/glib/-/raw/main/gio/gschema.dtd"?>
+<schemalist gettext-domain="televido">
+	<schema id="de.k_bo.Televido.Player" path="/de/k_bo/televido/player/">
+		<key name="width" type="i">
+			<default>720</default>
+		</key>
+		<key name="height" type="i">
+			<default>480</default>
+		</key>
+		<key name="is-maximized" type="b">
+			<default>false</default>
+		</key>
+		<key name="is-fullscreen" type="b">
+			<default>false</default>
+		</key>
+	</schema>
+</schemalist>

@@ -9,6 +9,8 @@ publish = false
 
 [dependencies]
 adw = { package = "libadwaita", version = "0.7.0", features = ["v1_5"] }
+clapper = { git = "https://gitlab.gnome.org/JanGernert/clapper-rs.git", version = "0.1.0" }
+clapper-gtk = { git = "https://gitlab.gnome.org/JanGernert/clapper-rs.git", version = "0.1.0" }
 eyre = "0.6.12"
 futures-util = "0.3.31"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
@@ -29,3 +31,6 @@ tokio = { version = "1.40.0", features = ["time", "rt-multi-thread", "macros"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 zbus = { version = "4.4.0", default-features = false, features = ["tokio"] }
+
+[profile.dev.build-override]
+opt-level = 3

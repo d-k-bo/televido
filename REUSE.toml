@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: David Cabot <d-k-bo@mailbox.org>
+# SPDX-License-Identifier: CC0-1.0
+
+version = 1
+SPDX-PackageName = "televido"
+SPDX-PackageSupplier = "David Cabot <d-k-bo@mailbox.org>"
+SPDX-PackageDownloadLocation = "https://github.com/d-k-bo/televido"
+
+[[annotations]]
+path = ["data/icons/hicolor/**/apps/**.svg", "data/de.k_bo.Televido.Source.svg"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "David Cabot <d-k-bo@mailbox.org>"
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = [
+    "build-aux/de.k_bo.Televido.Devel.json",
+    "data/de.k_bo.Televido.desktop.in",
+    "data/de.k_bo.Televido.gschema.xml",
+    "data/de.k_bo.Televido.metainfo.xml.in",
+    "data/de.k_bo.Televido.Player.gschema.xml",
+    "data/screenshots/1.png",
+    "data/screenshots/2.png",
+    "data/screenshots/3.png",
+    "data/screenshots/4.png",
+    "Cargo.lock",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "David Cabot <d-k-bo@mailbox.org>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "data/resources/icons/scalable/actions/**.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "GNOME Icon Development Kit Contributors"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "data/resources/icons/scalable/channels/**/**.svg"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2016 cemrich"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+    "data/resources/icons/scalable/channels/**/ard.svg",
+    "data/resources/icons/scalable/channels/**/orf.svg",
+    "data/resources/icons/scalable/channels/**/srf.svg",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Wikimedia Commons Contributors"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "build-aux/dist-vendor.sh"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Bilal Elmoussaoui"
+SPDX-License-Identifier = "MIT"

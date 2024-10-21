@@ -9,6 +9,7 @@ mod config;
 mod launcher;
 mod live;
 mod mediathek;
+mod player;
 mod preferences;
 mod settings;
 mod utils;
@@ -40,6 +41,8 @@ fn main() -> glib::ExitCode {
     gio::resources_register(
         &gio::Resource::from_data(&glib::Bytes::from_static(GRESOURCE_BYTES)).unwrap(),
     );
+
+    clapper::init().expect("failed to initialize libclapper");
 
     TvApplication::new().run()
 }

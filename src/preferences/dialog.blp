@@ -9,9 +9,15 @@ template $TvPreferencesDialog: Adw.PreferencesDialog {
       title: _("External Programs");
       name: "external-programs";
 
+      Adw.SwitchRow {
+        title: _("Use external video player");
+        active: bind template.use-external-player bidirectional;
+      }
+
       Adw.ActionRow video_player_row {
         title: _("Video Player");
         subtitle: bind template.video-player-display-name;
+        visible: bind template.use-external-player;
 
         Gtk.Button {
           label: _("Change");
