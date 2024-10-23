@@ -51,9 +51,7 @@
       "config-opts": [
         "-Dclapper=enabled",
         "-Dclapper-gtk=enabled",
-        "-Dclapper-app=disabled",
-        "-Dintrospection=enabled",
-        "-Dvapi=enabled"
+        "-Dclapper-app=disabled"
       ],
       "cleanup": [
         "/include",
