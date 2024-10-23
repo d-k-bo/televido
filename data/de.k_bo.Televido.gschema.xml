@@ -29,6 +29,9 @@
 		<key name="sort-order" type="s">
 			<default>"descending"</default>
 		</key>
+		<key name="use-external-player" type="b">
+			<default>false</default>
+		</key>
 		<key name="video-player-name" type="s">
 			<default>""</default>
 		</key>

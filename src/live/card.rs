@@ -11,6 +11,7 @@ use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 use crate::{
     channel_icons::load_channel_icon,
     utils::{spawn, tokio},
+    TvApplication,
 };
 
 use super::channels::ChannelObject;
@@ -61,12 +62,14 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
 
-            klass.install_action("card.play", None, |slf, _, _| {
-                slf.activate_action(
-                    "app.play",
-                    Some(&slf.channel().unwrap().stream_url().to_variant()),
-                )
-                .unwrap()
+            klass.install_action_async("card.play", None, |slf, _, _| async move {
+                TvApplication::get()
+                    .play(
+                        &slf.channel().unwrap().stream_url(),
+                        &slf.channel().unwrap().name(),
+                        None,
+                    )
+                    .await
             });
         }
 
@@ -92,14 +95,6 @@ mod imp {
 
             self.revealer.connect_child_revealed_notify(|revealer| {
                 revealer.set_visible(revealer.is_child_revealed())
-            });
-
-            self.obj().connect_channel_notify(|slf| {
-                if let Some(channel) = slf.channel() {
-                    slf.imp()
-                        .play_button
-                        .set_action_target_value(Some(&channel.stream_url().to_variant()));
-                }
             });
 
             // update progress bar every 10 seconds

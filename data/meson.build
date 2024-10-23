@@ -7,7 +7,7 @@ desktop_file = i18n.merge_file(
   type: 'desktop',
   po_dir: '../po',
   install: true,
-  install_dir: get_option('datadir') / 'applications'
+  install_dir: get_option('datadir') / 'applications',
 )
 
 desktop_utils = find_program('desktop-file-validate', required: false)
@@ -20,7 +20,7 @@ appstream_file = i18n.merge_file(
   output: BASE_APP_ID + '.metainfo.xml',
   po_dir: '../po',
   install: true,
-  install_dir: get_option('datadir') / 'metainfo'
+  install_dir: get_option('datadir') / 'metainfo',
 )
 
 appstreamcli = find_program('appstreamcli', required: false, disabler: true)
@@ -28,13 +28,17 @@ if appstreamcli.found()
   test(
     'Validate appstream file',
     appstreamcli,
-    args: ['validate', '--no-net', '--explain', appstream_file]
+    args: ['validate', '--no-net', '--explain', appstream_file],
   )
 endif
 
 install_data(
   BASE_APP_ID + '.gschema.xml',
-  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
+  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
+)
+install_data(
+  BASE_APP_ID + '.Player' + '.gschema.xml',
+  install_dir: get_option('datadir') / 'glib-2.0' / 'schemas',
 )
 
 gnome.compile_schemas(depend_files: meson.current_source_dir())
@@ -44,7 +48,7 @@ if compile_schemas.found()
   test(
     'Validate schema file',
     compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()]
+    args: ['--strict', '--dry-run', meson.current_source_dir()],
   )
 endif
 

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use std::{
-    cell::OnceCell,
+    cell::{OnceCell, RefCell},
     rc::Rc,
     sync::{Arc, OnceLock},
 };
@@ -15,6 +15,7 @@ use smart_default::SmartDefault;
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
     launcher::{ExternalProgram, ExternalProgramType, ProgramSelector},
+    player::TvPlayer,
     preferences::TvPreferencesDialog,
     settings::TvSettings,
     utils::{show_error, spawn, spawn_clone, tokio, AsyncResource},
@@ -23,6 +24,7 @@ use crate::{
 };
 
 mod imp {
+
     use super::*;
 
     #[derive(Debug, SmartDefault)]
@@ -30,6 +32,8 @@ mod imp {
         #[default(Arc::new(Zapp::new().expect("failed to initialize Zapp client")))]
         pub(super) zapp: Arc<Zapp>,
         pub(super) live_channels: AsyncResource<Rc<crate::zapp::ChannelInfoList>>,
+        pub(super) window: RefCell<Option<glib::WeakRef<TvWindow>>>,
+        pub(super) player: RefCell<Option<glib::WeakRef<TvPlayer>>>,
     }
 
     #[glib::object_subclass]
@@ -130,11 +134,29 @@ impl TvApplication {
     }
 
     pub fn window(&self) -> TvWindow {
-        self.active_window().and_downcast().unwrap_or_else(|| {
-            let win = TvWindow::new(self);
-            win.present();
-            win
-        })
+        let mut window = self.imp().window.borrow_mut();
+
+        match window.as_ref().and_then(|p| p.upgrade()) {
+            Some(window) => window,
+            None => {
+                let new_window = TvWindow::new(self);
+                *window = Some(glib::clone::Downgrade::downgrade(&new_window));
+                new_window
+            }
+        }
+    }
+
+    pub fn player(&self) -> TvPlayer {
+        let mut player = self.imp().player.borrow_mut();
+
+        match player.as_ref().and_then(|p| p.upgrade()) {
+            Some(player) => player,
+            None => {
+                let new_player = TvPlayer::new(self);
+                *player = Some(glib::clone::Downgrade::downgrade(&new_player));
+                new_player
+            }
+        }
     }
 
     pub fn zapp(&self) -> Arc<Zapp> {
@@ -145,42 +167,50 @@ impl TvApplication {
         self.imp().live_channels.clone()
     }
 
-    pub async fn play(&self, uri: String) {
+    pub async fn play(&self, uri: &str, title: &str, subtitle_uri: Option<&str>) {
         let settings = TvSettings::get();
-        let player_name = settings.video_player_name();
-        let player_id = settings.video_player_id();
 
-        let player = if player_id.is_empty() {
-            None
-        } else {
-            match ExternalProgram::find(player_name, player_id.clone()).await {
-                Ok(player) => player,
-                Err(e) => {
-                    show_error(e);
-                    None
-                }
-            }
-        };
+        if settings.use_external_player() {
+            let player_name = settings.video_player_name();
+            let player_id = settings.video_player_id();
 
-        let player = match player {
-            Some(player) => player,
-            None => {
-                match ProgramSelector::select_program(ExternalProgramType::Player, player_id).await
-                {
-                    Some(player) => {
-                        settings.set_video_player_name(&player.name);
-                        settings.set_video_player_id(&player.id);
-
-                        player
+            let player = if player_id.is_empty() {
+                None
+            } else {
+                match ExternalProgram::find(player_name, player_id.clone()).await {
+                    Ok(player) => player,
+                    Err(e) => {
+                        show_error(e);
+                        None
                     }
-                    None => return,
                 }
-            }
-        };
+            };
 
-        match player.open(uri).await {
-            Ok(()) => (),
-            Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
+            let player = match player {
+                Some(player) => player,
+                None => {
+                    match ProgramSelector::select_program(ExternalProgramType::Player, player_id)
+                        .await
+                    {
+                        Some(player) => {
+                            settings.set_video_player_name(&player.name);
+                            settings.set_video_player_id(&player.id);
+
+                            player
+                        }
+                        None => return,
+                    }
+                }
+            };
+
+            match player.open(uri).await {
+                Ok(()) => (),
+                Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
+            }
+        } else {
+            let player = self.player();
+            player.play(title, uri, subtitle_uri);
+            player.present();
         }
     }
 
@@ -239,14 +269,6 @@ impl TvApplication {
                 TvPreferencesDialog::new().present(Some(&app.window()))
             })
             .build();
-        let play_action = gio::ActionEntry::builder("play")
-            .parameter_type(Some(glib::VariantTy::STRING))
-            .activate(move |app: &Self, _, variant| {
-                if let Some(stream_url) = variant.and_then(|v| v.get()) {
-                    spawn_clone!(app => app.play(stream_url))
-                }
-            })
-            .build();
         let download_action = gio::ActionEntry::builder("download")
             .parameter_type(Some(glib::VariantTy::STRING))
             .activate(move |app: &Self, _, variant| {
@@ -260,7 +282,6 @@ impl TvApplication {
             quit_action,
             about_action,
             preferences_action,
-            play_action,
             download_action,
         ]);
 

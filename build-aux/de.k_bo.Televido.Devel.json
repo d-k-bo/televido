@@ -1,11 +1,11 @@
 {
   "id": "de.k_bo.Televido.Devel",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "46",
+  "runtime-version": "47",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.rust-stable",
-    "org.freedesktop.Sdk.Extension.llvm16"
+    "org.freedesktop.Sdk.Extension.llvm19"
   ],
   "command": "televido",
   "finish-args": [
@@ -13,6 +13,7 @@
     "--share=ipc",
     "--socket=fallback-x11",
     "--device=dri",
+    "--socket=pulseaudio",
     "--socket=wayland",
     "--talk-name=org.gnome.Totem",
     "--talk-name=io.github.celluloid_player.Celluloid",
@@ -21,7 +22,7 @@
     "--talk-name=org.nickvision.tubeconverter"
   ],
   "build-options": {
-    "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm16/bin",
+    "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm19/bin",
     "build-args": ["--share=network"],
     "env": {
       "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
@@ -44,6 +45,26 @@
     "*.a"
   ],
   "modules": [
+    {
+      "name": "clapper",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dclapper=enabled",
+        "-Dclapper-gtk=enabled",
+        "-Dclapper-app=disabled"
+      ],
+      "cleanup": [
+        "/include",
+        "/lib/pkgconfig"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/Rafostar/clapper.git",
+          "tag": "0.6.1"
+        }
+      ]
+    },
     {
       "name": "blueprint-compiler",
       "buildsystem": "meson",

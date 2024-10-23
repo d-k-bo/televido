@@ -82,17 +82,18 @@ glib::wrapper! {
 
 impl TvMediathekCard {
     fn play(&self, quality: VideoQuality) {
-        self.activate_action(
-            "app.play",
-            Some(
-                &self
-                    .show()
-                    .and_then(|show| show.video_url(quality))
-                    .expect("action must only be enabled if url is not None")
-                    .to_variant(),
-            ),
-        )
-        .unwrap()
+        let show = self
+            .show()
+            .expect("action must only be enabled if show is not None");
+        let url = show
+            .video_url(quality)
+            .expect("action must only be enabled if url is not None");
+
+        spawn(async move {
+            TvApplication::get()
+                .play(&url, &show.title(), show.subtitle_url().as_deref())
+                .await
+        });
     }
     fn copy_video_url(&self, quality: VideoQuality) {
         self.clipboard().set(
