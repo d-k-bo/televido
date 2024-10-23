@@ -13,6 +13,7 @@
     "--share=ipc",
     "--socket=fallback-x11",
     "--device=dri",
+    "--socket=pulseaudio",
     "--socket=wayland",
     "--talk-name=org.gnome.Totem",
     "--talk-name=io.github.celluloid_player.Celluloid",
