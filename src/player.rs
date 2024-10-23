@@ -55,6 +55,21 @@ mod imp {
                 ));
 
             let slf = self.obj();
+
+            let taginject = gst::ElementFactory::make("taginject")
+                .property("scope", gst::TagScope::Global)
+                .build()
+                .expect("failed to create `taginject` element");
+            self.video
+                .player()
+                .expect("should not be nullable")
+                .set_video_filter(Some(&taginject));
+            slf.connect_title_notify(glib::clone!(
+                #[weak]
+                taginject,
+                move |slf| taginject.set_property("tags", format!("title={}", slf.title()))
+            ));
+
             self.video.connect_toggle_fullscreen(glib::clone!(
                 #[weak]
                 slf,

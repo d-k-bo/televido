@@ -2602,6 +2602,7 @@ dependencies = [
  "futures-util",
  "gettext-rs",
  "gsettings-macro",
+ "gstreamer",
  "gtk4",
  "gvdb-macros",
  "html2pango",

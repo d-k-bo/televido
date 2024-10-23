@@ -15,6 +15,7 @@ eyre = "0.6.12"
 futures-util = "0.3.31"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 gsettings-macro = "0.2.1"
+gst = { version = "0.23.2", package = "gstreamer", features = ["v1_24"] }
 gtk = { version = "0.9.2", package = "gtk4", features = ["gnome_46", "blueprint"] }
 gvdb-macros = "0.1.13"
 html2pango = "0.6.0"
