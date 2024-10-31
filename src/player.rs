@@ -67,7 +67,17 @@ mod imp {
             slf.connect_title_notify(glib::clone!(
                 #[weak]
                 taginject,
-                move |slf| taginject.set_property("tags", format!("title={}", slf.title()))
+                move |slf| {
+                    let mut tags = gst::TagList::new();
+                    tags.make_mut()
+                        .add::<gst::tags::Title>(&&*slf.title(), gst::TagMergeMode::Replace);
+                    taginject.set_property(
+                        "tags",
+                        tags.to_string()
+                            .strip_prefix("taglist, ")
+                            .expect("serialized GstTagList should start with `taglist, `"),
+                    )
+                }
             ));
 
             self.video.connect_toggle_fullscreen(glib::clone!(
