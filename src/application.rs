@@ -15,9 +15,9 @@ use smart_default::SmartDefault;
 use crate::{
     config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
     launcher::{ExternalProgram, ExternalProgramType, ProgramSelector},
-    player::TvPlayer,
+    player::{TvPlayer, VideoInfo},
     preferences::TvPreferencesDialog,
-    settings::TvSettings,
+    settings::{TvSettings, VideoQuality},
     utils::{show_error, spawn, spawn_clone, tokio, AsyncResource},
     window::TvWindow,
     zapp::Zapp,
@@ -167,7 +167,7 @@ impl TvApplication {
         self.imp().live_channels.clone()
     }
 
-    pub async fn play(&self, uri: &str, title: &str, subtitle_uri: Option<&str>) {
+    pub async fn play(&self, video: VideoInfo) {
         let settings = TvSettings::get();
 
         if settings.use_external_player() {
@@ -203,13 +203,27 @@ impl TvApplication {
                 }
             };
 
+            let uri = match video {
+                VideoInfo::Live { uri, .. } => uri,
+                VideoInfo::Mediathek {
+                    preferred_quality,
+                    uri_high,
+                    uri_medium,
+                    uri_low,
+                    ..
+                } => match preferred_quality {
+                    VideoQuality::High => uri_high.expect("no high quality video URI set"),
+                    VideoQuality::Medium => uri_medium.expect("no medium quality video URI set"),
+                    VideoQuality::Low => uri_low.expect("no low quality video URI set"),
+                },
+            };
             match player.open(uri).await {
                 Ok(()) => (),
                 Err(e) => show_error(e.wrap_err(gettext("Failed to play video stream"))),
             }
         } else {
             let player = self.player();
-            player.play(title, uri, subtitle_uri);
+            player.play(video);
             player.present();
         }
     }

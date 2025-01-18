@@ -10,6 +10,7 @@ use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
 use crate::{
     channel_icons::load_channel_icon,
+    player::VideoInfo,
     utils::{spawn, tokio},
     TvApplication,
 };
@@ -63,12 +64,13 @@ mod imp {
             klass.bind_template();
 
             klass.install_action_async("card.play", None, |slf, _, _| async move {
+                let channel = slf.channel().unwrap();
                 TvApplication::get()
-                    .play(
-                        &slf.channel().unwrap().stream_url(),
-                        &slf.channel().unwrap().name(),
-                        None,
-                    )
+                    .play(VideoInfo::Live {
+                        title: channel.name(),
+                        uri: channel.stream_url(),
+                        channel_id: channel.id(),
+                    })
                     .await
             });
         }

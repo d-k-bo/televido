@@ -56,6 +56,18 @@ pub fn load_channel_icon(channel_id: Option<&str>, image: &gtk::Image, size: i32
     }
 }
 
+pub fn channel_icon_resource(channel_id: &str) -> Option<String> {
+    let icon_name = ICON_NAMES.get(channel_id)?;
+
+    let application = TvApplication::get();
+    let style_manager = application.style_manager();
+    let color_scheme = ColorScheme::for_style_manager(&style_manager);
+
+    Some(format!(
+        "/de/k_bo/televido/icons/scalable/channels/{color_scheme}/{icon_name}"
+    ))
+}
+
 static ICON_NAMES: phf::Map<&'static str, &'static str> = phf_map! {
     // live
     "ard_alpha" => "ard-alpha.svg",

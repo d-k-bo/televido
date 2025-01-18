@@ -11,6 +11,10 @@ template $TvPlayer: Adw.Window {
   height-request: 180;
   width-request: 320;
 
+  styles [
+    "tvplayer"
+  ]
+
   Gtk.WindowHandle {
     ClapperGtk.Video video {
       auto-inhibit: true;
@@ -42,9 +46,125 @@ template $TvPlayer: Adw.Window {
       }
 
       [fading-overlay]
-      ClapperGtk.SimpleControls {
+      ClapperGtk.Container {
+        halign: center;
         valign: end;
+        adaptive-width: 560;
+
+        styles [
+          "controls"
+        ]
+
+        ClapperGtk.Container {
+          adaptive-width: 400;
+
+          Gtk.CenterBox {
+            orientation: horizontal;
+            halign: center;
+            valign: end;
+
+            [center]
+            ClapperGtk.Container {
+              width-target: 944;
+
+              Gtk.Box {
+                orientation: vertical;
+                halign: fill;
+                valign: center;
+
+                ClapperGtk.LeadContainer {
+                  blocked-actions: toggle_play | seek_request;
+
+                  Gtk.Box {
+                    orientation: horizontal;
+                    halign: fill;
+                    valign: center;
+
+                    styles [
+                      "osd",
+                      "rounded",
+                      "mainbox"
+                    ]
+
+                    ClapperGtk.TogglePlayButton {
+                      halign: center;
+                      valign: center;
+
+                      styles [
+                        "flat",
+                        "circular"
+                      ]
+                    }
+
+                    ClapperGtk.SeekBar seek_bar {
+                      halign: fill;
+                      valign: center;
+                    }
+
+                    ClapperGtk.ExtraMenuButton clapper_menu_button {
+                      halign: center;
+                      valign: center;
+
+                      styles [
+                        "flat",
+                        "circular"
+                      ]
+                    }
+
+                    Gtk.MenuButton custom_menu_button {
+                      icon-name: "view-more-symbolic";
+                      menu-model: options_menu;
+
+                      styles [
+                        "flat",
+                        "circular"
+                      ]
+                    }
+
+                    ClapperGtk.ToggleFullscreenButton {
+                      halign: end;
+                      valign: center;
+
+                      styles [
+                        "flat",
+                        "circular",
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
+  }
+}
+
+menu options_menu {
+  submenu {
+    label: _("Video Quality");
+
+    section {
+      item {
+        label: _("High Quality");
+        action: "player.switch-to-high-quality";
+      }
+
+      item {
+        label: _("Medium Quality");
+        action: "player.switch-to-medium-quality";
+      }
+
+      item {
+        label: _("Low Quality");
+        action: "player.switch-to-low-quality";
+      }
+    }
+  }
+
+  item {
+    label: _("Enable subtitles");
+    action: "player.enable-subtitles";
   }
 }
