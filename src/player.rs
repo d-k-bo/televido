@@ -268,9 +268,11 @@ impl TvPlayer {
 
         let item = clapper::MediaItem::new(&self.uri());
 
-        if let Some(subtitle_uri) = self.subtitle_uri() {
-            item.set_suburi(&subtitle_uri);
-        }
+        // Adding subtitles currently breaks playback
+        // see https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4066
+        // if let Some(subtitle_uri) = self.subtitle_uri() {
+        //     item.set_suburi(&subtitle_uri);
+        // }
 
         queue.add_item(&item);
         queue.select_item(Some(&item));
