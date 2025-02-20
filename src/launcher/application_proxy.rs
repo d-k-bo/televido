@@ -12,7 +12,7 @@ use zbus::proxy;
     assume_defaults = false,
     gen_blocking = false
 )]
-trait Application {
+pub trait Application {
     /// Activate method
     fn activate(
         &self,
