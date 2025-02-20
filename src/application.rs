@@ -13,7 +13,7 @@ use gettextrs::gettext;
 use smart_default::SmartDefault;
 
 use crate::{
-    config::{APP_ID, APP_NAME, AUTHOR, ISSUE_URL, PROJECT_URL, VERSION},
+    config::{APP_ID, PROFILE, VERSION},
     launcher::{ExternalProgram, ExternalProgramType, ProgramSelector},
     player::{TvPlayer, VideoInfo},
     preferences::TvPreferencesDialog,
@@ -307,15 +307,12 @@ impl TvApplication {
     }
 
     fn show_about(&self) {
-        let about = adw::AboutDialog::builder()
-            .application_name(APP_NAME)
-            .application_icon(APP_ID)
-            .developer_name(AUTHOR)
-            .version(VERSION)
-            .website(PROJECT_URL)
-            .issue_url(ISSUE_URL)
-            .license_type(gtk::License::Gpl30)
-            .build();
+        let about = adw::AboutDialog::from_appdata(
+            "/de/k_bo/televido/de.k_bo.Televido.metainfo.xml",
+            (PROFILE == "Release").then_some(VERSION),
+        );
+
+        about.set_version(VERSION);
 
         about.present(Some(&self.window()));
     }

@@ -23,7 +23,7 @@ if get_option('profile') == 'development'
   endif
   APP_ID = '@0@.@1@'.format(BASE_APP_ID, PROFILE)
 else
-  PROFILE = ''
+  PROFILE = 'Release'
   version_suffix = ''
   APP_ID = BASE_APP_ID
 endif

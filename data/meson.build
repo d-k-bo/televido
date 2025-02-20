@@ -23,6 +23,19 @@ appstream_file = i18n.merge_file(
   install_dir: get_option('datadir') / 'metainfo',
 )
 
+# Setup a translated metainfo file in the resources dir as well
+# for use by the about dialog
+# based on https://github.com/bragefuglseth/fretboard/blob/cf9e72bf66dfc4fb0b24ba8cf04c7f794191dbc8/data/meson.build#L41-L50
+msgfmt = find_program('msgfmt', required: true)
+run_command(
+  msgfmt,
+  '--xml',
+  '-d' + meson.project_source_root() / 'po',
+  '--template=' + BASE_APP_ID + '.metainfo.xml.in',
+  '--output-file=' + 'resources' / BASE_APP_ID + '.metainfo.xml',
+  check: true,
+)
+
 appstreamcli = find_program('appstreamcli', required: false, disabler: true)
 if appstreamcli.found()
   test(
