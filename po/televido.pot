@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2024-06-22 22:13+0200\n"
+"POT-Creation-Date: 2025-02-20 18:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,69 +44,74 @@ msgstr ""
 
 #: data/de.k_bo.Televido.metainfo.xml.in:17
 msgid ""
-"For video playback and download, Televido uses external programs that are "
-"installed on the user's system. Currently supported players: GNOME Videos "
+"Televido provides an integrated player for video playback. Additionally, "
+"Televido supports external programs that are installed on the user's system "
+"for video playback and download. Currently supported players: GNOME Videos "
 "(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
 "Parabolic."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:63
+#: data/de.k_bo.Televido.metainfo.xml.in:64
+msgid "Add an integrated video player based on Clapper and ClapperGTK"
+msgstr ""
+
+#: data/de.k_bo.Televido.metainfo.xml.in:71
 msgid "Allow removing and reordering live channels"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:64
+#: data/de.k_bo.Televido.metainfo.xml.in:72
 msgid "Add option to copy subtitles URL"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:65
+#: data/de.k_bo.Televido.metainfo.xml.in:73
 msgid "Use MediathekViewWeb's advanced search syntax"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:72
+#: data/de.k_bo.Televido.metainfo.xml.in:80
 msgid "Use adaptive dialogs for preferences, player selector and about dialog"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:73
+#: data/de.k_bo.Televido.metainfo.xml.in:81
 msgid "Added French translation"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:80
+#: data/de.k_bo.Televido.metainfo.xml.in:88
 msgid "Added support for downloading content using Parabolic"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:81
+#: data/de.k_bo.Televido.metainfo.xml.in:89
 msgid "Added Dutch translation"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:88
+#: data/de.k_bo.Televido.metainfo.xml.in:96
 msgid "Added support for mobile devices"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:95
+#: data/de.k_bo.Televido.metainfo.xml.in:103
 msgid "Added support for custom video players"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:96
+#: data/de.k_bo.Televido.metainfo.xml.in:104
 msgid "Added support Daikhan as a video player"
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:102
+#: data/de.k_bo.Televido.metainfo.xml.in:110
 msgid "If an error occurs, a graphical error message is shown."
 msgstr ""
 
-#: data/de.k_bo.Televido.metainfo.xml.in:107
+#: data/de.k_bo.Televido.metainfo.xml.in:115
 msgid "Initital release"
 msgstr ""
 
-#: src/application.rs:98 src/live/view.rs:126
+#: src/application.rs:102 src/live/view.rs:126
 msgid "Failed to load livestream channels"
 msgstr ""
 
-#: src/application.rs:183
+#: src/application.rs:222
 msgid "Failed to play video stream"
 msgstr ""
 
-#: src/application.rs:226
+#: src/application.rs:270
 msgid "Failed to launch video downloader"
 msgstr ""
 
@@ -147,31 +152,31 @@ msgstr ""
 msgid "Could not find application “{}”"
 msgstr ""
 
-#: src/launcher/selector.rs:169
+#: src/launcher/selector.rs:173
 msgid "Failed to load external applications"
 msgstr ""
 
-#: src/launcher/selector.rs:173 src/utils.rs:101
+#: src/launcher/selector.rs:177 src/utils.rs:101
 msgid "See the terminal output for details."
 msgstr ""
 
-#: src/launcher/selector.rs:265
+#: src/launcher/selector.rs:269
 msgid "Select video player"
 msgstr ""
 
-#: src/launcher/selector.rs:266
+#: src/launcher/selector.rs:270
 msgid "Select one of the following external programs to stream content."
 msgstr ""
 
-#: src/launcher/selector.rs:269
+#: src/launcher/selector.rs:273
 msgid "Select video downloader"
 msgstr ""
 
-#: src/launcher/selector.rs:270
+#: src/launcher/selector.rs:274
 msgid "Select one of the following external programs to download content."
 msgstr ""
 
-#: src/launcher/selector.rs:277
+#: src/launcher/selector.rs:281
 msgid ""
 "You can also specify a custom application ID (e.g. org.example.Application) "
 "of a different program that supports DBus activation, is able to open a "
@@ -199,15 +204,15 @@ msgstr ""
 msgid "Open Website"
 msgstr ""
 
-#: src/mediathek/card.blp:140 src/mediathek/card.blp:157
+#: src/mediathek/card.blp:140 src/mediathek/card.blp:157 src/player.blp:150
 msgid "High Quality"
 msgstr ""
 
-#: src/mediathek/card.blp:145 src/mediathek/card.blp:162
+#: src/mediathek/card.blp:145 src/mediathek/card.blp:162 src/player.blp:155
 msgid "Medium Quality"
 msgstr ""
 
-#: src/mediathek/card.blp:150 src/mediathek/card.blp:167
+#: src/mediathek/card.blp:150 src/mediathek/card.blp:167 src/player.blp:160
 msgid "Low Quality"
 msgstr ""
 
@@ -215,15 +220,15 @@ msgstr ""
 msgid "Subtitles"
 msgstr ""
 
-#: src/mediathek/card.rs:107
+#: src/mediathek/card.rs:114
 msgid "Copied video URL to clipboard"
 msgstr ""
 
-#: src/mediathek/card.rs:120
+#: src/mediathek/card.rs:127
 msgid "Copied subtitles URL to clipboard"
 msgstr ""
 
-#: src/mediathek/card.rs:209
+#: src/mediathek/card.rs:239
 msgid "Failed to open website in browser"
 msgstr ""
 
@@ -296,8 +301,12 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: src/mediathek/view.rs:259 src/mediathek/view.rs:301
+#: src/mediathek/view.rs:264 src/mediathek/view.rs:306
 msgid "Failed to query the MediathekViewWeb API"
+msgstr ""
+
+#: src/player.blp:146
+msgid "Video Quality"
 msgstr ""
 
 #: src/preferences/dialog.blp:9
@@ -305,22 +314,26 @@ msgid "External Programs"
 msgstr ""
 
 #: src/preferences/dialog.blp:13
+msgid "Use external video player"
+msgstr ""
+
+#: src/preferences/dialog.blp:18
 msgid "Video Player"
 msgstr ""
 
-#: src/preferences/dialog.blp:17 src/preferences/dialog.blp:28
+#: src/preferences/dialog.blp:23 src/preferences/dialog.blp:34
 msgid "Change"
 msgstr ""
 
-#: src/preferences/dialog.blp:24
+#: src/preferences/dialog.blp:30
 msgid "Video Downloader"
 msgstr ""
 
-#: src/preferences/dialog.blp:36
+#: src/preferences/dialog.blp:42
 msgid "Live Channels"
 msgstr ""
 
-#: src/preferences/dialog.blp:40 src/preferences/live/selector.blp:7
+#: src/preferences/dialog.blp:46 src/preferences/live/selector.blp:7
 msgid "Select and reorder channels"
 msgstr ""
 
