@@ -35,6 +35,28 @@ impl Default for TvSettings {
     }
 }
 
+#[gen_settings(file = "data/de.k_bo.Televido.Player.gschema.xml")]
+pub struct TvPlayerSettings;
+
+impl TvPlayerSettings {
+    pub fn get() -> Self {
+        thread_local! {
+            static SETTINGS: OnceCell<TvPlayerSettings> = const { OnceCell::new() };
+        }
+        SETTINGS.with(|settings| {
+            settings
+                .get_or_init(|| TvPlayerSettings::new("de.k_bo.Televido.Player"))
+                .clone()
+        })
+    }
+}
+
+impl Default for TvPlayerSettings {
+    fn default() -> Self {
+        Self::get()
+    }
+}
+
 impl StaticVariantType for ChannelId {
     fn static_variant_type() -> std::borrow::Cow<'static, glib::VariantTy> {
         String::static_variant_type()

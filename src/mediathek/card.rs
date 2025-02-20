@@ -9,6 +9,7 @@ use gettextrs::gettext;
 use crate::{
     application::TvApplication,
     channel_icons::load_channel_icon,
+    player::VideoInfo,
     settings::{TvSettings, VideoQuality},
     utils::{show_error, spawn},
 };
@@ -82,17 +83,23 @@ glib::wrapper! {
 
 impl TvMediathekCard {
     fn play(&self, quality: VideoQuality) {
-        self.activate_action(
-            "app.play",
-            Some(
-                &self
-                    .show()
-                    .and_then(|show| show.video_url(quality))
-                    .expect("action must only be enabled if url is not None")
-                    .to_variant(),
-            ),
-        )
-        .unwrap()
+        let show = self
+            .show()
+            .expect("action must only be enabled if show is not None");
+
+        spawn(async move {
+            TvApplication::get()
+                .play(VideoInfo::Mediathek {
+                    title: show.title(),
+                    preferred_quality: quality,
+                    subtitle_uri: show.subtitle_url(),
+                    uri_high: show.video_url_high(),
+                    uri_medium: show.video_url_medium(),
+                    uri_low: show.video_url_low(),
+                    channel_id: show.channel(),
+                })
+                .await
+        });
     }
     fn copy_video_url(&self, quality: VideoQuality) {
         self.clipboard().set(

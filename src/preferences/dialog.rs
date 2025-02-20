@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: David Cabot <d-k-bo@mailbox.org>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
@@ -24,11 +24,14 @@ mod imp {
         #[template_child]
         video_downloader_row: TemplateChild<adw::ActionRow>,
 
+        #[property(get, set)]
+        use_external_player: Cell<bool>,
         #[property(get)]
         video_player_display_name: RefCell<String>,
         #[property(get)]
         video_downloader_display_name: RefCell<String>,
 
+        #[property(get)]
         settings: TvSettings,
     }
 
@@ -111,6 +114,10 @@ mod imp {
     impl ObjectImpl for TvPreferencesDialog {
         fn constructed(&self) {
             self.parent_constructed();
+
+            self.settings
+                .bind_use_external_player(&*self.obj(), "use-external-player")
+                .build();
 
             self.update_video_player_display_name();
             self.settings
