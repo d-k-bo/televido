@@ -21,9 +21,11 @@ pub fn load_channel_icon(channel_id: Option<&str>, image: &gtk::Image, size: i32
 
     set_icon(&style_manager, image, icon_name, size);
 
-    style_manager.connect_dark_notify(glib::clone!(@weak image => move |style_manager| {
-        set_icon(style_manager, &image, icon_name, size)
-    }));
+    style_manager.connect_dark_notify(glib::clone!(
+        #[weak]
+        image,
+        move |style_manager| set_icon(style_manager, &image, icon_name, size)
+    ));
 
     fn set_icon(style_manager: &adw::StyleManager, image: &gtk::Image, icon_name: &str, size: i32) {
         match load_icon(
@@ -31,7 +33,7 @@ pub fn load_channel_icon(channel_id: Option<&str>, image: &gtk::Image, size: i32
             size,
             ColorScheme::for_style_manager(style_manager),
         ) {
-            Ok(texture) => image.set_from_paintable(Some(&texture)),
+            Ok(texture) => image.set_paintable(Some(&texture)),
             Err(e) => {
                 error!("{e:?}");
                 image.set_icon_name(Some("image-missing-symbolic"));
@@ -52,6 +54,18 @@ pub fn load_channel_icon(channel_id: Option<&str>, image: &gtk::Image, size: i32
             .map(|pixbuf| gdk::Texture::for_pixbuf(&pixbuf))
             .wrap_err_with(|| format!("failed to load channel logo from {resource}"))
     }
+}
+
+pub fn channel_icon_resource(channel_id: &str) -> Option<String> {
+    let icon_name = ICON_NAMES.get(channel_id)?;
+
+    let application = TvApplication::get();
+    let style_manager = application.style_manager();
+    let color_scheme = ColorScheme::for_style_manager(&style_manager);
+
+    Some(format!(
+        "/de/k_bo/televido/icons/scalable/channels/{color_scheme}/{icon_name}"
+    ))
 }
 
 static ICON_NAMES: phf::Map<&'static str, &'static str> = phf_map! {

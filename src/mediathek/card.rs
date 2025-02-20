@@ -9,6 +9,7 @@ use gettextrs::gettext;
 use crate::{
     application::TvApplication,
     channel_icons::load_channel_icon,
+    player::VideoInfo,
     settings::{TvSettings, VideoQuality},
     utils::{show_error, spawn},
 };
@@ -82,17 +83,23 @@ glib::wrapper! {
 
 impl TvMediathekCard {
     fn play(&self, quality: VideoQuality) {
-        self.activate_action(
-            "app.play",
-            Some(
-                &self
-                    .show()
-                    .and_then(|show| show.video_url(quality))
-                    .expect("action must only be enabled if url is not None")
-                    .to_variant(),
-            ),
-        )
-        .unwrap()
+        let show = self
+            .show()
+            .expect("action must only be enabled if show is not None");
+
+        spawn(async move {
+            TvApplication::get()
+                .play(VideoInfo::Mediathek {
+                    title: show.title(),
+                    preferred_quality: quality,
+                    subtitle_uri: show.subtitle_url(),
+                    uri_high: show.video_url_high(),
+                    uri_medium: show.video_url_medium(),
+                    uri_low: show.video_url_low(),
+                    channel_id: show.channel(),
+                })
+                .await
+        });
     }
     fn copy_video_url(&self, quality: VideoQuality) {
         self.clipboard().set(
@@ -139,16 +146,22 @@ impl TvMediathekCard {
         macro_rules! video_url_action {
             ( $name:literal, $method:ident, $quality:expr) => {{
                 let action = gio::SimpleAction::new($name, None);
-                action.connect_activate(
-                    glib::clone!(@weak self as slf => move |_,_| slf.$method($quality)),
-                );
-                self.connect_show_notify(glib::clone!(@weak action => move |slf| {
-                    action.set_enabled(
-                        slf.show()
-                            .and_then(|show| show.video_url($quality))
-                            .is_some()
+                action.connect_activate(glib::clone!(
+                    #[weak(rename_to = slf)]
+                    self,
+                    move |_, _| slf.$method($quality)
+                ));
+                self.connect_show_notify(glib::clone!(
+                    #[weak]
+                    action,
+                    move |slf| {
+                        action.set_enabled(
+                            slf.show()
+                                .and_then(|show| show.video_url($quality))
+                                .is_some(),
                         );
-                }));
+                    }
+                ));
                 actions.add_action(&action);
                 action
             }};
@@ -156,15 +169,19 @@ impl TvMediathekCard {
 
         let play_default =
             video_url_action!("play-default", play, VideoQuality::default_playback());
-        TvSettings::get().connect_default_playback_quality_changed(
-            glib::clone!(@weak self as slf, @weak play_default => move |_| {
+        TvSettings::get().connect_default_playback_quality_changed(glib::clone!(
+            #[weak(rename_to = slf)]
+            self,
+            #[weak]
+            play_default,
+            move |_| {
                 play_default.set_enabled(
                     slf.show()
                         .and_then(|show| show.video_url(VideoQuality::default_playback()))
-                        .is_some()
-                    );
-            }),
-        );
+                        .is_some(),
+                );
+            }
+        ));
         video_url_action!("play-high", play, VideoQuality::High);
         video_url_action!("play-medium", play, VideoQuality::Medium);
         video_url_action!("play-low", play, VideoQuality::Low);
@@ -174,49 +191,63 @@ impl TvMediathekCard {
         video_url_action!("copy-url-low", copy_video_url, VideoQuality::Low);
 
         let copy_subtitles_url = gio::SimpleAction::new("copy-subtitles-url", None);
-        copy_subtitles_url.connect_activate(
-            glib::clone!(@weak self as slf => move |_,_| slf.copy_subtitles_url()),
-        );
-        self.connect_show_notify(glib::clone!(@weak copy_subtitles_url => move |slf| {
-            copy_subtitles_url.set_enabled(
-                slf.show()
-                    .and_then(|show| show.subtitle_url())
-                    .is_some()
-                );
-        }));
+        copy_subtitles_url.connect_activate(glib::clone!(
+            #[weak(rename_to = slf)]
+            self,
+            move |_, _| slf.copy_subtitles_url()
+        ));
+        self.connect_show_notify(glib::clone!(
+            #[weak]
+            copy_subtitles_url,
+            move |slf| {
+                copy_subtitles_url
+                    .set_enabled(slf.show().and_then(|show| show.subtitle_url()).is_some());
+            }
+        ));
         actions.add_action(&copy_subtitles_url);
 
         let download = gio::SimpleAction::new("download", None);
-        download.connect_activate(glib::clone!(@weak self as slf => move |_,_| slf.download()));
-        self.connect_show_notify(glib::clone!(@weak download => move |slf| {
-            download.set_enabled(
-                slf.show()
-                    .and_then(|show| show.website_url())
-                    .is_some()
-                );
-        }));
+        download.connect_activate(glib::clone!(
+            #[weak(rename_to = slf)]
+            self,
+            move |_, _| slf.download()
+        ));
+        self.connect_show_notify(glib::clone!(
+            #[weak]
+            download,
+            move |slf| {
+                download.set_enabled(slf.show().and_then(|show| show.website_url()).is_some());
+            }
+        ));
         actions.add_action(&download);
 
         let open_website = gio::SimpleAction::new("open-website", None);
-        open_website.connect_activate(glib::clone!(@weak self as slf => move |_,_| spawn(async move {
-           let url = slf
-               .show()
-               .and_then(|show| show.website_url())
-               .expect("action must only be enabled if url is not None");
-            if let Err(e) = gtk::UriLauncher::new(&url).launch_future(slf.root().and_downcast_ref::<adw::Window>()).await {
-                show_error(
-                    eyre::Report::msg(e.to_string())
-                        .wrap_err(gettext("Failed to open website in browser"))
-                );
-            }
-        })));
-        self.connect_show_notify(glib::clone!(@weak open_website => move |slf| {
-            open_website.set_enabled(
-                slf.show()
+        open_website.connect_activate(glib::clone!(
+            #[weak(rename_to = slf)]
+            self,
+            move |_, _| spawn(async move {
+                let url = slf
+                    .show()
                     .and_then(|show| show.website_url())
-                    .is_some()
-                );
-        }));
+                    .expect("action must only be enabled if url is not None");
+                if let Err(e) = gtk::UriLauncher::new(&url)
+                    .launch_future(slf.root().and_downcast_ref::<adw::Window>())
+                    .await
+                {
+                    show_error(
+                        eyre::Report::msg(e.to_string())
+                            .wrap_err(gettext("Failed to open website in browser")),
+                    );
+                }
+            })
+        ));
+        self.connect_show_notify(glib::clone!(
+            #[weak]
+            open_website,
+            move |slf| {
+                open_website.set_enabled(slf.show().and_then(|show| show.website_url()).is_some());
+            }
+        ));
         actions.add_action(&open_website);
 
         self.insert_action_group("card", Some(&actions));

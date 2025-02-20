@@ -139,11 +139,15 @@ mod imp {
                         btn.connect_activate({
                             let id = program.id.clone();
 
-                            glib::clone!(@weak self as slf => move |_| {
-                                spawn_clone!(slf, id => async {
-                                    slf.set_program(id).await
-                                })
-                            })
+                            glib::clone!(
+                                #[weak(rename_to = slf)]
+                                self,
+                                move |_| {
+                                    spawn_clone!(slf, id => async {
+                                        slf.set_program(id).await
+                                    })
+                                }
+                            )
                         });
 
                         let row = adw::ActionRow::builder()
@@ -283,7 +287,7 @@ impl ProgramSelector {
             .set(program_type)
             .expect("already initialized");
         slf.imp().load().await;
-        slf.present(&parent);
+        slf.present(Some(&parent));
 
         ProgramSelectFuture(slf.imp().future_data.clone()).await
     }

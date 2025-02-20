@@ -15,9 +15,10 @@
 			program only facilitates finding and accessing the shows.
 		</p>
 		<p>
-			For video playback and download, Televido uses external programs that are installed on
-			the user's system. Currently supported players: GNOME Videos (Totem), Celluloid,
-			Clapper, Daikhan. Currently supported downloaders: Parabolic.
+			Televido provides an integrated player for video playback. Additionally, Televido
+			supports external programs that are installed on the user's system for video playback
+			and download. Currently supported players: GNOME Videos (Totem), Celluloid, Clapper,
+			Daikhan. Currently supported downloaders: Parabolic.
 		</p>
 	</description>
 	<developer id="de.k-bo">
@@ -57,7 +58,14 @@
 		<control>touch</control>
 	</supports>
 	<releases>
-		<release version="0.4.0" type="development" date="2024-06-22">
+		<release version="0.5.0" type="development" date="2025-02-20">
+			<description>
+				<ul>
+					<li>Add an integrated video player based on Clapper and ClapperGTK</li>
+				</ul>
+			</description>
+		</release>
+		<release version="0.4.0" date="2024-06-25">
 			<description>
 				<ul>
 					<li>Allow removing and reordering live channels</li>

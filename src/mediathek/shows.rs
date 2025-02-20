@@ -49,7 +49,7 @@ mod imp {
         #[property(
             name = "duration",
             type = String,
-            get = |show: &ShowObject| format_duration(&show.inner.get().unwrap().duration),
+            get = |show: &ShowObject| show.inner.get().unwrap().duration.as_ref().map(format_duration).unwrap_or_default(),
         )]
         #[property(
             name = "video-url-high",

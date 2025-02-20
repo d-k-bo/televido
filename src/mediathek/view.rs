@@ -155,24 +155,29 @@ mod imp {
                 spawn_clone!(slf => slf.load())
             }
 
-            self.search_entry.connect_search_changed(
-                glib::clone!(@weak slf => move |_| spawn(async move { slf.load().await })),
-            );
+            self.search_entry.connect_search_changed(glib::clone!(
+                #[weak]
+                slf,
+                move |_| spawn(async move { slf.load().await })
+            ));
             slf.connect_search_everywhere_notify(load);
             slf.connect_include_future_notify(load);
             slf.connect_sort_by_notify(load);
             slf.connect_sort_order_notify(load);
 
-            self.shows_model().connect_items_changed(
-                glib::clone!(@weak self as slf => move |results, _, _, _| {
+            self.shows_model().connect_items_changed(glib::clone!(
+                #[weak(rename_to = slf)]
+                self,
+                move |results, _, _, _| {
                     if results.n_items() == 0 {
                         slf.stack.set_visible_child(&*slf.nothing_found_view);
                     } else {
                         slf.stack.set_visible_child(&*slf.results_view);
                     }
-                    slf.obj().set_more_available((results.n_items() as u64) < slf.total_results.get());
-                }),
-            );
+                    slf.obj()
+                        .set_more_available((results.n_items() as u64) < slf.total_results.get());
+                }
+            ));
 
             slf.connect_map(|slf| {
                 slf.imp().search_entry.grab_focus();

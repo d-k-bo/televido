@@ -4,7 +4,7 @@
 project(
   'televido',
   'rust',
-  version: '0.3.0',
+  version: '0.4.0',
   meson_version: '>= 0.61.0',
 )
 
@@ -23,7 +23,7 @@ if get_option('profile') == 'development'
   endif
   APP_ID = '@0@.@1@'.format(BASE_APP_ID, PROFILE)
 else
-  PROFILE = ''
+  PROFILE = 'Release'
   version_suffix = ''
   APP_ID = BASE_APP_ID
 endif

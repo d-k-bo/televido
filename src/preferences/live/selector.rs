@@ -46,25 +46,32 @@ mod imp {
                 .borrow_mut()
                 .extend(live_channels.iter().map(|(id, ChannelInfo { name, .. })| {
                     let row = TvLiveChannelSelectorRow::new(id, name);
-                    row.connect_visible_notify(
-                        glib::clone!(@weak self as slf => move |row: &TvLiveChannelSelectorRow| {
+                    row.connect_visible_notify(glib::clone!(
+                        #[weak(rename_to = slf)]
+                        self,
+                        move |row: &TvLiveChannelSelectorRow| {
                             slf.remove_row(row);
 
                             if row.visible() {
                                 slf.visible_channels.append(row);
                             } else {
-                                    let channel_rows = slf.channel_rows.borrow();
-                                    slf.hidden_channels
-                                    .typed_insert_sorted::<TvLiveChannelSelectorRow>(row, |a, b| {
-                                        channel_rows
-                                            .get_index_of(&a.channel_id())
-                                            .cmp(&channel_rows.get_index_of(&b.channel_id()))
-                                    });
+                                let channel_rows = slf.channel_rows.borrow();
+                                slf.hidden_channels
+                                    .typed_insert_sorted::<TvLiveChannelSelectorRow>(
+                                        row,
+                                        |a, b| {
+                                            channel_rows
+                                                .get_index_of(&a.channel_id())
+                                                .cmp(&channel_rows.get_index_of(&b.channel_id()))
+                                        },
+                                    );
                             }
-                        }),
-                    );
-                    row.connect_received_drop(
-                        glib::clone!(@weak self as slf => move |target_row, source_row| {
+                        }
+                    ));
+                    row.connect_received_drop(glib::clone!(
+                        #[weak(rename_to = slf)]
+                        self,
+                        move |target_row, source_row| {
                             let target_visible = target_row.visible();
                             let source_visible = source_row.visible();
 
@@ -87,8 +94,8 @@ mod imp {
                                 let target_pos = target_rows.find(target_row).unwrap();
                                 target_rows.insert(target_pos, source_row)
                             }
-                        }),
-                    );
+                        }
+                    ));
                     (id.clone(), row)
                 }));
 
@@ -177,9 +184,11 @@ mod imp {
                     row.clone().downcast().unwrap()
                 });
 
-            spawn(glib::clone!(@weak self as slf => async move {
-                slf.load().await
-            }));
+            spawn(glib::clone!(
+                #[weak(rename_to = slf)]
+                self,
+                async move { slf.load().await }
+            ));
 
             let settings = self.settings.clone();
             self.visible_channels

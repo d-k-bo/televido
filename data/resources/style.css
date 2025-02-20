@@ -1,0 +1,14 @@
+/* SPDX-FileCopyrightText: David Cabot <d-k-bo@mailbox.org> */
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+.tvplayer .controls {
+    margin: 6px;
+}
+
+.tvplayer .controls button {
+    margin: 2px;
+}
+
+.tvplayer .controls scale {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

@@ -9,7 +9,7 @@
 
 Die präsentierten Inhalte werden direkt von den jeweiligen Sendern angeboten, dieses Programm erleichtert dabei nur das Auffinden und Abrufen der Sendungen.
 
-Für Videowiedergabe und -download greift Televido auf externe Programme zurück, die auf dem System installiert sind. Derzeit unterstütze Player: [GNOME Videos (Totem)](https://flathub.org/apps/org.gnome.Totem), [Celluloid](https://flathub.org/apps/io.github.celluloid_player.Celluloid), [Clapper](https://flathub.org/apps/com.github.rafostar.Clapper), [Daikhan](https://flathub.org/apps/io.gitlab.daikhan.stable). Derzeit unterstütze Videodownloader: [Parabolic](https://flathub.org/apps/org.nickvision.tubeconverter).
+Televido bietet einen integrierten Videoplayer zum Abspielen der Inhalte. Darüber hinaus unterstützt Televido für Videowiedergabe und -download externe Programme, die auf dem System installiert sind. Derzeit unterstütze Player: [GNOME Videos (Totem)](https://flathub.org/apps/org.gnome.Totem), [Celluloid](https://flathub.org/apps/io.github.celluloid_player.Celluloid), [Clapper](https://flathub.org/apps/com.github.rafostar.Clapper), [Daikhan](https://flathub.org/apps/io.gitlab.daikhan.stable). Derzeit unterstütze Videodownloader: [Parabolic](https://flathub.org/apps/org.nickvision.tubeconverter).
 
 ## Senderlogos
 

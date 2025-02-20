@@ -4,6 +4,7 @@
 data/de.k_bo.Televido.desktop.in
 data/de.k_bo.Televido.gschema.xml
 data/de.k_bo.Televido.metainfo.xml.in
+data/de.k_bo.Televido.Player.gschema.xml
 src/application.rs
 src/channel_icons.rs
 src/config.rs
@@ -25,6 +26,8 @@ src/mediathek/mod.rs
 src/mediathek/shows.rs
 src/mediathek/view.blp
 src/mediathek/view.rs
+src/player.blp
+src/player.rs
 src/preferences/dialog.blp
 src/preferences/dialog.rs
 src/preferences/live/mod.rs
