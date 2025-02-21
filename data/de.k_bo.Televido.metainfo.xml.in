@@ -58,7 +58,7 @@
 		<control>touch</control>
 	</supports>
 	<releases>
-		<release version="0.5.0" type="development" date="2025-02-20">
+		<release version="0.5.0" date="2025-02-21">
 			<description>
 				<ul>
 					<li>Add an integrated video player based on Clapper and ClapperGTK</li>

@@ -4,7 +4,7 @@
 project(
   'televido',
   'rust',
-  version: '0.4.0',
+  version: '0.5.0',
   meson_version: '>= 0.61.0',
 )
 
@@ -30,7 +30,9 @@ endif
 
 meson.add_dist_script(
   'build-aux/dist-vendor.sh',
-  meson.project_build_root() / 'meson-dist' / meson.project_name() + '-' + meson.project_version(),
+  meson.project_build_root() / 'meson-dist' / meson.project_name()
+  + '-'
+  + meson.project_version(),
   meson.project_source_root(),
 )
 
