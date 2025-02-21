@@ -1367,9 +1367,9 @@ dependencies = [
 
 [[package]]
 name = "mediathekviewweb"
-version = "0.4.0"
+version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e80edfb88de7ff68df90a60150652bcf092c47e4ff6fa36ef1efdf61db2624e2"
+checksum = "cb8063a622423606f4b1e5182d80fae20a338fb606049555ea7bf2a819421364"
 dependencies = [
  "reqwest",
  "serde",
