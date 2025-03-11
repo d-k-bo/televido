@@ -1,0 +1,420 @@
+# Brazilian Portuguese translation for Televido.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the televido package.
+# Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: televido\n"
+"Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
+"POT-Creation-Date: 2025-02-20 18:40+0100\n"
+"PO-Revision-Date: 2025-03-11 18:23-0300\n"
+"Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+msgid "Televido"
+msgstr "Televido"
+
+#: data/de.k_bo.Televido.desktop.in:6
+msgid "Access German-language public broadcasting live streams and archives"
+msgstr ""
+"Acesse transmissões ao vivo e arquivos de transmissão pública em alemão"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:7
+msgid "Access German-language public TV"
+msgstr "Acesso à TV pública em língua alemã"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:9
+msgid ""
+"Televido (“Television” in Esperanto) lets you livestream, search, play and "
+"download media from German-language public television services. It is "
+"powered by APIs provided by the MediathekView project."
+msgstr ""
+"Televido (“Televisão” em Esperanto) permite que você transmita ao vivo, "
+"pesquise, reproduza e baixe mídia de serviços de televisão pública em língua "
+"alemã. Ele é alimentado por APIs fornecidas pelo projeto MediathekView."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:13
+msgid ""
+"The presented content is provided directly by the respective television "
+"services, this program only facilitates finding and accessing the shows."
+msgstr ""
+"O conteúdo apresentado é fornecido diretamente pelos respectivos serviços de "
+"televisão, este programa apenas facilita a localização e o acesso aos "
+"programas."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:17
+msgid ""
+"Televido provides an integrated player for video playback. Additionally, "
+"Televido supports external programs that are installed on the user's system "
+"for video playback and download. Currently supported players: GNOME Videos "
+"(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
+"Parabolic."
+msgstr ""
+"Televido fornece um player integrado para reprodução de vídeo. Além disso, "
+"Televido suporta programas externos que são instalados no sistema do usuário "
+"para reprodução e download de vídeo. Players suportados atualmente: GNOME "
+"Videos (Totem), Celluloid, Clapper, Daikhan. Downloaders suportados "
+"atualmente: Parabolic."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:64
+msgid "Add an integrated video player based on Clapper and ClapperGTK"
+msgstr "Adicione um player de vídeo integrado baseado em Clapper e ClapperGTK"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:71
+msgid "Allow removing and reordering live channels"
+msgstr "Permitir remover e reordenar canais ao vivo"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:72
+msgid "Add option to copy subtitles URL"
+msgstr "Adicionar opção para copiar URL de legendas"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:73
+msgid "Use MediathekViewWeb's advanced search syntax"
+msgstr "Use a sintaxe de pesquisa avançada do MediathekViewWeb"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:80
+msgid "Use adaptive dialogs for preferences, player selector and about dialog"
+msgstr ""
+"Use diálogos adaptáveis ​​para preferências, seletor de jogadores e diálogo "
+"sobre"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:81
+msgid "Added French translation"
+msgstr "Adicionada tradução em francês"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:88
+msgid "Added support for downloading content using Parabolic"
+msgstr "Adicionado suporte para download de conteúdo usando Parabolic"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:89
+msgid "Added Dutch translation"
+msgstr "Adicionada tradução holandesa"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:96
+msgid "Added support for mobile devices"
+msgstr "Adicionado suporte para dispositivos móveis"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:103
+msgid "Added support for custom video players"
+msgstr "Adicionado suporte para players de vídeo personalizados"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:104
+msgid "Added support Daikhan as a video player"
+msgstr "Adicionado suporte Daikhan como um player de vídeo"
+
+#: data/de.k_bo.Televido.metainfo.xml.in:110
+msgid "If an error occurs, a graphical error message is shown."
+msgstr "Se ocorrer um erro, uma mensagem gráfica de erro será exibida."
+
+#: data/de.k_bo.Televido.metainfo.xml.in:115
+msgid "Initital release"
+msgstr "Lançamento inicial"
+
+#: src/application.rs:102 src/live/view.rs:126
+msgid "Failed to load livestream channels"
+msgstr "Falha ao carregar canais de transmissão ao vivo"
+
+#: src/application.rs:222
+msgid "Failed to play video stream"
+msgstr "Falha ao reproduzir o fluxo de vídeo"
+
+#: src/application.rs:270
+msgid "Failed to launch video downloader"
+msgstr "Falha ao iniciar o downloader de vídeo"
+
+#: src/help-overlay.blp:12
+msgid "General"
+msgstr "Geral"
+
+#: src/help-overlay.blp:15
+msgid "Show livestreams"
+msgstr "Mostrar transmissões ao vivo"
+
+#: src/help-overlay.blp:20
+msgid "Show mediathek"
+msgstr "Mostrar biblioteca de mídia"
+
+#: src/help-overlay.blp:25 src/window.blp:41
+msgid "Reload"
+msgstr "Recarregar"
+
+#: src/help-overlay.blp:30
+msgid "Quit application"
+msgstr "Sair do aplicativo"
+
+#: src/launcher/selector.blp:18
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/launcher/selector.blp:24
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: src/launcher/selector.blp:40
+msgid "Custom program"
+msgstr "Programa personalizado"
+
+#. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
+#: src/launcher/selector.rs:115
+msgid "Could not find application “{}”"
+msgstr "Não foi possível encontrar o aplicativo “{}”"
+
+#: src/launcher/selector.rs:173
+msgid "Failed to load external applications"
+msgstr "Falha ao carregar aplicativos externos"
+
+#: src/launcher/selector.rs:177 src/utils.rs:101
+msgid "See the terminal output for details."
+msgstr "Veja a saída do terminal para mais detalhes."
+
+#: src/launcher/selector.rs:269
+msgid "Select video player"
+msgstr "Selecione o player de vídeo"
+
+#: src/launcher/selector.rs:270
+msgid "Select one of the following external programs to stream content."
+msgstr ""
+"Selecione um dos seguintes programas externos para transmitir conteúdo."
+
+#: src/launcher/selector.rs:273
+msgid "Select video downloader"
+msgstr "Selecione o downloader de vídeo"
+
+#: src/launcher/selector.rs:274
+msgid "Select one of the following external programs to download content."
+msgstr "Selecione um dos seguintes programas externos para baixar o conteúdo."
+
+#: src/launcher/selector.rs:281
+msgid ""
+"You can also specify a custom application ID (e.g. org.example.Application) "
+"of a different program that supports DBus activation, is able to open a "
+"https:// URI and is accessible from the context of this application."
+msgstr ""
+"Você também pode especificar um ID de aplicativo personalizado (por exemplo, "
+"org.example.Application) de um programa diferente que suporte ativação do "
+"DBus, seja capaz de abrir um URI https:// e seja acessível a partir do "
+"contexto deste aplicativo."
+
+#: src/live/card.blp:48 src/mediathek/card.blp:99
+msgid "Play"
+msgstr "Play"
+
+#. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
+#: src/live/view.rs:63
+msgid "Failed load shows for channel “{}”"
+msgstr "Falha no carregamento para o canal “{}”"
+
+#: src/mediathek/card.blp:106
+msgid "Copy video URL"
+msgstr "Copy video URL"
+
+#: src/mediathek/card.blp:112
+msgid "Download"
+msgstr "Download"
+
+#: src/mediathek/card.blp:118
+msgid "Open Website"
+msgstr "Abrir site"
+
+#: src/mediathek/card.blp:140 src/mediathek/card.blp:157 src/player.blp:150
+msgid "High Quality"
+msgstr "Alta qualidade"
+
+#: src/mediathek/card.blp:145 src/mediathek/card.blp:162 src/player.blp:155
+msgid "Medium Quality"
+msgstr "Qualidade média"
+
+#: src/mediathek/card.blp:150 src/mediathek/card.blp:167 src/player.blp:160
+msgid "Low Quality"
+msgstr "Baixa qualidade"
+
+#: src/mediathek/card.blp:172
+msgid "Subtitles"
+msgstr "Legendas"
+
+#: src/mediathek/card.rs:114
+msgid "Copied video URL to clipboard"
+msgstr "URL do vídeo copiado para a área de transferência"
+
+#: src/mediathek/card.rs:127
+msgid "Copied subtitles URL to clipboard"
+msgstr "URL das legendas copiadas para a área de transferência"
+
+#: src/mediathek/card.rs:239
+msgid "Failed to open website in browser"
+msgstr "Falha ao abrir o site no navegador"
+
+#: src/mediathek/view.blp:20
+msgid "e.g. »tagesschau«"
+msgstr "por exemplo »tagesschau«"
+
+#: src/mediathek/view.blp:32
+msgid "Search everywhere"
+msgstr "Pesquise em todos os lugares"
+
+#: src/mediathek/view.blp:38
+msgid "Include future shows"
+msgstr "Incluir programas futuros"
+
+#: src/mediathek/view.blp:43
+msgid "Sort"
+msgstr "Sort"
+
+#: src/mediathek/view.blp:56
+msgid "Search for content"
+msgstr "Pesquisar conteúdo"
+
+#: src/mediathek/view.blp:57
+msgid ""
+"Start typing in the search bar to see a list of matching shows.\n"
+"\n"
+"The search field supports <a href=\"https://github.com/mediathekview/"
+"mediathekviewweb/blob/master/README.md#erweiterte-suche\">MediathekViewWeb's "
+"advanced search syntax</a> (German)."
+msgstr ""
+"Comece a digitar na barra de pesquisa para ver uma lista de programas "
+"correspondentes.\n"
+"\n"
+"O campo de pesquisa suporta <a href=\"https://github.com/mediathekview/"
+"mediathekviewweb/blob/master/README.md#erweiterte-suche\">Sintaxe de "
+"pesquisa avançada do MediathekViewWeb</a> (alemão)."
+
+#: src/mediathek/view.blp:62
+msgid "No results"
+msgstr "Nenhum resultado"
+
+#: src/mediathek/view.blp:63
+msgid "Try different search terms or adjust the search filters"
+msgstr ""
+"Experimente termos de pesquisa diferentes ou ajuste os filtros de pesquisa"
+
+#: src/mediathek/view.blp:85
+msgid "Load more"
+msgstr "Carregar mais"
+
+#: src/mediathek/view.blp:97
+msgid "Sort By"
+msgstr "Ordenar por"
+
+#: src/mediathek/view.blp:100
+msgid "Channel"
+msgstr "Canal"
+
+#: src/mediathek/view.blp:106
+msgid "Date"
+msgstr "Data"
+
+#: src/mediathek/view.blp:112
+msgid "Duration"
+msgstr "Duração"
+
+#: src/mediathek/view.blp:119
+msgid "Sort Order"
+msgstr "Ordenação"
+
+#: src/mediathek/view.blp:122
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: src/mediathek/view.blp:128
+msgid "Descending"
+msgstr "Descendente"
+
+#: src/mediathek/view.rs:264 src/mediathek/view.rs:306
+msgid "Failed to query the MediathekViewWeb API"
+msgstr "Falha ao consultar a API MediathekViewWeb"
+
+#: src/player.blp:146
+msgid "Video Quality"
+msgstr "Video Quality"
+
+#: src/preferences/dialog.blp:9
+msgid "External Programs"
+msgstr "Programas externos"
+
+#: src/preferences/dialog.blp:13
+msgid "Use external video player"
+msgstr "Usar player de vídeo externo"
+
+#: src/preferences/dialog.blp:18
+msgid "Video Player"
+msgstr "Reprodutor de vídeo"
+
+#: src/preferences/dialog.blp:23 src/preferences/dialog.blp:34
+msgid "Change"
+msgstr "Alterar"
+
+#: src/preferences/dialog.blp:30
+msgid "Video Downloader"
+msgstr "Downloader de vídeo"
+
+#: src/preferences/dialog.blp:42
+msgid "Live Channels"
+msgstr "Canais ao vivo"
+
+#: src/preferences/dialog.blp:46 src/preferences/live/selector.blp:7
+msgid "Select and reorder channels"
+msgstr "Selecione e reordene os canais"
+
+#: src/preferences/live/selector.blp:15
+msgid "Visible channels"
+msgstr "Canais visíveis"
+
+#: src/preferences/live/selector.blp:35
+msgid "Hidden channels"
+msgstr "Canais ocultos"
+
+#: src/preferences/live/selector.blp:51
+msgid "Sort alphabetically"
+msgstr "Classificar alfabeticamente"
+
+#: src/preferences/live/selector.blp:56
+msgid "Sort using default order"
+msgstr "Classificar usando a ordem padrão"
+
+#. translators:  %b is Month name (short)
+#. %-e is the Day number
+#. %Y is the year (with century)
+#. %H is the hours (24h format)
+#. %M is the minutes
+#: src/utils.rs:60
+msgid "%b %-e, %Y %H:%M"
+msgstr "%b %-e, %Y %H:%M"
+
+#. translators:  %H is the hours (24h format)
+#. %M is the minutes
+#: src/utils.rs:70
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: src/window.blp:34
+msgid "Menu"
+msgstr "Menu"
+
+#: src/window.blp:50
+msgid "Live"
+msgstr "Ao vivo"
+
+#: src/window.blp:58
+msgid "Mediathek"
+msgstr "Mediathek"
+
+#: src/window.blp:76
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/window.blp:81
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de teclado"
+
+#: src/window.blp:86
+msgid "About Televido"
+msgstr "Sobre Televido"
