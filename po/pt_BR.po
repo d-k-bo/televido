@@ -1,9 +1,8 @@
 # Brazilian Portuguese translation for Televido.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the televido package.
-# Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2025.
 #
-#, fuzzy
+# SPDX-FileCopyrightText: Tiago Lucas Flach <tiagolucas9830@gmail.com>
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
@@ -226,15 +225,15 @@ msgstr "Abrir site"
 
 #: src/mediathek/card.blp:140 src/mediathek/card.blp:157 src/player.blp:150
 msgid "High Quality"
-msgstr "Alta qualidade"
+msgstr "Qualidade Alta"
 
 #: src/mediathek/card.blp:145 src/mediathek/card.blp:162 src/player.blp:155
 msgid "Medium Quality"
-msgstr "Qualidade média"
+msgstr "Qualidade Média"
 
 #: src/mediathek/card.blp:150 src/mediathek/card.blp:167 src/player.blp:160
 msgid "Low Quality"
-msgstr "Baixa qualidade"
+msgstr "Qualidade Baixa"
 
 #: src/mediathek/card.blp:172
 msgid "Subtitles"
