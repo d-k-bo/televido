@@ -51,7 +51,8 @@
       "config-opts": [
         "-Dclapper=enabled",
         "-Dclapper-gtk=enabled",
-        "-Dclapper-app=disabled"
+        "-Dclapper-app=disabled",
+        "-Denhancers-loader=disabled"
       ],
       "cleanup": [
         "/include",
@@ -61,7 +62,7 @@
         {
           "type": "git",
           "url": "https://github.com/Rafostar/clapper.git",
-          "tag": "0.6.1"
+          "tag": "0.8.0"
         }
       ]
     },
