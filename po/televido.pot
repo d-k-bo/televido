@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2025-02-20 18:40+0100\n"
+"POT-Creation-Date: 2025-11-26 22:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+#: data/de.k_bo.Televido.desktop.in:4 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
 msgstr ""
 
-#: data/de.k_bo.Televido.desktop.in:6
+#: data/de.k_bo.Televido.desktop.in:5
 msgid "Access German-language public broadcasting live streams and archives"
 msgstr ""
 
@@ -115,26 +115,6 @@ msgstr ""
 msgid "Failed to launch video downloader"
 msgstr ""
 
-#: src/help-overlay.blp:12
-msgid "General"
-msgstr ""
-
-#: src/help-overlay.blp:15
-msgid "Show livestreams"
-msgstr ""
-
-#: src/help-overlay.blp:20
-msgid "Show mediathek"
-msgstr ""
-
-#: src/help-overlay.blp:25 src/window.blp:41
-msgid "Reload"
-msgstr ""
-
-#: src/help-overlay.blp:30
-msgid "Quit application"
-msgstr ""
-
 #: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr ""
@@ -149,6 +129,7 @@ msgstr ""
 
 #. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
 #: src/launcher/selector.rs:115
+#, rust-format
 msgid "Could not find application “{}”"
 msgstr ""
 
@@ -189,6 +170,7 @@ msgstr ""
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
 #: src/live/view.rs:63
+#, rust-format
 msgid "Failed load shows for channel “{}”"
 msgstr ""
 
@@ -228,7 +210,7 @@ msgstr ""
 msgid "Copied subtitles URL to clipboard"
 msgstr ""
 
-#: src/mediathek/card.rs:239
+#: src/mediathek/card.rs:225
 msgid "Failed to open website in browser"
 msgstr ""
 
@@ -351,6 +333,26 @@ msgstr ""
 
 #: src/preferences/live/selector.blp:56
 msgid "Sort using default order"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:8
+msgid "General"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:11
+msgid "Show livestreams"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:16
+msgid "Show mediathek"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:21 src/window.blp:41
+msgid "Reload"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:26
+msgid "Quit application"
 msgstr ""
 
 #. translators:  %b is Month name (short)

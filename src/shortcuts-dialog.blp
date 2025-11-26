@@ -1,0 +1,30 @@
+// SPDX-FileCopyrightText: David Cabot <d-k-bo@mailbox.org>
+// SPDX-License-Identifier: GPL-3.0-or-later
+using Gtk 4.0;
+using Adw 1;
+
+Adw.ShortcutsDialog shortcuts_dialog {
+  Adw.ShortcutsSection {
+    title: _("General");
+
+    Adw.ShortcutsItem {
+      title: _("Show livestreams");
+      action-name: "window.show-live";
+    }
+
+    Adw.ShortcutsItem {
+      title: _("Show mediathek");
+      action-name: "window.show-mediathek";
+    }
+
+    Adw.ShortcutsItem {
+      title: _("Reload");
+      action-name: "window.reload";
+    }
+
+    Adw.ShortcutsItem {
+      title: _("Quit application");
+      action-name: "app.quit";
+    }
+  }
+}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2025-02-20 18:40+0100\n"
+"POT-Creation-Date: 2025-11-26 22:19+0100\n"
 "PO-Revision-Date: 2025-02-21 10:47+0100\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+#: data/de.k_bo.Televido.desktop.in:4 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
 msgstr "Televido"
 
-#: data/de.k_bo.Televido.desktop.in:6
+#: data/de.k_bo.Televido.desktop.in:5
 msgid "Access German-language public broadcasting live streams and archives"
 msgstr ""
 "Accédez à la diffusion en direct et aux archives de la télévision publique "
@@ -59,11 +59,11 @@ msgid ""
 "(Totem), Celluloid, Clapper, Daikhan. Currently supported downloaders: "
 "Parabolic."
 msgstr ""
-"Televido fournit un lecteur vidéo intégré. Par ailleurs, "
-"Televido prend en charge des programmes externes installés sur le système de "
-"l’utilisateur pour la lecture et le téléchargement. Les lecteurs vidéos "
-"actuellement pris en charge sont : GNOME Vidéos (Totem), Celluloid, Clapper, "
-"Daikhan. Le téléchargeur de vidéos actuellement pris en charge est Parabolic."
+"Televido fournit un lecteur vidéo intégré. Par ailleurs, Televido prend en "
+"charge des programmes externes installés sur le système de l’utilisateur "
+"pour la lecture et le téléchargement. Les lecteurs vidéos actuellement pris "
+"en charge sont : GNOME Vidéos (Totem), Celluloid, Clapper, Daikhan. Le "
+"téléchargeur de vidéos actuellement pris en charge est Parabolic."
 
 #: data/de.k_bo.Televido.metainfo.xml.in:64
 msgid "Add an integrated video player based on Clapper and ClapperGTK"
@@ -132,26 +132,6 @@ msgstr "Échec de la lecture du flux vidéo"
 msgid "Failed to launch video downloader"
 msgstr "Échec du lancement du lecteur vidéo"
 
-#: src/help-overlay.blp:12
-msgid "General"
-msgstr "Général"
-
-#: src/help-overlay.blp:15
-msgid "Show livestreams"
-msgstr "Afficher les directs"
-
-#: src/help-overlay.blp:20
-msgid "Show mediathek"
-msgstr "Afficher la médiathèque"
-
-#: src/help-overlay.blp:25 src/window.blp:41
-msgid "Reload"
-msgstr "Recharger"
-
-#: src/help-overlay.blp:30
-msgid "Quit application"
-msgstr "Quitter l’application"
-
 #: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr "Annuler"
@@ -166,6 +146,7 @@ msgstr "Programme personnalisé"
 
 #. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
 #: src/launcher/selector.rs:115
+#, rust-format
 msgid "Could not find application “{}”"
 msgstr "Impossible de trouver l’application « {} »"
 
@@ -213,6 +194,7 @@ msgstr "Lire"
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
 #: src/live/view.rs:63
+#, rust-format
 msgid "Failed load shows for channel “{}”"
 msgstr "Échec du chargement du programme de la chaîne « {} »"
 
@@ -252,7 +234,7 @@ msgstr "URL de la vidéo copiée vers le presse-papiers"
 msgid "Copied subtitles URL to clipboard"
 msgstr "URL des sous-titres copiée vers le presse-papiers"
 
-#: src/mediathek/card.rs:239
+#: src/mediathek/card.rs:225
 msgid "Failed to open website in browser"
 msgstr "Échec de l’ouverture du site web dans le navigateur"
 
@@ -384,6 +366,26 @@ msgstr "Trier par ordre alphabétique"
 #: src/preferences/live/selector.blp:56
 msgid "Sort using default order"
 msgstr "Trier avec l’ordre par défaut"
+
+#: src/shortcuts-dialog.blp:8
+msgid "General"
+msgstr "Général"
+
+#: src/shortcuts-dialog.blp:11
+msgid "Show livestreams"
+msgstr "Afficher les directs"
+
+#: src/shortcuts-dialog.blp:16
+msgid "Show mediathek"
+msgstr "Afficher la médiathèque"
+
+#: src/shortcuts-dialog.blp:21 src/window.blp:41
+msgid "Reload"
+msgstr "Recharger"
+
+#: src/shortcuts-dialog.blp:26
+msgid "Quit application"
+msgstr "Quitter l’application"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number

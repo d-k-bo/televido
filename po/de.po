@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Televido main\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2025-02-20 18:40+0100\n"
+"POT-Creation-Date: 2025-11-26 22:19+0100\n"
 "PO-Revision-Date: 2025-02-20 18:42+0100\n"
 "Last-Translator: David Cabot <d-k-bo@mailbox.org>\n"
 "Language-Team: \n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+#: data/de.k_bo.Televido.desktop.in:4 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
 msgstr "Televido"
 
-#: data/de.k_bo.Televido.desktop.in:6
+#: data/de.k_bo.Televido.desktop.in:5
 msgid "Access German-language public broadcasting live streams and archives"
 msgstr ""
 "Greif zu auf Livestreams und Mediatheken öffentlich-rechtlicher Fernsehsender"
@@ -133,26 +133,6 @@ msgstr "Videostream konnte nicht abgespielt werden"
 msgid "Failed to launch video downloader"
 msgstr "Videodownloader konnte nicht gestartet werden"
 
-#: src/help-overlay.blp:12
-msgid "General"
-msgstr "Allgemein"
-
-#: src/help-overlay.blp:15
-msgid "Show livestreams"
-msgstr "Zeige Livestreams"
-
-#: src/help-overlay.blp:20
-msgid "Show mediathek"
-msgstr "Zeige Mediathek"
-
-#: src/help-overlay.blp:25 src/window.blp:41
-msgid "Reload"
-msgstr "Neu laden"
-
-#: src/help-overlay.blp:30
-msgid "Quit application"
-msgstr "Anwendung beenden"
-
 #: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -167,6 +147,7 @@ msgstr "Benutzerdefiniertes Programm"
 
 #. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
 #: src/launcher/selector.rs:115
+#, rust-format
 msgid "Could not find application “{}”"
 msgstr "Anwendung „{}“ konnte nicht gefunden werden"
 
@@ -203,9 +184,9 @@ msgid ""
 "of a different program that supports DBus activation, is able to open a "
 "https:// URI and is accessible from the context of this application."
 msgstr ""
-"Sie können auch eine benutzerdefinierte Anwendungs-ID (z.B. org.example."
-"Application) angeben, um ein anderes Programm zu nutzen, das DBus-"
-"Aktivierung unterstützt, https://-URIs öffnen kann und aus dem Kontext "
+"Sie können auch eine benutzerdefinierte Anwendungs-ID (z.B. "
+"org.example.Application) angeben, um ein anderes Programm zu nutzen, das "
+"DBus-Aktivierung unterstützt, https://-URIs öffnen kann und aus dem Kontext "
 "dieser Anwendung erreicht werden kann."
 
 #: src/live/card.blp:48 src/mediathek/card.blp:99
@@ -214,6 +195,7 @@ msgstr "Abspielen"
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
 #: src/live/view.rs:63
+#, rust-format
 msgid "Failed load shows for channel “{}”"
 msgstr "Sendungen für Sender „{}“ konnten nicht geladen werden"
 
@@ -253,7 +235,7 @@ msgstr "Video-URL wurde in Zwischenablage kopiert"
 msgid "Copied subtitles URL to clipboard"
 msgstr "Untertitel-URL wurde in Zwischenablage kopiert"
 
-#: src/mediathek/card.rs:239
+#: src/mediathek/card.rs:225
 msgid "Failed to open website in browser"
 msgstr "Website konnte nicht im Browser geöffnet werden"
 
@@ -383,6 +365,26 @@ msgstr "Alphabetisch sortieren"
 #: src/preferences/live/selector.blp:56
 msgid "Sort using default order"
 msgstr "In Standardreihenfolge sortieren"
+
+#: src/shortcuts-dialog.blp:8
+msgid "General"
+msgstr "Allgemein"
+
+#: src/shortcuts-dialog.blp:11
+msgid "Show livestreams"
+msgstr "Zeige Livestreams"
+
+#: src/shortcuts-dialog.blp:16
+msgid "Show mediathek"
+msgstr "Zeige Mediathek"
+
+#: src/shortcuts-dialog.blp:21 src/window.blp:41
+msgid "Reload"
+msgstr "Neu laden"
+
+#: src/shortcuts-dialog.blp:26
+msgid "Quit application"
+msgstr "Anwendung beenden"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number

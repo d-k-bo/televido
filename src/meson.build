@@ -1,43 +1,48 @@
 # SPDX-FileCopyrightText: d-k-bo <d-k-bo@mailbox.org>
 # SPDX-License-Identifier: CC0-1.0
 
-configure_file(
-  input: 'config.rs.in',
-  output: 'config.rs',
-  configuration: CONFIG
-)
+configure_file(input: 'config.rs.in', output: 'config.rs', configuration: CONFIG)
 
 # Copy the config.rs output to the source directory.
 run_command(
   'cp',
   meson.project_build_root() / 'src' / 'config.rs',
   meson.project_source_root() / 'src' / 'config.rs',
-  check: true
+  check: true,
 )
 
 help_overlay = custom_target(
-  'help-overlay',
-  input: files('help-overlay.blp'),
+  'shortcuts-dialog',
+  input: files('shortcuts-dialog.blp'),
   output: '.',
   command: [
-    find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@', '&&',
-    'mkdir', '-p', meson.project_source_root() / 'data/resources/gtk/', '&&',
-    'mv', meson.project_build_root() / 'src' /'help-overlay.ui', meson.project_source_root() / 'data/resources/gtk/'
+    find_program('blueprint-compiler'),
+    'batch-compile',
+    '@OUTPUT@',
+    '@CURRENT_SOURCE_DIR@',
+    '@INPUT@',
+    '&&',
+    'mkdir',
+    '-p', meson.project_source_root() / 'data/resources/',
+    '&&',
+    'mv',
+    meson.project_build_root() / 'src' / 'shortcuts-dialog.ui',
+    meson.project_source_root() / 'data/resources/',
   ],
 )
 
 fs = import('fs')
 
 cargo = find_program('cargo')
-cargo_opt = [ '--manifest-path', meson.project_source_root() / 'Cargo.toml' ]
+cargo_opt = ['--manifest-path', meson.project_source_root() / 'Cargo.toml']
 cargo_env = {}
 
 if fs.exists('/.flatpak-info')
-  cargo_env += { 'CARGO_HOME': meson.project_build_root() / 'cargo-home' }
+  cargo_env += {'CARGO_HOME': meson.project_build_root() / 'cargo-home'}
 endif
 
 if get_option('profile') == 'release'
-  cargo_opt += [ '--release' ]
+  cargo_opt += ['--release']
   rust_target = 'release'
 else
   rust_target = 'debug'
@@ -53,8 +58,13 @@ custom_target(
   install_dir: get_option('bindir'),
   env: cargo_env,
   command: [
-    cargo, 'build', cargo_opt, '&&',
-    'cp', meson.project_source_root() / 'target' / rust_target / meson.project_name(), '@OUTPUT@',
+    cargo,
+    'build',
+    cargo_opt,
+    '&&',
+    'cp',
+    meson.project_source_root() / 'target' / rust_target / meson.project_name(),
+    '@OUTPUT@',
   ],
   depends: help_overlay,
 )
