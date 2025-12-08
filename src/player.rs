@@ -151,7 +151,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvPlayer(ObjectSubclass<imp::TvPlayer>)
-        @extends gtk::Widget, gtk::Window, adw::Window;
+        @extends gtk::Widget, gtk::Window, adw::Window,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Native, gtk::Root, gtk::ShortcutManager;
 }
 
 impl TvPlayer {

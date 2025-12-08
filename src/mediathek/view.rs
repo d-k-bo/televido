@@ -10,8 +10,8 @@ use adw::{gio, glib, gtk, prelude::*, subclass::prelude::*};
 use eyre::WrapErr;
 use gettextrs::gettext;
 use mediathekviewweb::{
-    models::{SortField, SortOrder},
     Mediathek,
+    models::{SortField, SortOrder},
 };
 
 use crate::{
@@ -190,7 +190,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvMediathekView(ObjectSubclass<imp::TvMediathekView>)
-        @extends gtk::Widget, adw::Bin;
+        @extends gtk::Widget, adw::Bin,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl TvMediathekView {

@@ -16,7 +16,7 @@ use crate::{
 use super::selector_row::TvLiveChannelSelectorRow;
 
 mod imp {
-    use crate::utils::{spawn, ListStoreExtManual};
+    use crate::utils::{ListStoreExtManual, spawn};
 
     use super::*;
 
@@ -208,7 +208,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvLiveChannelSelector(ObjectSubclass<imp::TvLiveChannelSelector>)
-        @extends gtk::Widget, adw::NavigationPage;
+        @extends gtk::Widget, adw::NavigationPage,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl TvLiveChannelSelector {

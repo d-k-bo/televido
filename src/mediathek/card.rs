@@ -78,7 +78,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvMediathekCard(ObjectSubclass<imp::TvMediathekCard>)
-        @extends gtk::Widget, gtk::ListBoxRow;
+        @extends gtk::Widget, gtk::ListBoxRow,
+        @implements gtk::Accessible, gtk::Actionable, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl TvMediathekCard {

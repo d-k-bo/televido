@@ -250,7 +250,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct ProgramSelector(ObjectSubclass<imp::ProgramSelector>)
-        @extends gtk::Widget, adw::Dialog;
+        @extends gtk::Widget, adw::Dialog,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl ProgramSelector {
