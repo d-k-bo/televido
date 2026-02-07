@@ -78,7 +78,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvMediathekCard(ObjectSubclass<imp::TvMediathekCard>)
-        @extends gtk::Widget, gtk::ListBoxRow;
+        @extends gtk::Widget, gtk::ListBoxRow,
+        @implements gtk::Accessible, gtk::Actionable, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl TvMediathekCard {
@@ -222,6 +223,7 @@ impl TvMediathekCard {
         actions.add_action(&download);
 
         let open_website = gio::SimpleAction::new("open-website", None);
+        let open_website_err = || gettext("Failed to open website in browser"); // xgettext doesn't find this message if moved inside the macro
         open_website.connect_activate(glib::clone!(
             #[weak(rename_to = slf)]
             self,
@@ -234,10 +236,7 @@ impl TvMediathekCard {
                     .launch_future(slf.root().and_downcast_ref::<adw::Window>())
                     .await
                 {
-                    show_error(
-                        eyre::Report::msg(e.to_string())
-                            .wrap_err(gettext("Failed to open website in browser")),
-                    );
+                    show_error(eyre::Report::msg(e.to_string()).wrap_err(open_website_err()));
                 }
             })
         ));

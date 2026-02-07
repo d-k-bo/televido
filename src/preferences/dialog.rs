@@ -154,7 +154,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvPreferencesDialog(ObjectSubclass<imp::TvPreferencesDialog>)
-        @extends gtk::Widget, adw::Dialog, adw::PreferencesDialog;
+        @extends gtk::Widget, adw::Dialog, adw::PreferencesDialog,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl TvPreferencesDialog {

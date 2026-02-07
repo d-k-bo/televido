@@ -51,7 +51,16 @@ pub fn load_channel_icon(channel_id: Option<&str>, image: &gtk::Image, size: i32
 
         // load image manually with given size to avoid blurriness caused by scaling after rasterization
         gdk_pixbuf::Pixbuf::from_resource_at_scale(&resource, size, size, true)
-            .map(|pixbuf| gdk::Texture::for_pixbuf(&pixbuf))
+            .map(|pixbuf| {
+                gdk::MemoryTexture::new(
+                    pixbuf.width(),
+                    pixbuf.height(),
+                    gdk::MemoryFormat::R8g8b8a8,
+                    &pixbuf.read_pixel_bytes(),
+                    pixbuf.rowstride() as usize,
+                )
+                .upcast()
+            })
             .wrap_err_with(|| format!("failed to load channel logo from {resource}"))
     }
 }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2025-02-20 18:40+0100\n"
+"POT-Creation-Date: 2025-11-26 22:19+0100\n"
 "PO-Revision-Date: 2025-03-11 18:23-0300\n"
 "Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
 "Language-Team: \n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+#: data/de.k_bo.Televido.desktop.in:4 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
 msgstr "Televido"
 
-#: data/de.k_bo.Televido.desktop.in:6
+#: data/de.k_bo.Televido.desktop.in:5
 msgid "Access German-language public broadcasting live streams and archives"
 msgstr ""
 "Acesse transmissões ao vivo e arquivos de transmissão pública em alemão"
@@ -129,26 +129,6 @@ msgstr "Falha ao reproduzir o fluxo de vídeo"
 msgid "Failed to launch video downloader"
 msgstr "Falha ao iniciar o downloader de vídeo"
 
-#: src/help-overlay.blp:12
-msgid "General"
-msgstr "Geral"
-
-#: src/help-overlay.blp:15
-msgid "Show livestreams"
-msgstr "Mostrar transmissões ao vivo"
-
-#: src/help-overlay.blp:20
-msgid "Show mediathek"
-msgstr "Mostrar biblioteca de mídia"
-
-#: src/help-overlay.blp:25 src/window.blp:41
-msgid "Reload"
-msgstr "Recarregar"
-
-#: src/help-overlay.blp:30
-msgid "Quit application"
-msgstr "Sair do aplicativo"
-
 #: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr "Cancelar"
@@ -163,6 +143,7 @@ msgstr "Programa personalizado"
 
 #. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
 #: src/launcher/selector.rs:115
+#, rust-format
 msgid "Could not find application “{}”"
 msgstr "Não foi possível encontrar o aplicativo “{}”"
 
@@ -208,6 +189,7 @@ msgstr "Play"
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
 #: src/live/view.rs:63
+#, rust-format
 msgid "Failed load shows for channel “{}”"
 msgstr "Falha no carregamento para o canal “{}”"
 
@@ -247,7 +229,7 @@ msgstr "URL do vídeo copiado para a área de transferência"
 msgid "Copied subtitles URL to clipboard"
 msgstr "URL das legendas copiadas para a área de transferência"
 
-#: src/mediathek/card.rs:239
+#: src/mediathek/card.rs:225
 msgid "Failed to open website in browser"
 msgstr "Falha ao abrir o site no navegador"
 
@@ -378,6 +360,26 @@ msgstr "Classificar alfabeticamente"
 #: src/preferences/live/selector.blp:56
 msgid "Sort using default order"
 msgstr "Classificar usando a ordem padrão"
+
+#: src/shortcuts-dialog.blp:8
+msgid "General"
+msgstr "Geral"
+
+#: src/shortcuts-dialog.blp:11
+msgid "Show livestreams"
+msgstr "Mostrar transmissões ao vivo"
+
+#: src/shortcuts-dialog.blp:16
+msgid "Show mediathek"
+msgstr "Mostrar biblioteca de mídia"
+
+#: src/shortcuts-dialog.blp:21 src/window.blp:41
+msgid "Reload"
+msgstr "Recarregar"
+
+#: src/shortcuts-dialog.blp:26
+msgid "Quit application"
+msgstr "Sair do aplicativo"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number

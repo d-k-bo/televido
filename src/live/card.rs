@@ -9,10 +9,10 @@ use std::{
 use adw::{glib, gtk, prelude::*, subclass::prelude::*};
 
 use crate::{
+    TvApplication,
     channel_icons::load_channel_icon,
     player::VideoInfo,
     utils::{spawn, tokio},
-    TvApplication,
 };
 
 use super::channels::ChannelObject;
@@ -133,5 +133,6 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvLiveCard(ObjectSubclass<imp::TvLiveCard>)
-        @extends gtk::Widget, gtk::ListBoxRow;
+        @extends gtk::Widget, gtk::ListBoxRow,
+        @implements gtk::Accessible, gtk::Actionable, gtk::Buildable, gtk::ConstraintTarget;
 }

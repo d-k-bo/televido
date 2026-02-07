@@ -44,7 +44,7 @@ fn main() -> glib::ExitCode {
 
     glib::setenv("CLAPPER_USE_PLAYBIN3", "1", false)
         .expect("failed to set CLAPPER_USE_PLAYBIN3 environment variable");
-    clapper::init().expect("failed to initialize libclapper");
+    clapper_player::init().expect("failed to initialize libclapper");
 
     TvApplication::new().run()
 }

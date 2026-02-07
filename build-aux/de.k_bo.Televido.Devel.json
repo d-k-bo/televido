@@ -1,11 +1,11 @@
 {
   "id": "de.k_bo.Televido.Devel",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "47",
+  "runtime-version": "49",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.rust-stable",
-    "org.freedesktop.Sdk.Extension.llvm19"
+    "org.freedesktop.Sdk.Extension.llvm21"
   ],
   "command": "televido",
   "finish-args": [
@@ -22,7 +22,7 @@
     "--talk-name=org.nickvision.tubeconverter"
   ],
   "build-options": {
-    "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm19/bin",
+    "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
     "build-args": ["--share=network"],
     "env": {
       "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
@@ -62,7 +62,7 @@
         {
           "type": "git",
           "url": "https://github.com/Rafostar/clapper.git",
-          "tag": "0.8.0"
+          "tag": "0.10.0"
         }
       ]
     },
@@ -74,7 +74,7 @@
         {
           "type": "git",
           "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
-          "tag": "v0.12.0"
+          "tag": "v0.18.0"
         }
       ]
     },

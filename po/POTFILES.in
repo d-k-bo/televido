@@ -8,7 +8,6 @@ data/de.k_bo.Televido.Player.gschema.xml
 src/application.rs
 src/channel_icons.rs
 src/config.rs
-src/help-overlay.blp
 src/launcher/application_proxy.rs
 src/launcher/mod.rs
 src/launcher/selector.blp
@@ -37,6 +36,7 @@ src/preferences/live/selector_row.rs
 src/preferences/live/selector.rs
 src/preferences/mod.rs
 src/settings.rs
+src/shortcuts-dialog.blp
 src/utils.rs
 src/window.blp
 src/window.rs

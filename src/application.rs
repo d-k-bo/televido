@@ -18,7 +18,7 @@ use crate::{
     player::{TvPlayer, VideoInfo},
     preferences::TvPreferencesDialog,
     settings::{TvSettings, VideoQuality},
-    utils::{show_error, spawn, spawn_clone, tokio, AsyncResource},
+    utils::{AsyncResource, show_error, spawn, spawn_clone, tokio},
     window::TvWindow,
     zapp::Zapp,
 };
@@ -75,7 +75,7 @@ impl TvApplication {
     pub fn new() -> Self {
         let slf: Self = glib::Object::builder()
             .property("application-id", APP_ID)
-            .property("flags", gio::ApplicationFlags::FLAGS_NONE)
+            .property("flags", gio::ApplicationFlags::empty())
             .property("resource-base-path", "/de/k_bo/televido")
             .build();
 

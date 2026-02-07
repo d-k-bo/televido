@@ -23,26 +23,26 @@ mod imp {
     #[properties(wrapper_type=super::TvPlayer)]
     pub struct TvPlayer {
         #[template_child]
-        pub(super) seek_bar: TemplateChild<clapper_gtk::SeekBar>,
+        pub(super) seek_bar: TemplateChild<clapper_player_gtk::SeekBar>,
         #[template_child]
-        pub(super) clapper_menu_button: TemplateChild<clapper_gtk::ExtraMenuButton>,
+        pub(super) clapper_menu_button: TemplateChild<clapper_player_gtk::ExtraMenuButton>,
         #[template_child]
         pub(super) custom_menu_button: TemplateChild<gtk::MenuButton>,
 
         #[property(
             name = "player",
-            type = clapper::Player,
+            type = clapper_player::Player,
             get = |slf: &TvPlayer| slf.video.player().expect("should not be nullable")
         )]
         #[template_child]
-        pub(super) video: TemplateChild<clapper_gtk::Video>,
+        pub(super) video: TemplateChild<clapper_player_gtk::Video>,
         #[property(get)]
-        #[default(clapper::Mpris::new(
+        #[default(clapper_player::Mpris::new(
             &format!("org.mpris.MediaPlayer2.{APP_ID}"),
             APP_NAME,
             Some(APP_ID),
         ))]
-        mpris: clapper::Mpris,
+        mpris: clapper_player::Mpris,
 
         #[property(get, set)]
         subtitles_enabled: Cell<bool>,
@@ -151,7 +151,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct TvPlayer(ObjectSubclass<imp::TvPlayer>)
-        @extends gtk::Widget, gtk::Window, adw::Window;
+        @extends gtk::Widget, gtk::Window, adw::Window,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Native, gtk::Root, gtk::ShortcutManager;
 }
 
 impl TvPlayer {
@@ -266,7 +267,7 @@ impl TvPlayer {
 
         let position = player.position();
 
-        let item = clapper::MediaItem::new(&self.uri());
+        let item = clapper_player::MediaItem::new(&self.uri());
 
         // Adding subtitles currently breaks playback
         // see https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4066
@@ -285,7 +286,7 @@ impl TvPlayer {
 
             crate::utils::spawn(async move {
                 loop {
-                    if player.state() == clapper::PlayerState::Paused {
+                    if player.state() == clapper_player::PlayerState::Paused {
                         player.seek(position);
 
                         let handler_id = std::rc::Rc::new(RefCell::new(None));

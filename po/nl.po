@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: televido\n"
 "Report-Msgid-Bugs-To: https://github.com/d-k-bo/televido/issues\n"
-"POT-Creation-Date: 2025-02-20 18:40+0100\n"
+"POT-Creation-Date: 2025-11-26 22:19+0100\n"
 "PO-Revision-Date: 2025-02-20 19:06+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.5\n"
 
-#: data/de.k_bo.Televido.desktop.in:5 data/de.k_bo.Televido.metainfo.xml.in:6
+#: data/de.k_bo.Televido.desktop.in:4 data/de.k_bo.Televido.metainfo.xml.in:6
 msgid "Televido"
 msgstr "Televido"
 
-#: data/de.k_bo.Televido.desktop.in:6
+#: data/de.k_bo.Televido.desktop.in:5
 msgid "Access German-language public broadcasting live streams and archives"
 msgstr ""
 "Verken/Bekijk livestreams en archieven van de Duitstalige publieke omroepen"
@@ -127,26 +127,6 @@ msgstr "De stream kan niet worden afgespeeld"
 msgid "Failed to launch video downloader"
 msgstr "De videodownloader kan niet worden gestart"
 
-#: src/help-overlay.blp:12
-msgid "General"
-msgstr "Algemeen"
-
-#: src/help-overlay.blp:15
-msgid "Show livestreams"
-msgstr "Livestreams tonen"
-
-#: src/help-overlay.blp:20
-msgid "Show mediathek"
-msgstr "Mediatheek tonen"
-
-#: src/help-overlay.blp:25 src/window.blp:41
-msgid "Reload"
-msgstr "Herladen"
-
-#: src/help-overlay.blp:30
-msgid "Quit application"
-msgstr "Toepassing afsluiten"
-
 #: src/launcher/selector.blp:18
 msgid "Cancel"
 msgstr "Annuleren"
@@ -161,6 +141,7 @@ msgstr "Andere toepassing"
 
 #. translators: `{}` is replaced by the application ID, e.g. `org.example.Application`
 #: src/launcher/selector.rs:115
+#, rust-format
 msgid "Could not find application “{}”"
 msgstr "‘{}’ is niet aangetroffen"
 
@@ -204,6 +185,7 @@ msgstr "Afspelen"
 
 #. translators: `{}` is replaced by the channel_id, e.g. `das_erste`
 #: src/live/view.rs:63
+#, rust-format
 msgid "Failed load shows for channel “{}”"
 msgstr "De programma's van ‘{}’ kunnen niet worden geladen"
 
@@ -243,7 +225,7 @@ msgstr "De videolink is gekopieerd naar het klembord"
 msgid "Copied subtitles URL to clipboard"
 msgstr "De ondertitellink is gekopieerd naar het klembord"
 
-#: src/mediathek/card.rs:239
+#: src/mediathek/card.rs:225
 msgid "Failed to open website in browser"
 msgstr "De website kan niet worden geopend"
 
@@ -373,6 +355,26 @@ msgstr "Alfabetisch sorteren"
 #: src/preferences/live/selector.blp:56
 msgid "Sort using default order"
 msgstr "Standaard sorteervolgorde gebruiken"
+
+#: src/shortcuts-dialog.blp:8
+msgid "General"
+msgstr "Algemeen"
+
+#: src/shortcuts-dialog.blp:11
+msgid "Show livestreams"
+msgstr "Livestreams tonen"
+
+#: src/shortcuts-dialog.blp:16
+msgid "Show mediathek"
+msgstr "Mediatheek tonen"
+
+#: src/shortcuts-dialog.blp:21 src/window.blp:41
+msgid "Reload"
+msgstr "Herladen"
+
+#: src/shortcuts-dialog.blp:26
+msgid "Quit application"
+msgstr "Toepassing afsluiten"
 
 #. translators:  %b is Month name (short)
 #. %-e is the Day number
