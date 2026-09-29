@@ -5,6 +5,20 @@
 
 # Televido
 
+> [!WARNING]
+> ## Dieses Projekt ist eingestellt
+>
+> ### Warum?
+>
+> Als Hobby-Programmierer habe ich eine beträchtliche Menge an persönlicher Zeit und Energie in viele Projekte investiert. Aufgrund zunehmender privater und beruflicher Verpflichtungen habe ich jedoch deutlich weniger Zeit, die ich in die Softwareentwicklung stecken kann. Daher möchte ich mich lieber auf die Projekte konzentrieren, die ich selbst aktiv nutze und bei denen mir die Arbeit am meisten Spaß macht. Darüber hinaus verspüre ich insgesamt durch den aktuellen Einfluss von „KI“ einen leichten Interessensverlust an Softwareentwicklung.
+>
+> ### Was bedeutet das?
+>
+> - Dieses Projekt wird auf absehbare Zeit nicht mehr gepflegt und sollte dementsprechend als veraltet (deprecated) betrachtet werden.
+> - Das Projekt bleibt weiterhin gemäß den Bedingungen der entsprechenden Frei-Software-Lizenz verfügbar.
+> - Gerne kann es unter den Bedingungen der genannten Lizenz weiterverbreitet, geforkt und weiterentwickelt werden.
+
+
 **Televido** („Fernsehen“ auf Esperanto) ermöglicht das Empfangen von Livestreams sowie das Suchen, Abspielen und Herunterladen von Inhalten aus Mediatheken öffentlich-rechtlicher Sender aus dem DACH-Raum. Es basiert auf den APIs von [MediathekViewWeb](https://mediathekviewweb.de/) und des [Zapp-Backends](https://github.com/mediathekview/zapp-backend), die beide Teil des [MediathekView](https://mediathekview.de/)-Projekts sind.
 
 Die präsentierten Inhalte werden direkt von den jeweiligen Sendern angeboten, dieses Programm erleichtert dabei nur das Auffinden und Abrufen der Sendungen.

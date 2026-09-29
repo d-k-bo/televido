@@ -5,6 +5,20 @@
 
 # Televido
 
+> [!WARNING]
+> ## This project is no longer maintained
+>
+> ### Why?
+>
+> As a hobbyist programmer, I have invested a significant amount of my personal time and energy into many projects. Due to increasing personal and professional commitments, I have significant less time to dedicate to software development. I am therefore focusing on the projects that I actively use myself and enjoy working on the most. Recent developments in "AI" have also contributed to a general decline in my interest in software development.
+>
+> ### What does this mean?
+>
+> - This project will not be actively maintained for the foreseeable future. Accordingly, it should be considered as deprecated.
+> - The project remains available under the terms of the corresponding free software license.
+> - You are welcome to redistribute, fork and continue its development under the terms of the said ‍‍‍license.
+
+
 **Televido** (“Television” in Esperanto) lets you livestream, search, play and download media from German-language public television services. It is powered by [MediathekViewWeb](https://mediathekviewweb.de/)'s API and the [Zapp backend](https://github.com/mediathekview/zapp-backend) API which are both part of the [MediathekView](https://mediathekview.de/) project.
 
 The presented content is provided directly by the respective television services, this program only facilitates finding and accessing the shows.
